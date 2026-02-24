@@ -1,0 +1,14 @@
+{
+  "extensions": [
+    "*.mp4",
+    "*.mov",
+    "*.avi",
+    "*.webm",
+    "*.png",
+    "*.jpg",
+    "*.jpeg",
+    "*.gif",
+    "*.pdf",
+    "*.zip"
+  ]
+}

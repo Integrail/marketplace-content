@@ -1,0 +1,54 @@
+{
+  "id": "External_Candidate_Sourcing_AI_Worker",
+  "name": "External Candidate Sourcing AI Worker",
+  "description": "Prospects passive candidates via LinkedIn and email with highly personalized outreach — converting passive talent into active applicants at 3–5× the response rate of template-based approaches.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": ["HR", "Recruiting"],
+  "tags": ["Efficiency"],
+  "iconUrl": "ew-marketplace://External_Candidate_Sourcing_AI_Worker/icon.png",
+  "author": {
+    "name": "EverWorker",
+    "avatarUrl": "ew-marketplace://everworker/author-avatar.png"
+  },
+  "keyBenefit": "15+ hours/week saved on manual research and writing",
+  "integrations": [
+    { "name": "LinkedIn Recruiter", "logoUrl": "ew-marketplace://integrations/linkedin.png" },
+    { "name": "Gmail",              "logoUrl": "ew-marketplace://integrations/gmail.png" },
+    { "name": "Salesforce",         "logoUrl": "ew-marketplace://integrations/salesforce.png" },
+    { "name": "Greenhouse",         "logoUrl": "ew-marketplace://integrations/greenhouse.png" }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://External_Candidate_Sourcing_AI_Worker/hero.png"
+  },
+  "overview": "This AI Worker handles the most challenging — and highest-value — recruiting work: converting passive candidates into applicants. It works with recruiters to identify target candidates through LinkedIn searches, extracts comprehensive profile data, analyses background against job requirements, and crafts highly personalized LinkedIn messages and emails. Every outreach references specific aspects of the candidate's experience, dramatically improving response rates over generic templates.",
+  "howItWorks": { "href": "ew-marketplace://External_Candidate_Sourcing_AI_Worker/how-it-works.md" },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      { "name": "LinkedIn Recruiter API",   "description": "Candidate search execution and InMail delivery" },
+      { "name": "LinkedIn Standard API",    "description": "Fallback search and connection request outreach" },
+      { "name": "Email Service Provider",   "description": "Parallel email outreach to verified candidate addresses" },
+      { "name": "CRM (Salesforce)",         "description": "Outreach tracking and candidate status synchronization" },
+      { "name": "ATS (Greenhouse / Lever)", "description": "Pipeline updates and candidate record creation on response" }
+    ],
+    "memories": [
+      { "name": "Job Requirements",            "description": "Role description, must-have skills, and ideal candidate profile" },
+      { "name": "Company Value Proposition",   "description": "Why join messaging, culture highlights, and team details" },
+      { "name": "Personalization Frameworks",  "description": "Rules for selecting talking points based on candidate background signals" },
+      { "name": "Competitor Intelligence",     "description": "Insights used to position the opportunity relative to competitor employers" }
+    ],
+    "collections": [
+      { "name": "Outreach Templates",   "description": "Approved message structures and tone guidelines per role type" },
+      { "name": "Response Playbooks",   "description": "Follow-up sequences and objection handling for common candidate responses" }
+    ],
+    "workflows": [
+      { "name": "Candidate Discovery",     "description": "Search Execution → Profile Extraction → Background Analysis" },
+      { "name": "Personalized Outreach",   "description": "Message Writing → Approval → LinkedIn Send → Email Send" },
+      { "name": "Response Monitoring",     "description": "Tracks replies, updates CRM/ATS status, and triggers follow-up sequences" }
+    ]
+  },
+  "techSpecsUrl": "ew-marketplace://External_Candidate_Sourcing_AI_Worker/tech-specs.pdf",
+  "supportUrl": "https://everworker.ai/support"
+}

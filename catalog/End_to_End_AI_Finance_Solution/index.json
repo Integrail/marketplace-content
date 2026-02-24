@@ -1,0 +1,58 @@
+{
+  "id": "End_to_End_AI_Finance_Solution",
+  "name": "End-to-End AI Finance Solution",
+  "description": "Comprehensive AI solution covering every stage of financial operations — from daily cash management through strategic planning — with 15 specialized AI Workers across Cash Operations, Accounting & Reporting, and Planning & Analysis.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": ["Finance", "Accounting & Reporting"],
+  "tags": ["Efficiency"],
+  "iconUrl": "ew-marketplace://End_to_End_AI_Finance_Solution/icon.png",
+  "author": {
+    "name": "EverWorker",
+    "avatarUrl": "ew-marketplace://everworker/author-avatar.png"
+  },
+  "keyBenefit": "60% faster close cycle and 12 fewer days DSO",
+  "integrations": [
+    { "name": "SAP",        "logoUrl": "ew-marketplace://integrations/sap.png" },
+    { "name": "Oracle",     "logoUrl": "ew-marketplace://integrations/oracle.png" },
+    { "name": "NetSuite",   "logoUrl": "ew-marketplace://integrations/netsuite.png" },
+    { "name": "QuickBooks", "logoUrl": "ew-marketplace://integrations/quickbooks.png" },
+    { "name": "Salesforce", "logoUrl": "ew-marketplace://integrations/salesforce.png" }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://End_to_End_AI_Finance_Solution/hero.png"
+  },
+  "overview": "Transform your entire finance function with 15 specialized AI Workers designed for maximum impact across Cash Operations, Accounting & Reporting, and Planning & Analysis. Close in days instead of weeks, answer any financial question in hours instead of days, and turn your finance team from scorekeepers into strategic advisors.",
+  "howItWorks": { "href": "ew-marketplace://End_to_End_AI_Finance_Solution/how-it-works.md" },
+  "setupOverview": {
+    "setupTime": "2–3 weeks",
+    "connectors": [
+      { "name": "SAP / Oracle / NetSuite",   "description": "ERP system access for GL, AP, AR, and subledger data" },
+      { "name": "QuickBooks / Coupa / Ariba", "description": "Mid-market accounting and procurement platforms" },
+      { "name": "Banking Platforms",          "description": "Direct bank feeds for cash position and payment execution" },
+      { "name": "Salesforce / CRM",           "description": "Revenue data and customer payment history for O2C" },
+      { "name": "EPM Platforms (Anaplan, Adaptive)", "description": "Planning and forecasting model integration" }
+    ],
+    "memories": [
+      { "name": "Chart of Accounts",     "description": "Entity-level and consolidated account structures" },
+      { "name": "Vendor Master Data",    "description": "Vendor details, bank accounts, payment terms, and discount schedules" },
+      { "name": "Approval Hierarchies",  "description": "Invoice, payment, and journal entry approval routing rules" },
+      { "name": "Accounting Policies",   "description": "GAAP/IFRS policies, accrual rules, and allocation methodologies" },
+      { "name": "Regulatory Calendar",   "description": "Filing deadlines, jurisdiction requirements, and XBRL taxonomies" }
+    ],
+    "collections": [
+      { "name": "Invoice Templates",    "description": "Standard invoice formats for AP ingestion and O2C generation" },
+      { "name": "Report Templates",     "description": "Board package, management report, and variance commentary templates" },
+      { "name": "Close Checklists",     "description": "Period-end task lists with owners, dependencies, and deadlines" },
+      { "name": "SOX Control Matrix",   "description": "Control definitions, testing procedures, and evidence requirements" }
+    ],
+    "workflows": [
+      { "name": "Cash Operations Suite",             "description": "AP, O2C, Cash Flow Management, Treasury Operations, and Payment Processing workers" },
+      { "name": "Accounting & Reporting Suite",      "description": "R2R, Financial Close, Consolidation, Compliance & Audit, and Regulatory Reporting workers" },
+      { "name": "Planning & Analysis Suite",         "description": "FP&A, Budget Modeling, Variance Analysis, Board Reporting, and Scenario Planning workers" }
+    ]
+  },
+  "techSpecsUrl": "ew-marketplace://End_to_End_AI_Finance_Solution/tech-specs.pdf",
+  "supportUrl": "https://everworker.ai/support"
+}

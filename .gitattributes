@@ -1,0 +1,20 @@
+# Git LFS tracking rules
+# Authoritative list of tracked extensions is in ./git-lfs.json
+
+# Video files
+*.mp4  filter=lfs diff=lfs merge=lfs -text
+*.mov  filter=lfs diff=lfs merge=lfs -text
+*.avi  filter=lfs diff=lfs merge=lfs -text
+*.webm filter=lfs diff=lfs merge=lfs -text
+
+# Image files
+*.png  filter=lfs diff=lfs merge=lfs -text
+*.jpg  filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.gif  filter=lfs diff=lfs merge=lfs -text
+
+# Document files
+*.pdf  filter=lfs diff=lfs merge=lfs -text
+
+# Archive files
+*.zip  filter=lfs diff=lfs merge=lfs -text

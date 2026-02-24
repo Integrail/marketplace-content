@@ -1,0 +1,49 @@
+{
+  "id": "item1",
+  "name": "Invoice Reconciliation",
+  "description": "Matches invoices against POs, flags discrepancies, and routes exceptions to your email inbox as a formatted report.",
+  "itemVersion": "1.0.0-1",
+  "type": "Workflow",
+  "categories": ["Finance", "Accounting & Reporting"],
+  "tags": ["Delivery"],
+  "iconUrl": "ew-marketplace://item1/icon.png",
+  "author": {
+    "name": "Jane Smith",
+    "avatarUrl": "ew-marketplace://item1/author-avatar.png"
+  },
+  "keyBenefit": "Saves ~15 hrs/week per accountant",
+  "integrations": [
+    { "name": "QuickBooks", "logoUrl": "ew-marketplace://integrations/quickbooks.png" },
+    { "name": "NetSuite",   "logoUrl": "ew-marketplace://integrations/netsuite.png" },
+    { "name": "Gmail",      "logoUrl": "ew-marketplace://integrations/gmail.png" }
+  ],
+  "heroMedia": {
+    "kind": "video",
+    "url": "ew-marketplace://item1/hero.mp4",
+    "thumbnailUrl": "ew-marketplace://item1/hero-thumbnail.png"
+  },
+  "overview": "Matches invoices against POs, flag discrepancies, and route exceptions to be sent to your email inbox as a complex report with a good format.",
+  "howItWorks": { "href": "ew-marketplace://item1/how-it-works.md" },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      { "name": "QuickBooks", "description": "Accounting system access for PO and invoice data" },
+      { "name": "NetSuite",   "description": "ERP access for purchase order matching" },
+      { "name": "Gmail",      "description": "AP inbox monitoring for incoming invoices" }
+    ],
+    "memories": [
+      { "name": "AP Policies",        "description": "Approval thresholds, tolerance levels, escalation" },
+      { "name": "Vendor Master List", "description": "Approved vendors, payment terms, contact info" }
+    ],
+    "collections": [
+      { "name": "Invoice Templates", "description": "Standard invoice formats for parsing" }
+    ],
+    "workflows": [
+      { "name": "AP Policies",           "description": "Matches invoice line items against purchase orders" },
+      { "name": "Discrepancy Escalation","description": "Routes exception reports to the right approver" },
+      { "name": "Approval Notification", "description": "Notifies stakeholders when invoices are ready for approval" }
+    ]
+  },
+  "techSpecsUrl": "ew-marketplace://item1/tech-specs.pdf",
+  "supportUrl": "https://everworker.ai/support"
+}
