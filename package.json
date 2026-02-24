@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "dev": "vite preview",
+    "marketplace-preview": "vite",
     "unit-tests": "mocha 'src/**/*.unit.test.ts'",
     "unit-tests:coverage": "c8 --reporter=text --reporter=lcov --reporter=html --reports-dir=.coverage --all --src=src mocha 'src/**/*.unit.test.ts'",
     "sandbox-tests": "mocha 'src/**/*.sandbox.test.ts'",
@@ -16,9 +16,16 @@
     "integration-tests": "mocha 'src/**/*.integration.test.ts'",
     "integration-tests:coverage": "c8 --reporter=text --reporter=lcov --reporter=html --reports-dir=.coverage --all --src=src mocha 'src/**/*.integration.test.ts'"
   },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
   "devDependencies": {
     "@types/mocha": "^10.0.0",
     "@types/node": "^22.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
     "c8": "^10.0.0",
     "mocha": "^11.0.0",
     "tsx": "^4.0.0",

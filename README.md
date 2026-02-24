@@ -1,5 +1,20 @@
 # marketplace-content
 
+---
+
+> **Hello everyone!**
+>
+> Here is the prototype of **marketplace-content**.
+> - It contains the catalog items — you can contribute via pull requests
+> - Clone the repo
+> - See the preview (in ugly design) of the marketplace content: `npm run marketplace-preview`
+> - Work faster on marketing things (text, media, etc.)
+> - Prototype of marketplace validation, build and deployment system
+>
+> **It is the foundation for the upcoming month.**
+
+---
+
 This repository contains the **Everworker Marketplace** content and build tooling.
 
 The marketplace is a curated catalog of pre-built workflows that can be deployed into customer environments. This repository serves two purposes:
