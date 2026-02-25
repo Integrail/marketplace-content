@@ -1,0 +1,165 @@
+{
+  "id": "MW-1009",
+  "name": "Compliance & Audit AI Worker",
+  "description": "Maintains SOX compliance, supports internal and external audits, and ensures control effectiveness across all processes.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1009/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "100% of key controls monitored continuously",
+  "integrations": [
+    {
+      "name": "GRC platforms (AuditBoard, Workiva)",
+      "logoUrl": "ew-marketplace://logos/grc-platforms-auditboard-workiva.png"
+    },
+    {
+      "name": "ERP systems",
+      "logoUrl": "ew-marketplace://logos/erp-systems.png"
+    },
+    {
+      "name": "document management",
+      "logoUrl": "ew-marketplace://logos/document-management.png"
+    },
+    {
+      "name": "workflow systems",
+      "logoUrl": "ew-marketplace://logos/workflow-systems.png"
+    },
+    {
+      "name": "auditor portals",
+      "logoUrl": "ew-marketplace://logos/auditor-portals.png"
+    },
+    {
+      "name": "email platforms",
+      "logoUrl": "ew-marketplace://logos/email-platforms.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1009/hero.png"
+  },
+  "overview": "Maintains SOX compliance and supports internal and external audit requirements This AI Worker makes audit readiness continuous rather than seasonal. It monitors control execution across all SOX-relevant processes, collects evidence of control operation, identifies control failures before auditors do, and maintains organized documentation for audit requests. When auditors need support, it retrieves requested documentation instantly, answers standard questions, and tracks PBC list completion. Your audit becomes faster, cheaper, and lower-stress.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1009/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "GRC platforms (AuditBoard, Workiva)",
+        "description": "Integration with GRC platforms (AuditBoard, Workiva)"
+      },
+      {
+        "name": "ERP systems",
+        "description": "Integration with ERP systems"
+      },
+      {
+        "name": "document management",
+        "description": "Integration with document management"
+      },
+      {
+        "name": "workflow systems",
+        "description": "Integration with workflow systems"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Control Monitoring",
+        "description": "Handles the control monitoring step"
+      },
+      {
+        "name": "Evidence Collection",
+        "description": "Handles the evidence collection step"
+      },
+      {
+        "name": "Testing Execution",
+        "description": "Handles the testing execution step"
+      },
+      {
+        "name": "Deficiency Detection",
+        "description": "Handles the deficiency detection step"
+      },
+      {
+        "name": "Documentation",
+        "description": "Handles the documentation step"
+      },
+      {
+        "name": "PBC Response",
+        "description": "Handles the pbc response step"
+      },
+      {
+        "name": "Remediation Tracking",
+        "description": "Handles the remediation tracking step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Control Testing Coverage",
+      "value": "100% of key controls monitored continuously"
+    },
+    {
+      "metric": "Audit Request Turnaround",
+      "value": "Reduced from 3 days to 2 hours average"
+    },
+    {
+      "metric": "Control Deficiencies",
+      "value": "67% reduction through early detection"
+    },
+    {
+      "metric": "External Audit Fees",
+      "value": "22% reduction through better preparation"
+    },
+    {
+      "metric": "SOX Compliance Confidence",
+      "value": "Real-time control status visibility"
+    }
+  ],
+  "outputs": [
+    "Control status dashboards",
+    "testing results",
+    "evidence packages",
+    "PBC responses",
+    "deficiency reports",
+    "remediation tracking",
+    "audit support documentation"
+  ],
+  "triggers": [
+    "Control execution",
+    "audit request (PBC)",
+    "compliance testing schedule",
+    "deficiency identification",
+    "remediation tracking"
+  ],
+  "knowledgeSources": [
+    "Control documentation",
+    "SOX control matrices",
+    "testing procedures",
+    "evidence requirements",
+    "audit request templates",
+    "remediation playbooks"
+  ],
+  "agentOrchestration": [
+    "Control Monitoring Agent",
+    "Evidence Collection Agent",
+    "Testing Execution Agent",
+    "Deficiency Detection Agent",
+    "Documentation Agent",
+    "PBC Response Agent",
+    "Remediation Tracking Agent"
+  ]
+}

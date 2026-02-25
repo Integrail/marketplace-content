@@ -1,0 +1,160 @@
+{
+  "id": "MW-1006",
+  "name": "Record to Report (R2R) AI Worker",
+  "description": "Automates journal entries, account reconciliations, and transaction processing to maintain accurate books continuously",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1006/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "85% of recurring entries processed without intervention",
+  "integrations": [
+    {
+      "name": "ERP GL modules (SAP, Oracle, NetSuite)",
+      "logoUrl": "ew-marketplace://logos/erp-gl-modules-sap-oracle-netsuite.png"
+    },
+    {
+      "name": "subledgers",
+      "logoUrl": "ew-marketplace://logos/subledgers.png"
+    },
+    {
+      "name": "bank feeds",
+      "logoUrl": "ew-marketplace://logos/bank-feeds.png"
+    },
+    {
+      "name": "reconciliation tools (BlackLine, Trintech)",
+      "logoUrl": "ew-marketplace://logos/reconciliation-tools-blackline-trintech.png"
+    },
+    {
+      "name": "workflow systems",
+      "logoUrl": "ew-marketplace://logos/workflow-systems.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1006/hero.png"
+  },
+  "overview": "Automates journal entries, reconciliations, and transaction processing continuously This AI Worker keeps your books accurate without waiting for month-end. It processes routine journal entries automatically—accruals, deferrals, allocations, reclassifications—based on business rules and source data. It performs account reconciliations continuously, investigating and clearing variances before they become problems. The worker flags unusual transactions for review, ensures proper GL coding, and gives controllers confidence that the books are always close-ready.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1006/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "ERP GL modules (SAP, Oracle, NetSuite)",
+        "description": "Integration with ERP GL modules (SAP, Oracle, NetSuite)"
+      },
+      {
+        "name": "subledgers",
+        "description": "Integration with subledgers"
+      },
+      {
+        "name": "bank feeds",
+        "description": "Integration with bank feeds"
+      },
+      {
+        "name": "reconciliation tools (BlackLine, Trintech)",
+        "description": "Integration with reconciliation tools (BlackLine, Trintech)"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Transaction Processing",
+        "description": "Handles the transaction processing step"
+      },
+      {
+        "name": "Journal Entry",
+        "description": "Handles the journal entry step"
+      },
+      {
+        "name": "Reconciliation",
+        "description": "Handles the reconciliation step"
+      },
+      {
+        "name": "Variance Investigation",
+        "description": "Handles the variance investigation step"
+      },
+      {
+        "name": "Exception Routing",
+        "description": "Handles the exception routing step"
+      },
+      {
+        "name": "Approval",
+        "description": "Handles the approval step"
+      },
+      {
+        "name": "Documentation",
+        "description": "Handles the documentation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Journal Entry Automation",
+      "value": "85% of recurring entries processed without intervention"
+    },
+    {
+      "metric": "Reconciliation Completion",
+      "value": "100% of accounts reconciled within 24 hours of close"
+    },
+    {
+      "metric": "Error Detection",
+      "value": "94% of errors caught before close vs. during/after"
+    },
+    {
+      "metric": "Close Preparation Time",
+      "value": "60% reduction in pre-close reconciliation effort"
+    },
+    {
+      "metric": "Audit Adjustments",
+      "value": "73% reduction in post-close adjustments"
+    }
+  ],
+  "outputs": [
+    "Posted journal entries",
+    "completed reconciliations",
+    "variance explanations",
+    "exception reports",
+    "close readiness dashboards",
+    "audit support documentation"
+  ],
+  "triggers": [
+    "Transaction feeds",
+    "period close trigger",
+    "reconciliation schedule",
+    "variance thresholds",
+    "manual entry requests"
+  ],
+  "knowledgeSources": [
+    "Chart of accounts",
+    "accounting policies",
+    "journal entry templates",
+    "reconciliation procedures",
+    "variance thresholds",
+    "allocation methodologies"
+  ],
+  "agentOrchestration": [
+    "Transaction Processing Agent",
+    "Journal Entry Agent",
+    "Reconciliation Agent",
+    "Variance Investigation Agent",
+    "Exception Routing Agent",
+    "Approval Agent",
+    "Documentation Agent"
+  ]
+}

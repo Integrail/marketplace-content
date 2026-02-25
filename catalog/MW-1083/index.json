@@ -1,0 +1,147 @@
+{
+  "id": "MW-1083",
+  "name": "Employee Referral AI Worker",
+  "description": "Manages your referral program4tracking submissions, communicating with referrers, and surfacing matches.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Talent Acquisition"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1083/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "3x increase in employee referral submissions",
+  "integrations": [
+    {
+      "name": "HRIS",
+      "logoUrl": "ew-marketplace://logos/hris.png"
+    },
+    {
+      "name": "ATS",
+      "logoUrl": "ew-marketplace://logos/ats.png"
+    },
+    {
+      "name": "Slack/Teams",
+      "logoUrl": "ew-marketplace://logos/slack-teams.png"
+    },
+    {
+      "name": "email",
+      "logoUrl": "ew-marketplace://logos/email.png"
+    },
+    {
+      "name": "payroll (for bonus processing)",
+      "logoUrl": "ew-marketplace://logos/payroll-for-bonus-processing.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1083/hero.png"
+  },
+  "overview": "This AI Worker maximizes your highest-quality source of hire. It proactively notifies employees about roles matching their network, makes submitting referrals frictionless, and keeps referrers updated throughout the process. It matches employee networks against open roles, tracks referral bonuses, and ensures no referral falls through the cracks. Referred candidates are flagged and fast-tracked through your process.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1083/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "HRIS",
+        "description": "Integration with HRIS"
+      },
+      {
+        "name": "ATS",
+        "description": "Integration with ATS"
+      },
+      {
+        "name": "Slack/Teams",
+        "description": "Integration with Slack/Teams"
+      },
+      {
+        "name": "email",
+        "description": "Integration with email"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Matching",
+        "description": "Handles the matching step"
+      },
+      {
+        "name": "Notification",
+        "description": "Handles the notification step"
+      },
+      {
+        "name": "Submission Processing",
+        "description": "Handles the submission processing step"
+      },
+      {
+        "name": "Status Update",
+        "description": "Handles the status update step"
+      },
+      {
+        "name": "Bonus Tracking",
+        "description": "Handles the bonus tracking step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Referral Volume",
+      "value": "3x increase in employee referral submissions"
+    },
+    {
+      "metric": "Referral Quality",
+      "value": "45% of referred candidates progress to interview (vs. 15% average)"
+    },
+    {
+      "metric": "Time to Hire",
+      "value": "Referred candidates hired 40% faster than other sources"
+    },
+    {
+      "metric": "Employee Engagement",
+      "value": "70% employee participation in referral program"
+    },
+    {
+      "metric": "Program ROI",
+      "value": "5x return on referral bonus investment"
+    }
+  ],
+  "outputs": [
+    "Referral notifications to employees",
+    "submission confirmations",
+    "status updates",
+    "bonus processing triggers",
+    "program analytics"
+  ],
+  "triggers": [
+    "New requisition opened",
+    "employee referral submission",
+    "referral status change",
+    "bonus eligibility milestone"
+  ],
+  "knowledgeSources": [
+    "Open requisitions",
+    "employee directory",
+    "referral program rules",
+    "bonus structure",
+    "referral history"
+  ],
+  "agentOrchestration": [
+    "Matching Agent",
+    "Notification Agent",
+    "Submission Processing Agent",
+    "Status Update Agent",
+    "Bonus Tracking Agent"
+  ]
+}

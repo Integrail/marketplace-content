@@ -1,0 +1,150 @@
+{
+  "id": "MW-1043",
+  "name": "Career Pathing AI Worker",
+  "description": "Helps employees visualize growth opportunities, identifies skill gaps, and creates personalized development plans.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1043/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "45% increase in internal role transitions 30% reduction in high-performer turnover",
+  "integrations": [
+    {
+      "name": "HRIS",
+      "logoUrl": "ew-marketplace://logos/hris.png"
+    },
+    {
+      "name": "LMS",
+      "logoUrl": "ew-marketplace://logos/lms.png"
+    },
+    {
+      "name": "internal job boards",
+      "logoUrl": "ew-marketplace://logos/internal-job-boards.png"
+    },
+    {
+      "name": "skills databases",
+      "logoUrl": "ew-marketplace://logos/skills-databases.png"
+    },
+    {
+      "name": "mentoring platforms",
+      "logoUrl": "ew-marketplace://logos/mentoring-platforms.png"
+    },
+    {
+      "name": "career development tools",
+      "logoUrl": "ew-marketplace://logos/career-development-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1043/hero.png"
+  },
+  "overview": "Visualizes growth opportunities and creates personalized development plans This AI Worker helps employees see their future at your company. It maps possible career trajectories based on current role, skills, and interests. For each potential path, it identifies skill        Retention gaps and recommends specific development actions—courses, projects, mentors, or stretch assignments. It connects employees with internal mobility opportunities and helps managers have better career conversations. When employees can see a clear path forward, they're far more likely to stay.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1043/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "HRIS",
+        "description": "Integration with HRIS"
+      },
+      {
+        "name": "LMS",
+        "description": "Integration with LMS"
+      },
+      {
+        "name": "internal job boards",
+        "description": "Integration with internal job boards"
+      },
+      {
+        "name": "skills databases",
+        "description": "Integration with skills databases"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Path Mapping",
+        "description": "Handles the path mapping step"
+      },
+      {
+        "name": "Skill Gap Analysis",
+        "description": "Handles the skill gap analysis step"
+      },
+      {
+        "name": "Development Planning",
+        "description": "Handles the development planning step"
+      },
+      {
+        "name": "Opportunity Matching",
+        "description": "Handles the opportunity matching step"
+      },
+      {
+        "name": "Mentor Connection",
+        "description": "Handles the mentor connection step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Internal Mobility",
+      "value": "45% increase in internal role transitions 30% reduction in high-performer turnover"
+    },
+    {
+      "metric": "Development Planning",
+      "value": "Personalized plans for 100% of employees"
+    },
+    {
+      "metric": "Career Conversations",
+      "value": "50% increase in manager-employee career discussions"
+    },
+    {
+      "metric": "Skill Gap Clarity",
+      "value": "Clear development roadmaps for every career goal"
+    }
+  ],
+  "outputs": [
+    "Career path visualizations",
+    "skill gap analyses",
+    "personalized development plans",
+    "internal opportunity alerts",
+    "mentor recommendations"
+  ],
+  "triggers": [
+    "Career exploration requests",
+    "skill assessments",
+    "internal job interest",
+    "development planning",
+    "manager career conversations"
+  ],
+  "knowledgeSources": [
+    "Role definitions",
+    "career ladders",
+    "skill frameworks",
+    "internal job postings",
+    "learning catalog",
+    "mentor database",
+    "succession plans"
+  ],
+  "agentOrchestration": [
+    "Path Mapping Agent",
+    "Skill Gap Analysis Agent",
+    "Development Planning Agent",
+    "Opportunity Matching Agent",
+    "Mentor Connection Agent"
+  ]
+}

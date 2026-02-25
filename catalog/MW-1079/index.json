@@ -1,0 +1,159 @@
+{
+  "id": "MW-1079",
+  "name": "LP Reporting AI Worker",
+  "description": "Produces customized limited partner reports meeting each LP's specific requirements and reporting preferences.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1079/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 3 weeks to 5 days LP-Specific Customization               100% of reports match LP requirements On-Time Delivery                        98% of reports delivered by deadline",
+  "integrations": [
+    {
+      "name": "Portfolio management systems",
+      "logoUrl": "ew-marketplace://logos/portfolio-management-systems.png"
+    },
+    {
+      "name": "fund administrators",
+      "logoUrl": "ew-marketplace://logos/fund-administrators.png"
+    },
+    {
+      "name": "LP portals",
+      "logoUrl": "ew-marketplace://logos/lp-portals.png"
+    },
+    {
+      "name": "document management",
+      "logoUrl": "ew-marketplace://logos/document-management.png"
+    },
+    {
+      "name": "email platforms",
+      "logoUrl": "ew-marketplace://logos/email-platforms.png"
+    },
+    {
+      "name": "compliance tools",
+      "logoUrl": "ew-marketplace://logos/compliance-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1079/hero.png"
+  },
+  "overview": "Produces customized limited partner reports meeting each LP's specific requirements This AI Worker solves the LP reporting puzzle—different investors requiring different formats, metrics, and delivery schedules. It maintains profiles of each LP's reporting preferences, generates customized reports from portfolio data, ensures regulatory compliance (ILPA, GIPS, regulatory templates), and delivers through preferred channels. The worker tracks reporting obligations across all LPs and vehicles, ensuring nothing falls through the cracks during busy reporting periods.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1079/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Portfolio management systems",
+        "description": "Integration with Portfolio management systems"
+      },
+      {
+        "name": "fund administrators",
+        "description": "Integration with fund administrators"
+      },
+      {
+        "name": "LP portals",
+        "description": "Integration with LP portals"
+      },
+      {
+        "name": "document management",
+        "description": "Integration with document management"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Calendar Monitoring",
+        "description": "Handles the calendar monitoring step"
+      },
+      {
+        "name": "Data Aggregation",
+        "description": "Handles the data aggregation step"
+      },
+      {
+        "name": "Template Selection",
+        "description": "Handles the template selection step"
+      },
+      {
+        "name": "Report Generation",
+        "description": "Handles the report generation step"
+      },
+      {
+        "name": "Compliance Check",
+        "description": "Handles the compliance check step"
+      },
+      {
+        "name": "Approval",
+        "description": "Handles the approval step"
+      },
+      {
+        "name": "Distribution",
+        "description": "Handles the distribution step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Reporting Cycle Time",
+      "value": "Reduced from 3 weeks to 5 days LP-Specific Customization               100% of reports match LP requirements On-Time Delivery                        98% of reports delivered by deadline"
+    },
+    {
+      "metric": "Compliance Coverage",
+      "value": "Full ILPA and regulatory template support"
+    },
+    {
+      "metric": "Investor Relations Capacity",
+      "value": "IR team serves 3x more LPs without additional staff"
+    }
+  ],
+  "outputs": [
+    "Quarterly reports",
+    "capital account statements",
+    "K-1 preparation",
+    "performance summaries",
+    "ESG reports",
+    "regulatory filings",
+    "LP portal updates"
+  ],
+  "triggers": [
+    "Reporting period close",
+    "LP request",
+    "regulatory deadline",
+    "NAV finalization",
+    "capital activity",
+    "ad-hoc query"
+  ],
+  "knowledgeSources": [
+    "LP preference profiles",
+    "reporting templates",
+    "ILPA standards",
+    "GIPS requirements",
+    "regulatory frameworks",
+    "historical reports",
+    "fund data"
+  ],
+  "agentOrchestration": [
+    "Calendar Monitoring Agent",
+    "Data Aggregation Agent",
+    "Template Selection Agent",
+    "Report Generation Agent",
+    "Compliance Check Agent",
+    "Approval Agent",
+    "Distribution Agent"
+  ]
+}

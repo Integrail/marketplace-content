@@ -1,0 +1,158 @@
+{
+  "id": "MW-1059",
+  "name": "Video Marketing AI Worker",
+  "description": "Creates AI generated videos on topics you define.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Marketing"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1059/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "20-40 videos per month vs. 2-4 manually",
+  "integrations": [
+    {
+      "name": "Synthesia",
+      "logoUrl": "ew-marketplace://logos/synthesia.png"
+    },
+    {
+      "name": "HeyGen",
+      "logoUrl": "ew-marketplace://logos/heygen.png"
+    },
+    {
+      "name": "Descript",
+      "logoUrl": "ew-marketplace://logos/descript.png"
+    },
+    {
+      "name": "YouTube",
+      "logoUrl": "ew-marketplace://logos/youtube.png"
+    },
+    {
+      "name": "Vimeo",
+      "logoUrl": "ew-marketplace://logos/vimeo.png"
+    },
+    {
+      "name": "Wistia",
+      "logoUrl": "ew-marketplace://logos/wistia.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1059/hero.png"
+  },
+  "overview": "This AI Worker transforms video content from expensive, time-consuming productions into scalable content streams. It writes video scripts, generates AI-powered videos with synthetic presenters or animated explainers, creates thumbnails and titles optimized for engagement, and prepares videos for distribution across platforms. Whether you need product explainers, thought leadership content, or social clips, it delivers professional video content without cameras, studios, or editing suites.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1059/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Synthesia",
+        "description": "Integration with Synthesia"
+      },
+      {
+        "name": "HeyGen",
+        "description": "Integration with HeyGen"
+      },
+      {
+        "name": "Descript",
+        "description": "Integration with Descript"
+      },
+      {
+        "name": "YouTube",
+        "description": "Integration with YouTube"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Script Writing",
+        "description": "Handles the script writing step"
+      },
+      {
+        "name": "Storyboard",
+        "description": "Handles the storyboard step"
+      },
+      {
+        "name": "Video Generation",
+        "description": "Handles the video generation step"
+      },
+      {
+        "name": "Editing",
+        "description": "Handles the editing step"
+      },
+      {
+        "name": "Thumbnail",
+        "description": "Handles the thumbnail step"
+      },
+      {
+        "name": "Distribution",
+        "description": "Handles the distribution step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Video Production",
+      "value": "20-40 videos per month vs. 2-4 manually"
+    },
+    {
+      "metric": "Production Cost",
+      "value": "90% reduction in video creation costs"
+    },
+    {
+      "metric": "Time-to-Publish",
+      "value": "Videos completed in hours, not weeks"
+    },
+    {
+      "metric": "Engagement",
+      "value": "Video content drives 3x higher engagement than text"
+    },
+    {
+      "metric": "Repurposing",
+      "value": "Each long-form video yields 5-10 short-form clips"
+    }
+  ],
+  "outputs": [
+    "Full-length videos",
+    "short-form clips",
+    "thumbnails",
+    "titles and descriptions",
+    "distribution schedule"
+  ],
+  "triggers": [
+    "Video topics",
+    "key messages",
+    "target length",
+    "style preferences (presenter, animated, screen capture)",
+    "distribution channels"
+  ],
+  "knowledgeSources": [
+    "Brand guidelines",
+    "product information",
+    "past video performance",
+    "competitor videos",
+    "audience preferences",
+    "script templates"
+  ],
+  "agentOrchestration": [
+    "Script Writing Agent",
+    "Storyboard Agent",
+    "Video Generation Agent",
+    "Editing Agent",
+    "Thumbnail Agent",
+    "Distribution Agent"
+  ]
+}

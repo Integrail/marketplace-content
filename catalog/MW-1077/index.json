@@ -1,0 +1,166 @@
+{
+  "id": "MW-1077",
+  "name": "Fund Event Capture AI Worker",
+  "description": "Monitors and captures fund events4capital calls, distributions, NAV updates4ensuring timely and accurate reporting.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1077/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Events recorded within 4 hours of occurrence",
+  "integrations": [
+    {
+      "name": "Fund administrator portals",
+      "logoUrl": "ew-marketplace://logos/fund-administrator-portals.png"
+    },
+    {
+      "name": "email systems",
+      "logoUrl": "ew-marketplace://logos/email-systems.png"
+    },
+    {
+      "name": "banking platforms",
+      "logoUrl": "ew-marketplace://logos/banking-platforms.png"
+    },
+    {
+      "name": "portfolio management systems",
+      "logoUrl": "ew-marketplace://logos/portfolio-management-systems.png"
+    },
+    {
+      "name": "reporting databases",
+      "logoUrl": "ew-marketplace://logos/reporting-databases.png"
+    },
+    {
+      "name": "workflow tools",
+      "logoUrl": "ew-marketplace://logos/workflow-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1077/hero.png"
+  },
+  "overview": "Monitors and captures fund events for timely and accurate reporting This AI Worker ensures no fund event goes unrecorded. It monitors multiple data sources—fund administrator portals, GP communications, wire activity, document deliveries—to capture capital calls, distributions, NAV updates, and other fund events in real-time. The worker reconciles events against expected schedules, flags discrepancies, and maintains complete fund activity records. Your operations team manages by exception rather than constant monitoring.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1077/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Fund administrator portals",
+        "description": "Integration with Fund administrator portals"
+      },
+      {
+        "name": "email systems",
+        "description": "Integration with email systems"
+      },
+      {
+        "name": "banking platforms",
+        "description": "Integration with banking platforms"
+      },
+      {
+        "name": "portfolio management systems",
+        "description": "Integration with portfolio management systems"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Source Monitoring",
+        "description": "Handles the source monitoring step"
+      },
+      {
+        "name": "Event Detection",
+        "description": "Handles the event detection step"
+      },
+      {
+        "name": "Data Extraction",
+        "description": "Handles the data extraction step"
+      },
+      {
+        "name": "Validation",
+        "description": "Handles the validation step"
+      },
+      {
+        "name": "Reconciliation",
+        "description": "Handles the reconciliation step"
+      },
+      {
+        "name": "Database Update",
+        "description": "Handles the database update step"
+      },
+      {
+        "name": "Alert",
+        "description": "Handles the alert step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Event Capture Speed",
+      "value": "Events recorded within 4 hours of occurrence"
+    },
+    {
+      "metric": "Data Accuracy",
+      "value": "99.4% accuracy on event details"
+    },
+    {
+      "metric": "Coverage",
+      "value": "100% of fund events captured automatically"
+    },
+    {
+      "metric": "Reconciliation Time",
+      "value": "75% reduction in manual reconciliation effort"
+    },
+    {
+      "metric": "Discrepancy Detection",
+      "value": "Anomalies flagged within 24 hours"
+    }
+  ],
+  "outputs": [
+    "Event records",
+    "capital account updates",
+    "distribution tracking",
+    "NAV histories",
+    "reconciliation reports",
+    "exception alerts",
+    "activity summaries"
+  ],
+  "triggers": [
+    "Administrator portal update",
+    "GP email/notice",
+    "wire receipt",
+    "NAV publication",
+    "event schedule",
+    "reconciliation request"
+  ],
+  "knowledgeSources": [
+    "Fund databases",
+    "event taxonomies",
+    "expected schedules",
+    "contact rosters",
+    "banking information",
+    "reconciliation rules"
+  ],
+  "agentOrchestration": [
+    "Source Monitoring Agent",
+    "Event Detection Agent",
+    "Data Extraction Agent",
+    "Validation Agent",
+    "Reconciliation Agent",
+    "Database Update Agent",
+    "Alert Agent"
+  ]
+}

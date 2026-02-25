@@ -1,0 +1,161 @@
+{
+  "id": "MW-1057",
+  "name": "Webinar Marketing AI Worker",
+  "description": "Creates webinar scripts, presentation decks, and coordinates promotion.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Marketing"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1057/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "4x more webinars produced per quarter",
+  "integrations": [
+    {
+      "name": "Zoom",
+      "logoUrl": "ew-marketplace://logos/zoom.png"
+    },
+    {
+      "name": "ON24",
+      "logoUrl": "ew-marketplace://logos/on24.png"
+    },
+    {
+      "name": "GoToWebinar",
+      "logoUrl": "ew-marketplace://logos/gotowebinar.png"
+    },
+    {
+      "name": "PowerPoint",
+      "logoUrl": "ew-marketplace://logos/powerpoint.png"
+    },
+    {
+      "name": "Google Slides",
+      "logoUrl": "ew-marketplace://logos/google-slides.png"
+    },
+    {
+      "name": "HubSpot",
+      "logoUrl": "ew-marketplace://logos/hubspot.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1057/hero.png"
+  },
+  "overview": "This AI Worker handles the complete webinar creation workflow from concept to promotion. Given a topic and speaker information, it researches the subject matter, writes a compelling script with speaker notes, designs a professional presentation deck, creates promotional content across all channels, writes email sequences for registration and follow-up, and generates post-webinar content repurposing. It turns webinars from a resource- intensive endeavor into a scalable demand generation engine.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1057/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Zoom",
+        "description": "Integration with Zoom"
+      },
+      {
+        "name": "ON24",
+        "description": "Integration with ON24"
+      },
+      {
+        "name": "GoToWebinar",
+        "description": "Integration with GoToWebinar"
+      },
+      {
+        "name": "PowerPoint",
+        "description": "Integration with PowerPoint"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Research",
+        "description": "Handles the research step"
+      },
+      {
+        "name": "Script Writing",
+        "description": "Handles the script writing step"
+      },
+      {
+        "name": "Deck Design",
+        "description": "Handles the deck design step"
+      },
+      {
+        "name": "Promotion",
+        "description": "Handles the promotion step"
+      },
+      {
+        "name": "Email Sequence",
+        "description": "Handles the email sequence step"
+      },
+      {
+        "name": "Repurposing",
+        "description": "Handles the repurposing step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Webinar Velocity",
+      "value": "4x more webinars produced per quarter"
+    },
+    {
+      "metric": "Prep Time",
+      "value": "85% reduction in webinar preparation time"
+    },
+    {
+      "metric": "Registration Rate",
+      "value": "50% improvement in registration conversion"
+    },
+    {
+      "metric": "Content Repurposing",
+      "value": "10+ content pieces generated from each webinar"
+    },
+    {
+      "metric": "Speaker Prep",
+      "value": "Speakers receive complete scripts and talking points"
+    }
+  ],
+  "outputs": [
+    "Webinar script",
+    "presentation deck",
+    "promotional social posts",
+    "email sequences",
+    "landing page copy",
+    "follow-up content",
+    "blog post recap"
+  ],
+  "triggers": [
+    "Webinar topic",
+    "speaker names",
+    "target audience",
+    "date/time",
+    "key messages",
+    "CTA"
+  ],
+  "knowledgeSources": [
+    "Past webinar performance data",
+    "speaker bios",
+    "product information",
+    "industry trends",
+    "competitor webinars",
+    "audience insights"
+  ],
+  "agentOrchestration": [
+    "Research Agent",
+    "Script Writing Agent",
+    "Deck Design Agent",
+    "Promotion Agent",
+    "Email Sequence Agent",
+    "Repurposing Agent"
+  ]
+}

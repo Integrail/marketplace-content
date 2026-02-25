@@ -1,0 +1,165 @@
+{
+  "id": "MW-1022",
+  "name": "Expansion/Upsell AI Worker",
+  "description": "Identifies growth opportunities across your customer base and executes expansion plays at scale with personalized proposals.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Success"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1022/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "47% increase in expansion revenue",
+  "integrations": [
+    {
+      "name": "Salesforce",
+      "logoUrl": "ew-marketplace://logos/salesforce.png"
+    },
+    {
+      "name": "HubSpot",
+      "logoUrl": "ew-marketplace://logos/hubspot.png"
+    },
+    {
+      "name": "Gainsight",
+      "logoUrl": "ew-marketplace://logos/gainsight.png"
+    },
+    {
+      "name": "product analytics (Amplitude, Mixpanel)",
+      "logoUrl": "ew-marketplace://logos/product-analytics-amplitude-mixpanel.png"
+    },
+    {
+      "name": "Outreach",
+      "logoUrl": "ew-marketplace://logos/outreach.png"
+    },
+    {
+      "name": "Gong",
+      "logoUrl": "ew-marketplace://logos/gong.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1022/hero.png"
+  },
+  "overview": "Identifies and executes growth opportunities across your customer base This AI Worker transforms customer success from a cost center into a revenue engine. It continuously monitors usage patterns, feature adoption, and growth signals to identify expansion opportunities—additional seats, feature upgrades, cross-sell products. For each opportunity, it scores likelihood to convert, identifies the right stakeholders, and creates personalized expansion proposals with ROI justification. The worker executes outreach, handles initial objections, and hands qualified opportunities to sales or CSMs for closing.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1022/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Salesforce",
+        "description": "Integration with Salesforce"
+      },
+      {
+        "name": "HubSpot",
+        "description": "Integration with HubSpot"
+      },
+      {
+        "name": "Gainsight",
+        "description": "Integration with Gainsight"
+      },
+      {
+        "name": "product analytics (Amplitude, Mixpanel)",
+        "description": "Integration with product analytics (Amplitude, Mixpanel)"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Signal Detection",
+        "description": "Handles the signal detection step"
+      },
+      {
+        "name": "Opportunity Scoring",
+        "description": "Handles the opportunity scoring step"
+      },
+      {
+        "name": "Stakeholder Identification",
+        "description": "Handles the stakeholder identification step"
+      },
+      {
+        "name": "Proposal Customization",
+        "description": "Handles the proposal customization step"
+      },
+      {
+        "name": "Outreach",
+        "description": "Handles the outreach step"
+      },
+      {
+        "name": "Objection Handling",
+        "description": "Handles the objection handling step"
+      },
+      {
+        "name": "Handoff",
+        "description": "Handles the handoff step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Net Revenue Retention",
+      "value": "47% increase in expansion revenue"
+    },
+    {
+      "metric": "Opportunity Identification",
+      "value": "8.3x more expansion opportunities surfaced"
+    },
+    {
+      "metric": "Conversion Rate",
+      "value": "34% of AI-identified opportunities convert"
+    },
+    {
+      "metric": "Average Deal Size",
+      "value": "23% larger expansion deals through AI recommendations"
+    },
+    {
+      "metric": "Expansion Cycle Time",
+      "value": "Reduced from 62 days to 28 days"
+    }
+  ],
+  "outputs": [
+    "Expansion proposals",
+    "opportunity alerts",
+    "stakeholder briefings",
+    "ROI calculators",
+    "competitive comparisons",
+    "sales handoff packages"
+  ],
+  "triggers": [
+    "Usage threshold exceeded",
+    "feature adoption signals",
+    "power user identification",
+    "contract anniversary",
+    "positive support resolution"
+  ],
+  "knowledgeSources": [
+    "Product catalog",
+    "pricing tiers",
+    "usage benchmarks",
+    "expansion playbooks",
+    "customer success stories",
+    "competitive positioning",
+    "buying committee maps"
+  ],
+  "agentOrchestration": [
+    "Signal Detection Agent",
+    "Opportunity Scoring Agent",
+    "Stakeholder Identification Agent",
+    "Proposal Customization Agent",
+    "Outreach Agent",
+    "Objection Handling Agent",
+    "Handoff Agent"
+  ]
+}

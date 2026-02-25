@@ -1,0 +1,166 @@
+{
+  "id": "MW-1029",
+  "name": "CX Strategy Reporting AI Worker",
+  "description": "Delivers executive-ready CX performance reports with strategic recommendations and projected business impact.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Success"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1029/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 3 days to 2 hours",
+  "integrations": [
+    {
+      "name": "All CX systems",
+      "logoUrl": "ew-marketplace://logos/all-cx-systems.png"
+    },
+    {
+      "name": "business intelligence platforms",
+      "logoUrl": "ew-marketplace://logos/business-intelligence-platforms.png"
+    },
+    {
+      "name": "financial systems",
+      "logoUrl": "ew-marketplace://logos/financial-systems.png"
+    },
+    {
+      "name": "presentation tools",
+      "logoUrl": "ew-marketplace://logos/presentation-tools.png"
+    },
+    {
+      "name": "executive dashboards",
+      "logoUrl": "ew-marketplace://logos/executive-dashboards.png"
+    },
+    {
+      "name": "board portal",
+      "logoUrl": "ew-marketplace://logos/board-portal.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1029/hero.png"
+  },
+  "overview": "Delivers executive-ready CX performance reports and strategic recommendations This AI Worker elevates CX from operational metrics to strategic business intelligence. It aggregates metrics across all three pillars, identifies trends and anomalies, benchmarks against industry standards, and generates recommendations with projected business impact. The worker creates board-ready reports that connect customer experience performance to revenue, retention, and growth—ensuring CX has a seat at the strategic table.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1029/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "All CX systems",
+        "description": "Integration with All CX systems"
+      },
+      {
+        "name": "business intelligence platforms",
+        "description": "Integration with business intelligence platforms"
+      },
+      {
+        "name": "financial systems",
+        "description": "Integration with financial systems"
+      },
+      {
+        "name": "presentation tools",
+        "description": "Integration with presentation tools"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Metric Aggregation",
+        "description": "Handles the metric aggregation step"
+      },
+      {
+        "name": "Trend Analysis",
+        "description": "Handles the trend analysis step"
+      },
+      {
+        "name": "Benchmark Comparison",
+        "description": "Handles the benchmark comparison step"
+      },
+      {
+        "name": "Anomaly Identification",
+        "description": "Handles the anomaly identification step"
+      },
+      {
+        "name": "Narrative Generation",
+        "description": "Handles the narrative generation step"
+      },
+      {
+        "name": "Recommendation",
+        "description": "Handles the recommendation step"
+      },
+      {
+        "name": "Visualization",
+        "description": "Handles the visualization step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Report Generation Time",
+      "value": "Reduced from 3 days to 2 hours"
+    },
+    {
+      "metric": "Executive Engagement",
+      "value": "94% of reports reviewed (up from 41%)"
+    },
+    {
+      "metric": "Recommendation Adoption",
+      "value": "78% of recommendations acted upon"
+    },
+    {
+      "metric": "CX Budget Impact",
+      "value": "CX initiatives funded 2.3x more frequently"
+    },
+    {
+      "metric": "Board Visibility",
+      "value": "CX now standard board agenda item"
+    }
+  ],
+  "outputs": [
+    "Executive CX reports",
+    "board presentations",
+    "trend analysis",
+    "benchmark comparisons",
+    "strategic recommendations",
+    "investment proposals"
+  ],
+  "triggers": [
+    "Monthly/quarterly reporting cycle",
+    "board meeting prep",
+    "executive request",
+    "strategy planning",
+    "budget cycle",
+    "performance review"
+  ],
+  "knowledgeSources": [
+    "All CX metrics",
+    "business outcome data",
+    "industry benchmarks",
+    "historical trends",
+    "strategic objectives",
+    "competitor performance",
+    "financial data"
+  ],
+  "agentOrchestration": [
+    "Metric Aggregation Agent",
+    "Trend Analysis Agent",
+    "Benchmark Comparison Agent",
+    "Anomaly Identification Agent",
+    "Narrative Generation Agent",
+    "Recommendation Agent",
+    "Visualization Agent"
+  ]
+}

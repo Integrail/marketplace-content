@@ -1,0 +1,164 @@
+{
+  "id": "MW-1058",
+  "name": "SEO Marketing AI Worker",
+  "description": "Creates a keyword strategy, researches, writes, optimizes, designs, and publishes blog posts directly to your CMS.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Marketing"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1058/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "30-50 optimized blog posts per month",
+  "integrations": [
+    {
+      "name": "Ahrefs",
+      "logoUrl": "ew-marketplace://logos/ahrefs.png"
+    },
+    {
+      "name": "SEMrush",
+      "logoUrl": "ew-marketplace://logos/semrush.png"
+    },
+    {
+      "name": "Moz",
+      "logoUrl": "ew-marketplace://logos/moz.png"
+    },
+    {
+      "name": "WordPress",
+      "logoUrl": "ew-marketplace://logos/wordpress.png"
+    },
+    {
+      "name": "Webflow",
+      "logoUrl": "ew-marketplace://logos/webflow.png"
+    },
+    {
+      "name": "HubSpot CMS",
+      "logoUrl": "ew-marketplace://logos/hubspot-cms.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1058/hero.png"
+  },
+  "overview": "This AI Worker delivers a complete SEO content operation. It analyzes your domain, identifies keyword opportunities based on search volume and competition, creates a prioritized content calendar, writes fully optimized blog posts with proper heading structure and internal linking, generates featured images, and publishes directly to your CMS. It monitors rankings and iteratively improves content based on performance data, creating a compounding organic traffic engine.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1058/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Ahrefs",
+        "description": "Integration with Ahrefs"
+      },
+      {
+        "name": "SEMrush",
+        "description": "Integration with SEMrush"
+      },
+      {
+        "name": "Moz",
+        "description": "Integration with Moz"
+      },
+      {
+        "name": "WordPress",
+        "description": "Integration with WordPress"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Keyword Research",
+        "description": "Handles the keyword research step"
+      },
+      {
+        "name": "Content Strategy",
+        "description": "Handles the content strategy step"
+      },
+      {
+        "name": "Writing",
+        "description": "Handles the writing step"
+      },
+      {
+        "name": "SEO Optimization",
+        "description": "Handles the seo optimization step"
+      },
+      {
+        "name": "Design",
+        "description": "Handles the design step"
+      },
+      {
+        "name": "Publishing",
+        "description": "Handles the publishing step"
+      },
+      {
+        "name": "Performance Monitoring",
+        "description": "Handles the performance monitoring step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Content Velocity",
+      "value": "30-50 optimized blog posts per month"
+    },
+    {
+      "metric": "Organic Traffic",
+      "value": "200-400% increase in organic traffic within 6 months"
+    },
+    {
+      "metric": "Keyword Rankings",
+      "value": "5x more keywords ranking on page 1"
+    },
+    {
+      "metric": "Cost Per Article",
+      "value": "80% reduction vs. agency or freelance writers"
+    },
+    {
+      "metric": "Time Investment",
+      "value": "2 hours/week oversight vs. 40+ hours of manual work"
+    }
+  ],
+  "outputs": [
+    "Keyword strategy document",
+    "content calendar",
+    "published blog posts",
+    "featured images",
+    "internal linking structure",
+    "performance reports"
+  ],
+  "triggers": [
+    "Target keywords",
+    "content themes",
+    "product focus areas",
+    "competitor URLs",
+    "publishing schedule preferences"
+  ],
+  "knowledgeSources": [
+    "Keyword research tools",
+    "competitor analysis",
+    "search intent data",
+    "brand guidelines",
+    "product documentation",
+    "existing content inventory"
+  ],
+  "agentOrchestration": [
+    "Keyword Research Agent",
+    "Content Strategy Agent",
+    "Writing Agent",
+    "SEO Optimization Agent",
+    "Design Agent",
+    "Publishing Agent",
+    "Performance Monitoring Agent"
+  ]
+}

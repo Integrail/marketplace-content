@@ -1,0 +1,165 @@
+{
+  "id": "MW-1010",
+  "name": "Regulatory Reporting AI Worker",
+  "description": "Generates required regulatory filings and disclosures, ensuring accuracy and timely submission across all jurisdictions.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1010/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "100% on-time filing rate",
+  "integrations": [
+    {
+      "name": "SEC EDGAR",
+      "logoUrl": "ew-marketplace://logos/sec-edgar.png"
+    },
+    {
+      "name": "state filing systems",
+      "logoUrl": "ew-marketplace://logos/state-filing-systems.png"
+    },
+    {
+      "name": "tax platforms",
+      "logoUrl": "ew-marketplace://logos/tax-platforms.png"
+    },
+    {
+      "name": "XBRL tools",
+      "logoUrl": "ew-marketplace://logos/xbrl-tools.png"
+    },
+    {
+      "name": "ERP systems",
+      "logoUrl": "ew-marketplace://logos/erp-systems.png"
+    },
+    {
+      "name": "document management",
+      "logoUrl": "ew-marketplace://logos/document-management.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1010/hero.png"
+  },
+  "overview": "Generates required regulatory filings and ensures timely submission This AI Worker ensures you never miss a filing deadline—and never file inaccurate data. It tracks all regulatory requirements across jurisdictions, gathers required data from source systems, generates filings in required formats, performs validation checks against regulatory rules, routes for review and approval, and submits through appropriate channels. The worker handles SEC filings, tax compliance, statutory reporting, and industry-specific requirements with equal precision.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1010/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "SEC EDGAR",
+        "description": "Integration with SEC EDGAR"
+      },
+      {
+        "name": "state filing systems",
+        "description": "Integration with state filing systems"
+      },
+      {
+        "name": "tax platforms",
+        "description": "Integration with tax platforms"
+      },
+      {
+        "name": "XBRL tools",
+        "description": "Integration with XBRL tools"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Calendar Monitoring",
+        "description": "Handles the calendar monitoring step"
+      },
+      {
+        "name": "Data Gathering",
+        "description": "Handles the data gathering step"
+      },
+      {
+        "name": "Filing Generation",
+        "description": "Handles the filing generation step"
+      },
+      {
+        "name": "Validation",
+        "description": "Handles the validation step"
+      },
+      {
+        "name": "Review Routing",
+        "description": "Handles the review routing step"
+      },
+      {
+        "name": "Submission",
+        "description": "Handles the submission step"
+      },
+      {
+        "name": "Confirmation",
+        "description": "Handles the confirmation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Filing Deadline Compliance",
+      "value": "100% on-time filing rate"
+    },
+    {
+      "metric": "Filing Error Rate",
+      "value": "Reduced from 4.2% to 0.3%"
+    },
+    {
+      "metric": "Preparation Time",
+      "value": "65% reduction in filing preparation effort"
+    },
+    {
+      "metric": "Regulatory Penalty Avoidance",
+      "value": "Zero penalties from late or incorrect filings"
+    },
+    {
+      "metric": "Jurisdiction Coverage",
+      "value": "Automated filings across 50+ jurisdictions"
+    }
+  ],
+  "outputs": [
+    "Regulatory filings",
+    "validation reports",
+    "submission confirmations",
+    "deadline tracking",
+    "amendment documentation",
+    "compliance calendars"
+  ],
+  "triggers": [
+    "Filing calendar",
+    "data availability",
+    "regulatory changes",
+    "submission approval",
+    "amendment requirements"
+  ],
+  "knowledgeSources": [
+    "Regulatory requirements",
+    "filing templates",
+    "XBRL taxonomies",
+    "validation rules",
+    "submission procedures",
+    "deadline calendars",
+    "jurisdiction requirements"
+  ],
+  "agentOrchestration": [
+    "Calendar Monitoring Agent",
+    "Data Gathering Agent",
+    "Filing Generation Agent",
+    "Validation Agent",
+    "Review Routing Agent",
+    "Submission Agent",
+    "Confirmation Agent"
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "id": "MW-1065",
+  "name": "Deal Qualification AI Worker",
+  "description": "Intakes prompts and transcripts from sales reps after a first call and populates CRM fields with your deal qualification criteria (MEDDPIC/BANT/etc.).",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1065/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "100% of deals with complete qualification data vs. 30-50% manually",
+  "integrations": [
+    {
+      "name": "Gong",
+      "logoUrl": "ew-marketplace://logos/gong.png"
+    },
+    {
+      "name": "Chorus",
+      "logoUrl": "ew-marketplace://logos/chorus.png"
+    },
+    {
+      "name": "Zoom",
+      "logoUrl": "ew-marketplace://logos/zoom.png"
+    },
+    {
+      "name": "HubSpot",
+      "logoUrl": "ew-marketplace://logos/hubspot.png"
+    },
+    {
+      "name": "Salesforce",
+      "logoUrl": "ew-marketplace://logos/salesforce.png"
+    },
+    {
+      "name": "MS Dynamics",
+      "logoUrl": "ew-marketplace://logos/ms-dynamics.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1065/hero.png"
+  },
+  "overview": "This AI Worker eliminates the gap between sales conversations and CRM data. After every call, it processes transcripts and rep notes, extracts qualification information mapped to your methodology (MEDDPIC, BANT, SPICED, or custom), and populates your CRM fields automatically. It ensures every deal has complete, consistent qualification data for accurate forecasting and deal coaching.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1065/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Gong",
+        "description": "Integration with Gong"
+      },
+      {
+        "name": "Chorus",
+        "description": "Integration with Chorus"
+      },
+      {
+        "name": "Zoom",
+        "description": "Integration with Zoom"
+      },
+      {
+        "name": "HubSpot",
+        "description": "Integration with HubSpot"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Transcript Processing",
+        "description": "Handles the transcript processing step"
+      },
+      {
+        "name": "Extraction",
+        "description": "Handles the extraction step"
+      },
+      {
+        "name": "Qualification Mapping",
+        "description": "Handles the qualification mapping step"
+      },
+      {
+        "name": "CRM Update",
+        "description": "Handles the crm update step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "CRM Hygiene",
+      "value": "100% of deals with complete qualification data vs. 30-50% manually"
+    },
+    {
+      "metric": "Rep Time",
+      "value": "5+ hours/week saved per rep on CRM data entry"
+    },
+    {
+      "metric": "Forecast Accuracy",
+      "value": "40-60% improvement in forecast accuracy"
+    },
+    {
+      "metric": "Deal Velocity",
+      "value": "20-30% faster deal cycles through better qualification"
+    },
+    {
+      "metric": "Coaching Quality",
+      "value": "Managers have complete data for every coaching conversation"
+    }
+  ],
+  "outputs": [
+    "Populated CRM qualification fields",
+    "deal summary notes",
+    "qualification gaps identified",
+    "next step recommendations"
+  ],
+  "triggers": [
+    "Call transcripts",
+    "meeting recordings",
+    "rep notes",
+    "post-call prompts"
+  ],
+  "knowledgeSources": [
+    "Qualification methodology documentation",
+    "CRM field definitions",
+    "deal stage criteria",
+    "historical deal data"
+  ],
+  "agentOrchestration": [
+    "Transcript Processing Agent",
+    "Extraction Agent",
+    "Qualification Mapping Agent",
+    "CRM Update Agent"
+  ]
+}

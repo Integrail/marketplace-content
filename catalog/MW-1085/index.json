@@ -1,0 +1,144 @@
+{
+  "id": "MW-1085",
+  "name": "Resume Screening AI Worker",
+  "description": "Reviews and ranks candidates based on job requirements, surfacing the most qualified applicants for recruiter review.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1085/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "95% reduction in time to first candidate review",
+  "integrations": [
+    {
+      "name": "ATS platforms",
+      "logoUrl": "ew-marketplace://logos/ats-platforms.png"
+    },
+    {
+      "name": "LinkedIn",
+      "logoUrl": "ew-marketplace://logos/linkedin.png"
+    },
+    {
+      "name": "Indeed",
+      "logoUrl": "ew-marketplace://logos/indeed.png"
+    },
+    {
+      "name": "SharePoint (for resume files)",
+      "logoUrl": "ew-marketplace://logos/sharepoint-for-resume-files.png"
+    },
+    {
+      "name": "job boards",
+      "logoUrl": "ew-marketplace://logos/job-boards.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1085/hero.png"
+  },
+  "overview": "This AI Worker processes every application instantly, evaluating candidates against role requirements and ranking them by fit. It eliminates the backlog of unreviewed resumes, ensures no qualified candidate is overlooked, and enables recruiters to focus on high-value activities. It screens hundreds of applications in minutes, not days—using consistent criteria that reduce unconscious bias.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1085/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "ATS platforms",
+        "description": "Integration with ATS platforms"
+      },
+      {
+        "name": "LinkedIn",
+        "description": "Integration with LinkedIn"
+      },
+      {
+        "name": "Indeed",
+        "description": "Integration with Indeed"
+      },
+      {
+        "name": "SharePoint (for resume files)",
+        "description": "Integration with SharePoint (for resume files)"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Resume Parsing",
+        "description": "Handles the resume parsing step"
+      },
+      {
+        "name": "Requirements Matching",
+        "description": "Handles the requirements matching step"
+      },
+      {
+        "name": "Scoring",
+        "description": "Handles the scoring step"
+      },
+      {
+        "name": "Ranking",
+        "description": "Handles the ranking step"
+      },
+      {
+        "name": "Alert",
+        "description": "Handles the alert step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Screening Speed",
+      "value": "95% reduction in time to first candidate review"
+    },
+    {
+      "metric": "Accuracy",
+      "value": "90%+ alignment between AI ranking and recruiter assessment"
+    },
+    {
+      "metric": "Quality",
+      "value": "40% improvement in screen-to-interview conversion"
+    },
+    {
+      "metric": "Bias Reduction",
+      "value": "Consistent, criteria-based evaluation for every candidate"
+    },
+    {
+      "metric": "Recruiter Capacity",
+      "value": "Recruiters handle 3x more requisitions with same quality"
+    }
+  ],
+  "outputs": [
+    "Ranked candidate lists",
+    "match scores",
+    "skills gap analysis",
+    "top candidate alerts to recruiters"
+  ],
+  "triggers": [
+    "New application received",
+    "batch resume upload",
+    "requisition criteria update"
+  ],
+  "knowledgeSources": [
+    "Job requirements",
+    "must-have vs. nice-to-have criteria",
+    "successful hire profiles",
+    "skills taxonomy"
+  ],
+  "agentOrchestration": [
+    "Resume Parsing Agent",
+    "Requirements Matching Agent",
+    "Scoring Agent",
+    "Ranking Agent",
+    "Alert Agent"
+  ]
+}

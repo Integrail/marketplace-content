@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type {
   IEverMarketplaceCatalogItem,
   IEverMarketplaceSetupComponent,
@@ -98,6 +98,233 @@ function SetupSection({
   );
 }
 
+// ── Setup wizard dialog ───────────────────────────────────────────────────────
+
+type WizardStep = 'intro' | 'installing' | 'complete';
+
+function SetupWizardDialog({
+  item,
+  onClose,
+}: {
+  item: IEverMarketplaceCatalogItem;
+  onClose: () => void;
+}) {
+  const [step, setStep] = useState<WizardStep>('intro');
+  const [installingIdx, setInstallingIdx] = useState(0);
+
+  const agents = item.agentOrchestration ??
+    item.setupOverview.workflows.map((w) => `${w.name} Agent`);
+
+  const progress = agents.length > 0
+    ? Math.min(100, Math.round((installingIdx / agents.length) * 100))
+    : 100;
+
+  useEffect(() => {
+    if (step !== 'installing') return;
+    if (agents.length === 0) { setStep('complete'); return; }
+
+    const interval = setInterval(() => {
+      setInstallingIdx((prev) => {
+        const next = prev + 1;
+        if (next >= agents.length) {
+          clearInterval(interval);
+          setTimeout(() => setStep('complete'), 600);
+        }
+        return next;
+      });
+    }, 380);
+    return () => clearInterval(interval);
+  }, [step]);
+
+  const connectorCount = item.setupOverview.connectors.length;
+  const agentCount = agents.length;
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div
+        className="modal wizard-modal"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* ── Intro step ───────────────────────────────── */}
+        {step === 'intro' && (
+          <>
+            <div className="modal-header">
+              <h2>&#9881; Set Up {item.type}</h2>
+              <button className="modal-close" onClick={onClose}>&#215;</button>
+            </div>
+            <div className="wizard-item-row">
+              <ItemIcon name={item.name} size={40} />
+              <div>
+                <div className="wizard-item-name">{item.name}</div>
+                <div className="wizard-item-desc">{item.categories.join(' \u2022 ')}</div>
+              </div>
+            </div>
+            <p className="wizard-body-text">
+              This will configure <strong>{agentCount}</strong> agents and connect{' '}
+              <strong>{connectorCount}</strong> integration{connectorCount !== 1 ? 's' : ''}
+              {' '}to your workspace.
+            </p>
+            <div className="wizard-checklist">
+              {agents.slice(0, 5).map((a) => (
+                <div key={a} className="wizard-check-row">
+                  <span className="wizard-check-icon wizard-check-pending">&#9711;</span>
+                  <span>{a}</span>
+                </div>
+              ))}
+              {agents.length > 5 && (
+                <div className="wizard-check-row wizard-check-more">
+                  + {agents.length - 5} more agents
+                </div>
+              )}
+            </div>
+            <div className="wizard-actions">
+              <button className="btn btn-secondary" onClick={onClose}>Cancel</button>
+              <button
+                className="btn btn-primary"
+                onClick={() => { setInstallingIdx(0); setStep('installing'); }}
+              >
+                Start Setup
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* ── Installing step ──────────────────────────── */}
+        {step === 'installing' && (
+          <>
+            <div className="modal-header">
+              <h2>&#128260; Installing&hellip;</h2>
+            </div>
+            <div className="wizard-progress-wrap">
+              <div className="wizard-progress-bar">
+                <div
+                  className="wizard-progress-fill"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+              <span className="wizard-progress-pct">{progress}%</span>
+            </div>
+            <div className="wizard-checklist">
+              {agents.map((a, i) => (
+                <div key={a} className="wizard-check-row">
+                  <span
+                    className={`wizard-check-icon ${
+                      i < installingIdx
+                        ? 'wizard-check-done'
+                        : i === installingIdx
+                        ? 'wizard-check-active'
+                        : 'wizard-check-pending'
+                    }`}
+                  >
+                    {i < installingIdx ? '&#10003;' : i === installingIdx ? '&#8635;' : '&#9711;'}
+                  </span>
+                  <span style={{ color: i < installingIdx ? '#16a34a' : i === installingIdx ? '#111' : '#9ca3af' }}>
+                    {a}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="wizard-status-text">
+              {installingIdx < agents.length
+                ? `Configuring ${agents[installingIdx]}…`
+                : 'Finalizing…'}
+            </p>
+          </>
+        )}
+
+        {/* ── Complete step ────────────────────────────── */}
+        {step === 'complete' && (
+          <>
+            <div className="modal-header">
+              <h2>&#10003; Setup Complete</h2>
+              <button className="modal-close" onClick={onClose}>&#215;</button>
+            </div>
+            <div className="wizard-success-icon">&#10003;</div>
+            <p className="wizard-body-text" style={{ textAlign: 'center' }}>
+              <strong>{item.name}</strong> is ready to use.
+            </p>
+            <div className="wizard-stats-row">
+              <div className="wizard-stat">
+                <span className="wizard-stat-num">{agentCount}</span>
+                <span className="wizard-stat-label">Agents configured</span>
+              </div>
+              <div className="wizard-stat">
+                <span className="wizard-stat-num">{connectorCount}</span>
+                <span className="wizard-stat-label">Connectors ready</span>
+              </div>
+              <div className="wizard-stat">
+                <span className="wizard-stat-num">&#10003;</span>
+                <span className="wizard-stat-label">Fully operational</span>
+              </div>
+            </div>
+            <div className="wizard-actions">
+              <button className="btn btn-secondary" onClick={onClose}>Close</button>
+              <button className="btn btn-primary" onClick={onClose}>
+                &#9654; Run {item.type}
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── Tech details dialog ───────────────────────────────────────────────────────
+
+const TECH_DETAILS = [
+  { label: 'Platform', value: 'Integrail Multi-Agent Platform v2.0' },
+  { label: 'Agent Protocol', value: 'Multi-Agent Orchestration (MAO)' },
+  { label: 'Runtime', value: 'Node.js v22, ESM' },
+  { label: 'Supported Models', value: 'Claude 3.5 Sonnet, GPT-4 Turbo, Gemini 1.5 Pro' },
+  { label: 'Max Context', value: '200K tokens per agent' },
+  { label: 'Memory Storage', value: 'Vector DB + Structured JSON KV' },
+  { label: 'Connector Auth', value: 'OAuth 2.0, API Keys, Webhooks' },
+  { label: 'Output Formats', value: 'JSON, Markdown, PDF, Email, Webhook' },
+  { label: 'Concurrency', value: 'Up to 8 parallel sub-agents' },
+  { label: 'Retry Policy', value: '3× exponential backoff' },
+  { label: 'Audit Logging', value: 'Full request/response trail' },
+  { label: 'Data Residency', value: 'EU or US (tenant-configurable)' },
+  { label: 'API Version', value: '1.0.0' },
+  { label: 'SLA', value: '99.9% uptime (Enterprise tier)' },
+];
+
+function TechDetailsDialog({ item, onClose }: { item: IEverMarketplaceCatalogItem; onClose: () => void }) {
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal tech-details-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h2>&#128196; Tech Details</h2>
+          <button className="modal-close" onClick={onClose}>&#215;</button>
+        </div>
+        <p className="modal-hint">
+          Technical specification for <strong>{item.name}</strong>
+        </p>
+        <table className="tech-table">
+          <tbody>
+            {TECH_DETAILS.map(({ label, value }) => (
+              <tr key={label}>
+                <td className="tech-table-label">{label}</td>
+                <td className="tech-table-value">{value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="wizard-actions">
+          <button className="btn btn-secondary" onClick={onClose}>Close</button>
+          <a
+            href="#"
+            className="btn btn-primary"
+            onClick={(e) => e.preventDefault()}
+          >
+            &#8595; Download PDF Spec
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── JSON syntax highlighter ──────────────────────────────────────────────────
 
 const TOKEN_RE =
@@ -193,6 +420,9 @@ function DevPanel({ item }: { item: IEverMarketplaceCatalogItem }) {
 // ── Main detail component ─────────────────────────────────────────────────────
 
 export default function CatalogDetail({ item, onBack, showDevPanel }: Props) {
+  const [showWizard, setShowWizard] = useState(false);
+  const [showTechDetails, setShowTechDetails] = useState(false);
+
   const { setupOverview } = item;
 
   const dependencyCount =
@@ -311,8 +541,14 @@ export default function CatalogDetail({ item, onBack, showDevPanel }: Props) {
 
           {/* Actions */}
           <div className="sidebar-actions">
-            <button className="setup-btn">
-              Set Up {item.type}
+            <button className="setup-btn" onClick={() => setShowWizard(true)}>
+              &#9881; Set Up {item.type}
+            </button>
+            <button
+              className="support-link"
+              onClick={() => setShowTechDetails(true)}
+            >
+              &#128196; Tech Details
             </button>
             {item.supportUrl && (
               <a
@@ -324,22 +560,19 @@ export default function CatalogDetail({ item, onBack, showDevPanel }: Props) {
                 Get Support
               </a>
             )}
-            {item.techSpecsUrl && (
-              <a
-                href="#"
-                className="techspecs-link"
-                onClick={(e) => e.preventDefault()}
-                title={item.techSpecsUrl}
-              >
-                &#8595; Download Tech Specs
-              </a>
-            )}
           </div>
         </aside>
 
         {/* ── Dev Panel drawer ─────────────────────────────────── */}
         {showDevPanel && <DevPanel item={item} />}
       </div>
+
+      {showWizard && (
+        <SetupWizardDialog item={item} onClose={() => setShowWizard(false)} />
+      )}
+      {showTechDetails && (
+        <TechDetailsDialog item={item} onClose={() => setShowTechDetails(false)} />
+      )}
     </div>
   );
 }

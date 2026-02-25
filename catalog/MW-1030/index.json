@@ -1,0 +1,153 @@
+{
+  "id": "MW-1030",
+  "name": "Job Posting AI Worker",
+  "description": "Gathers role requirements, writes optimized job descriptions, and posts to multiple job boards simultaneously with full tracking and confirmation.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Talent Acquisition"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1030/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Jobs live on 10+ boards in under 30 minutes",
+  "integrations": [
+    {
+      "name": "Indeed",
+      "logoUrl": "ew-marketplace://logos/indeed.png"
+    },
+    {
+      "name": "LinkedIn",
+      "logoUrl": "ew-marketplace://logos/linkedin.png"
+    },
+    {
+      "name": "Glassdoor",
+      "logoUrl": "ew-marketplace://logos/glassdoor.png"
+    },
+    {
+      "name": "Monster",
+      "logoUrl": "ew-marketplace://logos/monster.png"
+    },
+    {
+      "name": "CareerBuilder",
+      "logoUrl": "ew-marketplace://logos/careerbuilder.png"
+    },
+    {
+      "name": "ZipRecruiter",
+      "logoUrl": "ew-marketplace://logos/ziprecruiter.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1030/hero.png"
+  },
+  "overview": "Gathers role requirements, writes optimized job descriptions, and posts to multiple job boards simultaneously This AI Worker transforms job posting from a tedious, multi-step process into a single conversation. It asks recruiters the right questions to gather comprehensive role requirements, writes compelling job descriptions optimized for each platform, obtains approval, and coordinates posting across all selected job boards—from Indeed and LinkedIn to specialized niche boards. Every posting includes tracking links and confirmation, giving recruiters complete visibility into their job distribution.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1030/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Indeed",
+        "description": "Integration with Indeed"
+      },
+      {
+        "name": "LinkedIn",
+        "description": "Integration with LinkedIn"
+      },
+      {
+        "name": "Glassdoor",
+        "description": "Integration with Glassdoor"
+      },
+      {
+        "name": "Monster",
+        "description": "Integration with Monster"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Requirements Gathering",
+        "description": "Handles the requirements gathering step"
+      },
+      {
+        "name": "Job Description Writing",
+        "description": "Handles the job description writing step"
+      },
+      {
+        "name": "Approval",
+        "description": "Handles the approval step"
+      },
+      {
+        "name": "Multi-Board Posting",
+        "description": "Handles the multi-board posting step"
+      },
+      {
+        "name": "Confirmation",
+        "description": "Handles the confirmation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Posting Speed",
+      "value": "Jobs live on 10+ boards in under 30 minutes"
+    },
+    {
+      "metric": "Time Savings",
+      "value": "3+ hours saved per job posting"
+    },
+    {
+      "metric": "Board Coverage",
+      "value": "Simultaneous posting to all major and niche boards"
+    },
+    {
+      "metric": "Quality",
+      "value": "Consistent, optimized descriptions across platforms"
+    },
+    {
+      "metric": "Tracking",
+      "value": "100% visibility with links and confirmations"
+    }
+  ],
+  "outputs": [
+    "Optimized job descriptions",
+    "posting confirmations with links",
+    "application tracking setup",
+    "distribution report"
+  ],
+  "triggers": [
+    "Role title",
+    "department",
+    "hiring manager",
+    "job requirements",
+    "compensation range",
+    "location",
+    "posting preferences"
+  ],
+  "knowledgeSources": [
+    "Company information",
+    "role templates",
+    "job description best practices",
+    "compensation benchmarks",
+    "posting requirements per board"
+  ],
+  "agentOrchestration": [
+    "Requirements Gathering Agent",
+    "Job Description Writing Agent",
+    "Approval Agent",
+    "Multi-Board Posting Agent",
+    "Confirmation Agent"
+  ]
+}

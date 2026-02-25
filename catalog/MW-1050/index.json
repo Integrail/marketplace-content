@@ -1,0 +1,146 @@
+{
+  "id": "MW-1050",
+  "name": "Offer Generation AI Worker",
+  "description": "Creates personalized offer letters with approved compensation and terms, ready for review and send.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1050/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "90% reduction—from days to minutes",
+  "integrations": [
+    {
+      "name": "ATS",
+      "logoUrl": "ew-marketplace://logos/ats.png"
+    },
+    {
+      "name": "HRIS",
+      "logoUrl": "ew-marketplace://logos/hris.png"
+    },
+    {
+      "name": "compensation management system",
+      "logoUrl": "ew-marketplace://logos/compensation-management-system.png"
+    },
+    {
+      "name": "DocuSign/e-signature",
+      "logoUrl": "ew-marketplace://logos/docusign-e-signature.png"
+    },
+    {
+      "name": "email",
+      "logoUrl": "ew-marketplace://logos/email.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1050/hero.png"
+  },
+  "overview": "This AI Worker eliminates the bottleneck between verbal offer and written letter. It pulls approved compensation data, applies the correct offer template, personalizes terms based on the candidate and role, and generates a complete offer package for recruiter review. Legal and compliance language is automatically included. Once approved, it sends the offer and tracks acceptance.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1050/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "ATS",
+        "description": "Integration with ATS"
+      },
+      {
+        "name": "HRIS",
+        "description": "Integration with HRIS"
+      },
+      {
+        "name": "compensation management system",
+        "description": "Integration with compensation management system"
+      },
+      {
+        "name": "DocuSign/e-signature",
+        "description": "Integration with DocuSign/e-signature"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Data Collection",
+        "description": "Handles the data collection step"
+      },
+      {
+        "name": "Template Selection",
+        "description": "Handles the template selection step"
+      },
+      {
+        "name": "Personalization",
+        "description": "Handles the personalization step"
+      },
+      {
+        "name": "Compliance Check",
+        "description": "Handles the compliance check step"
+      },
+      {
+        "name": "Delivery",
+        "description": "Handles the delivery step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Offer Generation Time",
+      "value": "90% reduction—from days to minutes"
+    },
+    {
+      "metric": "Error Rate",
+      "value": "Zero compensation or compliance errors"
+    },
+    {
+      "metric": "Acceptance Speed",
+      "value": "30% faster time from offer sent to signed"
+    },
+    {
+      "metric": "Recruiter Efficiency",
+      "value": "3+ hours saved per offer"
+    },
+    {
+      "metric": "Compliance",
+      "value": "100% adherence to approved templates and terms"
+    }
+  ],
+  "outputs": [
+    "Personalized offer letters",
+    "compensation summaries",
+    "e-signature requests",
+    "acceptance tracking",
+    "decline follow-up"
+  ],
+  "triggers": [
+    "Hiring decision made",
+    "compensation approved",
+    "offer request from recruiter"
+  ],
+  "knowledgeSources": [
+    "Compensation bands",
+    "offer templates",
+    "benefits summaries",
+    "legal language library",
+    "equity guidelines"
+  ],
+  "agentOrchestration": [
+    "Data Collection Agent",
+    "Template Selection Agent",
+    "Personalization Agent",
+    "Compliance Check Agent",
+    "Delivery Agent"
+  ]
+}

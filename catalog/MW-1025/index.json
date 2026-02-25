@@ -1,0 +1,157 @@
+{
+  "id": "MW-1025",
+  "name": "Churn Risk Identification AI Worker",
+  "description": "Predicts at-risk accounts, identifies specific churn causes, and recommends personalized save strategies.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Success"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1025/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "61% of flagged accounts retained through intervention",
+  "integrations": [
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    },
+    {
+      "name": "customer success platforms",
+      "logoUrl": "ew-marketplace://logos/customer-success-platforms.png"
+    },
+    {
+      "name": "support systems",
+      "logoUrl": "ew-marketplace://logos/support-systems.png"
+    },
+    {
+      "name": "product analytics",
+      "logoUrl": "ew-marketplace://logos/product-analytics.png"
+    },
+    {
+      "name": "conversation intelligence (Gong)",
+      "logoUrl": "ew-marketplace://logos/conversation-intelligence-gong.png"
+    },
+    {
+      "name": "LinkedIn (champion tracking)",
+      "logoUrl": "ew-marketplace://logos/linkedin-champion-tracking.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1025/hero.png"
+  },
+  "overview": "Predicts at-risk accounts and recommends personalized save strategies This AI Worker catches accounts before they slip away. It goes beyond health scores to identify specific churn causes—competitor evaluation, champion departure, budget pressure, value realization failure, support frustration—and recommends targeted save strategies for each situation. The worker monitors signals that indicate active churn consideration (competitor mentions, contract review requests, executive changes) and triggers intervention playbooks while there's still time to act.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1025/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "CRM",
+        "description": "Integration with CRM"
+      },
+      {
+        "name": "customer success platforms",
+        "description": "Integration with customer success platforms"
+      },
+      {
+        "name": "support systems",
+        "description": "Integration with support systems"
+      },
+      {
+        "name": "product analytics",
+        "description": "Integration with product analytics"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Risk Signal Detection",
+        "description": "Handles the risk signal detection step"
+      },
+      {
+        "name": "Churn Cause Analysis",
+        "description": "Handles the churn cause analysis step"
+      },
+      {
+        "name": "Account Prioritization",
+        "description": "Handles the account prioritization step"
+      },
+      {
+        "name": "Save Strategy Selection",
+        "description": "Handles the save strategy selection step"
+      },
+      {
+        "name": "Intervention Triggering",
+        "description": "Handles the intervention triggering step"
+      },
+      {
+        "name": "Progress Monitoring",
+        "description": "Handles the progress monitoring step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Save Rate",
+      "value": "61% of flagged accounts retained through intervention"
+    },
+    {
+      "metric": "Revenue Saved",
+      "value": "$2.4M ARR saved per quarter (mid-market example)"
+    },
+    {
+      "metric": "False Negative Rate",
+      "value": "6% (accounts that churned without flagging)"
+    },
+    {
+      "metric": "Intervention ROI",
+      "value": "12:1 return on save program investment"
+    }
+  ],
+  "outputs": [
+    "Risk alerts",
+    "churn cause analysis",
+    "save strategy recommendations",
+    "executive briefings",
+    "intervention playbooks",
+    "outcome reports"
+  ],
+  "triggers": [
+    "Usage decline",
+    "support escalations",
+    "billing issues",
+    "competitor mentions",
+    "champion departure",
+    "negative NPS",
+    "contract review requests"
+  ],
+  "knowledgeSources": [
+    "Churn pattern databases",
+    "win-back playbooks",
+    "competitive intelligence",
+    "pricing flexibility guidelines",
+    "executive escalation protocols",
+    "save offer matrices"
+  ],
+  "agentOrchestration": [
+    "Risk Signal Detection Agent",
+    "Churn Cause Analysis Agent",
+    "Account Prioritization Agent",
+    "Save Strategy Selection Agent",
+    "Intervention Triggering Agent",
+    "Progress Monitoring Agent"
+  ]
+}

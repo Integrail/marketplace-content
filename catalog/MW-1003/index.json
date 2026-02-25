@@ -1,0 +1,166 @@
+{
+  "id": "MW-1003",
+  "name": "Cash Flow Management AI Worker",
+  "description": "Forecasts cash positions across all accounts, identifies funding gaps, and recommends actions to optimize liquidity.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1003/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "94% accuracy at 30-day horizon (up from 67%)",
+  "integrations": [
+    {
+      "name": "All banking platforms",
+      "logoUrl": "ew-marketplace://logos/all-banking-platforms.png"
+    },
+    {
+      "name": "treasury management systems (Kyriba, GTreasury)",
+      "logoUrl": "ew-marketplace://logos/treasury-management-systems-kyriba-gtreasury.png"
+    },
+    {
+      "name": "ERP systems",
+      "logoUrl": "ew-marketplace://logos/erp-systems.png"
+    },
+    {
+      "name": "AR/AP modules",
+      "logoUrl": "ew-marketplace://logos/ar-ap-modules.png"
+    },
+    {
+      "name": "investment platforms",
+      "logoUrl": "ew-marketplace://logos/investment-platforms.png"
+    },
+    {
+      "name": "FX systems",
+      "logoUrl": "ew-marketplace://logos/fx-systems.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1003/hero.png"
+  },
+  "overview": "Forecasts cash positions and optimizes liquidity across all accounts and entities This AI Worker gives you unprecedented visibility into your cash position—today, this week, and months ahead. It aggregates balances across all bank accounts and entities, forecasts inflows from AR and scheduled receipts, projects outflows from AP and committed payments, and identifies funding gaps or surpluses before they occur. The worker recommends specific actions —accelerate collections, delay payments, draw on credit lines, invest excess cash—to optimize your liquidity position while meeting all obligations.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1003/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "All banking platforms",
+        "description": "Integration with All banking platforms"
+      },
+      {
+        "name": "treasury management systems (Kyriba, GTreasury)",
+        "description": "Integration with treasury management systems (Kyriba, GTreasury)"
+      },
+      {
+        "name": "ERP systems",
+        "description": "Integration with ERP systems"
+      },
+      {
+        "name": "AR/AP modules",
+        "description": "Integration with AR/AP modules"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Bank Aggregation",
+        "description": "Handles the bank aggregation step"
+      },
+      {
+        "name": "AR Forecast",
+        "description": "Handles the ar forecast step"
+      },
+      {
+        "name": "AP Forecast",
+        "description": "Handles the ap forecast step"
+      },
+      {
+        "name": "Cash Position",
+        "description": "Handles the cash position step"
+      },
+      {
+        "name": "Gap Analysis",
+        "description": "Handles the gap analysis step"
+      },
+      {
+        "name": "Recommendation",
+        "description": "Handles the recommendation step"
+      },
+      {
+        "name": "Alert",
+        "description": "Handles the alert step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Forecast Accuracy",
+      "value": "94% accuracy at 30-day horizon (up from 67%)"
+    },
+    {
+      "metric": "Cash Visibility",
+      "value": "Real-time position across 100% of accounts"
+    },
+    {
+      "metric": "Working Capital Improvement",
+      "value": "18% reduction in idle cash balances"
+    },
+    {
+      "metric": "Borrowing Costs",
+      "value": "23% reduction through better timing"
+    },
+    {
+      "metric": "Investment Returns",
+      "value": "31% improvement in short-term investment yield"
+    }
+  ],
+  "outputs": [
+    "Daily cash positions",
+    "rolling forecasts",
+    "funding gap alerts",
+    "investment recommendations",
+    "liquidity reports",
+    "covenant monitoring",
+    "board- ready summaries"
+  ],
+  "triggers": [
+    "Daily cash position request",
+    "forecast horizon",
+    "scenario parameters",
+    "funding threshold alerts",
+    "board reporting needs"
+  ],
+  "knowledgeSources": [
+    "Bank account structures",
+    "historical cash patterns",
+    "AR/AP aging",
+    "payment schedules",
+    "debt covenants",
+    "investment policies",
+    "FX exposure data"
+  ],
+  "agentOrchestration": [
+    "Bank Aggregation Agent",
+    "AR Forecast Agent",
+    "AP Forecast Agent",
+    "Cash Position Agent",
+    "Gap Analysis Agent",
+    "Recommendation Agent",
+    "Alert Agent"
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "id": "MW-1036",
+  "name": "HR Policy & Compliance AI Worker",
+  "description": "Answers employee policy questions instantly, referencing your handbook and employment law to ensure accurate, consistent guidance.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1036/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "100% of onboarding tasks tracked and completed",
+  "integrations": [
+    {
+      "name": "HRIS (Workday, BambooHR, ADP)",
+      "logoUrl": "ew-marketplace://logos/hris-workday-bamboohr-adp.png"
+    },
+    {
+      "name": "IT ticketing systems",
+      "logoUrl": "ew-marketplace://logos/it-ticketing-systems.png"
+    },
+    {
+      "name": "equipment management",
+      "logoUrl": "ew-marketplace://logos/equipment-management.png"
+    },
+    {
+      "name": "calendar systems",
+      "logoUrl": "ew-marketplace://logos/calendar-systems.png"
+    },
+    {
+      "name": "document signing (DocuSign)",
+      "logoUrl": "ew-marketplace://logos/document-signing-docusign.png"
+    },
+    {
+      "name": "email platforms",
+      "logoUrl": "ew-marketplace://logos/email-platforms.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1036/hero.png"
+  },
+  "overview": "Orchestrates complete onboarding workflows from offer acceptance through 90-day integration This AI Worker ensures every new hire has a flawless first impression. From the moment an offer is        HR Time Savings accepted, it coordinates the entire onboarding journey: sending welcome communications, collecting required paperwork, provisioning system access, arranging equipment, scheduling orientation sessions, and setting up manager introductions. It monitors progress against your 30- 60-90 day milestones, sends timely check-in reminders, and escalates when new hires are falling behind—turning onboarding from a chaotic checklist into a smooth, personalized experience.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1036/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "HRIS (Workday, BambooHR, ADP)",
+        "description": "Integration with HRIS (Workday, BambooHR, ADP)"
+      },
+      {
+        "name": "IT ticketing systems",
+        "description": "Integration with IT ticketing systems"
+      },
+      {
+        "name": "equipment management",
+        "description": "Integration with equipment management"
+      },
+      {
+        "name": "calendar systems",
+        "description": "Integration with calendar systems"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Welcome",
+        "description": "Handles the welcome step"
+      },
+      {
+        "name": "Paperwork Collection",
+        "description": "Handles the paperwork collection step"
+      },
+      {
+        "name": "IT Provisioning",
+        "description": "Handles the it provisioning step"
+      },
+      {
+        "name": "Equipment Coordination",
+        "description": "Handles the equipment coordination step"
+      },
+      {
+        "name": "Orientation Scheduling",
+        "description": "Handles the orientation scheduling step"
+      },
+      {
+        "name": "Milestone Tracking",
+        "description": "Handles the milestone tracking step"
+      },
+      {
+        "name": "Check-in",
+        "description": "Handles the check-in step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Completion Rate",
+      "value": "100% of onboarding tasks tracked and completed"
+    },
+    {
+      "metric": "New Hire Satisfaction",
+      "value": "35-45% improvement in onboarding NPS Drop-off Prevention                  Early identification of at-risk new hires"
+    }
+  ],
+  "outputs": [
+    "Welcome communications",
+    "paperwork tracking",
+    "system access confirmations",
+    "equipment delivery coordination",
+    "orientation calendar",
+    "milestone dashboards",
+    "check-in reminders"
+  ],
+  "triggers": [
+    "Offer acceptance",
+    "start date",
+    "role",
+    "department",
+    "manager",
+    "location",
+    "equipment needs"
+  ],
+  "knowledgeSources": [
+    "Onboarding checklists",
+    "company policies",
+    "role-specific requirements",
+    "30-60-90 templates",
+    "orientation schedules",
+    "IT provisioning procedures"
+  ],
+  "agentOrchestration": [
+    "Welcome Agent",
+    "Paperwork Collection Agent",
+    "IT Provisioning Agent",
+    "Equipment Coordination Agent",
+    "Orientation Scheduling Agent",
+    "Milestone Tracking Agent",
+    "Check-in Agent"
+  ]
+}

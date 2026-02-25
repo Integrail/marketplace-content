@@ -1,0 +1,141 @@
+{
+  "id": "MW-1033",
+  "name": "Applicant Qualification & Ranking AI Worker",
+  "description": "Screens all incoming applicants against job requirements, scores and ranks candidates, and updates your ATS with qualification status.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Talent Acquisition"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1033/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "100+ applicants screened per hour",
+  "integrations": [
+    {
+      "name": "All major ATS platforms (Greenhouse, Lever, Workday, iCIMS, etc.)",
+      "logoUrl": "ew-marketplace://logos/all-major-ats-platforms-greenhouse-lever-workday-icims-etc.png"
+    },
+    {
+      "name": "resume parsing services",
+      "logoUrl": "ew-marketplace://logos/resume-parsing-services.png"
+    },
+    {
+      "name": "candidate scoring engines",
+      "logoUrl": "ew-marketplace://logos/candidate-scoring-engines.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1033/hero.png"
+  },
+  "overview": "Screens all incoming applicants against job requirements and ranks by fit This AI Worker ensures no qualified candidate slips through the cracks—and no unqualified candidate wastes recruiter time. For every new applicant, it parses their resume, extracts key qualifications, matches them against job requirements, detects red flags, and applies a weighted scoring algorithm. Candidates are categorized as Strong Match, Potential Fit, Weak Match, or Unclear, with all results automatically updated in your ATS. Recruiters start each day with a prioritized queue instead of an overwhelming inbox.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1033/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "All major ATS platforms (Greenhouse, Lever, Workday, iCIMS, etc.)",
+        "description": "Integration with All major ATS platforms (Greenhouse, Lever, Workday, iCIMS, etc.)"
+      },
+      {
+        "name": "resume parsing services",
+        "description": "Integration with resume parsing services"
+      },
+      {
+        "name": "candidate scoring engines",
+        "description": "Integration with candidate scoring engines"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Applicant Retrieval",
+        "description": "Handles the applicant retrieval step"
+      },
+      {
+        "name": "Resume Parsing",
+        "description": "Handles the resume parsing step"
+      },
+      {
+        "name": "Requirements Matching",
+        "description": "Handles the requirements matching step"
+      },
+      {
+        "name": "Red Flag Detection",
+        "description": "Handles the red flag detection step"
+      },
+      {
+        "name": "Scoring",
+        "description": "Handles the scoring step"
+      },
+      {
+        "name": "ATS Update",
+        "description": "Handles the ats update step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Screening Speed",
+      "value": "100+ applicants screened per hour"
+    },
+    {
+      "metric": "Consistency",
+      "value": "100% of candidates evaluated against same criteria"
+    },
+    {
+      "metric": "Time Savings",
+      "value": "10+ hours/week saved per recruiter on screening"
+    },
+    {
+      "metric": "Quality Improvement",
+      "value": "30-40% better interview-to-offer ratio"
+    },
+    {
+      "metric": "ATS Hygiene",
+      "value": "All applicants categorized and updated in real-time"
+    }
+  ],
+  "outputs": [
+    "Candidate scores and rankings",
+    "categorization (Strong/Potential/Weak/Unclear)",
+    "screening notes",
+    "ATS field updates",
+    "daily digest for recruiters"
+  ],
+  "triggers": [
+    "New applicants in ATS (automated trigger)",
+    "role requirements",
+    "screening criteria",
+    "scoring weights"
+  ],
+  "knowledgeSources": [
+    "Job descriptions",
+    "qualification frameworks",
+    "screening criteria",
+    "scoring methodologies",
+    "red flag indicators",
+    "industry standards"
+  ],
+  "agentOrchestration": [
+    "Applicant Retrieval Agent",
+    "Resume Parsing Agent",
+    "Requirements Matching Agent",
+    "Red Flag Detection Agent",
+    "Scoring Agent",
+    "ATS Update Agent"
+  ]
+}

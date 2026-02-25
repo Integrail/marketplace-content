@@ -1,0 +1,157 @@
+{
+  "id": "MW-1062",
+  "name": "Landing Page AI Worker",
+  "description": "Creates landing pages for whitepapers, webinars, and demo requests.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Marketing"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1062/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "20-30 landing pages per month vs. 3-5 manually",
+  "integrations": [
+    {
+      "name": "HubSpot",
+      "logoUrl": "ew-marketplace://logos/hubspot.png"
+    },
+    {
+      "name": "Marketo",
+      "logoUrl": "ew-marketplace://logos/marketo.png"
+    },
+    {
+      "name": "Unbounce",
+      "logoUrl": "ew-marketplace://logos/unbounce.png"
+    },
+    {
+      "name": "Instapage",
+      "logoUrl": "ew-marketplace://logos/instapage.png"
+    },
+    {
+      "name": "WordPress",
+      "logoUrl": "ew-marketplace://logos/wordpress.png"
+    },
+    {
+      "name": "Webflow",
+      "logoUrl": "ew-marketplace://logos/webflow.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1062/hero.png"
+  },
+  "overview": "This AI Worker produces high-converting landing pages for every campaign. It writes persuasive headlines and copy based on proven conversion frameworks, designs page layouts optimized for lead capture, creates form configurations, and builds finished pages directly in your CMS or landing page platform. Whether you're gating a whitepaper, promoting a webinar, or driving demo requests, it delivers pages engineered for conversion.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1062/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "HubSpot",
+        "description": "Integration with HubSpot"
+      },
+      {
+        "name": "Marketo",
+        "description": "Integration with Marketo"
+      },
+      {
+        "name": "Unbounce",
+        "description": "Integration with Unbounce"
+      },
+      {
+        "name": "Instapage",
+        "description": "Integration with Instapage"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Strategy",
+        "description": "Handles the strategy step"
+      },
+      {
+        "name": "Headline",
+        "description": "Handles the headline step"
+      },
+      {
+        "name": "Copywriting",
+        "description": "Handles the copywriting step"
+      },
+      {
+        "name": "Design",
+        "description": "Handles the design step"
+      },
+      {
+        "name": "Form Configuration",
+        "description": "Handles the form configuration step"
+      },
+      {
+        "name": "Build",
+        "description": "Handles the build step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Page Production",
+      "value": "20-30 landing pages per month vs. 3-5 manually"
+    },
+    {
+      "metric": "Build Time",
+      "value": "90% reduction in landing page creation time"
+    },
+    {
+      "metric": "Conversion Rate",
+      "value": "40-60% improvement through optimized copy and design"
+    },
+    {
+      "metric": "Testing",
+      "value": "5x more landing page variants for A/B testing"
+    },
+    {
+      "metric": "Consistency",
+      "value": "Unified design system across all campaign pages"
+    }
+  ],
+  "outputs": [
+    "Complete landing pages built in platform",
+    "headline variants",
+    "body copy",
+    "form configurations",
+    "thank you pages"
+  ],
+  "triggers": [
+    "Campaign type",
+    "offer description",
+    "target audience",
+    "desired CTA",
+    "form fields required"
+  ],
+  "knowledgeSources": [
+    "Conversion rate optimization best practices",
+    "past landing page performance",
+    "brand guidelines",
+    "product messaging",
+    "competitor pages"
+  ],
+  "agentOrchestration": [
+    "Strategy Agent",
+    "Headline Agent",
+    "Copywriting Agent",
+    "Design Agent",
+    "Form Configuration Agent",
+    "Build Agent"
+  ]
+}

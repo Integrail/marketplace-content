@@ -1,0 +1,150 @@
+{
+  "id": "MW-1066",
+  "name": "Use Case Discovery AI Worker",
+  "description": "Intakes prompts and transcripts to create a personalized sales deck highlighting key use cases to the prospect from your solution set.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1066/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "100% of follow-up decks customized to prospect needs",
+  "integrations": [
+    {
+      "name": "Gong",
+      "logoUrl": "ew-marketplace://logos/gong.png"
+    },
+    {
+      "name": "Chorus",
+      "logoUrl": "ew-marketplace://logos/chorus.png"
+    },
+    {
+      "name": "PowerPoint",
+      "logoUrl": "ew-marketplace://logos/powerpoint.png"
+    },
+    {
+      "name": "Google Slides",
+      "logoUrl": "ew-marketplace://logos/google-slides.png"
+    },
+    {
+      "name": "HubSpot",
+      "logoUrl": "ew-marketplace://logos/hubspot.png"
+    },
+    {
+      "name": "Salesforce",
+      "logoUrl": "ew-marketplace://logos/salesforce.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1066/hero.png"
+  },
+  "overview": "This AI Worker transforms discovery insights into tailored presentations. It analyzes call transcripts and rep inputs to identify which use cases resonate with each prospect, then creates a customized sales deck that highlights relevant solutions, success stories, and outcomes. Every prospect receives a presentation that speaks directly to their specific challenges and opportunities.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1066/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Gong",
+        "description": "Integration with Gong"
+      },
+      {
+        "name": "Chorus",
+        "description": "Integration with Chorus"
+      },
+      {
+        "name": "PowerPoint",
+        "description": "Integration with PowerPoint"
+      },
+      {
+        "name": "Google Slides",
+        "description": "Integration with Google Slides"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Transcript Analysis",
+        "description": "Handles the transcript analysis step"
+      },
+      {
+        "name": "Use Case Matching",
+        "description": "Handles the use case matching step"
+      },
+      {
+        "name": "Content Selection",
+        "description": "Handles the content selection step"
+      },
+      {
+        "name": "Deck Assembly",
+        "description": "Handles the deck assembly step"
+      },
+      {
+        "name": "Design",
+        "description": "Handles the design step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Personalization",
+      "value": "100% of follow-up decks customized to prospect needs"
+    },
+    {
+      "metric": "Deck Creation",
+      "value": "Personalized decks delivered within 1 hour of call"
+    },
+    {
+      "metric": "Win Rate",
+      "value": "25-40% improvement in opportunity-to-close rate"
+    },
+    {
+      "metric": "Rep Efficiency",
+      "value": "3+ hours saved per deal on deck customization"
+    },
+    {
+      "metric": "Buyer Experience",
+      "value": "Prospects receive relevant content that advances decisions"
+    }
+  ],
+  "outputs": [
+    "Customized sales deck",
+    "tailored talk track",
+    "relevant case studies",
+    "personalized ROI projections"
+  ],
+  "triggers": [
+    "Discovery call transcripts",
+    "rep notes",
+    "prospect industry/role",
+    "deal context"
+  ],
+  "knowledgeSources": [
+    "Master slide library",
+    "use case definitions",
+    "customer success stories",
+    "ROI data",
+    "industry-specific content"
+  ],
+  "agentOrchestration": [
+    "Transcript Analysis Agent",
+    "Use Case Matching Agent",
+    "Content Selection Agent",
+    "Deck Assembly Agent",
+    "Design Agent"
+  ]
+}

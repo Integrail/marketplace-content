@@ -1,0 +1,166 @@
+{
+  "id": "MW-1005",
+  "name": "Payment Processing AI Worker",
+  "description": "Executes outbound payments across all methods, validates payment details, prevents fraud, and maintains complete audit trails.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1005/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "99.9% of fraudulent payments blocked",
+  "integrations": [
+    {
+      "name": "ERP payment modules",
+      "logoUrl": "ew-marketplace://logos/erp-payment-modules.png"
+    },
+    {
+      "name": "banking platforms",
+      "logoUrl": "ew-marketplace://logos/banking-platforms.png"
+    },
+    {
+      "name": "ACH networks",
+      "logoUrl": "ew-marketplace://logos/ach-networks.png"
+    },
+    {
+      "name": "wire systems",
+      "logoUrl": "ew-marketplace://logos/wire-systems.png"
+    },
+    {
+      "name": "virtual card providers (Amex, Visa)",
+      "logoUrl": "ew-marketplace://logos/virtual-card-providers-amex-visa.png"
+    },
+    {
+      "name": "positive pay systems",
+      "logoUrl": "ew-marketplace://logos/positive-pay-systems.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1005/hero.png"
+  },
+  "overview": "Executes outbound payments with fraud prevention and complete audit trails This AI Worker ensures every payment goes to the right party, for the right amount, at the right time—with zero fraud losses. It validates payment details against master data, detects anomalies that suggest fraud or error, executes payments through optimal channels (ACH, wire, check, virtual card), and maintains complete audit trails for every transaction. The worker handles payment timing optimization, coordinates multi-currency payments, and ensures compliance with all payment regulations and internal controls.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1005/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "ERP payment modules",
+        "description": "Integration with ERP payment modules"
+      },
+      {
+        "name": "banking platforms",
+        "description": "Integration with banking platforms"
+      },
+      {
+        "name": "ACH networks",
+        "description": "Integration with ACH networks"
+      },
+      {
+        "name": "wire systems",
+        "description": "Integration with wire systems"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Payment Validation",
+        "description": "Handles the payment validation step"
+      },
+      {
+        "name": "Fraud Detection",
+        "description": "Handles the fraud detection step"
+      },
+      {
+        "name": "Bank Detail Verification",
+        "description": "Handles the bank detail verification step"
+      },
+      {
+        "name": "Payment Method Selection",
+        "description": "Handles the payment method selection step"
+      },
+      {
+        "name": "Execution",
+        "description": "Handles the execution step"
+      },
+      {
+        "name": "Confirmation",
+        "description": "Handles the confirmation step"
+      },
+      {
+        "name": "Audit",
+        "description": "Handles the audit step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Payment Fraud Prevention",
+      "value": "99.9% of fraudulent payments blocked"
+    },
+    {
+      "metric": "Payment Processing Time",
+      "value": "Reduced from 4 hours to 15 minutes per batch"
+    },
+    {
+      "metric": "Payment Error Rate",
+      "value": "Reduced from 2.3% to 0.1%"
+    },
+    {
+      "metric": "Virtual Card Adoption",
+      "value": "340% increase in rebate-generating payments"
+    },
+    {
+      "metric": "Audit Trail Completeness",
+      "value": "100% documentation for every payment"
+    }
+  ],
+  "outputs": [
+    "Executed payments",
+    "payment confirmations",
+    "fraud alerts",
+    "bank reconciliation files",
+    "positive pay files",
+    "payment audit reports",
+    "vendor remittance advices"
+  ],
+  "triggers": [
+    "Payment batch approval",
+    "urgent payment request",
+    "payment method change",
+    "vendor bank detail update",
+    "fraud alert",
+    "reconciliation exception"
+  ],
+  "knowledgeSources": [
+    "Vendor master data",
+    "bank account validation rules",
+    "fraud detection models",
+    "payment policies",
+    "approval hierarchies",
+    "regulatory requirements"
+  ],
+  "agentOrchestration": [
+    "Payment Validation Agent",
+    "Fraud Detection Agent",
+    "Bank Detail Verification Agent",
+    "Payment Method Selection Agent",
+    "Execution Agent",
+    "Confirmation Agent",
+    "Audit Agent"
+  ]
+}

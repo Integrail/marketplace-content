@@ -1,0 +1,148 @@
+{
+  "id": "MW-1087",
+  "name": "Candidate Communication AI Worker",
+  "description": "Handles all candidate correspondence4 confirmations, updates, and follow-ups4with personalized messaging.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1087/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "100% of candidates receive response within 24 hours",
+  "integrations": [
+    {
+      "name": "ATS",
+      "logoUrl": "ew-marketplace://logos/ats.png"
+    },
+    {
+      "name": "email",
+      "logoUrl": "ew-marketplace://logos/email.png"
+    },
+    {
+      "name": "SMS",
+      "logoUrl": "ew-marketplace://logos/sms.png"
+    },
+    {
+      "name": "chatbot",
+      "logoUrl": "ew-marketplace://logos/chatbot.png"
+    },
+    {
+      "name": "career portal",
+      "logoUrl": "ew-marketplace://logos/career-portal.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1087/hero.png"
+  },
+  "overview": "This AI Worker ensures every candidate receives timely, personalized communication throughout your hiring process. It sends application confirmations, stage progression updates, interview prep materials, and status notifications automatically. It answers candidate questions via email, maintains your employer brand voice, and ensures no candidate is left wondering where they stand.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1087/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "ATS",
+        "description": "Integration with ATS"
+      },
+      {
+        "name": "email",
+        "description": "Integration with email"
+      },
+      {
+        "name": "SMS",
+        "description": "Integration with SMS"
+      },
+      {
+        "name": "chatbot",
+        "description": "Integration with chatbot"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Trigger Detection",
+        "description": "Handles the trigger detection step"
+      },
+      {
+        "name": "Message Personalization",
+        "description": "Handles the message personalization step"
+      },
+      {
+        "name": "Timing Optimization",
+        "description": "Handles the timing optimization step"
+      },
+      {
+        "name": "Send",
+        "description": "Handles the send step"
+      },
+      {
+        "name": "Response Handling",
+        "description": "Handles the response handling step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Response Time",
+      "value": "100% of candidates receive response within 24 hours"
+    },
+    {
+      "metric": "Candidate NPS",
+      "value": "40-point improvement in candidate experience scores"
+    },
+    {
+      "metric": "Ghosting Rate",
+      "value": "60% reduction in candidate drop-off during process"
+    },
+    {
+      "metric": "Recruiter Time",
+      "value": "8+ hours per week saved on routine communications"
+    },
+    {
+      "metric": "Brand Consistency",
+      "value": "Unified voice and messaging across all candidate touchpoints"
+    }
+  ],
+  "outputs": [
+    "Personalized candidate emails",
+    "status updates",
+    "interview prep packets",
+    "FAQ responses",
+    "rejection communications"
+  ],
+  "triggers": [
+    "Application received",
+    "stage change",
+    "interview scheduled",
+    "candidate question received",
+    "decision made"
+  ],
+  "knowledgeSources": [
+    "Email templates",
+    "employer brand voice",
+    "role details",
+    "process stage requirements",
+    "FAQ database"
+  ],
+  "agentOrchestration": [
+    "Trigger Detection Agent",
+    "Message Personalization Agent",
+    "Timing Optimization Agent",
+    "Send Agent",
+    "Response Handling Agent"
+  ]
+}

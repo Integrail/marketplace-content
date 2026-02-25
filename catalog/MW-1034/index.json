@@ -1,0 +1,152 @@
+{
+  "id": "MW-1034",
+  "name": "Interview Preparation AI Worker",
+  "description": "Generates customized interview questions for each candidate tier and coordinates scheduling between candidates and recruiters.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Talent Acquisition"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1034/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Interviews scheduled within 24 hours of qualification",
+  "integrations": [
+    {
+      "name": "ATS platforms",
+      "logoUrl": "ew-marketplace://logos/ats-platforms.png"
+    },
+    {
+      "name": "calendar systems (Google Calendar, Outlook, Calendly)",
+      "logoUrl": "ew-marketplace://logos/calendar-systems-google-calendar-outlook-calendly.png"
+    },
+    {
+      "name": "email service providers",
+      "logoUrl": "ew-marketplace://logos/email-service-providers.png"
+    },
+    {
+      "name": "PDF generation",
+      "logoUrl": "ew-marketplace://logos/pdf-generation.png"
+    },
+    {
+      "name": "scheduling platforms",
+      "logoUrl": "ew-marketplace://logos/scheduling-platforms.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1034/hero.png"
+  },
+  "overview": "Generates customized interview questions and coordinates candidate scheduling This AI Worker bridges the gap between qualification and conversation. For Strong Match candidates, it generates validation questions that probe depth of expertise. For Potential Fit candidates, it creates questions that assess whether gaps are bridgeable. It then accesses recruiter calendars, sends professional scheduling invitations to candidates, and delivers comprehensive interview prep packages—including candidate profiles and customized question sets—so recruiters walk into every call fully prepared.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1034/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "ATS platforms",
+        "description": "Integration with ATS platforms"
+      },
+      {
+        "name": "calendar systems (Google Calendar, Outlook, Calendly)",
+        "description": "Integration with calendar systems (Google Calendar, Outlook, Calendly)"
+      },
+      {
+        "name": "email service providers",
+        "description": "Integration with email service providers"
+      },
+      {
+        "name": "PDF generation",
+        "description": "Integration with PDF generation"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Candidate Classification",
+        "description": "Handles the candidate classification step"
+      },
+      {
+        "name": "Question Generation",
+        "description": "Handles the question generation step"
+      },
+      {
+        "name": "Calendar Integration",
+        "description": "Handles the calendar integration step"
+      },
+      {
+        "name": "Email Invitation",
+        "description": "Handles the email invitation step"
+      },
+      {
+        "name": "Prep Package",
+        "description": "Handles the prep package step"
+      },
+      {
+        "name": "Confirmation",
+        "description": "Handles the confirmation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Scheduling Speed",
+      "value": "Interviews scheduled within 24 hours of qualification"
+    },
+    {
+      "metric": "Recruiter Prep Time",
+      "value": "90% reduction in interview preparation time"
+    },
+    {
+      "metric": "Interview Quality",
+      "value": "Customized questions for every candidate tier"
+    },
+    {
+      "metric": "Show Rate",
+      "value": "25-35% improvement in candidate show rates"
+    },
+    {
+      "metric": "Coordination",
+      "value": "Zero back-and-forth emails for scheduling"
+    }
+  ],
+  "outputs": [
+    "Customized interview questions per candidate",
+    "scheduling invitations",
+    "recruiter prep packages (PDF)",
+    "calendar events",
+    "confirmation tracking"
+  ],
+  "triggers": [
+    "Qualified candidate list",
+    "recruiter availability",
+    "interview preferences",
+    "screening priorities"
+  ],
+  "knowledgeSources": [
+    "Interview question frameworks",
+    "screening best practices",
+    "candidate assessment methodologies",
+    "role competency models",
+    "recruiter preferences"
+  ],
+  "agentOrchestration": [
+    "Candidate Classification Agent",
+    "Question Generation Agent",
+    "Calendar Integration Agent",
+    "Email Invitation Agent",
+    "Prep Package Agent",
+    "Confirmation Agent"
+  ]
+}

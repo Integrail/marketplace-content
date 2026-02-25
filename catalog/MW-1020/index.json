@@ -1,0 +1,157 @@
+{
+  "id": "MW-1020",
+  "name": "Technical Support AI Worker",
+  "description": "Diagnoses issues, guides troubleshooting, accesses product documentation, and escalates intelligently with complete diagnostic context.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Support"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1020/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "94% of escalated tickets include complete diagnostics",
+  "integrations": [
+    {
+      "name": "Zendesk",
+      "logoUrl": "ew-marketplace://logos/zendesk.png"
+    },
+    {
+      "name": "Freshdesk",
+      "logoUrl": "ew-marketplace://logos/freshdesk.png"
+    },
+    {
+      "name": "ServiceNow",
+      "logoUrl": "ew-marketplace://logos/servicenow.png"
+    },
+    {
+      "name": "Jira",
+      "logoUrl": "ew-marketplace://logos/jira.png"
+    },
+    {
+      "name": "PagerDuty",
+      "logoUrl": "ew-marketplace://logos/pagerduty.png"
+    },
+    {
+      "name": "system monitoring tools",
+      "logoUrl": "ew-marketplace://logos/system-monitoring-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1020/hero.png"
+  },
+  "overview": "Diagnoses and resolves technical issues through intelligent troubleshooting workflows This AI Worker brings Tier 2 expertise to every Tier 1 interaction. It handles technical inquiries by       Mean Time to Resolution analyzing error messages, checking system status, accessing product documentation, and guiding customers through diagnostic steps. The worker knows when to keep troubleshooting and when to escalate—and every escalation includes complete diagnostic context so specialists can resolve issues faster. Beyond individual tickets, it identifies patterns that indicate product bugs or documentation gaps, turning support data into product intelligence.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1020/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Zendesk",
+        "description": "Integration with Zendesk"
+      },
+      {
+        "name": "Freshdesk",
+        "description": "Integration with Freshdesk"
+      },
+      {
+        "name": "ServiceNow",
+        "description": "Integration with ServiceNow"
+      },
+      {
+        "name": "Jira",
+        "description": "Integration with Jira"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Issue Classification",
+        "description": "Handles the issue classification step"
+      },
+      {
+        "name": "Error Analysis",
+        "description": "Handles the error analysis step"
+      },
+      {
+        "name": "System Status",
+        "description": "Handles the system status step"
+      },
+      {
+        "name": "Troubleshooting Guide",
+        "description": "Handles the troubleshooting guide step"
+      },
+      {
+        "name": "Step-by-Step",
+        "description": "Handles the step-by-step step"
+      },
+      {
+        "name": "Escalation",
+        "description": "Handles the escalation step"
+      },
+      {
+        "name": "Follow-up",
+        "description": "Handles the follow-up step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Escalation Quality",
+      "value": "94% of escalated tickets include complete diagnostics"
+    },
+    {
+      "metric": "Knowledge Base Utilization",
+      "value": "340% increase in effective KB article usage"
+    },
+    {
+      "metric": "Bug Pattern Detection",
+      "value": "2.3x faster identification of product issues"
+    }
+  ],
+  "outputs": [
+    "Troubleshooting guides",
+    "resolution confirmations",
+    "escalation tickets with diagnostics",
+    "KB suggestions",
+    "product feedback reports"
+  ],
+  "triggers": [
+    "Error messages",
+    "\"not working\" reports",
+    "feature questions",
+    "setup issues",
+    "integration problems",
+    "performance complaints",
+    "bug reports"
+  ],
+  "knowledgeSources": [
+    "Product documentation",
+    "troubleshooting guides",
+    "known issue databases",
+    "system status",
+    "error code dictionaries",
+    "release notes"
+  ],
+  "agentOrchestration": [
+    "Issue Classification Agent",
+    "Error Analysis Agent",
+    "System Status Agent",
+    "Troubleshooting Guide Agent",
+    "Step-by-Step Agent",
+    "Escalation Agent",
+    "Follow-up Agent"
+  ]
+}

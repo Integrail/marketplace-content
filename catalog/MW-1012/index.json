@@ -1,0 +1,168 @@
+{
+  "id": "MW-1012",
+  "name": "Budget Modeling AI Worker",
+  "description": "Facilitates the annual budget process, consolidates inputs, manages iterations, and produces final approved budgets.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1012/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 4 months to 6 weeks",
+  "integrations": [
+    {
+      "name": "EPM platforms",
+      "logoUrl": "ew-marketplace://logos/epm-platforms.png"
+    },
+    {
+      "name": "HRIS (for headcount)",
+      "logoUrl": "ew-marketplace://logos/hris-for-headcount.png"
+    },
+    {
+      "name": "capital planning systems",
+      "logoUrl": "ew-marketplace://logos/capital-planning-systems.png"
+    },
+    {
+      "name": "ERP systems",
+      "logoUrl": "ew-marketplace://logos/erp-systems.png"
+    },
+    {
+      "name": "workflow platforms",
+      "logoUrl": "ew-marketplace://logos/workflow-platforms.png"
+    },
+    {
+      "name": "presentation tools",
+      "logoUrl": "ew-marketplace://logos/presentation-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1012/hero.png"
+  },
+  "overview": "Facilitates annual budgeting and consolidates inputs into approved budgets This AI Worker transforms budgeting from a months-long slog into a focused, efficient process. It distributes budget templates to owners, provides prior-year data and assumptions, validates submissions for completeness and reasonableness, consolidates across all cost centers and entities, and manages the iteration cycles between business units and finance. The worker tracks        Consolidation Time approval status, generates roll-ups at any level, and produces the final board-ready budget package.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1012/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "EPM platforms",
+        "description": "Integration with EPM platforms"
+      },
+      {
+        "name": "HRIS (for headcount)",
+        "description": "Integration with HRIS (for headcount)"
+      },
+      {
+        "name": "capital planning systems",
+        "description": "Integration with capital planning systems"
+      },
+      {
+        "name": "ERP systems",
+        "description": "Integration with ERP systems"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Template Distribution",
+        "description": "Handles the template distribution step"
+      },
+      {
+        "name": "Data Pre-population",
+        "description": "Handles the data pre-population step"
+      },
+      {
+        "name": "Submission Collection",
+        "description": "Handles the submission collection step"
+      },
+      {
+        "name": "Validation",
+        "description": "Handles the validation step"
+      },
+      {
+        "name": "Consolidation",
+        "description": "Handles the consolidation step"
+      },
+      {
+        "name": "Iteration Management",
+        "description": "Handles the iteration management step"
+      },
+      {
+        "name": "Approval Routing",
+        "description": "Handles the approval routing step"
+      },
+      {
+        "name": "Package Generation",
+        "description": "Handles the package generation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Budget Cycle Time",
+      "value": "Reduced from 4 months to 6 weeks"
+    },
+    {
+      "metric": "Submission Accuracy",
+      "value": "94% of initial submissions pass validation Reduced from 2 weeks to 2 days"
+    },
+    {
+      "metric": "Iteration Cycles",
+      "value": "40% fewer revision cycles needed"
+    },
+    {
+      "metric": "Budget Owner Satisfaction",
+      "value": "67% improvement in process satisfaction scores"
+    }
+  ],
+  "outputs": [
+    "Budget templates",
+    "validation reports",
+    "consolidated budgets",
+    "variance to prior year",
+    "approval tracking",
+    "budget books",
+    "board presentations"
+  ],
+  "triggers": [
+    "Budget cycle kickoff",
+    "template distribution",
+    "submission deadline",
+    "validation exception",
+    "consolidation request",
+    "approval workflow"
+  ],
+  "knowledgeSources": [
+    "Budget templates",
+    "allocation methodologies",
+    "headcount plans",
+    "capital budgets",
+    "historical actuals",
+    "growth assumptions",
+    "approval hierarchies"
+  ],
+  "agentOrchestration": [
+    "Template Distribution Agent",
+    "Data Pre-population Agent",
+    "Submission Collection Agent",
+    "Validation Agent",
+    "Consolidation Agent",
+    "Iteration Management Agent",
+    "Approval Routing Agent",
+    "Package Generation Agent"
+  ]
+}

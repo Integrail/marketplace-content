@@ -1,0 +1,164 @@
+{
+  "id": "MW-1076",
+  "name": "Contract Extraction AI Worker",
+  "description": "Parses and extracts key terms from investment agreements, creating searchable, structured contract databases",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1076/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "96% accuracy on key term extraction",
+  "integrations": [
+    {
+      "name": "Document management systems",
+      "logoUrl": "ew-marketplace://logos/document-management-systems.png"
+    },
+    {
+      "name": "contract databases",
+      "logoUrl": "ew-marketplace://logos/contract-databases.png"
+    },
+    {
+      "name": "calendar systems",
+      "logoUrl": "ew-marketplace://logos/calendar-systems.png"
+    },
+    {
+      "name": "workflow platforms",
+      "logoUrl": "ew-marketplace://logos/workflow-platforms.png"
+    },
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    },
+    {
+      "name": "compliance tools",
+      "logoUrl": "ew-marketplace://logos/compliance-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1076/hero.png"
+  },
+  "overview": "Parses investment agreements and creates structured, searchable contract databases This AI Worker transforms contract management from filing cabinet chaos into structured intelligence. It ingests investment agreements, partnership documents, and side letters, then extracts key terms—fee structures, waterfall provisions, reporting requirements, consent rights, transfer restrictions—into standardized fields. The worker maintains a searchable database of all contract terms, alerts you to upcoming obligations, and enables rapid analysis across the entire portfolio of agreements.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1076/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Document management systems",
+        "description": "Integration with Document management systems"
+      },
+      {
+        "name": "contract databases",
+        "description": "Integration with contract databases"
+      },
+      {
+        "name": "calendar systems",
+        "description": "Integration with calendar systems"
+      },
+      {
+        "name": "workflow platforms",
+        "description": "Integration with workflow platforms"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Document Ingestion",
+        "description": "Handles the document ingestion step"
+      },
+      {
+        "name": "OCR/Parsing",
+        "description": "Handles the ocr/parsing step"
+      },
+      {
+        "name": "Term Extraction",
+        "description": "Handles the term extraction step"
+      },
+      {
+        "name": "Validation",
+        "description": "Handles the validation step"
+      },
+      {
+        "name": "Database Update",
+        "description": "Handles the database update step"
+      },
+      {
+        "name": "Obligation Scheduling",
+        "description": "Handles the obligation scheduling step"
+      },
+      {
+        "name": "Query Response",
+        "description": "Handles the query response step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Extraction Accuracy",
+      "value": "96% accuracy on key term extraction"
+    },
+    {
+      "metric": "Processing Speed",
+      "value": "50+ page LPA processed in under 10 minutes"
+    },
+    {
+      "metric": "Search Efficiency",
+      "value": "Term queries answered in seconds vs. hours"
+    },
+    {
+      "metric": "Obligation Tracking",
+      "value": "100% of contractual deadlines captured and tracked"
+    },
+    {
+      "metric": "Compliance Risk",
+      "value": "82% reduction in missed contractual obligations"
+    }
+  ],
+  "outputs": [
+    "Extracted term databases",
+    "obligation calendars",
+    "term comparison reports",
+    "side letter summaries",
+    "consent requirement tracking",
+    "contract analytics"
+  ],
+  "triggers": [
+    "New agreement execution",
+    "amendment received",
+    "term query",
+    "obligation alert",
+    "portfolio analysis request"
+  ],
+  "knowledgeSources": [
+    "Contract templates",
+    "term taxonomies",
+    "extraction models",
+    "obligation calendars",
+    "party databases",
+    "amendment tracking"
+  ],
+  "agentOrchestration": [
+    "Document Ingestion Agent",
+    "OCR/Parsing Agent",
+    "Term Extraction Agent",
+    "Validation Agent",
+    "Database Update Agent",
+    "Obligation Scheduling Agent",
+    "Query Response Agent"
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "id": "MW-1026",
+  "name": "Voice of Customer AI Worker",
+  "description": "Aggregates and analyzes customer feedback from every channel, identifying themes and surfacing emerging issues in real-time",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Success"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1026/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "100% of feedback channels analyzed vs. 34% previously",
+  "integrations": [
+    {
+      "name": "Zendesk",
+      "logoUrl": "ew-marketplace://logos/zendesk.png"
+    },
+    {
+      "name": "Intercom",
+      "logoUrl": "ew-marketplace://logos/intercom.png"
+    },
+    {
+      "name": "Medallia",
+      "logoUrl": "ew-marketplace://logos/medallia.png"
+    },
+    {
+      "name": "Qualtrics",
+      "logoUrl": "ew-marketplace://logos/qualtrics.png"
+    },
+    {
+      "name": "Sprout Social",
+      "logoUrl": "ew-marketplace://logos/sprout-social.png"
+    },
+    {
+      "name": "G2",
+      "logoUrl": "ew-marketplace://logos/g2.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1026/hero.png"
+  },
+  "overview": "Aggregates customer feedback from every channel into unified, actionable intelligence This AI Worker ensures no customer voice goes unheard. It collects feedback from support tickets, surveys, social media, reviews, sales calls, and community forums—then categorizes, analyzes sentiment, extracts themes, and prioritizes by business impact. The worker identifies emerging issues before they become crises, tracks sentiment trends over time, and surfaces specific verbatims that crystallize customer needs. Your VoC program moves from periodic reports to continuous intelligence.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1026/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Zendesk",
+        "description": "Integration with Zendesk"
+      },
+      {
+        "name": "Intercom",
+        "description": "Integration with Intercom"
+      },
+      {
+        "name": "Medallia",
+        "description": "Integration with Medallia"
+      },
+      {
+        "name": "Qualtrics",
+        "description": "Integration with Qualtrics"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Multi-Channel Collection",
+        "description": "Handles the multi-channel collection step"
+      },
+      {
+        "name": "Deduplication",
+        "description": "Handles the deduplication step"
+      },
+      {
+        "name": "Categorization",
+        "description": "Handles the categorization step"
+      },
+      {
+        "name": "Sentiment Analysis",
+        "description": "Handles the sentiment analysis step"
+      },
+      {
+        "name": "Theme Extraction",
+        "description": "Handles the theme extraction step"
+      },
+      {
+        "name": "Trend Identification",
+        "description": "Handles the trend identification step"
+      },
+      {
+        "name": "Distribution",
+        "description": "Handles the distribution step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Channel Coverage",
+      "value": "100% of feedback channels analyzed vs. 34% previously"
+    },
+    {
+      "metric": "Theme Identification",
+      "value": "4.7x more themes identified per quarter"
+    },
+    {
+      "metric": "Time to Insight",
+      "value": "Reduced from 2 weeks to real-time"
+    },
+    {
+      "metric": "Emerging Issue Detection",
+      "value": "Issues identified 8 days earlier on average"
+    },
+    {
+      "metric": "Insight Action Rate",
+      "value": "73% of surfaced insights receive action (up from 12%)"
+    }
+  ],
+  "outputs": [
+    "Theme reports",
+    "sentiment dashboards",
+    "emerging issue alerts",
+    "product feedback summaries",
+    "competitive mentions",
+    "executive briefings"
+  ],
+  "triggers": [
+    "Continuous monitoring",
+    "weekly digest requests",
+    "executive briefing needs",
+    "product launch feedback",
+    "crisis monitoring",
+    "competitive mention alerts"
+  ],
+  "knowledgeSources": [
+    "Historical feedback patterns",
+    "product taxonomy",
+    "sentiment lexicons",
+    "industry benchmarks",
+    "competitive intelligence",
+    "feature roadmaps"
+  ],
+  "agentOrchestration": [
+    "Multi-Channel Collection Agent",
+    "Deduplication Agent",
+    "Categorization Agent",
+    "Sentiment Analysis Agent",
+    "Theme Extraction Agent",
+    "Trend Identification Agent",
+    "Distribution Agent"
+  ]
+}

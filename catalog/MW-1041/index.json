@@ -1,0 +1,154 @@
+{
+  "id": "MW-1041",
+  "name": "Goal Setting & KPI AI Worker",
+  "description": "Facilitates objective setting, tracks progress against goals, and ensures alignment from individual to company level.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1041/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "40% improvement in goal achievement rates",
+  "integrations": [
+    {
+      "name": "Performance management systems",
+      "logoUrl": "ew-marketplace://logos/performance-management-systems.png"
+    },
+    {
+      "name": "HRIS",
+      "logoUrl": "ew-marketplace://logos/hris.png"
+    },
+    {
+      "name": "project management tools",
+      "logoUrl": "ew-marketplace://logos/project-management-tools.png"
+    },
+    {
+      "name": "Slack",
+      "logoUrl": "ew-marketplace://logos/slack.png"
+    },
+    {
+      "name": "email",
+      "logoUrl": "ew-marketplace://logos/email.png"
+    },
+    {
+      "name": "reporting dashboards",
+      "logoUrl": "ew-marketplace://logos/reporting-dashboards.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1041/hero.png"
+  },
+  "overview": "Facilitates objective setting and tracks progress with company-wide alignment This AI Worker ensures every employee understands how their work connects to company success. It guides managers and employees through goal-setting conversations, suggests measurable objectives based on role and department priorities, and creates clear alignment from individual goals up to company OKRs. Throughout the cycle, it tracks progress, sends check-in reminders, and surfaces goals that are at risk—making performance management a continuous conversation rather than an annual event.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1041/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Performance management systems",
+        "description": "Integration with Performance management systems"
+      },
+      {
+        "name": "HRIS",
+        "description": "Integration with HRIS"
+      },
+      {
+        "name": "project management tools",
+        "description": "Integration with project management tools"
+      },
+      {
+        "name": "Slack",
+        "description": "Integration with Slack"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Goal Facilitation",
+        "description": "Handles the goal facilitation step"
+      },
+      {
+        "name": "Alignment Mapping",
+        "description": "Handles the alignment mapping step"
+      },
+      {
+        "name": "Progress Tracking",
+        "description": "Handles the progress tracking step"
+      },
+      {
+        "name": "Check-in",
+        "description": "Handles the check-in step"
+      },
+      {
+        "name": "Risk Identification",
+        "description": "Handles the risk identification step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Goal Completion",
+      "value": "40% improvement in goal achievement rates"
+    },
+    {
+      "metric": "Alignment",
+      "value": "100% visibility into goal cascades"
+    },
+    {
+      "metric": "Manager Time Savings",
+      "value": "3+ hours/month saved on goal administration"
+    },
+    {
+      "metric": "Progress Visibility",
+      "value": "Real-time tracking for all active goals"
+    },
+    {
+      "metric": "Engagement",
+      "value": "35% increase in goal-related conversations"
+    }
+  ],
+  "outputs": [
+    "Goal documentation",
+    "alignment visualizations",
+    "progress reports",
+    "check-in reminders",
+    "at-risk alerts",
+    "achievement tracking"
+  ],
+  "triggers": [
+    "Goal setting requests",
+    "progress updates",
+    "check-in prompts",
+    "alignment reviews",
+    "at-risk alerts"
+  ],
+  "knowledgeSources": [
+    "Company OKRs",
+    "department objectives",
+    "role expectations",
+    "SMART goal frameworks",
+    "KPI definitions",
+    "historical performance"
+  ],
+  "agentOrchestration": [
+    "Goal Facilitation Agent",
+    "Alignment Mapping Agent",
+    "Progress Tracking Agent",
+    "Check-in Agent",
+    "Risk Identification Agent"
+  ]
+}

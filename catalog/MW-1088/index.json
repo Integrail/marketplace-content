@@ -1,0 +1,143 @@
+{
+  "id": "MW-1088",
+  "name": "Assessment AI Worker",
+  "description": "Administers skills assessments, evaluates results, and integrates scores into candidate profiles.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1088/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "85% assessment completion through optimized delivery and reminders",
+  "integrations": [
+    {
+      "name": "Assessment platforms (HackerRank, Codility, TestGorilla)",
+      "logoUrl": "ew-marketplace://logos/assessment-platforms-hackerrank-codility-testgorilla.png"
+    },
+    {
+      "name": "ATS",
+      "logoUrl": "ew-marketplace://logos/ats.png"
+    },
+    {
+      "name": "email",
+      "logoUrl": "ew-marketplace://logos/email.png"
+    },
+    {
+      "name": "candidate portal",
+      "logoUrl": "ew-marketplace://logos/candidate-portal.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1088/hero.png"
+  },
+  "overview": "This AI Worker adds objective data to your hiring decisions. It sends appropriate skills assessments based on role requirements, tracks completion, scores results, and integrates findings into candidate profiles. It can generate custom assessments for unique roles, flag concerning patterns, and provide hiring managers with data-driven insights beyond resume review.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1088/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Assessment platforms (HackerRank, Codility, TestGorilla)",
+        "description": "Integration with Assessment platforms (HackerRank, Codility, TestGorilla)"
+      },
+      {
+        "name": "ATS",
+        "description": "Integration with ATS"
+      },
+      {
+        "name": "email",
+        "description": "Integration with email"
+      },
+      {
+        "name": "candidate portal",
+        "description": "Integration with candidate portal"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Assessment Selection",
+        "description": "Handles the assessment selection step"
+      },
+      {
+        "name": "Delivery",
+        "description": "Handles the delivery step"
+      },
+      {
+        "name": "Reminder",
+        "description": "Handles the reminder step"
+      },
+      {
+        "name": "Scoring",
+        "description": "Handles the scoring step"
+      },
+      {
+        "name": "Integration",
+        "description": "Handles the integration step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Completion Rate",
+      "value": "85% assessment completion through optimized delivery and reminders"
+    },
+    {
+      "metric": "Predictive Validity",
+      "value": "Assessment scores correlate 70%+ with on-the-job performance"
+    },
+    {
+      "metric": "Process Efficiency",
+      "value": "Zero recruiter time spent on assessment administration"
+    },
+    {
+      "metric": "Candidate Quality",
+      "value": "30% improvement in quality of hire for assessed roles"
+    },
+    {
+      "metric": "Time Savings",
+      "value": "3 days removed from average process length"
+    }
+  ],
+  "outputs": [
+    "Assessment invitations",
+    "completion tracking",
+    "scored results",
+    "candidate profile updates",
+    "hiring manager summaries"
+  ],
+  "triggers": [
+    "Candidate advances to assessment stage",
+    "assessment completed",
+    "reminder trigger",
+    "results ready"
+  ],
+  "knowledgeSources": [
+    "Role-assessment mapping",
+    "scoring rubrics",
+    "benchmark data",
+    "question banks",
+    "success profiles"
+  ],
+  "agentOrchestration": [
+    "Assessment Selection Agent",
+    "Delivery Agent",
+    "Reminder Agent",
+    "Scoring Agent",
+    "Integration Agent"
+  ]
+}

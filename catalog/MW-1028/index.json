@@ -1,0 +1,153 @@
+{
+  "id": "MW-1028",
+  "name": "Cross-BU Insights AI Worker",
+  "description": "Translates CX intelligence into actionable insights for product, marketing, sales, and operations teams.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Success"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1028/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "42% improvement in campaign engagement",
+  "integrations": [
+    {
+      "name": "VoC platforms",
+      "logoUrl": "ew-marketplace://logos/voc-platforms.png"
+    },
+    {
+      "name": "product management tools (Productboard, Aha!)",
+      "logoUrl": "ew-marketplace://logos/product-management-tools-productboard-aha.png"
+    },
+    {
+      "name": "sales enablement",
+      "logoUrl": "ew-marketplace://logos/sales-enablement.png"
+    },
+    {
+      "name": "marketing automation",
+      "logoUrl": "ew-marketplace://logos/marketing-automation.png"
+    },
+    {
+      "name": "Slack",
+      "logoUrl": "ew-marketplace://logos/slack.png"
+    },
+    {
+      "name": "presentation tools",
+      "logoUrl": "ew-marketplace://logos/presentation-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1028/hero.png"
+  },
+  "overview": "Synthesizes CX intelligence for product, marketing, and sales teams This AI Worker ensures customer intelligence drives decisions across the organization—not just within CX. It translates VoC themes into product requirements, surfaces competitive intelligence         Sales Win Rate Impact for sales enablement, identifies messaging opportunities for marketing, and delivers operational insights for support leadership. Each stakeholder gets insights in their language, formatted for their workflows, at the cadence they need.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1028/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "VoC platforms",
+        "description": "Integration with VoC platforms"
+      },
+      {
+        "name": "product management tools (Productboard, Aha!)",
+        "description": "Integration with product management tools (Productboard, Aha!)"
+      },
+      {
+        "name": "sales enablement",
+        "description": "Integration with sales enablement"
+      },
+      {
+        "name": "marketing automation",
+        "description": "Integration with marketing automation"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Insight Aggregation",
+        "description": "Handles the insight aggregation step"
+      },
+      {
+        "name": "Stakeholder Mapping",
+        "description": "Handles the stakeholder mapping step"
+      },
+      {
+        "name": "Relevance Filtering",
+        "description": "Handles the relevance filtering step"
+      },
+      {
+        "name": "Translation",
+        "description": "Handles the translation step"
+      },
+      {
+        "name": "Priority Scoring",
+        "description": "Handles the priority scoring step"
+      },
+      {
+        "name": "Distribution",
+        "description": "Handles the distribution step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Marketing Campaign Relevance",
+      "value": "42% improvement in campaign engagement"
+    },
+    {
+      "metric": "Time to Distribution",
+      "value": "Insights reach stakeholders in hours, not weeks"
+    },
+    {
+      "metric": "Stakeholder Satisfaction",
+      "value": "4.7/5.0 rating on insight utility"
+    }
+  ],
+  "outputs": [
+    "Product insight briefs",
+    "sales battlecards",
+    "marketing opportunity reports",
+    "operations dashboards",
+    "executive summaries",
+    "competitive alerts"
+  ],
+  "triggers": [
+    "Product planning cycle",
+    "sales QBR",
+    "marketing campaign planning",
+    "executive strategy session",
+    "competitive threat",
+    "product launch"
+  ],
+  "knowledgeSources": [
+    "VoC data",
+    "product feedback",
+    "competitive intelligence",
+    "sales call analysis",
+    "support themes",
+    "market research",
+    "customer success insights"
+  ],
+  "agentOrchestration": [
+    "Insight Aggregation Agent",
+    "Stakeholder Mapping Agent",
+    "Relevance Filtering Agent",
+    "Translation Agent",
+    "Priority Scoring Agent",
+    "Distribution Agent"
+  ]
+}

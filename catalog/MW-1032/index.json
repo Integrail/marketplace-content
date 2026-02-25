@@ -1,0 +1,157 @@
+{
+  "id": "MW-1032",
+  "name": "External Candidate Sourcing AI Worker",
+  "description": "Prospects passive candidates via LinkedIn and email, crafting personalized outreach that converts employed talent into applicants.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Talent Acquisition"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1032/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "50-100+ personalized touches per day per recruiter",
+  "integrations": [
+    {
+      "name": "LinkedIn Recruiter API",
+      "logoUrl": "ew-marketplace://logos/linkedin-recruiter-api.png"
+    },
+    {
+      "name": "LinkedIn Standard API",
+      "logoUrl": "ew-marketplace://logos/linkedin-standard-api.png"
+    },
+    {
+      "name": "email service providers",
+      "logoUrl": "ew-marketplace://logos/email-service-providers.png"
+    },
+    {
+      "name": "CRM systems",
+      "logoUrl": "ew-marketplace://logos/crm-systems.png"
+    },
+    {
+      "name": "ATS platforms",
+      "logoUrl": "ew-marketplace://logos/ats-platforms.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1032/hero.png"
+  },
+  "overview": "Prospects passive candidates via LinkedIn and email with personalized outreach This AI Worker handles the most challenging—and highest-value—recruiting work: converting passive candidates into applicants. It works with recruiters to identify target candidates through LinkedIn searches (Recruiter or standard), then for each prospect, extracts comprehensive profile data, analyzes their background against job requirements, and crafts highly personalized LinkedIn messages and emails. Every outreach references specific aspects of the candidate's experience, dramatically improving response rates over generic templates.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1032/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "LinkedIn Recruiter API",
+        "description": "Integration with LinkedIn Recruiter API"
+      },
+      {
+        "name": "LinkedIn Standard API",
+        "description": "Integration with LinkedIn Standard API"
+      },
+      {
+        "name": "email service providers",
+        "description": "Integration with email service providers"
+      },
+      {
+        "name": "CRM systems",
+        "description": "Integration with CRM systems"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Search Execution",
+        "description": "Handles the search execution step"
+      },
+      {
+        "name": "Profile Extraction",
+        "description": "Handles the profile extraction step"
+      },
+      {
+        "name": "Background Analysis",
+        "description": "Handles the background analysis step"
+      },
+      {
+        "name": "Message Writing",
+        "description": "Handles the message writing step"
+      },
+      {
+        "name": "Approval",
+        "description": "Handles the approval step"
+      },
+      {
+        "name": "LinkedIn Send",
+        "description": "Handles the linkedin send step"
+      },
+      {
+        "name": "Email Send",
+        "description": "Handles the email send step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Outreach Volume",
+      "value": "50-100+ personalized touches per day per recruiter"
+    },
+    {
+      "metric": "Response Rate",
+      "value": "3-5x improvement over template-based outreach"
+    },
+    {
+      "metric": "Time Savings",
+      "value": "15+ hours/week saved on manual research and writing"
+    },
+    {
+      "metric": "Quality",
+      "value": "Every message references candidate-specific details"
+    },
+    {
+      "metric": "Pipeline Growth",
+      "value": "40-60% increase in passive candidate pipeline"
+    }
+  ],
+  "outputs": [
+    "Personalized LinkedIn messages",
+    "personalized emails",
+    "outreach tracking",
+    "response monitoring",
+    "candidate status updates"
+  ],
+  "triggers": [
+    "LinkedIn search URL",
+    "saved candidate list",
+    "role job description",
+    "outreach preferences"
+  ],
+  "knowledgeSources": [
+    "Job requirements",
+    "company value proposition",
+    "outreach templates",
+    "personalization frameworks",
+    "competitor intelligence"
+  ],
+  "agentOrchestration": [
+    "Search Execution Agent",
+    "Profile Extraction Agent",
+    "Background Analysis Agent",
+    "Message Writing Agent",
+    "Approval Agent",
+    "LinkedIn Send Agent",
+    "Email Send Agent"
+  ]
+}

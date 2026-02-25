@@ -1,0 +1,158 @@
+{
+  "id": "MW-1016",
+  "name": "Billing & Payment Resolution AI Worker",
+  "description": "Manages billing disputes, processes refunds, retries failed payments, and resolves billing discrepancies with full payment gateway integration and compliance.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Support"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1016/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 3-5 days to under 4 hours",
+  "integrations": [
+    {
+      "name": "Stripe",
+      "logoUrl": "ew-marketplace://logos/stripe.png"
+    },
+    {
+      "name": "PayPal",
+      "logoUrl": "ew-marketplace://logos/paypal.png"
+    },
+    {
+      "name": "Zuora",
+      "logoUrl": "ew-marketplace://logos/zuora.png"
+    },
+    {
+      "name": "Chargebee",
+      "logoUrl": "ew-marketplace://logos/chargebee.png"
+    },
+    {
+      "name": "QuickBooks",
+      "logoUrl": "ew-marketplace://logos/quickbooks.png"
+    },
+    {
+      "name": "Plaid",
+      "logoUrl": "ew-marketplace://logos/plaid.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1016/hero.png"
+  },
+  "overview": "Manages billing disputes and processes financial transactions without human oversight This AI Worker transforms billing support from a specialized skill into scalable capacity. It handles       Average Resolution Time all billing-related inquiries—payment failures, refunds, disputes, and adjustments—with real-time access to payment gateways and transaction history. The worker processes all refund types (return-based, service credits, dispute resolutions), retries failed payments with updated methods, and resolves discrepancies autonomously. Every transaction maintains full compliance with financial regulations and creates complete audit trails.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1016/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Stripe",
+        "description": "Integration with Stripe"
+      },
+      {
+        "name": "PayPal",
+        "description": "Integration with PayPal"
+      },
+      {
+        "name": "Zuora",
+        "description": "Integration with Zuora"
+      },
+      {
+        "name": "Chargebee",
+        "description": "Integration with Chargebee"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Payment Verification",
+        "description": "Handles the payment verification step"
+      },
+      {
+        "name": "Transaction Lookup",
+        "description": "Handles the transaction lookup step"
+      },
+      {
+        "name": "Policy Check",
+        "description": "Handles the policy check step"
+      },
+      {
+        "name": "Refund Eligibility",
+        "description": "Handles the refund eligibility step"
+      },
+      {
+        "name": "Processing Authorization",
+        "description": "Handles the processing authorization step"
+      },
+      {
+        "name": "Payment Gateway",
+        "description": "Handles the payment gateway step"
+      },
+      {
+        "name": "Confirmation",
+        "description": "Handles the confirmation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Refund Processing",
+      "value": "Reduced from 3-5 days to under 4 hours"
+    },
+    {
+      "metric": "Payment Recovery",
+      "value": "34% increase in failed payment recovery"
+    },
+    {
+      "metric": "Customer Satisfaction",
+      "value": "4.7/5.0 average rating on billing interactions"
+    }
+  ],
+  "outputs": [
+    "Processed refunds",
+    "updated billing records",
+    "customer confirmation messages",
+    "transaction receipts",
+    "compliance documentation"
+  ],
+  "triggers": [
+    "Billing disputes",
+    "payment failures",
+    "refund requests",
+    "invoice questions",
+    "subscription changes",
+    "payment method updates",
+    "service credits"
+  ],
+  "knowledgeSources": [
+    "Billing policies",
+    "refund terms",
+    "payment processing guides",
+    "subscription plan details",
+    "tax regulations",
+    "chargeback procedures",
+    "service credit policies"
+  ],
+  "agentOrchestration": [
+    "Payment Verification Agent",
+    "Transaction Lookup Agent",
+    "Policy Check Agent",
+    "Refund Eligibility Agent",
+    "Processing Authorization Agent",
+    "Payment Gateway Agent",
+    "Confirmation Agent"
+  ]
+}

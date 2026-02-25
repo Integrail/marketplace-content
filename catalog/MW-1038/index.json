@@ -1,0 +1,150 @@
+{
+  "id": "MW-1038",
+  "name": "Benefits Administration AI Worker",
+  "description": "Handles benefits enrollment, changes, and questions4guiding employees through options and processing requests.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1038/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "95%+ on-time enrollment completion",
+  "integrations": [
+    {
+      "name": "Benefits administration platforms",
+      "logoUrl": "ew-marketplace://logos/benefits-administration-platforms.png"
+    },
+    {
+      "name": "HRIS systems",
+      "logoUrl": "ew-marketplace://logos/hris-systems.png"
+    },
+    {
+      "name": "insurance carrier portals",
+      "logoUrl": "ew-marketplace://logos/insurance-carrier-portals.png"
+    },
+    {
+      "name": "payroll systems",
+      "logoUrl": "ew-marketplace://logos/payroll-systems.png"
+    },
+    {
+      "name": "document management",
+      "logoUrl": "ew-marketplace://logos/document-management.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1038/hero.png"
+  },
+  "overview": "Handles benefits enrollment, changes, and questions throughout the employee lifecycle This AI Worker guides employees through the complexity of benefits decisions. During open enrollment, it explains plan options, compares coverage levels, and helps employees make informed choices. Year-round, it answers questions about coverage, processes life event changes, assists with claims questions, and ensures employees maximize their benefits. It transforms benefits administration from a seasonal HR burden into continuous, personalized employee support.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1038/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Benefits administration platforms",
+        "description": "Integration with Benefits administration platforms"
+      },
+      {
+        "name": "HRIS systems",
+        "description": "Integration with HRIS systems"
+      },
+      {
+        "name": "insurance carrier portals",
+        "description": "Integration with insurance carrier portals"
+      },
+      {
+        "name": "payroll systems",
+        "description": "Integration with payroll systems"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Question Classification",
+        "description": "Handles the question classification step"
+      },
+      {
+        "name": "Plan Comparison",
+        "description": "Handles the plan comparison step"
+      },
+      {
+        "name": "Enrollment Guidance",
+        "description": "Handles the enrollment guidance step"
+      },
+      {
+        "name": "Change Processing",
+        "description": "Handles the change processing step"
+      },
+      {
+        "name": "Carrier Coordination",
+        "description": "Handles the carrier coordination step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Enrollment Completion",
+      "value": "95%+ on-time enrollment completion"
+    },
+    {
+      "metric": "Question Resolution",
+      "value": "80% of benefits questions resolved without HR"
+    },
+    {
+      "metric": "HR Time Savings",
+      "value": "20+ hours saved during open enrollment periods"
+    },
+    {
+      "metric": "Employee Understanding",
+      "value": "40% improvement in benefits comprehension scores"
+    },
+    {
+      "metric": "Error Reduction",
+      "value": "60% fewer enrollment errors and corrections"
+    }
+  ],
+  "outputs": [
+    "Plan comparisons",
+    "enrollment confirmations",
+    "change processing",
+    "coverage summaries",
+    "claims guidance",
+    "deadline reminders"
+  ],
+  "triggers": [
+    "Enrollment requests",
+    "plan comparison questions",
+    "life event changes",
+    "coverage inquiries",
+    "claims questions"
+  ],
+  "knowledgeSources": [
+    "Benefits plan documents",
+    "coverage summaries",
+    "cost comparisons",
+    "eligibility rules",
+    "life event procedures",
+    "carrier information"
+  ],
+  "agentOrchestration": [
+    "Question Classification Agent",
+    "Plan Comparison Agent",
+    "Enrollment Guidance Agent",
+    "Change Processing Agent",
+    "Carrier Coordination Agent"
+  ]
+}

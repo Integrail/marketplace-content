@@ -1,0 +1,149 @@
+{
+  "id": "MW-1068",
+  "name": "RFP Response AI Worker",
+  "description": "Intakes prompts to rapidly respond to RFP questionnaires.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1068/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "80% reduction in RFP completion time",
+  "integrations": [
+    {
+      "name": "Loopio",
+      "logoUrl": "ew-marketplace://logos/loopio.png"
+    },
+    {
+      "name": "Responsive",
+      "logoUrl": "ew-marketplace://logos/responsive.png"
+    },
+    {
+      "name": "Google Docs",
+      "logoUrl": "ew-marketplace://logos/google-docs.png"
+    },
+    {
+      "name": "Word",
+      "logoUrl": "ew-marketplace://logos/word.png"
+    },
+    {
+      "name": "SharePoint",
+      "logoUrl": "ew-marketplace://logos/sharepoint.png"
+    },
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1068/hero.png"
+  },
+  "overview": "This AI Worker transforms RFP response from a weeks-long ordeal into a streamlined process. It ingests RFP documents, matches questions to your response library, drafts answers using approved content, identifies gaps requiring SME input, and assembles complete response documents. It ensures you never miss an RFP deadline while maintaining response quality.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1068/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Loopio",
+        "description": "Integration with Loopio"
+      },
+      {
+        "name": "Responsive",
+        "description": "Integration with Responsive"
+      },
+      {
+        "name": "Google Docs",
+        "description": "Integration with Google Docs"
+      },
+      {
+        "name": "Word",
+        "description": "Integration with Word"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Document Parsing",
+        "description": "Handles the document parsing step"
+      },
+      {
+        "name": "Question Matching",
+        "description": "Handles the question matching step"
+      },
+      {
+        "name": "Response Drafting",
+        "description": "Handles the response drafting step"
+      },
+      {
+        "name": "Gap Identification",
+        "description": "Handles the gap identification step"
+      },
+      {
+        "name": "Assembly",
+        "description": "Handles the assembly step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Response Time",
+      "value": "80% reduction in RFP completion time"
+    },
+    {
+      "metric": "Coverage",
+      "value": "90%+ of questions answered from existing content"
+    },
+    {
+      "metric": "Accuracy",
+      "value": "Consistent, accurate responses across all RFPs"
+    },
+    {
+      "metric": "Win Rate",
+      "value": "30-50% improvement in RFP win rate"
+    },
+    {
+      "metric": "Capacity",
+      "value": "5x more RFPs completed with same resources"
+    }
+  ],
+  "outputs": [
+    "Complete RFP responses",
+    "gap report for SME review",
+    "formatted deliverable documents"
+  ],
+  "triggers": [
+    "RFP document upload",
+    "deadline",
+    "specific requirements",
+    "SME inputs for gaps"
+  ],
+  "knowledgeSources": [
+    "Response library",
+    "past winning RFPs",
+    "product documentation",
+    "security/compliance docs",
+    "customer references"
+  ],
+  "agentOrchestration": [
+    "Document Parsing Agent",
+    "Question Matching Agent",
+    "Response Drafting Agent",
+    "Gap Identification Agent",
+    "Assembly Agent"
+  ]
+}

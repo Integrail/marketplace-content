@@ -1,0 +1,167 @@
+{
+  "id": "MW-1045",
+  "name": "Lead Generation AI Worker",
+  "description": "Identifies potential clients through market signals, trigger events, and firmographic criteria, building a continuous pipeline of qualified prospects.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1045/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "3x increase in qualified leads per month",
+  "integrations": [
+    {
+      "name": "PitchBook",
+      "logoUrl": "ew-marketplace://logos/pitchbook.png"
+    },
+    {
+      "name": "Crunchbase",
+      "logoUrl": "ew-marketplace://logos/crunchbase.png"
+    },
+    {
+      "name": "LinkedIn Sales Navigator",
+      "logoUrl": "ew-marketplace://logos/linkedin-sales-navigator.png"
+    },
+    {
+      "name": "Salesforce",
+      "logoUrl": "ew-marketplace://logos/salesforce.png"
+    },
+    {
+      "name": "HubSpot",
+      "logoUrl": "ew-marketplace://logos/hubspot.png"
+    },
+    {
+      "name": "Bloomberg",
+      "logoUrl": "ew-marketplace://logos/bloomberg.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1045/hero.png"
+  },
+  "overview": "Identifies potential clients through market signals and trigger events continuously This AI Worker ensures your pipeline never runs dry. It monitors thousands of signals—leadership changes, fundraising announcements, M&A activity, regulatory filings, portfolio company exits, succession planning triggers—and identifies prospects who match your ideal client profile at the moment they're most likely to need your services. The worker aggregates data from public filings, news sources, social media, and industry databases to surface opportunities before your competitors see them.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1045/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "PitchBook",
+        "description": "Integration with PitchBook"
+      },
+      {
+        "name": "Crunchbase",
+        "description": "Integration with Crunchbase"
+      },
+      {
+        "name": "LinkedIn Sales Navigator",
+        "description": "Integration with LinkedIn Sales Navigator"
+      },
+      {
+        "name": "Salesforce",
+        "description": "Integration with Salesforce"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Signal Monitoring",
+        "description": "Handles the signal monitoring step"
+      },
+      {
+        "name": "Data Enrichment",
+        "description": "Handles the data enrichment step"
+      },
+      {
+        "name": "Profile Matching",
+        "description": "Handles the profile matching step"
+      },
+      {
+        "name": "Scoring",
+        "description": "Handles the scoring step"
+      },
+      {
+        "name": "Deduplication",
+        "description": "Handles the deduplication step"
+      },
+      {
+        "name": "CRM Update",
+        "description": "Handles the crm update step"
+      },
+      {
+        "name": "Alert",
+        "description": "Handles the alert step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Lead Volume",
+      "value": "3x increase in qualified leads per month"
+    },
+    {
+      "metric": "Signal Detection Speed",
+      "value": "Opportunities identified within 24 hours of trigger"
+    },
+    {
+      "metric": "Coverage",
+      "value": "100% of target market monitored continuously"
+    },
+    {
+      "metric": "Data Accuracy",
+      "value": "94% accuracy on firmographic and contact data"
+    },
+    {
+      "metric": "Cost Per Lead",
+      "value": "67% reduction vs. traditional research methods"
+    }
+  ],
+  "outputs": [
+    "Qualified lead profiles",
+    "trigger event summaries",
+    "contact information",
+    "company intelligence",
+    "CRM records",
+    "priority rankings",
+    "daily/weekly lead digests"
+  ],
+  "triggers": [
+    "Ideal client profile criteria",
+    "target market segments",
+    "trigger event definitions",
+    "exclusion lists",
+    "geographic focus"
+  ],
+  "knowledgeSources": [
+    "SEC filings",
+    "PitchBook",
+    "Crunchbase",
+    "LinkedIn",
+    "news feeds",
+    "industry publications",
+    "regulatory databases",
+    "proprietary data sources"
+  ],
+  "agentOrchestration": [
+    "Signal Monitoring Agent",
+    "Data Enrichment Agent",
+    "Profile Matching Agent",
+    "Scoring Agent",
+    "Deduplication Agent",
+    "CRM Update Agent",
+    "Alert Agent"
+  ]
+}

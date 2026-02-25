@@ -1,0 +1,139 @@
+{
+  "id": "MW-1081",
+  "name": "Candidate Sourcing AI Worker",
+  "description": "Searches your ATS database and external sources to identify and rank candidates for open roles.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Talent Acquisition"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1081/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "40% of hires sourced from existing ATS database",
+  "integrations": [
+    {
+      "name": "ATS (candidate database)",
+      "logoUrl": "ew-marketplace://logos/ats-candidate-database.png"
+    },
+    {
+      "name": "LinkedIn Recruiter",
+      "logoUrl": "ew-marketplace://logos/linkedin-recruiter.png"
+    },
+    {
+      "name": "email",
+      "logoUrl": "ew-marketplace://logos/email.png"
+    },
+    {
+      "name": "SharePoint/document storage for resumes",
+      "logoUrl": "ew-marketplace://logos/sharepoint-document-storage-for-resumes.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1081/hero.png"
+  },
+  "overview": "This AI Worker mines your existing talent database to surface candidates you've already paid to acquire. It searches past applicants, silver medalists, and previous employees against new requisitions, then ranks them by fit and recency. It also searches connected external sources to identify passive candidates. Every sourced candidate receives a personalized outreach sequence, and interested candidates are automatically progressed to screening.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1081/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "ATS (candidate database)",
+        "description": "Integration with ATS (candidate database)"
+      },
+      {
+        "name": "LinkedIn Recruiter",
+        "description": "Integration with LinkedIn Recruiter"
+      },
+      {
+        "name": "email",
+        "description": "Integration with email"
+      },
+      {
+        "name": "SharePoint/document storage for resumes",
+        "description": "Integration with SharePoint/document storage for resumes"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Search",
+        "description": "Handles the search step"
+      },
+      {
+        "name": "Matching",
+        "description": "Handles the matching step"
+      },
+      {
+        "name": "Ranking",
+        "description": "Handles the ranking step"
+      },
+      {
+        "name": "Outreach",
+        "description": "Handles the outreach step"
+      },
+      {
+        "name": "Response Handling",
+        "description": "Handles the response handling step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Database Activation",
+      "value": "40% of hires sourced from existing ATS database"
+    },
+    {
+      "metric": "Sourcing Speed",
+      "value": "Qualified candidate slate delivered within 24 hours of requisition"
+    },
+    {
+      "metric": "Response Rate",
+      "value": "3x improvement in candidate response to outreach"
+    },
+    {
+      "metric": "Cost per Hire",
+      "value": "50% reduction by prioritizing owned database over paid sourcing"
+    },
+    {
+      "metric": "Recruiter Efficiency",
+      "value": "Sourcers focus on strategic roles while AI handles volume"
+    }
+  ],
+  "outputs": [
+    "Ranked candidate lists",
+    "automated outreach sequences",
+    "interested candidate queue for screening"
+  ],
+  "triggers": [
+    "New requisition opened",
+    "hiring manager sourcing request",
+    "weekly talent mining schedule"
+  ],
+  "knowledgeSources": [
+    "Job requirements",
+    "ideal candidate profiles",
+    "past successful hires",
+    "hiring manager preferences"
+  ],
+  "agentOrchestration": [
+    "Search Agent",
+    "Matching Agent",
+    "Ranking Agent",
+    "Outreach Agent",
+    "Response Handling Agent"
+  ]
+}

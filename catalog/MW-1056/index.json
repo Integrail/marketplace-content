@@ -1,0 +1,159 @@
+{
+  "id": "MW-1056",
+  "name": "Content Marketing AI Worker",
+  "description": "Researches, writes, and designs guides, whitepapers, and content assets to scale your narrative.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Marketing"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1056/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "8-12 long-form assets per month vs. 1-2 manually",
+  "integrations": [
+    {
+      "name": "Google Docs",
+      "logoUrl": "ew-marketplace://logos/google-docs.png"
+    },
+    {
+      "name": "Notion",
+      "logoUrl": "ew-marketplace://logos/notion.png"
+    },
+    {
+      "name": "Figma",
+      "logoUrl": "ew-marketplace://logos/figma.png"
+    },
+    {
+      "name": "Canva",
+      "logoUrl": "ew-marketplace://logos/canva.png"
+    },
+    {
+      "name": "HubSpot",
+      "logoUrl": "ew-marketplace://logos/hubspot.png"
+    },
+    {
+      "name": "Marketo",
+      "logoUrl": "ew-marketplace://logos/marketo.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1056/hero.png"
+  },
+  "overview": "This AI Worker operates as your always-on content team, producing long-form thought leadership assets that would typically require weeks of work. It conducts deep research on topics you define, synthesizes insights into compelling narratives, writes complete guides and whitepapers, designs professional layouts, and prepares assets for distribution. From a single brief, it delivers publication-ready content that positions your brand as an industry authority.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1056/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Google Docs",
+        "description": "Integration with Google Docs"
+      },
+      {
+        "name": "Notion",
+        "description": "Integration with Notion"
+      },
+      {
+        "name": "Figma",
+        "description": "Integration with Figma"
+      },
+      {
+        "name": "Canva",
+        "description": "Integration with Canva"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Research",
+        "description": "Handles the research step"
+      },
+      {
+        "name": "Outline",
+        "description": "Handles the outline step"
+      },
+      {
+        "name": "Writing",
+        "description": "Handles the writing step"
+      },
+      {
+        "name": "Editing",
+        "description": "Handles the editing step"
+      },
+      {
+        "name": "Design",
+        "description": "Handles the design step"
+      },
+      {
+        "name": "QA",
+        "description": "Handles the qa step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Content Production",
+      "value": "8-12 long-form assets per month vs. 1-2 manually"
+    },
+    {
+      "metric": "Time-to-Publish",
+      "value": "90% reduction in content creation cycle time"
+    },
+    {
+      "metric": "Lead Generation",
+      "value": "3x increase in content-driven leads"
+    },
+    {
+      "metric": "Cost Savings",
+      "value": "70% reduction in content production costs"
+    },
+    {
+      "metric": "Quality Score",
+      "value": "Consistent brand voice across all assets"
+    }
+  ],
+  "outputs": [
+    "Whitepapers",
+    "eBooks",
+    "guides",
+    "one-pagers",
+    "infographics",
+    "designed PDFs ready for gating"
+  ],
+  "triggers": [
+    "Content briefs",
+    "topic requests",
+    "campaign themes",
+    "product launches",
+    "quarterly content plans"
+  ],
+  "knowledgeSources": [
+    "Industry research",
+    "competitor content",
+    "customer interviews",
+    "product documentation",
+    "brand narrative",
+    "SEO keyword data"
+  ],
+  "agentOrchestration": [
+    "Research Agent",
+    "Outline Agent",
+    "Writing Agent",
+    "Editing Agent",
+    "Design Agent",
+    "QA Agent"
+  ]
+}

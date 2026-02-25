@@ -4,6 +4,7 @@ import type { IEverMarketplaceCatalogItem } from '../model/catalog';
 interface Props {
   item: IEverMarketplaceCatalogItem;
   onClick: () => void;
+  searchQuery?: string;
 }
 
 /** Generates a deterministic hue from a string for icon colors */
@@ -13,6 +14,29 @@ function stringToHue(s: string): number {
     h = (h * 31 + s.charCodeAt(i)) % 360;
   }
   return h;
+}
+
+/** Wraps all occurrences of `query` in `text` with an animated highlight mark. */
+function HighlightText({ text, query }: { text: string; query: string }) {
+  if (!query) return <>{text}</>;
+  const q = query.toLowerCase();
+  const parts: React.ReactNode[] = [];
+  let remaining = text;
+  let key = 0;
+
+  while (remaining.length > 0) {
+    const idx = remaining.toLowerCase().indexOf(q);
+    if (idx < 0) { parts.push(remaining); break; }
+    if (idx > 0) parts.push(remaining.slice(0, idx));
+    parts.push(
+      <mark key={key++} className="search-highlight">
+        {remaining.slice(idx, idx + q.length)}
+      </mark>,
+    );
+    remaining = remaining.slice(idx + q.length);
+  }
+
+  return <>{parts}</>;
 }
 
 export function ItemIcon({
@@ -46,7 +70,7 @@ export function ItemIcon({
   );
 }
 
-export function IntegrationPill({ name }: { name: string }) {
+export function IntegrationPill({ name, query = '' }: { name: string; query?: string }) {
   const hue = stringToHue(name);
   return (
     <span
@@ -56,15 +80,17 @@ export function IntegrationPill({ name }: { name: string }) {
         color: `hsl(${hue}, 55%, 30%)`,
       }}
     >
-      {name}
+      <HighlightText text={name} query={query} />
     </span>
   );
 }
 
-export default function CatalogCard({ item, onClick }: Props) {
+export default function CatalogCard({ item, onClick, searchQuery = '' }: Props) {
   const MAX_INTEGRATIONS = 4;
   const visibleIntegrations = item.integrations.slice(0, MAX_INTEGRATIONS);
   const extraCount = item.integrations.length - MAX_INTEGRATIONS;
+  const desc = typeof item.description === 'string' ? item.description : item.description.href;
+  const categoriesText = item.categories.join(' \u2022 ');
 
   return (
     <div className="catalog-card" onClick={onClick} role="button" tabIndex={0}
@@ -73,7 +99,9 @@ export default function CatalogCard({ item, onClick }: Props) {
       <div className="card-top-row">
         <ItemIcon name={item.name} />
         <div className="card-name-block">
-          <span className="card-name">{item.name}</span>
+          <span className="card-name">
+            <HighlightText text={item.name} query={searchQuery} />
+          </span>
           <span className="card-author">{item.author.name}</span>
         </div>
       </div>
@@ -82,15 +110,13 @@ export default function CatalogCard({ item, onClick }: Props) {
       <div className="card-badge-row">
         <span className="badge type-badge">{item.type}</span>
         <span className="badge category-badge">
-          {item.categories.join(' \u2022 ')}
+          <HighlightText text={categoriesText} query={searchQuery} />
         </span>
       </div>
 
       {/* Description */}
       <p className="card-description">
-        {typeof item.description === 'string'
-          ? item.description
-          : item.description.href}
+        <HighlightText text={desc} query={searchQuery} />
       </p>
 
       {/* Key benefit */}
@@ -104,7 +130,7 @@ export default function CatalogCard({ item, onClick }: Props) {
       {item.integrations.length > 0 && (
         <div className="card-integrations">
           {visibleIntegrations.map((intg) => (
-            <IntegrationPill key={intg.name} name={intg.name} />
+            <IntegrationPill key={intg.name} name={intg.name} query={searchQuery} />
           ))}
           {extraCount > 0 && (
             <span className="integration-pill integration-pill-more">

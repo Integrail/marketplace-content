@@ -126,5 +126,74 @@ Here is prototype of marketplace-content.
 - Prototype of marketplace validation, build and and deployment system
 
 It is foundation for upcoming month.
+//===================================================
+There is extracted "./click-up" folder in this repository
+It contains ClickUp tasks for catalog items creation
 
+Task path pattern is click-up/tasks/{task id}
 
+For example:
+click-up/tasks/MW-1001/MW-1001-summary.json - summary
+click-up/tasks/MW-1001/MW-1001-activity.json - discussion
+click-up/tasks/MW-1001/attachments - task attachments, PDF mostly. PDFs define catalog item in details:
+- Meaning
+- Goals
+- Market targets
+- Savings, etc
+
+Plan:
+
+Step 1: Data extraction
+
+Using poppler do this
+- Extract information from PDF into nested MD files, like this
+FROM: click-up/tasks/MW-1001/attachments/Accounts Payable (AP) AI Worker.pdf
+TO: click-up/tasks/MW-1001/attachments/Accounts Payable (AP) AI Worker.MD
+
+Step 2: Update catalog model with new findings (like daily savings, etc.)
+
+Step 3: For each task
+Extract information from summary and PDF about marketplace catalog item and create
+actual catalog item in the ./catalog like this
+Source data: click-up/tasks/MW-1001
+Catalog item: catalog/MW-1001
+index.json - item summary
+
+Step 4: Improve demo to with 
+- Fake Modal Wizard Dialog for "Setup Worker"
+  - Intro and next button
+  - Fake installation process 2-3 seconds (nice animated SVG here)
+  - Completed page with close and run buttons. Both just close wizard
+- Tech details page (show fake popup with some fake tech details same for all items)
+
+//===================================================
+1. I need tool improvements (update README as well)
+npm run marketplace-preview - start and open preview app in the browser
+npm run marketplace-package {demo|prod} - build marketplace distributive (demo by default)
+- target ./marketplace-dist/everworker-marketplace-{YYY}-{M}-{D}-{H}.zip
+- Zip file must contain the index.json with catalog items reference
+- Each catalog item is one MW-XXXX.json file (combine all item information)
+- Publish Media data (all non text information) into S3 (in demo into ./marketplace-dist/everworker-marketplace-{YYY}-{M}-{D}-{H}-s3 dir)
+npm run marketplace-install-locally
+- took recent zip file and add to local mongodb.
+- Collection name marketplace_v1. Put items as records, add indexes for search
+npm run click-up sync - run "everhow click-up:content-sync" click up sync command
+
+2. Add search to the main page of demo app (client side, simple)
+
+3. Document the marketplace building process in README
+
+- sync click up dir
+- ask claude to update marketplace using new information
+- ask claude to improve the process step by step (like update only items with in progress status)
+
+For local mongodb use these by default
+
+MONGO_INITDB_ROOT_USERNAME: integrail
+MONGO_INITDB_ROOT_PASSWORD: password
+MONGO_INITDB_DATABASE: everworker
+MONGO_INITDB_MARKETPLACE_COLLECTION: marketplace_v1
+
+//===================================================
+Small demo improvements.
+- Highlight founded text by some small animation (like fade in/out pulse with 30% brightness or opacity variation every 2 seconds)

@@ -1,0 +1,158 @@
+{
+  "id": "MW-1048",
+  "name": "SAM Outreach Orchestrator AI Worker",
+  "description": "Executes personalized, multi-channel outreach campaigns at scale, coordinating timing and messaging for maximum response rates.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1048/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "10x increase in personalized touches per rep 3.2x improvement vs. template-based outreach",
+  "integrations": [
+    {
+      "name": "Salesforce",
+      "logoUrl": "ew-marketplace://logos/salesforce.png"
+    },
+    {
+      "name": "HubSpot",
+      "logoUrl": "ew-marketplace://logos/hubspot.png"
+    },
+    {
+      "name": "Outreach",
+      "logoUrl": "ew-marketplace://logos/outreach.png"
+    },
+    {
+      "name": "Salesloft",
+      "logoUrl": "ew-marketplace://logos/salesloft.png"
+    },
+    {
+      "name": "LinkedIn Sales Navigator",
+      "logoUrl": "ew-marketplace://logos/linkedin-sales-navigator.png"
+    },
+    {
+      "name": "email platforms",
+      "logoUrl": "ew-marketplace://logos/email-platforms.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1048/hero.png"
+  },
+  "overview": "Executes personalized multi-channel outreach campaigns at scale This AI Worker transforms business development from art to science without losing the personal touch. It orchestrates outreach across email, LinkedIn, phone, and events—timing each touch for        Response Rate maximum impact and personalizing every message based on prospect context. The worker manages complex multi-step sequences, tracks engagement signals, adjusts cadence based on response patterns, and ensures no prospect falls through the cracks. Your team engages 10x more prospects with higher response rates.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1048/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Salesforce",
+        "description": "Integration with Salesforce"
+      },
+      {
+        "name": "HubSpot",
+        "description": "Integration with HubSpot"
+      },
+      {
+        "name": "Outreach",
+        "description": "Integration with Outreach"
+      },
+      {
+        "name": "Salesloft",
+        "description": "Integration with Salesloft"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Sequence Planning",
+        "description": "Handles the sequence planning step"
+      },
+      {
+        "name": "Personalization",
+        "description": "Handles the personalization step"
+      },
+      {
+        "name": "Timing Optimization",
+        "description": "Handles the timing optimization step"
+      },
+      {
+        "name": "Email Execution",
+        "description": "Handles the email execution step"
+      },
+      {
+        "name": "LinkedIn",
+        "description": "Handles the linkedin step"
+      },
+      {
+        "name": "Engagement Tracking",
+        "description": "Handles the engagement tracking step"
+      },
+      {
+        "name": "Escalation",
+        "description": "Handles the escalation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Outreach Volume",
+      "value": "10x increase in personalized touches per rep 3.2x improvement vs. template-based outreach"
+    },
+    {
+      "metric": "Meeting Conversion",
+      "value": "47% more initial meetings booked Follow-up Consistency                  100% of prospects receive appropriate follow-up"
+    },
+    {
+      "metric": "Time Savings",
+      "value": "12+ hours/week saved per business development rep"
+    }
+  ],
+  "outputs": [
+    "Personalized outreach sequences",
+    "engagement tracking",
+    "response alerts",
+    "meeting scheduling",
+    "CRM activity logging",
+    "campaign analytics",
+    "A/B test results"
+  ],
+  "triggers": [
+    "Campaign launch",
+    "prospect list",
+    "sequence templates",
+    "engagement signals",
+    "meeting requests",
+    "response handling preferences"
+  ],
+  "knowledgeSources": [
+    "Outreach templates",
+    "personalization frameworks",
+    "timing optimization models",
+    "response patterns",
+    "competitive positioning",
+    "prospect intelligence"
+  ],
+  "agentOrchestration": [
+    "Sequence Planning Agent",
+    "Personalization Agent",
+    "Timing Optimization Agent",
+    "Email Execution Agent",
+    "LinkedIn Agent",
+    "Engagement Tracking Agent",
+    "Escalation Agent"
+  ]
+}

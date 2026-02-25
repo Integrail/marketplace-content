@@ -1,0 +1,162 @@
+{
+  "id": "MW-1049",
+  "name": "Sales Playbook Generator AI Worker",
+  "description": "Creates customized sales strategies and pitch materials for each prospect based on their specific situation, needs, and decision-making dynamics.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1049/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 4 hours to 30 minutes",
+  "integrations": [
+    {
+      "name": "CRM systems",
+      "logoUrl": "ew-marketplace://logos/crm-systems.png"
+    },
+    {
+      "name": "competitive intelligence platforms",
+      "logoUrl": "ew-marketplace://logos/competitive-intelligence-platforms.png"
+    },
+    {
+      "name": "content management",
+      "logoUrl": "ew-marketplace://logos/content-management.png"
+    },
+    {
+      "name": "presentation tools",
+      "logoUrl": "ew-marketplace://logos/presentation-tools.png"
+    },
+    {
+      "name": "proposal generators",
+      "logoUrl": "ew-marketplace://logos/proposal-generators.png"
+    },
+    {
+      "name": "knowledge bases",
+      "logoUrl": "ew-marketplace://logos/knowledge-bases.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1049/hero.png"
+  },
+  "overview": "Creates customized sales strategies and pitch materials for each prospect This AI Worker ensures every prospect conversation is strategically informed and highly relevant. It analyzes the prospect's specific situation—current providers, investment challenges, organizational dynamics, recent events—and generates a customized playbook including talking points, competitive positioning, objection handling, and recommended next steps. The worker creates prospect-specific pitch materials, meeting agendas, and follow-up content, enabling even junior team members to conduct senior-level conversations.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1049/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "CRM systems",
+        "description": "Integration with CRM systems"
+      },
+      {
+        "name": "competitive intelligence platforms",
+        "description": "Integration with competitive intelligence platforms"
+      },
+      {
+        "name": "content management",
+        "description": "Integration with content management"
+      },
+      {
+        "name": "presentation tools",
+        "description": "Integration with presentation tools"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Situation Analysis",
+        "description": "Handles the situation analysis step"
+      },
+      {
+        "name": "Strategy Development",
+        "description": "Handles the strategy development step"
+      },
+      {
+        "name": "Messaging",
+        "description": "Handles the messaging step"
+      },
+      {
+        "name": "Material Generation",
+        "description": "Handles the material generation step"
+      },
+      {
+        "name": "Objection Preparation",
+        "description": "Handles the objection preparation step"
+      },
+      {
+        "name": "Agenda Creation",
+        "description": "Handles the agenda creation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Pitch Preparation Time",
+      "value": "Reduced from 4 hours to 30 minutes"
+    },
+    {
+      "metric": "Win Rate",
+      "value": "34% improvement in competitive situations"
+    },
+    {
+      "metric": "Rep Ramp Time",
+      "value": "50% faster time-to-productivity for new hires"
+    },
+    {
+      "metric": "Pitch Relevance",
+      "value": "89% of prospects rate pitch as \"highly relevant\""
+    },
+    {
+      "metric": "Consistency",
+      "value": "100% adherence to messaging frameworks"
+    }
+  ],
+  "outputs": [
+    "Sales playbooks",
+    "customized pitch decks",
+    "meeting agendas",
+    "talking points",
+    "competitive battle cards",
+    "objection responses",
+    "follow-up templates",
+    "proposal drafts"
+  ],
+  "triggers": [
+    "Meeting scheduled",
+    "RFP received",
+    "competitive situation identified",
+    "prospect research request",
+    "strategy session"
+  ],
+  "knowledgeSources": [
+    "Product positioning",
+    "competitive intelligence",
+    "case studies",
+    "objection libraries",
+    "pricing frameworks",
+    "success stories",
+    "prospect intelligence"
+  ],
+  "agentOrchestration": [
+    "Situation Analysis Agent",
+    "Strategy Development Agent",
+    "Messaging Agent",
+    "Material Generation Agent",
+    "Objection Preparation Agent",
+    "Agenda Creation Agent"
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "id": "MW-1069",
+  "name": "Competitive Differentiation AI Worker",
+  "description": "Generates personalized competitive differentiation content to share with your prospects.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1069/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Real-time, deal-specific competitive content for every opportunity",
+  "integrations": [
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    },
+    {
+      "name": "Klue",
+      "logoUrl": "ew-marketplace://logos/klue.png"
+    },
+    {
+      "name": "Crayon",
+      "logoUrl": "ew-marketplace://logos/crayon.png"
+    },
+    {
+      "name": "Gong",
+      "logoUrl": "ew-marketplace://logos/gong.png"
+    },
+    {
+      "name": "Google Docs",
+      "logoUrl": "ew-marketplace://logos/google-docs.png"
+    },
+    {
+      "name": "Slack",
+      "logoUrl": "ew-marketplace://logos/slack.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1069/hero.png"
+  },
+  "overview": "This AI Worker arms every rep with deal-specific competitive intelligence. When a competitor enters a deal, it researches the specific competitive situation, generates personalized battlecards and comparison content, creates objection handling scripts, and produces prospect-ready differentiation materials. It ensures your team wins competitive deals with compelling, accurate positioning.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1069/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "CRM",
+        "description": "Integration with CRM"
+      },
+      {
+        "name": "Klue",
+        "description": "Integration with Klue"
+      },
+      {
+        "name": "Crayon",
+        "description": "Integration with Crayon"
+      },
+      {
+        "name": "Gong",
+        "description": "Integration with Gong"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Competitor Research",
+        "description": "Handles the competitor research step"
+      },
+      {
+        "name": "Situation Analysis",
+        "description": "Handles the situation analysis step"
+      },
+      {
+        "name": "Battlecard Generation",
+        "description": "Handles the battlecard generation step"
+      },
+      {
+        "name": "Objection Handling",
+        "description": "Handles the objection handling step"
+      },
+      {
+        "name": "Content Assembly",
+        "description": "Handles the content assembly step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Competitive Intel",
+      "value": "Real-time, deal-specific competitive content for every opportunity"
+    },
+    {
+      "metric": "Win Rate",
+      "value": "40-60% improvement in competitive win rate"
+    },
+    {
+      "metric": "Rep Confidence",
+      "value": "Reps prepared for any competitive objection"
+    },
+    {
+      "metric": "Content Relevance",
+      "value": "100% personalized to each competitive situation"
+    },
+    {
+      "metric": "Speed",
+      "value": "Competitive content delivered within hours, not days"
+    }
+  ],
+  "outputs": [
+    "Personalized battlecards",
+    "competitive comparison charts",
+    "objection handling scripts",
+    "prospect-ready PDFs"
+  ],
+  "triggers": [
+    "Competitor identified in deal",
+    "competitive objection received",
+    "deal stage advancement"
+  ],
+  "knowledgeSources": [
+    "Competitive intelligence database",
+    "win/loss analysis",
+    "product comparison data",
+    "customer feedback",
+    "pricing intel"
+  ],
+  "agentOrchestration": [
+    "Competitor Research Agent",
+    "Situation Analysis Agent",
+    "Battlecard Generation Agent",
+    "Objection Handling Agent",
+    "Content Assembly Agent"
+  ]
+}

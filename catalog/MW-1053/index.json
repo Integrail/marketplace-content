@@ -1,0 +1,146 @@
+{
+  "id": "MW-1053",
+  "name": "New Hire Documentation AI Worker",
+  "description": "Collects required documents, verifies completeness, and ensures compliance before start date",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1053/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "99% of documentation collected before start date",
+  "integrations": [
+    {
+      "name": "HRIS",
+      "logoUrl": "ew-marketplace://logos/hris.png"
+    },
+    {
+      "name": "e-signature platform",
+      "logoUrl": "ew-marketplace://logos/e-signature-platform.png"
+    },
+    {
+      "name": "document storage",
+      "logoUrl": "ew-marketplace://logos/document-storage.png"
+    },
+    {
+      "name": "I-9 verification service",
+      "logoUrl": "ew-marketplace://logos/i-9-verification-service.png"
+    },
+    {
+      "name": "payroll",
+      "logoUrl": "ew-marketplace://logos/payroll.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1053/hero.png"
+  },
+  "overview": "This AI Worker manages the paperwork that bogs down every hire. It sends new hire packets with all required forms, tracks completion, verifies document validity, and ensures everything is collected before start date. It handles I- 9 verification coordination, tax form collection, and policy acknowledgments—all while maintaining compliance and audit trails.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1053/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "HRIS",
+        "description": "Integration with HRIS"
+      },
+      {
+        "name": "e-signature platform",
+        "description": "Integration with e-signature platform"
+      },
+      {
+        "name": "document storage",
+        "description": "Integration with document storage"
+      },
+      {
+        "name": "I-9 verification service",
+        "description": "Integration with I-9 verification service"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Packet Generation",
+        "description": "Handles the packet generation step"
+      },
+      {
+        "name": "Collection",
+        "description": "Handles the collection step"
+      },
+      {
+        "name": "Verification",
+        "description": "Handles the verification step"
+      },
+      {
+        "name": "Reminder",
+        "description": "Handles the reminder step"
+      },
+      {
+        "name": "Compliance",
+        "description": "Handles the compliance step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Completion Rate",
+      "value": "99% of documentation collected before start date"
+    },
+    {
+      "metric": "Error Reduction",
+      "value": "80% fewer document errors requiring correction"
+    },
+    {
+      "metric": "Compliance",
+      "value": "100% I-9 compliance with timely verification"
+    },
+    {
+      "metric": "Candidate Experience",
+      "value": "Mobile-friendly, guided document submission"
+    },
+    {
+      "metric": "HR Time Savings",
+      "value": "5+ hours saved per new hire on paperwork chasing"
+    }
+  ],
+  "outputs": [
+    "New hire document packets",
+    "completion tracking",
+    "verification confirmations",
+    "compliance reports",
+    "payroll-ready files"
+  ],
+  "triggers": [
+    "Offer accepted",
+    "document submitted",
+    "deadline approaching",
+    "verification required"
+  ],
+  "knowledgeSources": [
+    "Required documents by role/location",
+    "form templates",
+    "compliance requirements",
+    "verification procedures"
+  ],
+  "agentOrchestration": [
+    "Packet Generation Agent",
+    "Collection Agent",
+    "Verification Agent",
+    "Reminder Agent",
+    "Compliance Agent"
+  ]
+}

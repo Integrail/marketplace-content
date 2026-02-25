@@ -1,0 +1,166 @@
+{
+  "id": "MW-1021",
+  "name": "Renewal Management AI Worker",
+  "description": "Owns the complete renewal lifecycle from early engagement to closed contract, with healthbased prioritization and personalized proposals.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Success"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1021/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "94% retention (up from 87%)",
+  "integrations": [
+    {
+      "name": "Salesforce",
+      "logoUrl": "ew-marketplace://logos/salesforce.png"
+    },
+    {
+      "name": "Gainsight",
+      "logoUrl": "ew-marketplace://logos/gainsight.png"
+    },
+    {
+      "name": "ChurnZero",
+      "logoUrl": "ew-marketplace://logos/churnzero.png"
+    },
+    {
+      "name": "Totango",
+      "logoUrl": "ew-marketplace://logos/totango.png"
+    },
+    {
+      "name": "DocuSign",
+      "logoUrl": "ew-marketplace://logos/docusign.png"
+    },
+    {
+      "name": "PandaDoc",
+      "logoUrl": "ew-marketplace://logos/pandadoc.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1021/hero.png"
+  },
+  "overview": "Owns the complete renewal lifecycle from early engagement to closed contract This AI Worker ensures no renewal falls through the cracks—and no renewal leaves money on the table. It identifies upcoming renewals 90 days out, analyzes account health and usage patterns, generates personalized renewal proposals, and executes outreach sequences. For healthy accounts, it streamlines the process to close faster. For at-risk accounts, it alerts CSMs with specific concerns and recommended actions. The worker coordinates with legal and finance on contract processing and tracks every renewal through signature.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1021/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Salesforce",
+        "description": "Integration with Salesforce"
+      },
+      {
+        "name": "Gainsight",
+        "description": "Integration with Gainsight"
+      },
+      {
+        "name": "ChurnZero",
+        "description": "Integration with ChurnZero"
+      },
+      {
+        "name": "Totango",
+        "description": "Integration with Totango"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Renewal Identification",
+        "description": "Handles the renewal identification step"
+      },
+      {
+        "name": "Account Health",
+        "description": "Handles the account health step"
+      },
+      {
+        "name": "Pricing Recommendation",
+        "description": "Handles the pricing recommendation step"
+      },
+      {
+        "name": "Proposal Generation",
+        "description": "Handles the proposal generation step"
+      },
+      {
+        "name": "Outreach",
+        "description": "Handles the outreach step"
+      },
+      {
+        "name": "Negotiation Tracking",
+        "description": "Handles the negotiation tracking step"
+      },
+      {
+        "name": "Close",
+        "description": "Handles the close step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Gross Retention Rate",
+      "value": "94% retention (up from 87%)"
+    },
+    {
+      "metric": "Renewal Forecast Accuracy",
+      "value": "91% accuracy at 90 days out"
+    },
+    {
+      "metric": "Time to Renewal Close",
+      "value": "Reduced from 45 days to 18 days"
+    },
+    {
+      "metric": "CSM Account Capacity",
+      "value": "3.2x more accounts managed per CSM"
+    },
+    {
+      "metric": "Contract Value Growth",
+      "value": "12% average uplift on renewals"
+    }
+  ],
+  "outputs": [
+    "Renewal proposals",
+    "pricing recommendations",
+    "risk assessments",
+    "outreach sequences",
+    "contract documents",
+    "forecast updates",
+    "CSM alerts"
+  ],
+  "triggers": [
+    "Renewal date approaching (90/60/30 day)",
+    "contract expiration alerts",
+    "at-risk account flags",
+    "CSM renewal requests",
+    "usage thresholds"
+  ],
+  "knowledgeSources": [
+    "Contract terms",
+    "pricing models",
+    "usage data",
+    "health scores",
+    "renewal playbooks",
+    "competitive intelligence",
+    "negotiation guidelines"
+  ],
+  "agentOrchestration": [
+    "Renewal Identification Agent",
+    "Account Health Agent",
+    "Pricing Recommendation Agent",
+    "Proposal Generation Agent",
+    "Outreach Agent",
+    "Negotiation Tracking Agent",
+    "Close Agent"
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "id": "MW-1019",
+  "name": "Returns & Warranty Claims AI Worker",
+  "description": "Validates return eligibility, determines warranty coverage, generates RMAs, creates shipping labels, and tracks the entire return lifecycle.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Support"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1019/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 3-5 days to under 4 hours",
+  "integrations": [
+    {
+      "name": "Shopify",
+      "logoUrl": "ew-marketplace://logos/shopify.png"
+    },
+    {
+      "name": "SAP",
+      "logoUrl": "ew-marketplace://logos/sap.png"
+    },
+    {
+      "name": "Shippo",
+      "logoUrl": "ew-marketplace://logos/shippo.png"
+    },
+    {
+      "name": "PDF.co",
+      "logoUrl": "ew-marketplace://logos/pdf-co.png"
+    },
+    {
+      "name": "order management systems",
+      "logoUrl": "ew-marketplace://logos/order-management-systems.png"
+    },
+    {
+      "name": "warranty databases",
+      "logoUrl": "ew-marketplace://logos/warranty-databases.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1019/hero.png"
+  },
+  "overview": "Automates the entire returns lifecycle from claim validation to refund processing This AI Worker transforms returns from a cost center into a customer loyalty opportunity. It validates return eligibility against your policies, determines warranty coverage, assesses damage descriptions and photos, generates RMA numbers, creates prepaid shipping labels, and tracks returns through inspection to refund. The worker reduces processing time from days to minutes while ensuring compliance with warranty terms. Customers get fast, fair resolutions; you get lower return fraud and higher post-return satisfaction.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1019/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Shopify",
+        "description": "Integration with Shopify"
+      },
+      {
+        "name": "SAP",
+        "description": "Integration with SAP"
+      },
+      {
+        "name": "Shippo",
+        "description": "Integration with Shippo"
+      },
+      {
+        "name": "PDF.co",
+        "description": "Integration with PDF.co"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Purchase Verification",
+        "description": "Handles the purchase verification step"
+      },
+      {
+        "name": "Warranty Status",
+        "description": "Handles the warranty status step"
+      },
+      {
+        "name": "Return Eligibility",
+        "description": "Handles the return eligibility step"
+      },
+      {
+        "name": "Damage Assessment",
+        "description": "Handles the damage assessment step"
+      },
+      {
+        "name": "RMA Generation",
+        "description": "Handles the rma generation step"
+      },
+      {
+        "name": "Shipping Label",
+        "description": "Handles the shipping label step"
+      },
+      {
+        "name": "Tracking",
+        "description": "Handles the tracking step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Return Processing Time",
+      "value": "Reduced from 3-5 days to under 4 hours"
+    },
+    {
+      "metric": "RMA Automation",
+      "value": "98% generated without human intervention"
+    },
+    {
+      "metric": "Warranty Compliance",
+      "value": "99.4% accuracy on warranty term application"
+    },
+    {
+      "metric": "Returns Experience Rating",
+      "value": "4.6/5.0 customer satisfaction on returns"
+    },
+    {
+      "metric": "Fraud Prevention",
+      "value": "47% improvement in return fraud detection"
+    }
+  ],
+  "outputs": [
+    "RMA numbers",
+    "shipping labels",
+    "return instructions",
+    "warranty determinations",
+    "refund authorizations",
+    "facility assignments"
+  ],
+  "triggers": [
+    "Return requests",
+    "warranty claims",
+    "product defect reports",
+    "damage descriptions",
+    "photo uploads",
+    "purchase information"
+  ],
+  "knowledgeSources": [
+    "Return policies",
+    "warranty terms",
+    "defect databases",
+    "repair procedures",
+    "replacement eligibility",
+    "shipping instructions",
+    "fraud indicators"
+  ],
+  "agentOrchestration": [
+    "Purchase Verification Agent",
+    "Warranty Status Agent",
+    "Return Eligibility Agent",
+    "Damage Assessment Agent",
+    "RMA Generation Agent",
+    "Shipping Label Agent",
+    "Tracking Agent"
+  ]
+}

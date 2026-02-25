@@ -1,0 +1,160 @@
+{
+  "id": "MW-1018",
+  "name": "Order Status & Shipping AI Worker",
+  "description": "Provides real-time order tracking across all carriers, processes address changes, generates return labels, and coordinates special delivery requirements.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Support"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1018/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "45 seconds average vs. 8 minutes with human agents",
+  "integrations": [
+    {
+      "name": "Shopify",
+      "logoUrl": "ew-marketplace://logos/shopify.png"
+    },
+    {
+      "name": "Magento",
+      "logoUrl": "ew-marketplace://logos/magento.png"
+    },
+    {
+      "name": "WooCommerce",
+      "logoUrl": "ew-marketplace://logos/woocommerce.png"
+    },
+    {
+      "name": "UPS",
+      "logoUrl": "ew-marketplace://logos/ups.png"
+    },
+    {
+      "name": "FedEx",
+      "logoUrl": "ew-marketplace://logos/fedex.png"
+    },
+    {
+      "name": "USPS",
+      "logoUrl": "ew-marketplace://logos/usps.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1018/hero.png"
+  },
+  "overview": "Order Status & Shipping AI Worker Delivers real-time order tracking and shipping coordination across all carriers This AI Worker eliminates \"where's my order\" as a support burden. It provides instant, accurate order status from any carrier, handles address changes before shipment, coordinates special delivery requirements, and generates return labels on demand. The worker accesses real-time tracking data, proactively alerts customers to delays, and resolves shipping issues before customers even know there's a problem. Your support team stops answering tracking questions and starts solving real problems.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1018/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Shopify",
+        "description": "Integration with Shopify"
+      },
+      {
+        "name": "Magento",
+        "description": "Integration with Magento"
+      },
+      {
+        "name": "WooCommerce",
+        "description": "Integration with WooCommerce"
+      },
+      {
+        "name": "UPS",
+        "description": "Integration with UPS"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Order Identification",
+        "description": "Handles the order identification step"
+      },
+      {
+        "name": "Carrier Tracking",
+        "description": "Handles the carrier tracking step"
+      },
+      {
+        "name": "Status Compilation",
+        "description": "Handles the status compilation step"
+      },
+      {
+        "name": "Address Validation",
+        "description": "Handles the address validation step"
+      },
+      {
+        "name": "Modification Processing",
+        "description": "Handles the modification processing step"
+      },
+      {
+        "name": "Customer Notification",
+        "description": "Handles the customer notification step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Inquiry Resolution Time",
+      "value": "45 seconds average vs. 8 minutes with human agents"
+    },
+    {
+      "metric": "Shipping Ticket Volume",
+      "value": "67% reduction in shipping-related support volume"
+    },
+    {
+      "metric": "Address Change Accuracy",
+      "value": "99.2% accuracy on address modifications"
+    },
+    {
+      "metric": "Delivery Issue Prevention",
+      "value": "31% reduction in delivery failures through proactive alerts"
+    },
+    {
+      "metric": "Customer Effort Score",
+      "value": "Improved from 4.2 to 2.1 (lower is better)"
+    }
+  ],
+  "outputs": [
+    "Real-time tracking updates",
+    "delivery estimates",
+    "address confirmations",
+    "shipping labels",
+    "proactive delay alerts",
+    "carrier notifications"
+  ],
+  "triggers": [
+    "\"Where's my order",
+    "\" tracking inquiries",
+    "delivery status requests",
+    "address changes",
+    "delivery preferences",
+    "special instructions"
+  ],
+  "knowledgeSources": [
+    "Order databases",
+    "carrier tracking APIs",
+    "delivery policies",
+    "address validation rules",
+    "shipping SLAs",
+    "holiday schedules"
+  ],
+  "agentOrchestration": [
+    "Order Identification Agent",
+    "Carrier Tracking Agent",
+    "Status Compilation Agent",
+    "Address Validation Agent",
+    "Modification Processing Agent",
+    "Customer Notification Agent"
+  ]
+}

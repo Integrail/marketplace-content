@@ -1,0 +1,157 @@
+{
+  "id": "MW-1031",
+  "name": "Internal Candidate Sourcing AI Worker",
+  "description": "Searches your ATS for qualified internal candidates, scores them against job requirements, and conducts personalized outreach to gauge interest.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Talent Acquisition"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1031/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Surface 50-100+ qualified internal candidates per role",
+  "integrations": [
+    {
+      "name": "Greenhouse",
+      "logoUrl": "ew-marketplace://logos/greenhouse.png"
+    },
+    {
+      "name": "Lever",
+      "logoUrl": "ew-marketplace://logos/lever.png"
+    },
+    {
+      "name": "Workday",
+      "logoUrl": "ew-marketplace://logos/workday.png"
+    },
+    {
+      "name": "BambooHR",
+      "logoUrl": "ew-marketplace://logos/bamboohr.png"
+    },
+    {
+      "name": "SmartRecruiters",
+      "logoUrl": "ew-marketplace://logos/smartrecruiters.png"
+    },
+    {
+      "name": "iCIMS",
+      "logoUrl": "ew-marketplace://logos/icims.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1031/hero.png"
+  },
+  "overview": "Searches your ATS for qualified internal candidates and conducts personalized outreach This AI Worker mines your existing talent pool to find hidden gems. Given a role's requirements, it searches your ATS database for candidates who applied for similar positions in the past, scores them against current job criteria, and ranks the best matches. For each qualified candidate, it crafts personalized outreach explaining why they'd be a great fit and gauging their interest— turning your ATS from a static database into an active sourcing engine.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1031/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Greenhouse",
+        "description": "Integration with Greenhouse"
+      },
+      {
+        "name": "Lever",
+        "description": "Integration with Lever"
+      },
+      {
+        "name": "Workday",
+        "description": "Integration with Workday"
+      },
+      {
+        "name": "BambooHR",
+        "description": "Integration with BambooHR"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Job Analysis",
+        "description": "Handles the job analysis step"
+      },
+      {
+        "name": "ATS Search",
+        "description": "Handles the ats search step"
+      },
+      {
+        "name": "Candidate Matching",
+        "description": "Handles the candidate matching step"
+      },
+      {
+        "name": "Scoring & Ranking",
+        "description": "Handles the scoring & ranking step"
+      },
+      {
+        "name": "Email Personalization",
+        "description": "Handles the email personalization step"
+      },
+      {
+        "name": "Outreach",
+        "description": "Handles the outreach step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Candidate Discovery",
+      "value": "Surface 50-100+ qualified internal candidates per role"
+    },
+    {
+      "metric": "Time Savings",
+      "value": "5+ hours saved per role on manual ATS searching"
+    },
+    {
+      "metric": "Response Rate",
+      "value": "40-60% higher response vs. generic outreach"
+    },
+    {
+      "metric": "Quality Match",
+      "value": "Weighted scoring ensures best-fit prioritization"
+    },
+    {
+      "metric": "ATS Utilization",
+      "value": "Unlock value from years of accumulated candidates"
+    }
+  ],
+  "outputs": [
+    "Ranked candidate list with match scores",
+    "personalized outreach emails",
+    "ATS status updates",
+    "response tracking"
+  ],
+  "triggers": [
+    "Job description",
+    "qualification criteria",
+    "years of experience",
+    "location",
+    "skills",
+    "seniority level"
+  ],
+  "knowledgeSources": [
+    "Job requirements documentation",
+    "candidate evaluation criteria",
+    "internal mobility policies",
+    "skills taxonomies",
+    "role competency frameworks"
+  ],
+  "agentOrchestration": [
+    "Job Analysis Agent",
+    "ATS Search Agent",
+    "Candidate Matching Agent",
+    "Scoring & Ranking Agent",
+    "Email Personalization Agent",
+    "Outreach Agent"
+  ]
+}

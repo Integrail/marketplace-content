@@ -1,0 +1,161 @@
+{
+  "id": "MW-1078",
+  "name": "Document Generation & Deal Memo AI Worker",
+  "description": "Creates professional investment documents, deal memos, and client deliverables from templates and data inputs.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1078/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 8 hours to 45 minutes 100% adherence to formatting and style standards",
+  "integrations": [
+    {
+      "name": "Portfolio systems",
+      "logoUrl": "ew-marketplace://logos/portfolio-systems.png"
+    },
+    {
+      "name": "document management",
+      "logoUrl": "ew-marketplace://logos/document-management.png"
+    },
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    },
+    {
+      "name": "presentation tools (PowerPoint, Google Slides)",
+      "logoUrl": "ew-marketplace://logos/presentation-tools-powerpoint-google-slides.png"
+    },
+    {
+      "name": "workflow platforms",
+      "logoUrl": "ew-marketplace://logos/workflow-platforms.png"
+    },
+    {
+      "name": "distribution systems",
+      "logoUrl": "ew-marketplace://logos/distribution-systems.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1078/hero.png"
+  },
+  "overview": "Creates professional investment documents and client deliverables from data This AI Worker produces polished, professional documents without the manual effort. It generates investment committee memos, quarterly letters, portfolio reviews, and pitch materials        Brand Consistency by combining templates with live data and intelligent narrative generation. The worker ensures brand consistency, numerical accuracy, and appropriate disclosure language across all documents. Your team delivers more content with higher quality and lower effort.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1078/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Portfolio systems",
+        "description": "Integration with Portfolio systems"
+      },
+      {
+        "name": "document management",
+        "description": "Integration with document management"
+      },
+      {
+        "name": "CRM",
+        "description": "Integration with CRM"
+      },
+      {
+        "name": "presentation tools (PowerPoint, Google Slides)",
+        "description": "Integration with presentation tools (PowerPoint, Google Slides)"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Template Selection",
+        "description": "Handles the template selection step"
+      },
+      {
+        "name": "Data Integration",
+        "description": "Handles the data integration step"
+      },
+      {
+        "name": "Narrative Generation",
+        "description": "Handles the narrative generation step"
+      },
+      {
+        "name": "Formatting",
+        "description": "Handles the formatting step"
+      },
+      {
+        "name": "Quality Check",
+        "description": "Handles the quality check step"
+      },
+      {
+        "name": "Approval Routing",
+        "description": "Handles the approval routing step"
+      },
+      {
+        "name": "Distribution",
+        "description": "Handles the distribution step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Document Creation Time",
+      "value": "Reduced from 8 hours to 45 minutes 100% adherence to formatting and style standards"
+    },
+    {
+      "metric": "Error Rate",
+      "value": "94% reduction in numerical and formatting errors"
+    },
+    {
+      "metric": "Document Volume",
+      "value": "4x more client deliverables produced"
+    },
+    {
+      "metric": "Review Cycles",
+      "value": "60% fewer revision iterations required"
+    }
+  ],
+  "outputs": [
+    "Investment memos",
+    "quarterly letters",
+    "portfolio reviews",
+    "pitch books",
+    "performance reports",
+    "meeting materials",
+    "compliance documentation"
+  ],
+  "triggers": [
+    "Document request",
+    "deal milestone",
+    "quarterly deadline",
+    "IC meeting",
+    "client deliverable schedule"
+  ],
+  "knowledgeSources": [
+    "Document templates",
+    "brand guidelines",
+    "data sources",
+    "narrative libraries",
+    "disclosure requirements",
+    "approval workflows"
+  ],
+  "agentOrchestration": [
+    "Template Selection Agent",
+    "Data Integration Agent",
+    "Narrative Generation Agent",
+    "Formatting Agent",
+    "Quality Check Agent",
+    "Approval Routing Agent",
+    "Distribution Agent"
+  ]
+}

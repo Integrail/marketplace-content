@@ -1,0 +1,167 @@
+{
+  "id": "MW-1001",
+  "name": "Accounts Payable (AP) AI Worker",
+  "description": "Processes invoices from receipt through payment, matching to POs, routing for approval, and optimizing payment timing for cash flow and discount capture.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1001/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 12 days to 2 days average",
+  "integrations": [
+    {
+      "name": "SAP",
+      "logoUrl": "ew-marketplace://logos/sap.png"
+    },
+    {
+      "name": "Oracle",
+      "logoUrl": "ew-marketplace://logos/oracle.png"
+    },
+    {
+      "name": "NetSuite",
+      "logoUrl": "ew-marketplace://logos/netsuite.png"
+    },
+    {
+      "name": "Sage",
+      "logoUrl": "ew-marketplace://logos/sage.png"
+    },
+    {
+      "name": "QuickBooks",
+      "logoUrl": "ew-marketplace://logos/quickbooks.png"
+    },
+    {
+      "name": "Coupa",
+      "logoUrl": "ew-marketplace://logos/coupa.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1001/hero.png"
+  },
+  "overview": "Processes invoices from receipt through payment with intelligent matching and approval routing This AI Worker transforms AP from a paper-shuffling bottleneck into a strategic cash management function. It ingests invoices from any source—email, portal, EDI, paper—extracts data with high accuracy, matches against purchase orders and receiving documents, routes exceptions intelligently, and queues approved invoices for optimal payment timing. The worker captures early payment discounts automatically, prevents duplicate payments, and gives you real-time visibility into payables across all entities.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1001/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "SAP",
+        "description": "Integration with SAP"
+      },
+      {
+        "name": "Oracle",
+        "description": "Integration with Oracle"
+      },
+      {
+        "name": "NetSuite",
+        "description": "Integration with NetSuite"
+      },
+      {
+        "name": "Sage",
+        "description": "Integration with Sage"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Invoice Intake",
+        "description": "Handles the invoice intake step"
+      },
+      {
+        "name": "Data Extraction",
+        "description": "Handles the data extraction step"
+      },
+      {
+        "name": "PO Matching",
+        "description": "Handles the po matching step"
+      },
+      {
+        "name": "Exception Routing",
+        "description": "Handles the exception routing step"
+      },
+      {
+        "name": "Approval Workflow",
+        "description": "Handles the approval workflow step"
+      },
+      {
+        "name": "Payment Scheduling",
+        "description": "Handles the payment scheduling step"
+      },
+      {
+        "name": "Discount Optimization",
+        "description": "Handles the discount optimization step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Invoice Processing Time",
+      "value": "Reduced from 12 days to 2 days average"
+    },
+    {
+      "metric": "Touchless Processing Rate",
+      "value": "78% of invoices processed without human intervention"
+    },
+    {
+      "metric": "Early Payment Discount Capture",
+      "value": "94% capture rate (up from 23%)"
+    },
+    {
+      "metric": "Duplicate Payment Prevention",
+      "value": "99.7% accuracy in duplicate detection"
+    },
+    {
+      "metric": "Cost Per Invoice",
+      "value": "Reduced from $15 to $2.40"
+    }
+  ],
+  "outputs": [
+    "Processed invoices",
+    "exception reports",
+    "approval notifications",
+    "payment schedules",
+    "discount capture alerts",
+    "vendor statements",
+    "AP aging reports"
+  ],
+  "triggers": [
+    "Invoice receipt (email, portal, scan)",
+    "PO creation",
+    "goods receipt",
+    "payment approval",
+    "exception flags",
+    "vendor inquiries"
+  ],
+  "knowledgeSources": [
+    "Vendor master data",
+    "PO terms",
+    "receiving records",
+    "approval hierarchies",
+    "payment policies",
+    "discount terms",
+    "GL coding rules"
+  ],
+  "agentOrchestration": [
+    "Invoice Intake Agent",
+    "Data Extraction Agent",
+    "PO Matching Agent",
+    "Exception Routing Agent",
+    "Approval Workflow Agent",
+    "Payment Scheduling Agent",
+    "Discount Optimization Agent"
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "id": "MW-1090",
+  "name": "CSAT/NPS Analysis AI Worker",
+  "description": "Goes beyond tracking scores to understand the drivers of satisfaction and detraction with actionable improvement recommendations.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Success"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1090/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "10,000 responses analyzed in 4 minutes",
+  "integrations": [
+    {
+      "name": "Delighted",
+      "logoUrl": "ew-marketplace://logos/delighted.png"
+    },
+    {
+      "name": "Medallia",
+      "logoUrl": "ew-marketplace://logos/medallia.png"
+    },
+    {
+      "name": "Qualtrics",
+      "logoUrl": "ew-marketplace://logos/qualtrics.png"
+    },
+    {
+      "name": "SurveyMonkey",
+      "logoUrl": "ew-marketplace://logos/surveymonkey.png"
+    },
+    {
+      "name": "CRM systems",
+      "logoUrl": "ew-marketplace://logos/crm-systems.png"
+    },
+    {
+      "name": "product analytics",
+      "logoUrl": "ew-marketplace://logos/product-analytics.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1090/hero.png"
+  },
+  "overview": "Transforms satisfaction metrics into understanding of loyalty drivers This AI Worker turns satisfaction surveys from a reporting exercise into a strategic improvement tool. It analyzes open-ended responses at scale, correlates scores with customer behaviors, identifies segments with divergent satisfaction, and surfaces the specific drivers that create promoters and detractors. The worker prioritizes improvement initiatives by projected NPS impact, enabling data-driven decisions about where to invest in customer experience.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1090/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Delighted",
+        "description": "Integration with Delighted"
+      },
+      {
+        "name": "Medallia",
+        "description": "Integration with Medallia"
+      },
+      {
+        "name": "Qualtrics",
+        "description": "Integration with Qualtrics"
+      },
+      {
+        "name": "SurveyMonkey",
+        "description": "Integration with SurveyMonkey"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Response Collection",
+        "description": "Handles the response collection step"
+      },
+      {
+        "name": "Quantitative Scoring",
+        "description": "Handles the quantitative scoring step"
+      },
+      {
+        "name": "Qualitative Analysis",
+        "description": "Handles the qualitative analysis step"
+      },
+      {
+        "name": "Driver Extraction",
+        "description": "Handles the driver extraction step"
+      },
+      {
+        "name": "Segment Comparison",
+        "description": "Handles the segment comparison step"
+      },
+      {
+        "name": "Recommendation Generation",
+        "description": "Handles the recommendation generation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Response Analysis Speed",
+      "value": "10,000 responses analyzed in 4 minutes"
+    },
+    {
+      "metric": "Driver Identification",
+      "value": "12 key satisfaction drivers identified and ranked"
+    },
+    {
+      "metric": "Predictive Accuracy",
+      "value": "87% accuracy predicting future NPS from driver scores"
+    },
+    {
+      "metric": "Action Prioritization",
+      "value": "Clear ROI ranking for improvement initiatives"
+    },
+    {
+      "metric": "NPS Improvement",
+      "value": "14-point increase over 12 months through targeted action"
+    }
+  ],
+  "outputs": [
+    "NPS/CSAT dashboards",
+    "driver analysis reports",
+    "segment comparisons",
+    "trend visualizations",
+    "improvement recommendations",
+    "board presentations"
+  ],
+  "triggers": [
+    "Survey completion",
+    "batch analysis request",
+    "segment deep-dive",
+    "board reporting needs",
+    "competitive benchmarking",
+    "product launch assessment"
+  ],
+  "knowledgeSources": [
+    "Survey response databases",
+    "customer segment definitions",
+    "historical NPS trends",
+    "industry benchmarks",
+    "driver correlation models",
+    "action playbooks"
+  ],
+  "agentOrchestration": [
+    "Response Collection Agent",
+    "Quantitative Scoring Agent",
+    "Qualitative Analysis Agent",
+    "Driver Extraction Agent",
+    "Segment Comparison Agent",
+    "Recommendation Generation Agent"
+  ]
+}

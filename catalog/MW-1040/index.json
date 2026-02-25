@@ -1,0 +1,150 @@
+{
+  "id": "MW-1040",
+  "name": "Learning Content & Certification AI Worker",
+  "description": "Creates training materials, manages certification programs, and tracks completion across your workforce.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1040/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "10x faster training content creation",
+  "integrations": [
+    {
+      "name": "LMS platforms",
+      "logoUrl": "ew-marketplace://logos/lms-platforms.png"
+    },
+    {
+      "name": "content authoring tools",
+      "logoUrl": "ew-marketplace://logos/content-authoring-tools.png"
+    },
+    {
+      "name": "HRIS",
+      "logoUrl": "ew-marketplace://logos/hris.png"
+    },
+    {
+      "name": "skills databases",
+      "logoUrl": "ew-marketplace://logos/skills-databases.png"
+    },
+    {
+      "name": "calendar systems",
+      "logoUrl": "ew-marketplace://logos/calendar-systems.png"
+    },
+    {
+      "name": "email platforms",
+      "logoUrl": "ew-marketplace://logos/email-platforms.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1040/hero.png"
+  },
+  "overview": "Creates training materials, manages certification programs, and tracks completion This AI Worker transforms your L&D capacity from constrained to limitless. It creates training content on any topic—from compliance modules to skills development courses—in multiple formats. It manages certification programs including prerequisites, expiration tracking, and renewal reminders. For every employee, it maintains a complete learning record and proactively recommends relevant content based on role, career goals, and skill gaps. Your L&D team focuses on strategy while the AI handles production and administration.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1040/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "LMS platforms",
+        "description": "Integration with LMS platforms"
+      },
+      {
+        "name": "content authoring tools",
+        "description": "Integration with content authoring tools"
+      },
+      {
+        "name": "HRIS",
+        "description": "Integration with HRIS"
+      },
+      {
+        "name": "skills databases",
+        "description": "Integration with skills databases"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Content Creation",
+        "description": "Handles the content creation step"
+      },
+      {
+        "name": "Certification Management",
+        "description": "Handles the certification management step"
+      },
+      {
+        "name": "Progress Tracking",
+        "description": "Handles the progress tracking step"
+      },
+      {
+        "name": "Recommendation",
+        "description": "Handles the recommendation step"
+      },
+      {
+        "name": "Reminder",
+        "description": "Handles the reminder step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Content Production",
+      "value": "10x faster training content creation"
+    },
+    {
+      "metric": "Certification Compliance",
+      "value": "95%+ certification currency maintained L&D Time Savings                       20+ hours/week saved on content and administration"
+    },
+    {
+      "metric": "Personalization",
+      "value": "Customized learning paths for every employee"
+    },
+    {
+      "metric": "Tracking Accuracy",
+      "value": "100% completion visibility across workforce"
+    }
+  ],
+  "outputs": [
+    "Training modules",
+    "certification tracking",
+    "completion reports",
+    "personalized recommendations",
+    "renewal reminders",
+    "compliance dashboards"
+  ],
+  "triggers": [
+    "Content requests",
+    "certification requirements",
+    "completion tracking",
+    "learning recommendations",
+    "renewal alerts"
+  ],
+  "knowledgeSources": [
+    "Training templates",
+    "certification requirements",
+    "skill frameworks",
+    "role competencies",
+    "learning best practices",
+    "compliance requirements"
+  ],
+  "agentOrchestration": [
+    "Content Creation Agent",
+    "Certification Management Agent",
+    "Progress Tracking Agent",
+    "Recommendation Agent",
+    "Reminder Agent"
+  ]
+}

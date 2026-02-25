@@ -1,0 +1,167 @@
+{
+  "id": "MW-1013",
+  "name": "Variance Analysis AI Worker",
+  "description": "Analyzes actual vs. budget/forecast variances, identifies drivers, and delivers actionable explanations to business leaders.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1013/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "95% of material variances auto-explained",
+  "integrations": [
+    {
+      "name": "ERP systems",
+      "logoUrl": "ew-marketplace://logos/erp-systems.png"
+    },
+    {
+      "name": "EPM platforms",
+      "logoUrl": "ew-marketplace://logos/epm-platforms.png"
+    },
+    {
+      "name": "BI tools",
+      "logoUrl": "ew-marketplace://logos/bi-tools.png"
+    },
+    {
+      "name": "operational systems",
+      "logoUrl": "ew-marketplace://logos/operational-systems.png"
+    },
+    {
+      "name": "email platforms",
+      "logoUrl": "ew-marketplace://logos/email-platforms.png"
+    },
+    {
+      "name": "presentation tools",
+      "logoUrl": "ew-marketplace://logos/presentation-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1013/hero.png"
+  },
+  "overview": "Analyzes variances, identifies drivers, and delivers actionable explanations This AI Worker turns variance analysis from a manual investigation into instant insight delivery. It compares actuals to budget and forecast across all dimensions—entity, cost center, account, project—and automatically decomposes variances into root causes. The worker explains variances in business terms (not just accounting terms), identifies trends and anomalies, and delivers commentary that business leaders can actually use. Finance stops explaining what happened and starts advising what to do about it.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1013/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "ERP systems",
+        "description": "Integration with ERP systems"
+      },
+      {
+        "name": "EPM platforms",
+        "description": "Integration with EPM platforms"
+      },
+      {
+        "name": "BI tools",
+        "description": "Integration with BI tools"
+      },
+      {
+        "name": "operational systems",
+        "description": "Integration with operational systems"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Data Comparison",
+        "description": "Handles the data comparison step"
+      },
+      {
+        "name": "Materiality Filtering",
+        "description": "Handles the materiality filtering step"
+      },
+      {
+        "name": "Driver Decomposition",
+        "description": "Handles the driver decomposition step"
+      },
+      {
+        "name": "Trend Analysis",
+        "description": "Handles the trend analysis step"
+      },
+      {
+        "name": "Commentary Generation",
+        "description": "Handles the commentary generation step"
+      },
+      {
+        "name": "Recommendation",
+        "description": "Handles the recommendation step"
+      },
+      {
+        "name": "Distribution",
+        "description": "Handles the distribution step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Variance Explanation Coverage",
+      "value": "95% of material variances auto-explained"
+    },
+    {
+      "metric": "Analysis Time",
+      "value": "Reduced from 5 days to 4 hours"
+    },
+    {
+      "metric": "Root Cause Accuracy",
+      "value": "89% accuracy in driver identification"
+    },
+    {
+      "metric": "Business Leader Satisfaction",
+      "value": "52% improvement in finance support ratings"
+    },
+    {
+      "metric": "Actionable Insights",
+      "value": "3.4x more recommendations delivered per period"
+    }
+  ],
+  "outputs": [
+    "Variance reports",
+    "driver analyses",
+    "trend identification",
+    "management commentary",
+    "action recommendations",
+    "business unit summaries",
+    "executive briefings"
+  ],
+  "triggers": [
+    "Period close completion",
+    "variance threshold breach",
+    "management review meeting",
+    "ad-hoc inquiry",
+    "trend alert"
+  ],
+  "knowledgeSources": [
+    "Budget",
+    "forecast",
+    "actuals",
+    "operational data",
+    "business context",
+    "historical patterns",
+    "seasonality factors",
+    "one-time event tracking"
+  ],
+  "agentOrchestration": [
+    "Data Comparison Agent",
+    "Materiality Filtering Agent",
+    "Driver Decomposition Agent",
+    "Trend Analysis Agent",
+    "Commentary Generation Agent",
+    "Recommendation Agent",
+    "Distribution Agent"
+  ]
+}

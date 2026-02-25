@@ -1,0 +1,43 @@
+{
+  "id": "MW-1080",
+  "name": "Job Description AI Worker",
+  "description": "Writes compelling, compliant job descriptions and posts them directly to your careers site and job boards.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Talent Acquisition"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1080/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "integrations": [],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1080/hero.png"
+  },
+  "overview": "Page 3 of 6 Page — of 6 Page 5 of 6 Page 6 of 6",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1080/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Main Workflow",
+        "description": "Primary automation workflow"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support"
+}

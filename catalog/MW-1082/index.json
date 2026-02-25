@@ -1,0 +1,151 @@
+{
+  "id": "MW-1082",
+  "name": "Recruitment Marketing AI Worker",
+  "description": "Creates employer brand content, career page copy, and recruitment campaigns across channels",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Talent Acquisition"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1082/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "60% increase in organic career page visits",
+  "integrations": [
+    {
+      "name": "Career site CMS",
+      "logoUrl": "ew-marketplace://logos/career-site-cms.png"
+    },
+    {
+      "name": "LinkedIn",
+      "logoUrl": "ew-marketplace://logos/linkedin.png"
+    },
+    {
+      "name": "Glassdoor",
+      "logoUrl": "ew-marketplace://logos/glassdoor.png"
+    },
+    {
+      "name": "Instagram",
+      "logoUrl": "ew-marketplace://logos/instagram.png"
+    },
+    {
+      "name": "social media management tools",
+      "logoUrl": "ew-marketplace://logos/social-media-management-tools.png"
+    },
+    {
+      "name": "email marketing platform",
+      "logoUrl": "ew-marketplace://logos/email-marketing-platform.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1082/hero.png"
+  },
+  "overview": "This AI Worker powers your employer brand presence. It creates career page content, employee spotlight stories, \"day in the life\" content, and social media posts that attract candidates to your brand. It develops recruitment marketing campaigns for hard-to-fill roles and high-volume hiring initiatives. All content is optimized for the channels where your target candidates spend time.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1082/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Career site CMS",
+        "description": "Integration with Career site CMS"
+      },
+      {
+        "name": "LinkedIn",
+        "description": "Integration with LinkedIn"
+      },
+      {
+        "name": "Glassdoor",
+        "description": "Integration with Glassdoor"
+      },
+      {
+        "name": "Instagram",
+        "description": "Integration with Instagram"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Strategy",
+        "description": "Handles the strategy step"
+      },
+      {
+        "name": "Content Creation",
+        "description": "Handles the content creation step"
+      },
+      {
+        "name": "Design",
+        "description": "Handles the design step"
+      },
+      {
+        "name": "Channel Optimization",
+        "description": "Handles the channel optimization step"
+      },
+      {
+        "name": "Publishing",
+        "description": "Handles the publishing step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Career Site Traffic",
+      "value": "60% increase in organic career page visits"
+    },
+    {
+      "metric": "Application Conversion",
+      "value": "25% improvement in visitor-to-applicant conversion"
+    },
+    {
+      "metric": "Content Volume",
+      "value": "10x increase in employer brand content production"
+    },
+    {
+      "metric": "Time to Create",
+      "value": "Campaign launch time reduced from weeks to days"
+    },
+    {
+      "metric": "Candidate Quality",
+      "value": "Higher quality inbound applicants from brand-aware candidates"
+    }
+  ],
+  "outputs": [
+    "Career page content",
+    "social posts",
+    "recruitment campaigns",
+    "employee spotlight content",
+    "campaign performance reports"
+  ],
+  "triggers": [
+    "Campaign brief",
+    "hiring surge notification",
+    "new office/team launch",
+    "employee story submission"
+  ],
+  "knowledgeSources": [
+    "Employer brand guidelines",
+    "EVP messaging",
+    "employee testimonials",
+    "company culture documentation",
+    "competitor employer brands"
+  ],
+  "agentOrchestration": [
+    "Strategy Agent",
+    "Content Creation Agent",
+    "Design Agent",
+    "Channel Optimization Agent",
+    "Publishing Agent"
+  ]
+}

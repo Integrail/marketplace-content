@@ -1,0 +1,152 @@
+{
+  "id": "MW-1067",
+  "name": "Business Case & Proposal AI Worker",
+  "description": "Intakes prompts and transcripts to create a complete business case document and proposal to send to the prospect to create buy-in.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1067/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Executive-ready documents for 100% of qualified deals",
+  "integrations": [
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    },
+    {
+      "name": "Gong/Chorus",
+      "logoUrl": "ew-marketplace://logos/gong-chorus.png"
+    },
+    {
+      "name": "PandaDoc",
+      "logoUrl": "ew-marketplace://logos/pandadoc.png"
+    },
+    {
+      "name": "DocuSign",
+      "logoUrl": "ew-marketplace://logos/docusign.png"
+    },
+    {
+      "name": "Google Docs",
+      "logoUrl": "ew-marketplace://logos/google-docs.png"
+    },
+    {
+      "name": "PowerPoint",
+      "logoUrl": "ew-marketplace://logos/powerpoint.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1067/hero.png"
+  },
+  "overview": "This AI Worker produces executive-ready business cases and proposals that drive buying decisions. It synthesizes discovery information, builds ROI models using your value framework, creates compelling narrative documents, and generates professional proposals. It gives every rep the ability to deliver CFO-ready justification for every deal.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1067/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "CRM",
+        "description": "Integration with CRM"
+      },
+      {
+        "name": "Gong/Chorus",
+        "description": "Integration with Gong/Chorus"
+      },
+      {
+        "name": "PandaDoc",
+        "description": "Integration with PandaDoc"
+      },
+      {
+        "name": "DocuSign",
+        "description": "Integration with DocuSign"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Discovery Analysis",
+        "description": "Handles the discovery analysis step"
+      },
+      {
+        "name": "ROI Calculation",
+        "description": "Handles the roi calculation step"
+      },
+      {
+        "name": "Narrative Writing",
+        "description": "Handles the narrative writing step"
+      },
+      {
+        "name": "Proposal Assembly",
+        "description": "Handles the proposal assembly step"
+      },
+      {
+        "name": "Design",
+        "description": "Handles the design step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Business Case Quality",
+      "value": "Executive-ready documents for 100% of qualified deals"
+    },
+    {
+      "metric": "Creation Time",
+      "value": "90% reduction in business case creation time"
+    },
+    {
+      "metric": "Win Rate",
+      "value": "35-50% improvement in deals with business cases"
+    },
+    {
+      "metric": "Deal Size",
+      "value": "20-40% larger deal sizes through value-based selling"
+    },
+    {
+      "metric": "Stakeholder Buy-in",
+      "value": "Multi-stakeholder alignment achieved faster"
+    }
+  ],
+  "outputs": [
+    "Complete business case document",
+    "ROI model",
+    "executive summary",
+    "formal proposal",
+    "pricing schedules"
+  ],
+  "triggers": [
+    "Deal context",
+    "discovery transcripts",
+    "pricing inputs",
+    "prospect financials",
+    "specific requirements"
+  ],
+  "knowledgeSources": [
+    "ROI calculation frameworks",
+    "customer success data",
+    "industry benchmarks",
+    "pricing models",
+    "proposal templates"
+  ],
+  "agentOrchestration": [
+    "Discovery Analysis Agent",
+    "ROI Calculation Agent",
+    "Narrative Writing Agent",
+    "Proposal Assembly Agent",
+    "Design Agent"
+  ]
+}

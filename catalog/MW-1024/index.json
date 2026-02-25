@@ -1,0 +1,166 @@
+{
+  "id": "MW-1024",
+  "name": "QBR Preparation AI Worker",
+  "description": "Assembles comprehensive quarterly business reviews in minutes, including usage data, ROI metrics, and strategic recommendations.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Success"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1024/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 6 hours to 15 minutes per QBR",
+  "integrations": [
+    {
+      "name": "Product analytics",
+      "logoUrl": "ew-marketplace://logos/product-analytics.png"
+    },
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    },
+    {
+      "name": "support systems",
+      "logoUrl": "ew-marketplace://logos/support-systems.png"
+    },
+    {
+      "name": "billing platforms",
+      "logoUrl": "ew-marketplace://logos/billing-platforms.png"
+    },
+    {
+      "name": "presentation tools (Google Slides, PowerPoint)",
+      "logoUrl": "ew-marketplace://logos/presentation-tools-google-slides-powerpoint.png"
+    },
+    {
+      "name": "Slack",
+      "logoUrl": "ew-marketplace://logos/slack.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1024/hero.png"
+  },
+  "overview": "Assembles comprehensive quarterly business reviews in minutes, not days This AI Worker makes every QBR valuable instead of just obligatory. It aggregates usage data, support history, health trends, and ROI metrics into personalized QBR decks. Beyond the numbers, it identifies strategic talking points, surfaces expansion opportunities, and prepares discussion guides that drive meaningful conversations. CSMs spend their time on customer relationships instead of PowerPoint. Customers get QBRs that actually advance their business goals.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1024/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Product analytics",
+        "description": "Integration with Product analytics"
+      },
+      {
+        "name": "CRM",
+        "description": "Integration with CRM"
+      },
+      {
+        "name": "support systems",
+        "description": "Integration with support systems"
+      },
+      {
+        "name": "billing platforms",
+        "description": "Integration with billing platforms"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Data Aggregation",
+        "description": "Handles the data aggregation step"
+      },
+      {
+        "name": "Metric Compilation",
+        "description": "Handles the metric compilation step"
+      },
+      {
+        "name": "Trend Analysis",
+        "description": "Handles the trend analysis step"
+      },
+      {
+        "name": "ROI Calculation",
+        "description": "Handles the roi calculation step"
+      },
+      {
+        "name": "Talking Point",
+        "description": "Handles the talking point step"
+      },
+      {
+        "name": "Slide Assembly",
+        "description": "Handles the slide assembly step"
+      },
+      {
+        "name": "Executive Summary",
+        "description": "Handles the executive summary step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Preparation Time",
+      "value": "Reduced from 6 hours to 15 minutes per QBR"
+    },
+    {
+      "metric": "QBR Coverage",
+      "value": "3.4x more accounts receive QBRs"
+    },
+    {
+      "metric": "Data Accuracy",
+      "value": "99.2% accuracy vs. 87% with manual preparation"
+    },
+    {
+      "metric": "Expansion Conversations",
+      "value": "67% of QBRs now include relevant expansion discussions"
+    },
+    {
+      "metric": "QBR Value Rating",
+      "value": "4.8/5.0 customer satisfaction with QBR quality"
+    }
+  ],
+  "outputs": [
+    "QBR presentation decks",
+    "executive summaries",
+    "ROI reports",
+    "talking point briefs",
+    "action item templates",
+    "follow-up sequences"
+  ],
+  "triggers": [
+    "QBR schedule trigger",
+    "CSM request",
+    "quarterly calendar",
+    "executive meeting scheduled",
+    "renewal approaching",
+    "account milestone"
+  ],
+  "knowledgeSources": [
+    "Usage analytics",
+    "support ticket history",
+    "health score trends",
+    "ROI calculators",
+    "product roadmap",
+    "feature adoption data",
+    "benchmark comparisons"
+  ],
+  "agentOrchestration": [
+    "Data Aggregation Agent",
+    "Metric Compilation Agent",
+    "Trend Analysis Agent",
+    "ROI Calculation Agent",
+    "Talking Point Agent",
+    "Slide Assembly Agent",
+    "Executive Summary Agent"
+  ]
+}

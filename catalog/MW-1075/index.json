@@ -1,0 +1,161 @@
+{
+  "id": "MW-1075",
+  "name": "Client Intelligence AI Worker",
+  "description": "Aggregates client information and prepares comprehensive briefings for quarterly reviews and strategic discussions.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Sales"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1075/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 3 hours to 20 minutes",
+  "integrations": [
+    {
+      "name": "Portfolio management systems",
+      "logoUrl": "ew-marketplace://logos/portfolio-management-systems.png"
+    },
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    },
+    {
+      "name": "email archives",
+      "logoUrl": "ew-marketplace://logos/email-archives.png"
+    },
+    {
+      "name": "calendar",
+      "logoUrl": "ew-marketplace://logos/calendar.png"
+    },
+    {
+      "name": "market data feeds",
+      "logoUrl": "ew-marketplace://logos/market-data-feeds.png"
+    },
+    {
+      "name": "service ticketing",
+      "logoUrl": "ew-marketplace://logos/service-ticketing.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1075/hero.png"
+  },
+  "overview": "Aggregates client information and prepares comprehensive briefings for meetings This AI Worker ensures every client interaction is informed and impactful. It aggregates information from across your systems—portfolio performance, recent communications, service requests, market developments relevant to their holdings, relationship history—and synthesizes it into actionable briefings. Before any client meeting, your team has complete context on the relationship, recent developments, and recommended discussion topics. Clients feel known and valued; teams feel prepared and confident.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1075/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Portfolio management systems",
+        "description": "Integration with Portfolio management systems"
+      },
+      {
+        "name": "CRM",
+        "description": "Integration with CRM"
+      },
+      {
+        "name": "email archives",
+        "description": "Integration with email archives"
+      },
+      {
+        "name": "calendar",
+        "description": "Integration with calendar"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Data Aggregation",
+        "description": "Handles the data aggregation step"
+      },
+      {
+        "name": "Performance Summary",
+        "description": "Handles the performance summary step"
+      },
+      {
+        "name": "Communication Review",
+        "description": "Handles the communication review step"
+      },
+      {
+        "name": "Issue Identification",
+        "description": "Handles the issue identification step"
+      },
+      {
+        "name": "Opportunity Detection",
+        "description": "Handles the opportunity detection step"
+      },
+      {
+        "name": "Briefing Generation",
+        "description": "Handles the briefing generation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Meeting Preparation Time",
+      "value": "Reduced from 3 hours to 20 minutes"
+    },
+    {
+      "metric": "Information Completeness",
+      "value": "100% of relevant data aggregated automatically"
+    },
+    {
+      "metric": "Client Satisfaction",
+      "value": "41% improvement in relationship satisfaction scores"
+    },
+    {
+      "metric": "Issue Detection",
+      "value": "78% of potential concerns identified before meetings"
+    },
+    {
+      "metric": "Relationship Depth",
+      "value": "2.3x more personalized topics discussed per meeting"
+    }
+  ],
+  "outputs": [
+    "Client briefings",
+    "performance summaries",
+    "relationship timelines",
+    "issue alerts",
+    "discussion agendas",
+    "personalized insights",
+    "follow-up recommendations"
+  ],
+  "triggers": [
+    "Meeting scheduled",
+    "quarterly review cycle",
+    "client request",
+    "relationship review",
+    "annual planning"
+  ],
+  "knowledgeSources": [
+    "Portfolio data",
+    "CRM records",
+    "communication history",
+    "market intelligence",
+    "service records",
+    "relationship notes",
+    "personal preferences"
+  ],
+  "agentOrchestration": [
+    "Data Aggregation Agent",
+    "Performance Summary Agent",
+    "Communication Review Agent",
+    "Issue Identification Agent",
+    "Opportunity Detection Agent",
+    "Briefing Generation Agent"
+  ]
+}

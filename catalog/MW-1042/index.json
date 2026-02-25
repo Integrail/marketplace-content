@@ -1,0 +1,43 @@
+{
+  "id": "MW-1042",
+  "name": "Performance Review AI Worker",
+  "description": "Streamlines review cycles with prep support, feedback synthesis, and calibration assistance.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1042/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "integrations": [],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1042/hero.png"
+  },
+  "overview": "Page 3 of — Page — of —",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1042/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Main Workflow",
+        "description": "Primary automation workflow"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support"
+}

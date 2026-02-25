@@ -1,0 +1,165 @@
+{
+  "id": "MW-1023",
+  "name": "Health Score Monitoring AI Worker",
+  "description": "Continuously analyzes customer health signals and triggers proactive interventions before issues become churn.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Success"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1023/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "89% accuracy 60 days before churn",
+  "integrations": [
+    {
+      "name": "Product analytics",
+      "logoUrl": "ew-marketplace://logos/product-analytics.png"
+    },
+    {
+      "name": "support systems",
+      "logoUrl": "ew-marketplace://logos/support-systems.png"
+    },
+    {
+      "name": "billing platforms",
+      "logoUrl": "ew-marketplace://logos/billing-platforms.png"
+    },
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    },
+    {
+      "name": "customer success platforms",
+      "logoUrl": "ew-marketplace://logos/customer-success-platforms.png"
+    },
+    {
+      "name": "communication tools",
+      "logoUrl": "ew-marketplace://logos/communication-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1023/hero.png"
+  },
+  "overview": "Continuously analyzes customer health and triggers proactive interventions This AI Worker gives you x-ray vision into account health. It monitors every signal—usage patterns, support ticket volume and sentiment, engagement frequency, billing status, NPS responses—and maintains real-time health scores that predict outcomes. When an account's health declines, it triggers automated interventions or alerts CSMs with specific concerns and recommended actions. The worker surfaces healthy accounts for expansion and identifies patterns that indicate systemic issues across your customer base.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1023/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Product analytics",
+        "description": "Integration with Product analytics"
+      },
+      {
+        "name": "support systems",
+        "description": "Integration with support systems"
+      },
+      {
+        "name": "billing platforms",
+        "description": "Integration with billing platforms"
+      },
+      {
+        "name": "CRM",
+        "description": "Integration with CRM"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Signal Aggregation",
+        "description": "Handles the signal aggregation step"
+      },
+      {
+        "name": "Score Calculation",
+        "description": "Handles the score calculation step"
+      },
+      {
+        "name": "Trend Analysis",
+        "description": "Handles the trend analysis step"
+      },
+      {
+        "name": "Risk Categorization",
+        "description": "Handles the risk categorization step"
+      },
+      {
+        "name": "Intervention Triggering",
+        "description": "Handles the intervention triggering step"
+      },
+      {
+        "name": "CSM Alerting",
+        "description": "Handles the csm alerting step"
+      },
+      {
+        "name": "Outcome Tracking",
+        "description": "Handles the outcome tracking step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Churn Prediction Accuracy",
+      "value": "89% accuracy 60 days before churn"
+    },
+    {
+      "metric": "Intervention Success Rate",
+      "value": "52% of at-risk accounts saved through early intervention"
+    },
+    {
+      "metric": "Account Coverage",
+      "value": "100% of accounts monitored vs. 23% with human- only approach"
+    },
+    {
+      "metric": "False Positive Rate",
+      "value": "8% (vs. 34% industry average)"
+    },
+    {
+      "metric": "CSM Productivity",
+      "value": "4.1x more effective prioritization of CSM time"
+    }
+  ],
+  "outputs": [
+    "Health score dashboards",
+    "risk alerts",
+    "trend reports",
+    "intervention recommendations",
+    "CSM task assignments",
+    "executive summaries"
+  ],
+  "triggers": [
+    "Automated monitoring (continuous)",
+    "usage drops",
+    "support ticket spikes",
+    "engagement decline",
+    "payment failures",
+    "NPS responses"
+  ],
+  "knowledgeSources": [
+    "Historical churn patterns",
+    "usage benchmarks",
+    "engagement scoring models",
+    "support sentiment analysis",
+    "billing history",
+    "industry benchmarks"
+  ],
+  "agentOrchestration": [
+    "Signal Aggregation Agent",
+    "Score Calculation Agent",
+    "Trend Analysis Agent",
+    "Risk Categorization Agent",
+    "Intervention Triggering Agent",
+    "CSM Alerting Agent",
+    "Outcome Tracking Agent"
+  ]
+}

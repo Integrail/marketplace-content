@@ -1,0 +1,162 @@
+{
+  "id": "MW-1011",
+  "name": "Financial Planning & Analysis (FP&A) AI Worker",
+  "description": "Builds and maintains financial models, generates forecasts, and delivers insights that inform business decisions.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1011/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "91% accuracy (up from 74%)",
+  "integrations": [
+    {
+      "name": "EPM platforms (Anaplan, Adaptive, Workday)",
+      "logoUrl": "ew-marketplace://logos/epm-platforms-anaplan-adaptive-workday.png"
+    },
+    {
+      "name": "ERP systems",
+      "logoUrl": "ew-marketplace://logos/erp-systems.png"
+    },
+    {
+      "name": "BI tools (Tableau, Power BI)",
+      "logoUrl": "ew-marketplace://logos/bi-tools-tableau-power-bi.png"
+    },
+    {
+      "name": "CRM systems",
+      "logoUrl": "ew-marketplace://logos/crm-systems.png"
+    },
+    {
+      "name": "operational databases",
+      "logoUrl": "ew-marketplace://logos/operational-databases.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1011/hero.png"
+  },
+  "overview": "Builds financial models and delivers insights that inform business decisions This AI Worker amplifies your FP&A team's impact by handling the mechanics so they can focus on insights. It builds and maintains driver-based financial models, automatically updates forecasts as actuals flow in, generates management reports with variance commentary, and answers ad-hoc analysis requests in minutes instead of days. The worker connects financial metrics to operational KPIs, enabling true business partnership between finance and operations.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1011/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "EPM platforms (Anaplan, Adaptive, Workday)",
+        "description": "Integration with EPM platforms (Anaplan, Adaptive, Workday)"
+      },
+      {
+        "name": "ERP systems",
+        "description": "Integration with ERP systems"
+      },
+      {
+        "name": "BI tools (Tableau, Power BI)",
+        "description": "Integration with BI tools (Tableau, Power BI)"
+      },
+      {
+        "name": "CRM systems",
+        "description": "Integration with CRM systems"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Data Integration",
+        "description": "Handles the data integration step"
+      },
+      {
+        "name": "Model Update",
+        "description": "Handles the model update step"
+      },
+      {
+        "name": "Forecast Generation",
+        "description": "Handles the forecast generation step"
+      },
+      {
+        "name": "Variance Identification",
+        "description": "Handles the variance identification step"
+      },
+      {
+        "name": "Commentary",
+        "description": "Handles the commentary step"
+      },
+      {
+        "name": "Report Generation",
+        "description": "Handles the report generation step"
+      },
+      {
+        "name": "Alert",
+        "description": "Handles the alert step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Forecast Accuracy",
+      "value": "91% accuracy (up from 74%)"
+    },
+    {
+      "metric": "Analysis Turnaround",
+      "value": "Ad-hoc requests completed in 2 hours vs. 3 days"
+    },
+    {
+      "metric": "Model Maintenance",
+      "value": "90% reduction in manual model updates"
+    },
+    {
+      "metric": "Business Partner Capacity",
+      "value": "FP&A supports 3x more business units"
+    },
+    {
+      "metric": "Insight Generation",
+      "value": "5x more proactive insights delivered monthly"
+    }
+  ],
+  "outputs": [
+    "Rolling forecasts",
+    "management reports",
+    "variance analyses",
+    "ad-hoc analyses",
+    "executive summaries",
+    "KPI dashboards",
+    "insight alerts"
+  ],
+  "triggers": [
+    "Forecast cycle",
+    "actual results availability",
+    "analysis request",
+    "model update requirement",
+    "KPI threshold breach"
+  ],
+  "knowledgeSources": [
+    "Financial models",
+    "driver assumptions",
+    "historical patterns",
+    "business unit plans",
+    "market data",
+    "operational KPIs",
+    "industry benchmarks"
+  ],
+  "agentOrchestration": [
+    "Data Integration Agent",
+    "Model Update Agent",
+    "Forecast Generation Agent",
+    "Variance Identification Agent",
+    "Commentary Agent",
+    "Report Generation Agent",
+    "Alert Agent"
+  ]
+}

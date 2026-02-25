@@ -1,0 +1,167 @@
+{
+  "id": "MW-1014",
+  "name": "Board Reporting AI Worker",
+  "description": "Prepares board-ready financial packages with consistent formatting, executive summaries, and supporting analysis.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1014/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 40 hours to 6 hours",
+  "integrations": [
+    {
+      "name": "ERP systems",
+      "logoUrl": "ew-marketplace://logos/erp-systems.png"
+    },
+    {
+      "name": "EPM platforms",
+      "logoUrl": "ew-marketplace://logos/epm-platforms.png"
+    },
+    {
+      "name": "presentation tools (PowerPoint, Google Slides)",
+      "logoUrl": "ew-marketplace://logos/presentation-tools-powerpoint-google-slides.png"
+    },
+    {
+      "name": "board portal software",
+      "logoUrl": "ew-marketplace://logos/board-portal-software.png"
+    },
+    {
+      "name": "document management",
+      "logoUrl": "ew-marketplace://logos/document-management.png"
+    },
+    {
+      "name": "email platforms",
+      "logoUrl": "ew-marketplace://logos/email-platforms.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1014/hero.png"
+  },
+  "overview": "Prepares board-ready financial packages with executive summaries and supporting analysis This AI Worker ensures your board gets clear, consistent, decision-ready information every meeting. It assembles standard financial reports, generates executive summaries that highlight what matters, creates visualizations that communicate complex information simply, and formats everything to board standards. The worker handles version control, manages the review and approval workflow, and maintains a complete archive of board materials. CFOs spend their time on strategy, not PowerPoint.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1014/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "ERP systems",
+        "description": "Integration with ERP systems"
+      },
+      {
+        "name": "EPM platforms",
+        "description": "Integration with EPM platforms"
+      },
+      {
+        "name": "presentation tools (PowerPoint, Google Slides)",
+        "description": "Integration with presentation tools (PowerPoint, Google Slides)"
+      },
+      {
+        "name": "board portal software",
+        "description": "Integration with board portal software"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Data Assembly",
+        "description": "Handles the data assembly step"
+      },
+      {
+        "name": "Summary Generation",
+        "description": "Handles the summary generation step"
+      },
+      {
+        "name": "Visualization",
+        "description": "Handles the visualization step"
+      },
+      {
+        "name": "Formatting",
+        "description": "Handles the formatting step"
+      },
+      {
+        "name": "Review Routing",
+        "description": "Handles the review routing step"
+      },
+      {
+        "name": "Version Control",
+        "description": "Handles the version control step"
+      },
+      {
+        "name": "Distribution",
+        "description": "Handles the distribution step"
+      },
+      {
+        "name": "Archive",
+        "description": "Handles the archive step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Package Preparation Time",
+      "value": "Reduced from 40 hours to 6 hours"
+    },
+    {
+      "metric": "Formatting Consistency",
+      "value": "100% adherence to board presentation standards"
+    },
+    {
+      "metric": "CFO Review Time",
+      "value": "60% reduction in review and revision cycles"
+    },
+    {
+      "metric": "Board Member Feedback",
+      "value": "4.8/5.0 rating on financial package clarity On-Time Delivery                       100% of packages delivered by deadline"
+    }
+  ],
+  "outputs": [
+    "Board financial package",
+    "executive summary",
+    "supporting analyses",
+    "visualizations",
+    "Q&A preparation",
+    "meeting minutes documentation",
+    "archived materials"
+  ],
+  "triggers": [
+    "Board meeting calendar",
+    "financial close completion",
+    "CFO review request",
+    "board question follow-up",
+    "archive request"
+  ],
+  "knowledgeSources": [
+    "Board templates",
+    "prior board packages",
+    "financial data",
+    "strategic initiatives",
+    "KPI definitions",
+    "visualization standards",
+    "board member preferences"
+  ],
+  "agentOrchestration": [
+    "Data Assembly Agent",
+    "Summary Generation Agent",
+    "Visualization Agent",
+    "Formatting Agent",
+    "Review Routing Agent",
+    "Version Control Agent",
+    "Distribution Agent",
+    "Archive Agent"
+  ]
+}

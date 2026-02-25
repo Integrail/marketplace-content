@@ -1,0 +1,152 @@
+{
+  "id": "MW-1063",
+  "name": "Lead/Account Scoring & Enrichment AI Worker",
+  "description": "Segments, scores, and enriches contacts/companies in your CRM with deep research data to surface segments that are likely to buy for campaign activation.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Marketing"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1063/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "95%+ of records enriched with 50+ data points",
+  "integrations": [
+    {
+      "name": "HubSpot",
+      "logoUrl": "ew-marketplace://logos/hubspot.png"
+    },
+    {
+      "name": "Salesforce",
+      "logoUrl": "ew-marketplace://logos/salesforce.png"
+    },
+    {
+      "name": "ZoomInfo",
+      "logoUrl": "ew-marketplace://logos/zoominfo.png"
+    },
+    {
+      "name": "Clearbit",
+      "logoUrl": "ew-marketplace://logos/clearbit.png"
+    },
+    {
+      "name": "6sense",
+      "logoUrl": "ew-marketplace://logos/6sense.png"
+    },
+    {
+      "name": "Bombora",
+      "logoUrl": "ew-marketplace://logos/bombora.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1063/hero.png"
+  },
+  "overview": "This AI Worker transforms your CRM from a static database into an intelligent revenue engine. It researches every contact and account in your database, enriches records with firmographic, technographic, and intent data, applies predictive scoring models to identify who's most likely to buy, and segments your database for targeted campaign activation. It surfaces the accounts and contacts that deserve immediate attention.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1063/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "HubSpot",
+        "description": "Integration with HubSpot"
+      },
+      {
+        "name": "Salesforce",
+        "description": "Integration with Salesforce"
+      },
+      {
+        "name": "ZoomInfo",
+        "description": "Integration with ZoomInfo"
+      },
+      {
+        "name": "Clearbit",
+        "description": "Integration with Clearbit"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Data Collection",
+        "description": "Handles the data collection step"
+      },
+      {
+        "name": "Research",
+        "description": "Handles the research step"
+      },
+      {
+        "name": "Enrichment",
+        "description": "Handles the enrichment step"
+      },
+      {
+        "name": "Scoring",
+        "description": "Handles the scoring step"
+      },
+      {
+        "name": "Segmentation",
+        "description": "Handles the segmentation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Data Enrichment",
+      "value": "95%+ of records enriched with 50+ data points"
+    },
+    {
+      "metric": "Lead Prioritization",
+      "value": "Sales focuses on top 20% of leads driving 80% of revenue"
+    },
+    {
+      "metric": "Conversion Rate",
+      "value": "2-3x improvement in lead-to-opportunity conversion"
+    },
+    {
+      "metric": "Campaign Performance",
+      "value": "50-100% improvement in campaign response rates"
+    },
+    {
+      "metric": "Research Time",
+      "value": "10 hours/week of manual research eliminated per rep"
+    }
+  ],
+  "outputs": [
+    "Enriched CRM records",
+    "lead/account scores",
+    "prioritized lists",
+    "campaign segments",
+    "account insights"
+  ],
+  "triggers": [
+    "Scheduled enrichment cycles",
+    "new lead ingestion",
+    "campaign planning requests",
+    "sales prioritization requests"
+  ],
+  "knowledgeSources": [
+    "CRM data",
+    "enrichment APIs",
+    "intent data providers",
+    "website visitor data",
+    "product fit criteria",
+    "ideal customer profile"
+  ],
+  "agentOrchestration": [
+    "Data Collection Agent",
+    "Research Agent",
+    "Enrichment Agent",
+    "Scoring Agent",
+    "Segmentation Agent"
+  ]
+}

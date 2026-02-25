@@ -1,0 +1,165 @@
+{
+  "id": "MW-1027",
+  "name": "Customer Journey Mapping AI Worker",
+  "description": "Creates dynamic journey maps based on actual behavioral data, identifying friction points and optimization opportunities.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Success"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1027/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "23 distinct patterns identified (vs. 3 assumed)",
+  "integrations": [
+    {
+      "name": "Product analytics (Amplitude, Mixpanel)",
+      "logoUrl": "ew-marketplace://logos/product-analytics-amplitude-mixpanel.png"
+    },
+    {
+      "name": "marketing automation",
+      "logoUrl": "ew-marketplace://logos/marketing-automation.png"
+    },
+    {
+      "name": "support systems",
+      "logoUrl": "ew-marketplace://logos/support-systems.png"
+    },
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    },
+    {
+      "name": "event tracking",
+      "logoUrl": "ew-marketplace://logos/event-tracking.png"
+    },
+    {
+      "name": "visualization tools",
+      "logoUrl": "ew-marketplace://logos/visualization-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1027/hero.png"
+  },
+  "overview": "Visualizes and optimizes customer journeys with real-time behavioral data This AI Worker replaces assumption-based journey maps with data-driven reality. It tracks actual customer behavior across touchpoints, identifies the paths successful customers take versus those who struggle, and surfaces friction points that cause drop-off or frustration. The worker enables continuous journey optimization—not annual mapping exercises—by monitoring journey health metrics and alerting teams when specific stages degrade.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1027/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Product analytics (Amplitude, Mixpanel)",
+        "description": "Integration with Product analytics (Amplitude, Mixpanel)"
+      },
+      {
+        "name": "marketing automation",
+        "description": "Integration with marketing automation"
+      },
+      {
+        "name": "support systems",
+        "description": "Integration with support systems"
+      },
+      {
+        "name": "CRM",
+        "description": "Integration with CRM"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Event Collection",
+        "description": "Handles the event collection step"
+      },
+      {
+        "name": "Touchpoint Sequencing",
+        "description": "Handles the touchpoint sequencing step"
+      },
+      {
+        "name": "Pattern Clustering",
+        "description": "Handles the pattern clustering step"
+      },
+      {
+        "name": "Friction Detection",
+        "description": "Handles the friction detection step"
+      },
+      {
+        "name": "Conversion Analysis",
+        "description": "Handles the conversion analysis step"
+      },
+      {
+        "name": "Visualization",
+        "description": "Handles the visualization step"
+      },
+      {
+        "name": "Recommendation",
+        "description": "Handles the recommendation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Journey Pattern Discovery",
+      "value": "23 distinct patterns identified (vs. 3 assumed)"
+    },
+    {
+      "metric": "Friction Point Identification",
+      "value": "47 friction points identified and prioritized"
+    },
+    {
+      "metric": "Stage Conversion Improvement",
+      "value": "31% improvement in journey stage conversion"
+    },
+    {
+      "metric": "Time to Value Reduction",
+      "value": "24% faster time to first value"
+    },
+    {
+      "metric": "Journey Coverage",
+      "value": "100% of customers mapped vs. sample-based approach"
+    }
+  ],
+  "outputs": [
+    "Journey maps",
+    "friction point reports",
+    "conversion analysis",
+    "pattern comparisons",
+    "optimization recommendations",
+    "segment journey differences"
+  ],
+  "triggers": [
+    "Journey analysis request",
+    "conversion funnel concern",
+    "onboarding optimization",
+    "expansion journey review",
+    "segment comparison"
+  ],
+  "knowledgeSources": [
+    "Event data",
+    "touchpoint definitions",
+    "journey stage criteria",
+    "conversion benchmarks",
+    "friction indicators",
+    "success patterns",
+    "segment profiles"
+  ],
+  "agentOrchestration": [
+    "Event Collection Agent",
+    "Touchpoint Sequencing Agent",
+    "Pattern Clustering Agent",
+    "Friction Detection Agent",
+    "Conversion Analysis Agent",
+    "Visualization Agent",
+    "Recommendation Agent"
+  ]
+}

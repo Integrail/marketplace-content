@@ -1,0 +1,166 @@
+{
+  "id": "MW-1007",
+  "name": "Financial Close AI Worker",
+  "description": "Orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1007/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 10 days to 4 days",
+  "integrations": [
+    {
+      "name": "Close management tools (BlackLine, FloQast, Trintech)",
+      "logoUrl": "ew-marketplace://logos/close-management-tools-blackline-floqast-trintech.png"
+    },
+    {
+      "name": "ERP systems",
+      "logoUrl": "ew-marketplace://logos/erp-systems.png"
+    },
+    {
+      "name": "workflow platforms",
+      "logoUrl": "ew-marketplace://logos/workflow-platforms.png"
+    },
+    {
+      "name": "Slack",
+      "logoUrl": "ew-marketplace://logos/slack.png"
+    },
+    {
+      "name": "email",
+      "logoUrl": "ew-marketplace://logos/email.png"
+    },
+    {
+      "name": "calendar systems",
+      "logoUrl": "ew-marketplace://logos/calendar-systems.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1007/hero.png"
+  },
+  "overview": "Orchestrates the entire close process and accelerates time-to-close This AI Worker transforms close from a stressful fire drill into a predictable, compressed process. It maintains the close calendar, assigns tasks to owners, tracks completion in real-time, and manages dependencies so nothing blocks progress. When tasks fall behind, it escalates automatically. The worker identifies bottlenecks, suggests process improvements, and provides leadership with accurate close status at any moment. Month-end becomes a non-event instead of an all-hands crisis.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1007/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Close management tools (BlackLine, FloQast, Trintech)",
+        "description": "Integration with Close management tools (BlackLine, FloQast, Trintech)"
+      },
+      {
+        "name": "ERP systems",
+        "description": "Integration with ERP systems"
+      },
+      {
+        "name": "workflow platforms",
+        "description": "Integration with workflow platforms"
+      },
+      {
+        "name": "Slack",
+        "description": "Integration with Slack"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Calendar Management",
+        "description": "Handles the calendar management step"
+      },
+      {
+        "name": "Task Assignment",
+        "description": "Handles the task assignment step"
+      },
+      {
+        "name": "Dependency Tracking",
+        "description": "Handles the dependency tracking step"
+      },
+      {
+        "name": "Status Monitoring",
+        "description": "Handles the status monitoring step"
+      },
+      {
+        "name": "Escalation",
+        "description": "Handles the escalation step"
+      },
+      {
+        "name": "Bottleneck Analysis",
+        "description": "Handles the bottleneck analysis step"
+      },
+      {
+        "name": "Reporting",
+        "description": "Handles the reporting step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Close Cycle Time",
+      "value": "Reduced from 10 days to 4 days"
+    },
+    {
+      "metric": "Task Completion Rate",
+      "value": "98% of tasks completed on schedule"
+    },
+    {
+      "metric": "Bottleneck Identification",
+      "value": "Issues surfaced 2+ days earlier on average"
+    },
+    {
+      "metric": "Controller Overtime",
+      "value": "45% reduction in close-period overtime"
+    },
+    {
+      "metric": "Close Predictability",
+      "value": "92% of closes complete by target date"
+    }
+  ],
+  "outputs": [
+    "Close calendars",
+    "task assignments",
+    "status dashboards",
+    "escalation alerts",
+    "bottleneck reports",
+    "completion confirmations",
+    "close retrospectives"
+  ],
+  "triggers": [
+    "Period end date",
+    "close calendar",
+    "task assignments",
+    "completion confirmations",
+    "exception notifications",
+    "status requests"
+  ],
+  "knowledgeSources": [
+    "Close checklists",
+    "task dependencies",
+    "historical completion times",
+    "owner assignments",
+    "escalation procedures",
+    "process documentation"
+  ],
+  "agentOrchestration": [
+    "Calendar Management Agent",
+    "Task Assignment Agent",
+    "Dependency Tracking Agent",
+    "Status Monitoring Agent",
+    "Escalation Agent",
+    "Bottleneck Analysis Agent",
+    "Reporting Agent"
+  ]
+}

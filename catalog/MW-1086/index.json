@@ -1,0 +1,146 @@
+{
+  "id": "MW-1086",
+  "name": "Interview Scheduling AI Worker",
+  "description": "Coordinates interview scheduling across candidates, interviewers, and hiring managers automatically.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1086/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "85% reduction in time spent on interview coordination",
+  "integrations": [
+    {
+      "name": "Calendar (Google, Outlook)",
+      "logoUrl": "ew-marketplace://logos/calendar-google-outlook.png"
+    },
+    {
+      "name": "ATS",
+      "logoUrl": "ew-marketplace://logos/ats.png"
+    },
+    {
+      "name": "video conferencing (Zoom, Teams)",
+      "logoUrl": "ew-marketplace://logos/video-conferencing-zoom-teams.png"
+    },
+    {
+      "name": "room booking systems",
+      "logoUrl": "ew-marketplace://logos/room-booking-systems.png"
+    },
+    {
+      "name": "email",
+      "logoUrl": "ew-marketplace://logos/email.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1086/hero.png"
+  },
+  "overview": "This AI Worker eliminates scheduling friction from your hiring process. It analyzes interviewer availability, candidate preferences, and interview panel requirements to automatically find and book optimal interview times. It handles rescheduling, sends calendar invites, books conference rooms, and manages video conferencing links—all without recruiter involvement.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1086/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Calendar (Google, Outlook)",
+        "description": "Integration with Calendar (Google, Outlook)"
+      },
+      {
+        "name": "ATS",
+        "description": "Integration with ATS"
+      },
+      {
+        "name": "video conferencing (Zoom, Teams)",
+        "description": "Integration with video conferencing (Zoom, Teams)"
+      },
+      {
+        "name": "room booking systems",
+        "description": "Integration with room booking systems"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Availability Analysis",
+        "description": "Handles the availability analysis step"
+      },
+      {
+        "name": "Time Slot Optimization",
+        "description": "Handles the time slot optimization step"
+      },
+      {
+        "name": "Candidate Communication",
+        "description": "Handles the candidate communication step"
+      },
+      {
+        "name": "Calendar Booking",
+        "description": "Handles the calendar booking step"
+      },
+      {
+        "name": "Reminder",
+        "description": "Handles the reminder step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Scheduling Time",
+      "value": "85% reduction in time spent on interview coordination"
+    },
+    {
+      "metric": "Candidate Experience",
+      "value": "Interview scheduled within 24 hours of screen completion"
+    },
+    {
+      "metric": "No-Show Rate",
+      "value": "40% reduction through automated reminders and easy rescheduling"
+    },
+    {
+      "metric": "Interviewer Utilization",
+      "value": "Optimized panel scheduling reduces interview load imbalance"
+    },
+    {
+      "metric": "Recruiter Capacity",
+      "value": "10+ hours per week returned to high-value activities"
+    }
+  ],
+  "outputs": [
+    "Scheduled interviews",
+    "calendar invites",
+    "video links",
+    "reminder sequences",
+    "rescheduling confirmations"
+  ],
+  "triggers": [
+    "Candidate advances to interview stage",
+    "reschedule request",
+    "interviewer availability change"
+  ],
+  "knowledgeSources": [
+    "Interview panel requirements",
+    "interviewer preferences",
+    "time zone data",
+    "room availability",
+    "interview duration requirements"
+  ],
+  "agentOrchestration": [
+    "Availability Analysis Agent",
+    "Time Slot Optimization Agent",
+    "Candidate Communication Agent",
+    "Calendar Booking Agent",
+    "Reminder Agent"
+  ]
+}

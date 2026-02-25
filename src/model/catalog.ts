@@ -75,6 +75,15 @@ export interface IEverMarketplaceSetupComponent {
 }
 
 /**
+ * A single quantified outcome from the worker's "Key Results" section.
+ * Displayed as a metrics grid on the detail page.
+ */
+export interface IEverMarketplaceKeyResult {
+    readonly metric: IEverMarketplacePlainText;
+    readonly value: IEverMarketplacePlainText;
+}
+
+/**
  * Structured breakdown shown in the "Setup overview" section of the detail view.
  * The sidebar's "N dependencies" stat is the sum of connectors + memories + collections.
  * The sidebar's "N workflows" stat is workflows.length.
@@ -121,6 +130,18 @@ export interface IEverMarketplaceCatalogItem {
     readonly techSpecsUrl?: IEverMarketplaceUrl;
     /** "Get Support" action target. */
     readonly supportUrl?: IEverMarketplaceUrl;
+
+    // ── blueprint metadata (sourced from PDF / ClickUp) ──────────────────────
+    /** Quantified outcomes from the "Key Results" section of the worker PDF. */
+    readonly keyResults?: readonly IEverMarketplaceKeyResult[];
+    /** What the worker produces (from Blueprint → Output). */
+    readonly outputs?: readonly IEverMarketplacePlainText[];
+    /** Events that trigger the worker (from Blueprint → User Input/Triggers). */
+    readonly triggers?: readonly IEverMarketplacePlainText[];
+    /** Data sources the worker needs (from Blueprint → Knowledge Sources). */
+    readonly knowledgeSources?: readonly IEverMarketplacePlainText[];
+    /** Ordered list of sub-agents (from Blueprint → Agent Orchestration). */
+    readonly agentOrchestration?: readonly IEverMarketplacePlainText[];
 }
 
 export interface IEverMarketplaceCatalog {

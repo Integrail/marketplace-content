@@ -1,0 +1,163 @@
+{
+  "id": "MW-1002",
+  "name": "Order to Cash (O2C) AI Worker",
+  "description": "Accelerates revenue collection from invoice generation through cash application, with intelligent dunning and dispute resolution.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1002/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced by 12 days on average",
+  "integrations": [
+    {
+      "name": "Salesforce",
+      "logoUrl": "ew-marketplace://logos/salesforce.png"
+    },
+    {
+      "name": "SAP",
+      "logoUrl": "ew-marketplace://logos/sap.png"
+    },
+    {
+      "name": "Oracle",
+      "logoUrl": "ew-marketplace://logos/oracle.png"
+    },
+    {
+      "name": "NetSuite",
+      "logoUrl": "ew-marketplace://logos/netsuite.png"
+    },
+    {
+      "name": "Stripe",
+      "logoUrl": "ew-marketplace://logos/stripe.png"
+    },
+    {
+      "name": "banking platforms",
+      "logoUrl": "ew-marketplace://logos/banking-platforms.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1002/hero.png"
+  },
+  "overview": "Accelerates revenue collection from invoice generation through cash application This AI Worker compresses your order-to-cash cycle and improves collection rates. It generates accurate invoices from sales orders and contracts, delivers them through customer-preferred channels, monitors payment status, executes intelligent dunning sequences, and applies cash automatically when payments arrive. For disputes, it gathers documentation, routes to the right resolver, and tracks through resolution. Every action optimizes for faster collection while preserving customer relationships.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1002/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Salesforce",
+        "description": "Integration with Salesforce"
+      },
+      {
+        "name": "SAP",
+        "description": "Integration with SAP"
+      },
+      {
+        "name": "Oracle",
+        "description": "Integration with Oracle"
+      },
+      {
+        "name": "NetSuite",
+        "description": "Integration with NetSuite"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Invoice Generation",
+        "description": "Handles the invoice generation step"
+      },
+      {
+        "name": "Delivery",
+        "description": "Handles the delivery step"
+      },
+      {
+        "name": "Payment Monitoring",
+        "description": "Handles the payment monitoring step"
+      },
+      {
+        "name": "Dunning Sequence",
+        "description": "Handles the dunning sequence step"
+      },
+      {
+        "name": "Cash Application",
+        "description": "Handles the cash application step"
+      },
+      {
+        "name": "Dispute Management",
+        "description": "Handles the dispute management step"
+      },
+      {
+        "name": "Credit Review",
+        "description": "Handles the credit review step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Days Sales Outstanding (DSO)",
+      "value": "Reduced by 12 days on average"
+    },
+    {
+      "metric": "Cash Application Accuracy",
+      "value": "97% auto-matched on first pass"
+    },
+    {
+      "metric": "Collection Effectiveness",
+      "value": "34% improvement in on-time payments"
+    },
+    {
+      "metric": "Dispute Resolution Time",
+      "value": "Reduced from 18 days to 4 days Bad Debt Write-offs                     41% reduction in write-offs"
+    }
+  ],
+  "outputs": [
+    "Invoices",
+    "dunning communications",
+    "cash application records",
+    "dispute tracking",
+    "AR aging reports",
+    "collection forecasts",
+    "credit recommendations"
+  ],
+  "triggers": [
+    "Sales order completion",
+    "contract milestones",
+    "payment due dates",
+    "remittance receipt",
+    "dispute notification",
+    "customer inquiry"
+  ],
+  "knowledgeSources": [
+    "Customer master data",
+    "contract terms",
+    "credit limits",
+    "payment history",
+    "dunning templates",
+    "dispute resolution procedures",
+    "cash application rules"
+  ],
+  "agentOrchestration": [
+    "Invoice Generation Agent",
+    "Delivery Agent",
+    "Payment Monitoring Agent",
+    "Dunning Sequence Agent",
+    "Cash Application Agent",
+    "Dispute Management Agent",
+    "Credit Review Agent"
+  ]
+}

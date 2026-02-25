@@ -1,0 +1,161 @@
+{
+  "id": "MW-1017",
+  "name": "Subscription Management AI Worker",
+  "description": "Handles plan changes, cancellations, upgrades, and downgrades with intelligent retention offers and accurate proration calculations.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Customer Support"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1017/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "28% decrease in voluntary cancellations",
+  "integrations": [
+    {
+      "name": "Zuora",
+      "logoUrl": "ew-marketplace://logos/zuora.png"
+    },
+    {
+      "name": "Chargebee",
+      "logoUrl": "ew-marketplace://logos/chargebee.png"
+    },
+    {
+      "name": "Recurly",
+      "logoUrl": "ew-marketplace://logos/recurly.png"
+    },
+    {
+      "name": "Stripe Billing",
+      "logoUrl": "ew-marketplace://logos/stripe-billing.png"
+    },
+    {
+      "name": "Salesforce",
+      "logoUrl": "ew-marketplace://logos/salesforce.png"
+    },
+    {
+      "name": "HubSpot",
+      "logoUrl": "ew-marketplace://logos/hubspot.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1017/hero.png"
+  },
+  "overview": "Handles plan changes and reduces churn through intelligent retention strategies This AI Worker turns every cancellation request into a retention opportunity. It manages all subscription modifications—upgrades, downgrades, plan changes, and cancellations—with sophisticated retention logic. For at-risk customers, it analyzes usage patterns, identifies the right save offer, and presents personalized alternatives. It calculates prorations accurately, applies credits appropriately, and processes changes instantly. The worker improves customer lifetime value by making it easy to stay and hard to leave without feeling trapped.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1017/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Zuora",
+        "description": "Integration with Zuora"
+      },
+      {
+        "name": "Chargebee",
+        "description": "Integration with Chargebee"
+      },
+      {
+        "name": "Recurly",
+        "description": "Integration with Recurly"
+      },
+      {
+        "name": "Stripe Billing",
+        "description": "Integration with Stripe Billing"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Request Classification",
+        "description": "Handles the request classification step"
+      },
+      {
+        "name": "Account Lookup",
+        "description": "Handles the account lookup step"
+      },
+      {
+        "name": "Proration Calculation",
+        "description": "Handles the proration calculation step"
+      },
+      {
+        "name": "Retention Offer",
+        "description": "Handles the retention offer step"
+      },
+      {
+        "name": "Modification Execution",
+        "description": "Handles the modification execution step"
+      },
+      {
+        "name": "Confirmation",
+        "description": "Handles the confirmation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Churn Reduction",
+      "value": "28% decrease in voluntary cancellations"
+    },
+    {
+      "metric": "Retention Offer Acceptance",
+      "value": "41% of at-risk customers accept save offers"
+    },
+    {
+      "metric": "Upgrade Conversion",
+      "value": "23% increase in plan upgrades through AI recommendations"
+    },
+    {
+      "metric": "Proration Accuracy",
+      "value": "99.7% accuracy on proration calculations"
+    },
+    {
+      "metric": "Customer Lifetime Value",
+      "value": "18% increase in average CLV"
+    }
+  ],
+  "outputs": [
+    "Updated subscription records",
+    "proration adjustments",
+    "retention offers",
+    "confirmation emails",
+    "CRM updates",
+    "churn risk flags"
+  ],
+  "triggers": [
+    "Plan change requests",
+    "cancellation requests",
+    "upgrade inquiries",
+    "downgrade requests",
+    "billing cycle changes",
+    "feature additions"
+  ],
+  "knowledgeSources": [
+    "Subscription plans",
+    "pricing tiers",
+    "proration rules",
+    "retention offers",
+    "feature comparisons",
+    "cancellation policies",
+    "competitor pricing"
+  ],
+  "agentOrchestration": [
+    "Request Classification Agent",
+    "Account Lookup Agent",
+    "Proration Calculation Agent",
+    "Retention Offer Agent",
+    "Modification Execution Agent",
+    "Confirmation Agent"
+  ]
+}

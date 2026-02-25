@@ -1,0 +1,167 @@
+{
+  "id": "MW-1008",
+  "name": "Consolidation AI Worker",
+  "description": "Combines financial data across entities, handles eliminations and currency translation, and produces consolidated statements.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1008/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 3 days to 4 hours",
+  "integrations": [
+    {
+      "name": "Multi-entity ERP systems",
+      "logoUrl": "ew-marketplace://logos/multi-entity-erp-systems.png"
+    },
+    {
+      "name": "consolidation tools (OneStream, Hyperion, Workiva)",
+      "logoUrl": "ew-marketplace://logos/consolidation-tools-onestream-hyperion-workiva.png"
+    },
+    {
+      "name": "currency services",
+      "logoUrl": "ew-marketplace://logos/currency-services.png"
+    },
+    {
+      "name": "intercompany matching systems",
+      "logoUrl": "ew-marketplace://logos/intercompany-matching-systems.png"
+    },
+    {
+      "name": "reporting platforms",
+      "logoUrl": "ew-marketplace://logos/reporting-platforms.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1008/hero.png"
+  },
+  "overview": "Combines financial data across entities and produces consolidated statements This AI Worker eliminates the complexity of multi-entity consolidation. It collects trial balances from all entities, maps local charts of accounts to consolidated structure, performs currency translation at appropriate rates, generates intercompany eliminations, and produces fully consolidated financial statements. The worker handles minority interests, equity method investments, and complex ownership structures—delivering consolidated results in hours instead of days.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1008/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Multi-entity ERP systems",
+        "description": "Integration with Multi-entity ERP systems"
+      },
+      {
+        "name": "consolidation tools (OneStream, Hyperion, Workiva)",
+        "description": "Integration with consolidation tools (OneStream, Hyperion, Workiva)"
+      },
+      {
+        "name": "currency services",
+        "description": "Integration with currency services"
+      },
+      {
+        "name": "intercompany matching systems",
+        "description": "Integration with intercompany matching systems"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Data Collection",
+        "description": "Handles the data collection step"
+      },
+      {
+        "name": "Account Mapping",
+        "description": "Handles the account mapping step"
+      },
+      {
+        "name": "Currency Translation",
+        "description": "Handles the currency translation step"
+      },
+      {
+        "name": "Intercompany Matching",
+        "description": "Handles the intercompany matching step"
+      },
+      {
+        "name": "Elimination",
+        "description": "Handles the elimination step"
+      },
+      {
+        "name": "Minority Interest",
+        "description": "Handles the minority interest step"
+      },
+      {
+        "name": "Consolidation",
+        "description": "Handles the consolidation step"
+      },
+      {
+        "name": "Variance Analysis",
+        "description": "Handles the variance analysis step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Consolidation Time",
+      "value": "Reduced from 3 days to 4 hours"
+    },
+    {
+      "metric": "Elimination Accuracy",
+      "value": "99.8% accuracy on intercompany eliminations"
+    },
+    {
+      "metric": "Currency Translation",
+      "value": "Automated across 40+ currencies"
+    },
+    {
+      "metric": "Entity Coverage",
+      "value": "Handles 100+ entities without additional effort"
+    },
+    {
+      "metric": "Variance Investigation",
+      "value": "89% of consolidation variances auto-explained"
+    }
+  ],
+  "outputs": [
+    "Consolidated trial balance",
+    "consolidated financial statements",
+    "elimination schedules",
+    "currency translation reports",
+    "intercompany reconciliation",
+    "consolidation journals"
+  ],
+  "triggers": [
+    "Period close completion",
+    "trial balance availability",
+    "consolidation trigger",
+    "rate updates",
+    "ownership changes",
+    "variance inquiries"
+  ],
+  "knowledgeSources": [
+    "Entity structures",
+    "ownership hierarchies",
+    "chart of account mappings",
+    "elimination rules",
+    "currency rate sources",
+    "minority interest calculations",
+    "GAAP/IFRS requirements"
+  ],
+  "agentOrchestration": [
+    "Data Collection Agent",
+    "Account Mapping Agent",
+    "Currency Translation Agent",
+    "Intercompany Matching Agent",
+    "Elimination Agent",
+    "Minority Interest Agent",
+    "Consolidation Agent",
+    "Variance Analysis Agent"
+  ]
+}

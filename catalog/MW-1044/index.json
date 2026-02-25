@@ -1,0 +1,149 @@
+{
+  "id": "MW-1044",
+  "name": "Employee Engagement AI Worker",
+  "description": "Monitors sentiment, conducts pulse surveys, analyzes feedback, and identifies retention risks before they become resignations.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1044/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "60% of voluntary exits identified 90+ days early",
+  "integrations": [
+    {
+      "name": "Survey platforms",
+      "logoUrl": "ew-marketplace://logos/survey-platforms.png"
+    },
+    {
+      "name": "HRIS",
+      "logoUrl": "ew-marketplace://logos/hris.png"
+    },
+    {
+      "name": "Slack",
+      "logoUrl": "ew-marketplace://logos/slack.png"
+    },
+    {
+      "name": "email",
+      "logoUrl": "ew-marketplace://logos/email.png"
+    },
+    {
+      "name": "collaboration tools",
+      "logoUrl": "ew-marketplace://logos/collaboration-tools.png"
+    },
+    {
+      "name": "performance systems",
+      "logoUrl": "ew-marketplace://logos/performance-systems.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1044/hero.png"
+  },
+  "overview": "Monitors sentiment, analyzes feedback, and identifies retention risks This AI Worker gives you early warning on engagement issues before they become resignations. It conducts pulse surveys at optimal intervals, analyzes open-ended feedback for themes and sentiment, and identifies employees or teams showing warning signs. Beyond surveys, it monitors signals like goal progress, recognition frequency, and collaboration patterns to build a complete engagement picture. HR and managers get actionable insights to intervene proactively.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1044/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Survey platforms",
+        "description": "Integration with Survey platforms"
+      },
+      {
+        "name": "HRIS",
+        "description": "Integration with HRIS"
+      },
+      {
+        "name": "Slack",
+        "description": "Integration with Slack"
+      },
+      {
+        "name": "email",
+        "description": "Integration with email"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Survey Deployment",
+        "description": "Handles the survey deployment step"
+      },
+      {
+        "name": "Response Analysis",
+        "description": "Handles the response analysis step"
+      },
+      {
+        "name": "Sentiment Classification",
+        "description": "Handles the sentiment classification step"
+      },
+      {
+        "name": "Risk Scoring",
+        "description": "Handles the risk scoring step"
+      },
+      {
+        "name": "Alert & Recommendation",
+        "description": "Handles the alert & recommendation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Turnover Prediction",
+      "value": "60% of voluntary exits identified 90+ days early"
+    },
+    {
+      "metric": "Survey Participation",
+      "value": "85%+ pulse survey response rates Time-to-Insight                        Real-time sentiment analysis vs. annual survey lag"
+    },
+    {
+      "metric": "Intervention Rate",
+      "value": "3x increase in proactive retention conversations"
+    },
+    {
+      "metric": "Engagement Scores",
+      "value": "20% improvement in overall engagement metrics"
+    }
+  ],
+  "outputs": [
+    "Pulse survey results",
+    "sentiment analysis reports",
+    "flight risk alerts",
+    "team engagement dashboards",
+    "intervention recommendations",
+    "trend analysis"
+  ],
+  "triggers": [
+    "Pulse survey deployment",
+    "sentiment analysis requests",
+    "flight risk alerts",
+    "engagement reporting",
+    "intervention tracking"
+  ],
+  "knowledgeSources": [
+    "Survey templates",
+    "sentiment analysis models",
+    "engagement benchmarks",
+    "risk indicators",
+    "historical turnover patterns"
+  ],
+  "agentOrchestration": [
+    "Survey Deployment Agent",
+    "Response Analysis Agent",
+    "Sentiment Classification Agent",
+    "Risk Scoring Agent",
+    "Alert & Recommendation Agent"
+  ]
+}

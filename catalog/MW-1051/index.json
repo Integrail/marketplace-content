@@ -1,0 +1,142 @@
+{
+  "id": "MW-1051",
+  "name": "Background Check AI Worker",
+  "description": "Initiates and tracks background checks, surfacing results and flagging issues for review.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1051/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Background checks started within 1 hour of offer acceptance",
+  "integrations": [
+    {
+      "name": "Background check vendors (Checkr, Sterling, HireRight)",
+      "logoUrl": "ew-marketplace://logos/background-check-vendors-checkr-sterling-hireright.png"
+    },
+    {
+      "name": "ATS",
+      "logoUrl": "ew-marketplace://logos/ats.png"
+    },
+    {
+      "name": "HRIS",
+      "logoUrl": "ew-marketplace://logos/hris.png"
+    },
+    {
+      "name": "email",
+      "logoUrl": "ew-marketplace://logos/email.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1051/hero.png"
+  },
+  "overview": "This AI Worker manages the entire background check process. It initiates checks immediately upon offer acceptance, tracks progress across all verification types, surfaces completed results, and flags any issues requiring review. It ensures no candidate falls through the cracks during the waiting period and keeps all stakeholders informed of status.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1051/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Background check vendors (Checkr, Sterling, HireRight)",
+        "description": "Integration with Background check vendors (Checkr, Sterling, HireRight)"
+      },
+      {
+        "name": "ATS",
+        "description": "Integration with ATS"
+      },
+      {
+        "name": "HRIS",
+        "description": "Integration with HRIS"
+      },
+      {
+        "name": "email",
+        "description": "Integration with email"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Initiation",
+        "description": "Handles the initiation step"
+      },
+      {
+        "name": "Tracking",
+        "description": "Handles the tracking step"
+      },
+      {
+        "name": "Results Processing",
+        "description": "Handles the results processing step"
+      },
+      {
+        "name": "Adjudication",
+        "description": "Handles the adjudication step"
+      },
+      {
+        "name": "Communication",
+        "description": "Handles the communication step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Initiation Speed",
+      "value": "Background checks started within 1 hour of offer acceptance"
+    },
+    {
+      "metric": "Completion Tracking",
+      "value": "Real-time visibility into check status across all candidates"
+    },
+    {
+      "metric": "Issue Resolution",
+      "value": "50% faster resolution of flagged items"
+    },
+    {
+      "metric": "Compliance",
+      "value": "100% of required checks completed before start date"
+    },
+    {
+      "metric": "Process Efficiency",
+      "value": "Zero manual tracking required from HR team"
+    }
+  ],
+  "outputs": [
+    "Check initiation confirmations",
+    "status updates",
+    "results summaries",
+    "flagged issue alerts",
+    "clearance confirmations"
+  ],
+  "triggers": [
+    "Offer accepted",
+    "candidate information submitted",
+    "results received",
+    "issue flagged"
+  ],
+  "knowledgeSources": [
+    "Check requirements by role/location",
+    "vendor SLAs",
+    "adjudication guidelines",
+    "compliance requirements"
+  ],
+  "agentOrchestration": [
+    "Initiation Agent",
+    "Tracking Agent",
+    "Results Processing Agent",
+    "Adjudication Agent",
+    "Communication Agent"
+  ]
+}

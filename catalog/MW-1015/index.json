@@ -1,0 +1,166 @@
+{
+  "id": "MW-1015",
+  "name": "Scenario Planning AI Worker",
+  "description": "Models business scenarios, quantifies impacts, and provides decision support for strategic planning and risk assessment.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1015/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 3 weeks to 3 days",
+  "integrations": [
+    {
+      "name": "EPM platforms",
+      "logoUrl": "ew-marketplace://logos/epm-platforms.png"
+    },
+    {
+      "name": "financial modeling tools",
+      "logoUrl": "ew-marketplace://logos/financial-modeling-tools.png"
+    },
+    {
+      "name": "market data services",
+      "logoUrl": "ew-marketplace://logos/market-data-services.png"
+    },
+    {
+      "name": "valuation platforms",
+      "logoUrl": "ew-marketplace://logos/valuation-platforms.png"
+    },
+    {
+      "name": "BI tools",
+      "logoUrl": "ew-marketplace://logos/bi-tools.png"
+    },
+    {
+      "name": "presentation tools",
+      "logoUrl": "ew-marketplace://logos/presentation-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1015/hero.png"
+  },
+  "overview": "Models business scenarios and provides decision support for strategic planning This AI Worker enables rapid what-if analysis that would take weeks manually. It builds scenario models based on key business drivers, quantifies the financial impact of strategic alternatives, and presents results in decision-ready formats. Whether evaluating M&A targets, assessing market entry options, or stress-testing for economic downturns, the worker delivers rigorous analysis that supports better strategic decisions. Scenario planning moves from annual exercises to continuous capability.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1015/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "EPM platforms",
+        "description": "Integration with EPM platforms"
+      },
+      {
+        "name": "financial modeling tools",
+        "description": "Integration with financial modeling tools"
+      },
+      {
+        "name": "market data services",
+        "description": "Integration with market data services"
+      },
+      {
+        "name": "valuation platforms",
+        "description": "Integration with valuation platforms"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Scenario Definition",
+        "description": "Handles the scenario definition step"
+      },
+      {
+        "name": "Assumption Modeling",
+        "description": "Handles the assumption modeling step"
+      },
+      {
+        "name": "Impact Calculation",
+        "description": "Handles the impact calculation step"
+      },
+      {
+        "name": "Sensitivity Analysis",
+        "description": "Handles the sensitivity analysis step"
+      },
+      {
+        "name": "Comparison",
+        "description": "Handles the comparison step"
+      },
+      {
+        "name": "Visualization",
+        "description": "Handles the visualization step"
+      },
+      {
+        "name": "Recommendation",
+        "description": "Handles the recommendation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Scenario Modeling Time",
+      "value": "Reduced from 3 weeks to 3 days"
+    },
+    {
+      "metric": "Scenarios Evaluated",
+      "value": "5x more scenarios analyzed per decision"
+    },
+    {
+      "metric": "Model Accuracy",
+      "value": "93% correlation between modeled and actual outcomes"
+    },
+    {
+      "metric": "Decision Support Quality",
+      "value": "78% of executives rate analysis as \"highly valuable\""
+    },
+    {
+      "metric": "Strategic Agility",
+      "value": "67% faster response to market changes"
+    }
+  ],
+  "outputs": [
+    "Scenario models",
+    "sensitivity analyses",
+    "comparison matrices",
+    "probability-weighted outcomes",
+    "executive presentations",
+    "recommendation summaries",
+    "risk assessments"
+  ],
+  "triggers": [
+    "Strategic planning cycle",
+    "M&A evaluation",
+    "market change",
+    "risk assessment request",
+    "board strategy session"
+  ],
+  "knowledgeSources": [
+    "Base financial models",
+    "driver sensitivities",
+    "market data",
+    "competitive intelligence",
+    "historical correlations",
+    "risk factors",
+    "valuation methodologies"
+  ],
+  "agentOrchestration": [
+    "Scenario Definition Agent",
+    "Assumption Modeling Agent",
+    "Impact Calculation Agent",
+    "Sensitivity Analysis Agent",
+    "Comparison Agent",
+    "Visualization Agent",
+    "Recommendation Agent"
+  ]
+}

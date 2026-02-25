@@ -1,0 +1,154 @@
+{
+  "id": "MW-1060",
+  "name": "Advertising AI Worker",
+  "description": "Writes and designs advertisements for all of your marketing channels.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Marketing"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1060/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "50+ ad variants per campaign vs. 5-10 manually",
+  "integrations": [
+    {
+      "name": "Google Ads",
+      "logoUrl": "ew-marketplace://logos/google-ads.png"
+    },
+    {
+      "name": "LinkedIn Campaign Manager",
+      "logoUrl": "ew-marketplace://logos/linkedin-campaign-manager.png"
+    },
+    {
+      "name": "Meta Ads Manager",
+      "logoUrl": "ew-marketplace://logos/meta-ads-manager.png"
+    },
+    {
+      "name": "Canva",
+      "logoUrl": "ew-marketplace://logos/canva.png"
+    },
+    {
+      "name": "Figma",
+      "logoUrl": "ew-marketplace://logos/figma.png"
+    },
+    {
+      "name": "Adobe Creative Suite",
+      "logoUrl": "ew-marketplace://logos/adobe-creative-suite.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1060/hero.png"
+  },
+  "overview": "This AI Worker generates complete advertising campaigns across every paid channel. It writes compelling ad copy with multiple variants for A/B testing, designs eye-catching visuals sized for each platform, creates audience targeting recommendations, and organizes assets for easy campaign deployment. From LinkedIn Sponsored Content to Google Search Ads to Meta campaigns, it produces the creative assets that fuel your paid acquisition engine.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1060/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Google Ads",
+        "description": "Integration with Google Ads"
+      },
+      {
+        "name": "LinkedIn Campaign Manager",
+        "description": "Integration with LinkedIn Campaign Manager"
+      },
+      {
+        "name": "Meta Ads Manager",
+        "description": "Integration with Meta Ads Manager"
+      },
+      {
+        "name": "Canva",
+        "description": "Integration with Canva"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Strategy",
+        "description": "Handles the strategy step"
+      },
+      {
+        "name": "Copywriting",
+        "description": "Handles the copywriting step"
+      },
+      {
+        "name": "Design",
+        "description": "Handles the design step"
+      },
+      {
+        "name": "Variant Generation",
+        "description": "Handles the variant generation step"
+      },
+      {
+        "name": "Platform Sizing",
+        "description": "Handles the platform sizing step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Creative Volume",
+      "value": "50+ ad variants per campaign vs. 5-10 manually"
+    },
+    {
+      "metric": "Time Savings",
+      "value": "90% reduction in creative production time"
+    },
+    {
+      "metric": "Testing Velocity",
+      "value": "10x more A/B tests running simultaneously"
+    },
+    {
+      "metric": "Cost Per Lead",
+      "value": "30-50% reduction through optimized creative"
+    },
+    {
+      "metric": "Channel Coverage",
+      "value": "Consistent creative across all paid channels"
+    }
+  ],
+  "outputs": [
+    "Ad copy variants",
+    "display ads",
+    "video ads",
+    "carousel ads",
+    "platform-specific assets",
+    "A/B testing matrix"
+  ],
+  "triggers": [
+    "Campaign brief",
+    "target audience",
+    "offer/CTA",
+    "budget parameters",
+    "channel priorities"
+  ],
+  "knowledgeSources": [
+    "Past ad performance data",
+    "competitor ads",
+    "brand guidelines",
+    "product value props",
+    "audience insights",
+    "platform best practices"
+  ],
+  "agentOrchestration": [
+    "Strategy Agent",
+    "Copywriting Agent",
+    "Design Agent",
+    "Variant Generation Agent",
+    "Platform Sizing Agent"
+  ]
+}

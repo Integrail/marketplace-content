@@ -1,0 +1,153 @@
+{
+  "id": "MW-1064",
+  "name": "SDR Team Lead AI Worker",
+  "description": "Writes personalized email sequences for inbound and outbound campaigns and builds them directly in your sales outreach tool.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Marketing"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1064/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "100% of outreach personalized vs. 10-20% manually",
+  "integrations": [
+    {
+      "name": "Outreach",
+      "logoUrl": "ew-marketplace://logos/outreach.png"
+    },
+    {
+      "name": "Salesloft",
+      "logoUrl": "ew-marketplace://logos/salesloft.png"
+    },
+    {
+      "name": "HubSpot Sequences",
+      "logoUrl": "ew-marketplace://logos/hubspot-sequences.png"
+    },
+    {
+      "name": "Apollo",
+      "logoUrl": "ew-marketplace://logos/apollo.png"
+    },
+    {
+      "name": "LinkedIn Sales Navigator",
+      "logoUrl": "ew-marketplace://logos/linkedin-sales-navigator.png"
+    },
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1064/hero.png"
+  },
+  "overview": "This AI Worker operates as a tireless SDR manager, producing personalized outreach at scale. It researches each prospect and account, writes multi-touch email sequences personalized to their specific situation, creates follow- up cadences, and builds complete sequences directly in your sales engagement platform. Every rep gets personalized outreach for every prospect without the hours of manual research and writing.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1064/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Outreach",
+        "description": "Integration with Outreach"
+      },
+      {
+        "name": "Salesloft",
+        "description": "Integration with Salesloft"
+      },
+      {
+        "name": "HubSpot Sequences",
+        "description": "Integration with HubSpot Sequences"
+      },
+      {
+        "name": "Apollo",
+        "description": "Integration with Apollo"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Research",
+        "description": "Handles the research step"
+      },
+      {
+        "name": "Account Analysis",
+        "description": "Handles the account analysis step"
+      },
+      {
+        "name": "Personalization",
+        "description": "Handles the personalization step"
+      },
+      {
+        "name": "Sequence Writing",
+        "description": "Handles the sequence writing step"
+      },
+      {
+        "name": "Build",
+        "description": "Handles the build step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Personalization",
+      "value": "100% of outreach personalized vs. 10-20% manually"
+    },
+    {
+      "metric": "Sequence Volume",
+      "value": "50+ personalized sequences per rep per week"
+    },
+    {
+      "metric": "Reply Rates",
+      "value": "3-5x improvement in response rates"
+    },
+    {
+      "metric": "Meeting Conversion",
+      "value": "40-60% more meetings booked per rep"
+    },
+    {
+      "metric": "Ramp Time",
+      "value": "New SDRs productive in days, not months"
+    }
+  ],
+  "outputs": [
+    "Multi-touch email sequences",
+    "personalization insights",
+    "call scripts",
+    "LinkedIn message templates",
+    "built directly in platform"
+  ],
+  "triggers": [
+    "New leads assigned",
+    "campaign launches",
+    "account-based plays",
+    "rep requests for personalized sequences"
+  ],
+  "knowledgeSources": [
+    "Prospect LinkedIn profiles",
+    "company websites",
+    "news articles",
+    "CRM data",
+    "past successful sequences",
+    "competitor intel",
+    "product value props"
+  ],
+  "agentOrchestration": [
+    "Research Agent",
+    "Account Analysis Agent",
+    "Personalization Agent",
+    "Sequence Writing Agent",
+    "Build Agent"
+  ]
+}

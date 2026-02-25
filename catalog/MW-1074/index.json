@@ -1,0 +1,160 @@
+{
+  "id": "MW-1074",
+  "name": "SAM Matching AI Worker",
+  "description": "Connects buyers with sellers by matching investment criteria with available opportunities across your network.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1074/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "73% of matches progress to serious discussions",
+  "integrations": [
+    {
+      "name": "CRM systems",
+      "logoUrl": "ew-marketplace://logos/crm-systems.png"
+    },
+    {
+      "name": "deal management platforms",
+      "logoUrl": "ew-marketplace://logos/deal-management-platforms.png"
+    },
+    {
+      "name": "buyer databases",
+      "logoUrl": "ew-marketplace://logos/buyer-databases.png"
+    },
+    {
+      "name": "seller engagement tools",
+      "logoUrl": "ew-marketplace://logos/seller-engagement-tools.png"
+    },
+    {
+      "name": "communication platforms",
+      "logoUrl": "ew-marketplace://logos/communication-platforms.png"
+    },
+    {
+      "name": "analytics dashboards",
+      "logoUrl": "ew-marketplace://logos/analytics-dashboards.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1074/hero.png"
+  },
+  "overview": "Connects buyers with sellers by matching investment criteria with opportunities This AI Worker creates value by making markets more efficient. It maintains comprehensive profiles of buyer preferences and seller offerings, then identifies high-probability matches based on strategic fit, financial parameters, and timing alignment. The worker facilitates introductions, provides match rationale to both parties, and tracks progression through the deal process. Whether you're advising sellers or representing buyers, the worker accelerates successful transactions.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1074/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "CRM systems",
+        "description": "Integration with CRM systems"
+      },
+      {
+        "name": "deal management platforms",
+        "description": "Integration with deal management platforms"
+      },
+      {
+        "name": "buyer databases",
+        "description": "Integration with buyer databases"
+      },
+      {
+        "name": "seller engagement tools",
+        "description": "Integration with seller engagement tools"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Profile Ingestion",
+        "description": "Handles the profile ingestion step"
+      },
+      {
+        "name": "Criteria Matching",
+        "description": "Handles the criteria matching step"
+      },
+      {
+        "name": "Fit Scoring",
+        "description": "Handles the fit scoring step"
+      },
+      {
+        "name": "Conflict Check",
+        "description": "Handles the conflict check step"
+      },
+      {
+        "name": "Introduction Facilitation",
+        "description": "Handles the introduction facilitation step"
+      },
+      {
+        "name": "Progress Tracking",
+        "description": "Handles the progress tracking step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Match Quality",
+      "value": "73% of matches progress to serious discussions"
+    },
+    {
+      "metric": "Time to Match",
+      "value": "Potential buyers identified within 48 hours"
+    },
+    {
+      "metric": "Network Utilization",
+      "value": "5x more buyer-seller connections facilitated"
+    },
+    {
+      "metric": "Transaction Velocity",
+      "value": "28% reduction in time from mandate to close"
+    },
+    {
+      "metric": "Client Satisfaction",
+      "value": "4.7/5.0 rating on match relevance and quality"
+    }
+  ],
+  "outputs": [
+    "Match recommendations",
+    "fit analyses",
+    "introduction emails",
+    "conflict reports",
+    "deal tracking",
+    "match analytics",
+    "relationship mapping"
+  ],
+  "triggers": [
+    "New buy-side mandate",
+    "new sell-side engagement",
+    "criteria update",
+    "match request",
+    "market sounding"
+  ],
+  "knowledgeSources": [
+    "Buyer profiles",
+    "seller mandates",
+    "transaction history",
+    "market preferences",
+    "relationship intelligence",
+    "deal terms databases"
+  ],
+  "agentOrchestration": [
+    "Profile Ingestion Agent",
+    "Criteria Matching Agent",
+    "Fit Scoring Agent",
+    "Conflict Check Agent",
+    "Introduction Facilitation Agent",
+    "Progress Tracking Agent"
+  ]
+}

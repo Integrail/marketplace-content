@@ -1,0 +1,161 @@
+{
+  "id": "MW-1072",
+  "name": "Virtual Data Room Automation AI Worker",
+  "description": "Organizes, indexes, and extracts insights from VDR documents, accelerating due diligence and reducing review time.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1072/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "1,000+ documents indexed and categorized per hour 95% reduction in time to find specific information",
+  "integrations": [
+    {
+      "name": "Intralinks",
+      "logoUrl": "ew-marketplace://logos/intralinks.png"
+    },
+    {
+      "name": "Datasite",
+      "logoUrl": "ew-marketplace://logos/datasite.png"
+    },
+    {
+      "name": "Box",
+      "logoUrl": "ew-marketplace://logos/box.png"
+    },
+    {
+      "name": "Dropbox",
+      "logoUrl": "ew-marketplace://logos/dropbox.png"
+    },
+    {
+      "name": "SharePoint",
+      "logoUrl": "ew-marketplace://logos/sharepoint.png"
+    },
+    {
+      "name": "deal management platforms",
+      "logoUrl": "ew-marketplace://logos/deal-management-platforms.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1072/hero.png"
+  },
+  "overview": "Organizes, indexes, and extracts insights from VDR documents automatically This AI Worker transforms VDR review from a document-by-document slog into intelligent, searchable insight. It ingests all VDR contents, categorizes documents by type and relevance, extracts key data points into structured formats, identifies missing materials, and surfaces critical      Search Efficiency information proactively. The worker enables natural language queries across thousands of documents and tracks document versions and updates. Due diligence teams find answers in seconds instead of hours.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1072/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Intralinks",
+        "description": "Integration with Intralinks"
+      },
+      {
+        "name": "Datasite",
+        "description": "Integration with Datasite"
+      },
+      {
+        "name": "Box",
+        "description": "Integration with Box"
+      },
+      {
+        "name": "Dropbox",
+        "description": "Integration with Dropbox"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Ingestion",
+        "description": "Handles the ingestion step"
+      },
+      {
+        "name": "Classification",
+        "description": "Handles the classification step"
+      },
+      {
+        "name": "OCR/Extraction",
+        "description": "Handles the ocr/extraction step"
+      },
+      {
+        "name": "Indexing",
+        "description": "Handles the indexing step"
+      },
+      {
+        "name": "Gap Analysis",
+        "description": "Handles the gap analysis step"
+      },
+      {
+        "name": "Search",
+        "description": "Handles the search step"
+      },
+      {
+        "name": "Alert",
+        "description": "Handles the alert step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Document Processing",
+      "value": "1,000+ documents indexed and categorized per hour 95% reduction in time to find specific information"
+    },
+    {
+      "metric": "Data Extraction Accuracy",
+      "value": "97% accuracy on key data point extraction"
+    },
+    {
+      "metric": "Gap Identification",
+      "value": "Missing documents flagged within 24 hours of access"
+    },
+    {
+      "metric": "Review Time Reduction",
+      "value": "60% reduction in overall VDR review time"
+    }
+  ],
+  "outputs": [
+    "Organized document indices",
+    "extracted data tables",
+    "gap reports",
+    "search results",
+    "version tracking",
+    "key finding summaries",
+    "audit trails"
+  ],
+  "triggers": [
+    "VDR access granted",
+    "document upload",
+    "search query",
+    "extraction request",
+    "gap analysis request",
+    "update notification"
+  ],
+  "knowledgeSources": [
+    "Document taxonomies",
+    "data extraction templates",
+    "due diligence checklists",
+    "industry-specific requirements",
+    "regulatory frameworks"
+  ],
+  "agentOrchestration": [
+    "Ingestion Agent",
+    "Classification Agent",
+    "OCR/Extraction Agent",
+    "Indexing Agent",
+    "Gap Analysis Agent",
+    "Search Agent",
+    "Alert Agent"
+  ]
+}

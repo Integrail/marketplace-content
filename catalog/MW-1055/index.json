@@ -1,0 +1,153 @@
+{
+  "id": "MW-1055",
+  "name": "Social Media AI Worker",
+  "description": "Writes, designs, and schedules social media content for all of your channels and executes employee activation.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Marketing"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1055/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "10x increase in social posts published per month",
+  "integrations": [
+    {
+      "name": "LinkedIn",
+      "logoUrl": "ew-marketplace://logos/linkedin.png"
+    },
+    {
+      "name": "X/Twitter",
+      "logoUrl": "ew-marketplace://logos/x-twitter.png"
+    },
+    {
+      "name": "Instagram",
+      "logoUrl": "ew-marketplace://logos/instagram.png"
+    },
+    {
+      "name": "Facebook",
+      "logoUrl": "ew-marketplace://logos/facebook.png"
+    },
+    {
+      "name": "Hootsuite",
+      "logoUrl": "ew-marketplace://logos/hootsuite.png"
+    },
+    {
+      "name": "Sprout Social",
+      "logoUrl": "ew-marketplace://logos/sprout-social.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1055/hero.png"
+  },
+  "overview": "This AI Worker transforms your social media operations from a time-intensive bottleneck into a scalable content engine. It researches trending topics in your industry, writes platform-optimized posts for LinkedIn, X, Instagram, and Facebook, generates accompanying visuals, and schedules content directly to your social media management platform. It also coordinates employee activation campaigns by generating personalized content for team members to share, amplifying your reach without adding headcount.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1055/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "LinkedIn",
+        "description": "Integration with LinkedIn"
+      },
+      {
+        "name": "X/Twitter",
+        "description": "Integration with X/Twitter"
+      },
+      {
+        "name": "Instagram",
+        "description": "Integration with Instagram"
+      },
+      {
+        "name": "Facebook",
+        "description": "Integration with Facebook"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Research",
+        "description": "Handles the research step"
+      },
+      {
+        "name": "Writing",
+        "description": "Handles the writing step"
+      },
+      {
+        "name": "Design",
+        "description": "Handles the design step"
+      },
+      {
+        "name": "Scheduling",
+        "description": "Handles the scheduling step"
+      },
+      {
+        "name": "Activation",
+        "description": "Handles the activation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Content Volume",
+      "value": "10x increase in social posts published per month"
+    },
+    {
+      "metric": "Time Savings",
+      "value": "20+ hours/week reclaimed from manual content creation"
+    },
+    {
+      "metric": "Engagement",
+      "value": "40-60% improvement in average engagement rate"
+    },
+    {
+      "metric": "Employee Activation",
+      "value": "5x more employee shares with zero additional effort"
+    },
+    {
+      "metric": "Consistency",
+      "value": "100% adherence to posting schedule and brand voice"
+    }
+  ],
+  "outputs": [
+    "Published social posts",
+    "scheduled content queue",
+    "employee activation content packages",
+    "performance reports"
+  ],
+  "triggers": [
+    "Content calendar",
+    "campaign briefs",
+    "product launches",
+    "company news",
+    "industry trends",
+    "employee activation requests"
+  ],
+  "knowledgeSources": [
+    "Brand guidelines",
+    "tone of voice documentation",
+    "past high-performing posts",
+    "competitor content",
+    "industry news feeds",
+    "product information"
+  ],
+  "agentOrchestration": [
+    "Research Agent",
+    "Writing Agent",
+    "Design Agent",
+    "Scheduling Agent",
+    "Activation Agent"
+  ]
+}

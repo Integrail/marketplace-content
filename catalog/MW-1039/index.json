@@ -1,0 +1,149 @@
+{
+  "id": "MW-1039",
+  "name": "Employee Data & Records AI Worker",
+  "description": "Maintains HRIS accuracy, processes verifications, generates reports, and ensures data integrity across systems.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "HR"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1039/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "99%+ HRIS data accuracy maintained",
+  "integrations": [
+    {
+      "name": "HRIS systems (Workday, ADP, BambooHR)",
+      "logoUrl": "ew-marketplace://logos/hris-systems-workday-adp-bamboohr.png"
+    },
+    {
+      "name": "payroll platforms",
+      "logoUrl": "ew-marketplace://logos/payroll-platforms.png"
+    },
+    {
+      "name": "document generation",
+      "logoUrl": "ew-marketplace://logos/document-generation.png"
+    },
+    {
+      "name": "verification services",
+      "logoUrl": "ew-marketplace://logos/verification-services.png"
+    },
+    {
+      "name": "reporting tools",
+      "logoUrl": "ew-marketplace://logos/reporting-tools.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1039/hero.png"
+  },
+  "overview": "Maintains HRIS accuracy, processes verifications, and ensures data integrity This AI Worker serves as the guardian of your employee data. It processes routine data changes (address updates, emergency contacts, direct deposit), handles employment verification requests, generates standard reports, and continuously monitors for data quality issues. When employees need documentation—verification letters, employment confirmations, or tax documents—they get instant self-service without HR involvement.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1039/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "HRIS systems (Workday, ADP, BambooHR)",
+        "description": "Integration with HRIS systems (Workday, ADP, BambooHR)"
+      },
+      {
+        "name": "payroll platforms",
+        "description": "Integration with payroll platforms"
+      },
+      {
+        "name": "document generation",
+        "description": "Integration with document generation"
+      },
+      {
+        "name": "verification services",
+        "description": "Integration with verification services"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Request Classification",
+        "description": "Handles the request classification step"
+      },
+      {
+        "name": "Data Validation",
+        "description": "Handles the data validation step"
+      },
+      {
+        "name": "Change Processing",
+        "description": "Handles the change processing step"
+      },
+      {
+        "name": "Verification Generation",
+        "description": "Handles the verification generation step"
+      },
+      {
+        "name": "Report Generation",
+        "description": "Handles the report generation step"
+      },
+      {
+        "name": "Audit Logging",
+        "description": "Handles the audit logging step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Data Accuracy",
+      "value": "99%+ HRIS data accuracy maintained"
+    },
+    {
+      "metric": "Verification Speed",
+      "value": "Employment verifications completed in minutes"
+    },
+    {
+      "metric": "HR Time Savings",
+      "value": "10+ hours/week saved on data maintenance and requests Self-Service Rate                      85% of routine requests handled without HR"
+    },
+    {
+      "metric": "Compliance",
+      "value": "Complete audit trail for all data changes"
+    }
+  ],
+  "outputs": [
+    "Data change confirmations",
+    "verification letters",
+    "standard reports",
+    "audit logs",
+    "data quality dashboards"
+  ],
+  "triggers": [
+    "Data change requests",
+    "verification requests",
+    "report requests",
+    "document requests",
+    "data quality alerts"
+  ],
+  "knowledgeSources": [
+    "HRIS data standards",
+    "verification templates",
+    "report definitions",
+    "compliance requirements",
+    "document templates"
+  ],
+  "agentOrchestration": [
+    "Request Classification Agent",
+    "Data Validation Agent",
+    "Change Processing Agent",
+    "Verification Generation Agent",
+    "Report Generation Agent",
+    "Audit Logging Agent"
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "id": "MW-1073",
+  "name": "Due Diligence & Analysis AI Worker",
+  "description": "Conducts systematic due diligence across financial, operational, and market dimensions, identifying risks and opportunities.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1073/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 6 weeks to 3 weeks",
+  "integrations": [
+    {
+      "name": "VDR platforms",
+      "logoUrl": "ew-marketplace://logos/vdr-platforms.png"
+    },
+    {
+      "name": "financial modeling tools",
+      "logoUrl": "ew-marketplace://logos/financial-modeling-tools.png"
+    },
+    {
+      "name": "expert network platforms",
+      "logoUrl": "ew-marketplace://logos/expert-network-platforms.png"
+    },
+    {
+      "name": "regulatory databases",
+      "logoUrl": "ew-marketplace://logos/regulatory-databases.png"
+    },
+    {
+      "name": "CRM",
+      "logoUrl": "ew-marketplace://logos/crm.png"
+    },
+    {
+      "name": "deal management",
+      "logoUrl": "ew-marketplace://logos/deal-management.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1073/hero.png"
+  },
+  "overview": "Conducts systematic due diligence across financial, operational, and market dimensions This AI Worker brings rigor and consistency to every due diligence process. It executes standardized analysis protocols across financial performance, operational metrics, market positioning, customer concentration, management quality, and legal/regulatory risks. The worker identifies anomalies, flags concerns, benchmarks against comparable transactions, and generates comprehensive diligence reports. Every deal receives thorough analysis regardless of team capacity constraints.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1073/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "VDR platforms",
+        "description": "Integration with VDR platforms"
+      },
+      {
+        "name": "financial modeling tools",
+        "description": "Integration with financial modeling tools"
+      },
+      {
+        "name": "expert network platforms",
+        "description": "Integration with expert network platforms"
+      },
+      {
+        "name": "regulatory databases",
+        "description": "Integration with regulatory databases"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Workstream Coordination",
+        "description": "Handles the workstream coordination step"
+      },
+      {
+        "name": "Financial Analysis",
+        "description": "Handles the financial analysis step"
+      },
+      {
+        "name": "Commercial Analysis",
+        "description": "Handles the commercial analysis step"
+      },
+      {
+        "name": "Operations Analysis",
+        "description": "Handles the operations analysis step"
+      },
+      {
+        "name": "Legal/Regulatory",
+        "description": "Handles the legal/regulatory step"
+      },
+      {
+        "name": "Risk Synthesis",
+        "description": "Handles the risk synthesis step"
+      },
+      {
+        "name": "Report Generation",
+        "description": "Handles the report generation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Diligence Cycle Time",
+      "value": "Reduced from 6 weeks to 3 weeks"
+    },
+    {
+      "metric": "Issue Detection",
+      "value": "89% of material issues identified in first pass"
+    },
+    {
+      "metric": "Analysis Consistency",
+      "value": "100% of deals evaluated against standard framework"
+    },
+    {
+      "metric": "Red Flag Identification",
+      "value": "Critical concerns surfaced 12 days earlier on average"
+    },
+    {
+      "metric": "Deal Outcome Improvement",
+      "value": "34% reduction in post-close surprises"
+    }
+  ],
+  "outputs": [
+    "Due diligence reports",
+    "financial analyses",
+    "risk assessments",
+    "management scorecards",
+    "issue logs",
+    "investment committee memos",
+    "workstream trackers"
+  ],
+  "triggers": [
+    "Deal advancement to diligence",
+    "VDR availability",
+    "management meeting",
+    "expert call",
+    "workstream completion"
+  ],
+  "knowledgeSources": [
+    "Due diligence frameworks",
+    "financial analysis templates",
+    "industry benchmarks",
+    "risk taxonomies",
+    "regulatory requirements",
+    "comparable transaction data"
+  ],
+  "agentOrchestration": [
+    "Workstream Coordination Agent",
+    "Financial Analysis Agent",
+    "Commercial Analysis Agent",
+    "Operations Analysis Agent",
+    "Legal/Regulatory Agent",
+    "Risk Synthesis Agent",
+    "Report Generation Agent"
+  ]
+}

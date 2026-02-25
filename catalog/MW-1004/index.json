@@ -1,0 +1,167 @@
+{
+  "id": "MW-1004",
+  "name": "Treasury Operations AI Worker",
+  "description": "Manages bank relationships, executes intercompany transfers, monitors covenant compliance, and optimizes debt and investment positions.",
+  "itemVersion": "1.0.0-1",
+  "type": "Worker",
+  "categories": [
+    "Finance"
+  ],
+  "tags": [],
+  "iconUrl": "ew-marketplace://MW-1004/icon.png",
+  "author": {
+    "name": "Integrail.ai",
+    "avatarUrl": "ew-marketplace://shared/integrail-avatar.png"
+  },
+  "keyBenefit": "Reduced from 5 days to same-day",
+  "integrations": [
+    {
+      "name": "Treasury management systems",
+      "logoUrl": "ew-marketplace://logos/treasury-management-systems.png"
+    },
+    {
+      "name": "all banking platforms",
+      "logoUrl": "ew-marketplace://logos/all-banking-platforms.png"
+    },
+    {
+      "name": "SWIFT",
+      "logoUrl": "ew-marketplace://logos/swift.png"
+    },
+    {
+      "name": "FX platforms",
+      "logoUrl": "ew-marketplace://logos/fx-platforms.png"
+    },
+    {
+      "name": "money market funds",
+      "logoUrl": "ew-marketplace://logos/money-market-funds.png"
+    },
+    {
+      "name": "debt tracking systems",
+      "logoUrl": "ew-marketplace://logos/debt-tracking-systems.png"
+    }
+  ],
+  "heroMedia": {
+    "kind": "image",
+    "url": "ew-marketplace://MW-1004/hero.png"
+  },
+  "overview": "Manages bank relationships, intercompany funding, and debt/investment optimization This AI Worker elevates treasury from administrative task management to strategic capital optimization. It monitors all bank accounts for balance and activity, executes intercompany transfers to optimize entity-level liquidity, tracks covenant compliance across all debt instruments, and manages short-term investment positions. The worker handles bank fee analysis, relationship documentation, and ensures your capital structure supports business objectives while minimizing cost of capital.",
+  "howItWorks": {
+    "href": "ew-marketplace://MW-1004/how-it-works.md"
+  },
+  "setupOverview": {
+    "setupTime": "30 mins",
+    "connectors": [
+      {
+        "name": "Treasury management systems",
+        "description": "Integration with Treasury management systems"
+      },
+      {
+        "name": "all banking platforms",
+        "description": "Integration with all banking platforms"
+      },
+      {
+        "name": "SWIFT",
+        "description": "Integration with SWIFT"
+      },
+      {
+        "name": "FX platforms",
+        "description": "Integration with FX platforms"
+      }
+    ],
+    "memories": [
+      {
+        "name": "Business Policies",
+        "description": "Rules, thresholds, and decision criteria for this worker"
+      }
+    ],
+    "collections": [],
+    "workflows": [
+      {
+        "name": "Bank Monitoring",
+        "description": "Handles the bank monitoring step"
+      },
+      {
+        "name": "Intercompany Netting",
+        "description": "Handles the intercompany netting step"
+      },
+      {
+        "name": "Transfer Execution",
+        "description": "Handles the transfer execution step"
+      },
+      {
+        "name": "Covenant Tracking",
+        "description": "Handles the covenant tracking step"
+      },
+      {
+        "name": "Investment Management",
+        "description": "Handles the investment management step"
+      },
+      {
+        "name": "Fee Analysis",
+        "description": "Handles the fee analysis step"
+      },
+      {
+        "name": "Documentation",
+        "description": "Handles the documentation step"
+      }
+    ]
+  },
+  "supportUrl": "https://integrail.ai/support",
+  "keyResults": [
+    {
+      "metric": "Intercompany Settlement",
+      "value": "Reduced from 5 days to same-day"
+    },
+    {
+      "metric": "Covenant Monitoring",
+      "value": "100% automated with 30-day early warning"
+    },
+    {
+      "metric": "Bank Fee Reduction",
+      "value": "28% reduction through fee analysis and negotiation"
+    },
+    {
+      "metric": "Interest Expense Optimization",
+      "value": "$2.4M annual savings (mid-market example)"
+    },
+    {
+      "metric": "Treasury Analyst Productivity",
+      "value": "4x more accounts managed per analyst"
+    }
+  ],
+  "outputs": [
+    "Bank reconciliations",
+    "intercompany settlements",
+    "covenant compliance reports",
+    "investment portfolio status",
+    "fee analysis",
+    "bank scorecards",
+    "treasury dashboards"
+  ],
+  "triggers": [
+    "Daily bank reconciliation",
+    "intercompany funding requests",
+    "debt covenant calculations",
+    "investment maturity",
+    "bank RFP",
+    "fee review"
+  ],
+  "knowledgeSources": [
+    "Bank account master",
+    "debt agreements",
+    "covenant definitions",
+    "investment policy",
+    "intercompany loan terms",
+    "bank fee schedules",
+    "relationship documentation"
+  ],
+  "agentOrchestration": [
+    "Bank Monitoring Agent",
+    "Intercompany Netting Agent",
+    "Transfer Execution Agent",
+    "Covenant Tracking Agent",
+    "Investment Management Agent",
+    "Fee Analysis Agent",
+    "Documentation Agent"
+  ]
+}
