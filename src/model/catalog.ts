@@ -3,6 +3,7 @@ export type IEverMarketplacePlainText = string;
 export type IEverMarketplaceVersion = `${number}.${number}.${number}-${number}`;
 export type IEverMarketplaceUrl =
     | `ew-marketplace://${string}/${string}`
+    | `http://${string}/${string}`
     | `https://${string}/${string}`;
 
 /**
@@ -27,33 +28,23 @@ export type IEverMarketplaceItemType =
     | 'Workflow'
     | 'Worker';
 
-export type IEverMarketplaceCategory =
+export type IEverMarketplaceCategoryName =
+    | 'Marketing'
+    | 'Finance'
     | 'Sales'
-    | 'Efficiency'
     | (string & {});
+
+export type IEverMarketplaceSubCategoryName =
+    | 'todo1'
+    | 'todo2'
+    | 'todo3'
+    | (string & {});
+
 
 export type IEverMarketplaceTag =
     | 'Delivery'
     | 'IT'
     | (string & {});
-
-/**
- * The person or team who built the item.
- * Shown as a circular avatar overlaid on the item icon.
- */
-export interface IEverMarketplaceAuthor {
-    readonly name: IEverMarketplacePlainText;
-    readonly avatarUrl: IEverMarketplaceUrl;
-}
-
-/**
- * An external tool or service this item integrates with.
- * Shown as a "Required apps" row on the detail sidebar and as logos on the card.
- */
-export interface IEverMarketplaceIntegration {
-    readonly name: IEverMarketplacePlainText;
-    readonly logoUrl: IEverMarketplaceUrl;
-}
 
 /** Hero banner shown at the top of the detail view. */
 export type IEverMarketplaceMediaKind = 'image' | 'video';
@@ -74,74 +65,130 @@ export interface IEverMarketplaceSetupComponent {
     readonly description: IEverMarketplacePlainText;
 }
 
-/**
- * A single quantified outcome from the worker's "Key Results" section.
- * Displayed as a metrics grid on the detail page.
- */
-export interface IEverMarketplaceKeyResult {
-    readonly metric: IEverMarketplacePlainText;
-    readonly value: IEverMarketplacePlainText;
-}
+export type IEverMarketplaceAppId  = "GMail" | "NetSuite" | "QuickBooks";
+
 
 /**
- * Structured breakdown shown in the "Setup overview" section of the detail view.
- * The sidebar's "N dependencies" stat is the sum of connectors + memories + collections.
- * The sidebar's "N workflows" stat is workflows.length.
+ * Hardcoded in tool, exposed by names from ClickUp
  */
-export interface IEverMarketplaceSetupOverview {
-    /** Human-readable estimate shown in the sidebar, e.g. "30 mins". */
-    readonly setupTime: IEverMarketplacePlainText;
-    readonly connectors: readonly IEverMarketplaceSetupComponent[];
-    readonly memories: readonly IEverMarketplaceSetupComponent[];
-    readonly collections: readonly IEverMarketplaceSetupComponent[];
-    readonly workflows: readonly IEverMarketplaceSetupComponent[];
+export interface IEverMarketplaceAppDefinition {
+    readonly appId: IEverMarketplaceAppId;
+    readonly name: IEverMarketplacePlainText;
+    readonly logoUrl: IEverMarketplaceUrl;
+    readonly description: IEverMarketplaceUrl;
+}
+
+export type EverMarketplaceItemDependencyType = "connector" | "memory" | "collection" | "workflow";
+
+interface IEverMarketplaceItemDependency {
+    readonly type: EverMarketplaceItemDependencyType;
+    readonly name: string;
+    readonly description: string;
 }
 
 export interface IEverMarketplaceCatalogItem {
+    /**
+     * Custom task id in ClickUp.
+     * - ClickUp Path: MW-{XXXX}-summary.json/custom_id
+     *
+     */
     readonly id: string;
-    readonly name: IEverMarketplacePlainText;
-    /** Short summary shown on the card and at the top of the detail sidebar. */
-    readonly description: IEverMarketplaceMarkdown;
+
+    /**
+     * Version from parsed date
+     * - ClickUp Path: MW-{XXXX}-summary.json/date_updated
+     */
     readonly itemVersion: IEverMarketplaceVersion;
+
+    /**
+     * Item name
+     * - ClickUp Path: MW-{XXXX}-summary.json/name
+     */
+    readonly name: IEverMarketplacePlainText;
+
+    /**
+     * Short summary shown on the card and at the top of the detail sidebar.
+     * - ClickUp Path: MW-{XXXX}-summary.json/markdown_description[first H1: "SHORT-DESC"]
+     */
+    readonly cardDescription: IEverMarketplaceMarkdown;
+    /**
+     * ITEM_TYPE
+     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_TYPE"]
+     */
     readonly type: IEverMarketplaceItemType;
     /**
-     * Ordered category breadcrumb, e.g. ["Finance", "Accounting & Reporting"].
-     * Rendered joined by " • " on both the card and the detail sidebar.
+     * ITEM_CATEGORY (enum subject)
+     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_SUB_CATEGORY"]
      */
-    readonly categories: readonly IEverMarketplaceCategory[];
-    readonly tags: readonly IEverMarketplaceTag[];
-    readonly iconUrl: IEverMarketplaceUrl;
-    readonly author: IEverMarketplaceAuthor;
-    /** Gem-icon highlight line, e.g. "Saves ~15 hrs/week per accountant". */
-    readonly keyBenefit?: IEverMarketplacePlainText;
-    /** Listed as "Required apps" in the detail sidebar. */
-    readonly integrations: readonly IEverMarketplaceIntegration[];
+    readonly categoryName: IEverMarketplaceCategoryName;
 
-    // ── detail view ─────────────────────────────────────────────────────────
-    /** Hero banner image or video at the top of the detail view. */
+    /**
+     * ITEM_SUB_CATEGORY (enum subject)
+     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_SUB_CATEGORY"]
+     */
+    readonly subCategoryName: IEverMarketplaceSubCategoryName;
+
+    /**
+     * ITEM_INCENTIVES
+     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_INCENTIVES"]
+     */
+    readonly incentives: string;
+
+    /**
+     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_PRIMARY_APPS"]
+     */
+    readonly primaryApps: readonly IEverMarketplaceAppDefinition[];
+    /**
+     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_APPS"]
+     */
+    readonly apps: readonly IEverMarketplaceAppDefinition[];
+
+    /**
+     * Install efforts
+     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_INSTALL_EFFORTS"]
+     */
+    readonly installEfforts: string;
+
+    /**
+     * Hero banner image or video at the top of the detail view.
+     * Source the ClickUp custom fields
+     * - ITEM_HERO_MEDIA_URL
+     * - ITEM_HERO_MEDIA_FILE
+     * Or local file called ./hero-media.???
+     */
     readonly heroMedia: IEverMarketplaceMedia;
-    /** "Overview" section — short narrative shown below the hero. */
-    readonly overview: IEverMarketplaceMarkdown;
-    /** "How it works" section — long-form content with sub-headings and lists. */
-    readonly howItWorks: IEverMarketplaceMarkdown;
-    /** Structured dependency breakdown shown in the "Setup overview" section. */
-    readonly setupOverview: IEverMarketplaceSetupOverview;
-    /** "Download Tech Specs" link shown at the bottom of the detail sidebar. */
-    readonly techSpecsUrl?: IEverMarketplaceUrl;
-    /** "Get Support" action target. */
-    readonly supportUrl?: IEverMarketplaceUrl;
 
-    // ── blueprint metadata (sourced from PDF / ClickUp) ──────────────────────
-    /** Quantified outcomes from the "Key Results" section of the worker PDF. */
-    readonly keyResults?: readonly IEverMarketplaceKeyResult[];
-    /** What the worker produces (from Blueprint → Output). */
-    readonly outputs?: readonly IEverMarketplacePlainText[];
-    /** Events that trigger the worker (from Blueprint → User Input/Triggers). */
-    readonly triggers?: readonly IEverMarketplacePlainText[];
-    /** Data sources the worker needs (from Blueprint → Knowledge Sources). */
-    readonly knowledgeSources?: readonly IEverMarketplacePlainText[];
-    /** Ordered list of sub-agents (from Blueprint → Agent Orchestration). */
-    readonly agentOrchestration?: readonly IEverMarketplacePlainText[];
+    /**
+     * - Custom field: ITEM_BUNDLE_JSON
+     * - local bundle.json file
+     */
+    readonly bundle: IEverMarketplaceRef;
+
+    /**
+     * Full description to show on item page.
+     * - ClickUp Path: MW-{XXXX}-summary.json/markdown_description[first H1: "ULL-DESC"]
+     */
+    readonly fullDescription: IEverMarketplaceMarkdown;
+
+    /**
+     * V2
+     */
+    readonly tags: readonly IEverMarketplaceTag[];
+
+    /**
+     * ClickUp custom field ITEM_TECH_SPECS_FILE
+     * Local file tech-specs.*
+     *
+     * Markdown is converted to PDF during build time
+     */
+    readonly techSpecsUrl?: IEverMarketplaceUrl;
+
+    readonly dependencies: readonly IEverMarketplaceItemDependency[];
+
+    /**
+     * Combined text of all text fields to make search simple in mongo
+     */
+    readonly textIndex: string;
 }
 
 export interface IEverMarketplaceCatalog {
