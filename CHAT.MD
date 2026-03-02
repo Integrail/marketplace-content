@@ -197,3 +197,8 @@ MONGO_INITDB_MARKETPLACE_COLLECTION: marketplace_v1
 //===================================================
 Small demo improvements.
 - Highlight founded text by some small animation (like fade in/out pulse with 30% brightness or opacity variation every 2 seconds)
+
+//===================================================
+Create a CLI script in ./src/cli called sync-model:
+- Accept everworker repository path as a parameter (default: ../everworker relative to this project's root)
+- Copy *.ts (excluding *.test.ts) files from ./src/model to everworker/imports/core/integrations/marketplace (creating this directory if needed)
