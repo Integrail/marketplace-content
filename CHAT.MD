@@ -199,6 +199,11 @@ Small demo improvements.
 - Highlight founded text by some small animation (like fade in/out pulse with 30% brightness or opacity variation every 2 seconds)
 
 //===================================================
+Create a CLI script in ./src/cli called sync-model:
+- Accept everworker repository path as a parameter (default: ../everworker relative to this project's root)
+- Copy *.ts (excluding *.test.ts) files from ./src/model to everworker/imports/core/integrations/marketplace (creating this directory if needed)
+
+//===================================================
 In src/lib/catalog-build.ts, implement a function `convertClickUpTaskToCatalogItem` (along with `ClickUpTaskSummary` type) that converts a ClickUp task into a catalog item.
 - For a reference example of a ClickUp task, see click-up/tasks/MW-1101/MW-1101-summary.json.
 - Catalog item types are described in src/model/catalog.ts.
