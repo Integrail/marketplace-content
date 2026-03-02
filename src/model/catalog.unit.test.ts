@@ -46,7 +46,7 @@ function assertSetupComponents(value: unknown, field: string): void {
 
 function assertCatalogItem(raw: unknown, label: string): void {
     assert(typeof raw === 'object' && raw !== null, `${label}: must be an object`);
-    const item = raw as Record<string, unknown>;
+    const item = raw as IEverMarketplaceCatalogItem;
 
     // ── card fields ──────────────────────────────────────────────────────────
     assert(typeof item.id === 'string' && item.id.length > 0,
@@ -73,7 +73,7 @@ function assertCatalogItem(raw: unknown, label: string): void {
     assertUrl(item.iconUrl, `${label}: iconUrl`);
 
     assert(typeof item.author === 'object' && item.author !== null, `${label}: author must be an object`);
-    const author = item.author as Record<string, unknown>;
+    const author = item.author;
     assert(typeof author.name === 'string' && author.name.length > 0, `${label}: author.name must be a non-empty string`);
     assertUrl(author.avatarUrl, `${label}: author.avatarUrl`);
 
@@ -93,7 +93,7 @@ function assertCatalogItem(raw: unknown, label: string): void {
     // ── detail view fields ───────────────────────────────────────────────────
     assert(typeof item.heroMedia === 'object' && item.heroMedia !== null,
         `${label}: heroMedia must be an object`);
-    const media = item.heroMedia as Record<string, unknown>;
+    const media = item.heroMedia;
     assert(typeof media.kind === 'string' && VALID_MEDIA_KINDS.has(media.kind),
         `${label}: heroMedia.kind must be one of [${[...VALID_MEDIA_KINDS].join(', ')}]`);
     assertUrl(media.url, `${label}: heroMedia.url`);
@@ -109,7 +109,7 @@ function assertCatalogItem(raw: unknown, label: string): void {
 
     assert(typeof item.setupOverview === 'object' && item.setupOverview !== null,
         `${label}: setupOverview must be an object`);
-    const setup = item.setupOverview as Record<string, unknown>;
+    const setup = item.setupOverview;
     assert(typeof setup.setupTime === 'string' && setup.setupTime.length > 0,
         `${label}: setupOverview.setupTime must be a non-empty string`);
     assertSetupComponents(setup.connectors,  `${label}: setupOverview.connectors`);
