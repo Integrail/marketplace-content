@@ -11,6 +11,7 @@
     "marketplace-preview": "vite --open",
     "marketplace-package": "tsx src/cli/package-marketplace.ts",
     "marketplace-install-locally": "tsx src/cli/install-locally.ts",
+    "marketplace-generate-catalog": "tsx src/cli/generate-catalog.ts",
     "click-up:sync": "everhow click-up:content-sync",
     "unit-tests": "mocha 'src/**/*.unit.test.ts'",
     "unit-tests:coverage": "c8 --reporter=text --reporter=lcov --reporter=html --reports-dir=.coverage --all --src=src mocha 'src/**/*.unit.test.ts'",

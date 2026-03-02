@@ -34,13 +34,6 @@ export type IEverMarketplaceCategoryName =
     | 'Sales'
     | (string & {});
 
-export type IEverMarketplaceSubCategoryName =
-    | 'todo1'
-    | 'todo2'
-    | 'todo3'
-    | (string & {});
-
-
 export type IEverMarketplaceTag =
     | 'Delivery'
     | 'IT'
@@ -58,137 +51,65 @@ export interface IEverMarketplaceMedia {
 
 /**
  * A single named component listed inside the Setup overview section.
- * Used for Connectors, Memories, Collections, and Workflows.
+ * Used for connectors, memories, collections, and workflows.
  */
 export interface IEverMarketplaceSetupComponent {
     readonly name: IEverMarketplacePlainText;
     readonly description: IEverMarketplacePlainText;
 }
 
-export type IEverMarketplaceAppId  = "GMail" | "NetSuite" | "QuickBooks";
-
-
-/**
- * Hardcoded in tool, exposed by names from ClickUp
- */
-export interface IEverMarketplaceAppDefinition {
-    readonly appId: IEverMarketplaceAppId;
-    readonly name: IEverMarketplacePlainText;
-    readonly logoUrl: IEverMarketplaceUrl;
-    readonly description: IEverMarketplaceUrl;
+export interface IEverMarketplaceSetupOverview {
+    readonly setupTime: string;
+    readonly connectors: readonly IEverMarketplaceSetupComponent[];
+    readonly memories: readonly IEverMarketplaceSetupComponent[];
+    readonly collections: readonly IEverMarketplaceSetupComponent[];
+    readonly workflows: readonly IEverMarketplaceSetupComponent[];
 }
 
-export type EverMarketplaceItemDependencyType = "connector" | "memory" | "collection" | "workflow";
+export interface IEverMarketplaceAuthor {
+    readonly name: IEverMarketplacePlainText;
+    readonly avatarUrl: IEverMarketplaceUrl;
+}
 
-interface IEverMarketplaceItemDependency {
-    readonly type: EverMarketplaceItemDependencyType;
-    readonly name: string;
-    readonly description: string;
+export interface IEverMarketplaceIntegration {
+    readonly name: IEverMarketplacePlainText;
+    readonly logoUrl: IEverMarketplaceUrl;
+}
+
+export interface IEverMarketplaceKeyResult {
+    readonly metric: string;
+    readonly value: string;
 }
 
 export interface IEverMarketplaceCatalogItem {
-    /**
-     * Custom task id in ClickUp.
-     * - ClickUp Path: MW-{XXXX}-summary.json/custom_id
-     *
-     */
     readonly id: string;
-
-    /**
-     * Version from parsed date
-     * - ClickUp Path: MW-{XXXX}-summary.json/date_updated
-     */
-    readonly itemVersion: IEverMarketplaceVersion;
-
-    /**
-     * Item name
-     * - ClickUp Path: MW-{XXXX}-summary.json/name
-     */
     readonly name: IEverMarketplacePlainText;
-
     /**
      * Short summary shown on the card and at the top of the detail sidebar.
-     * - ClickUp Path: MW-{XXXX}-summary.json/markdown_description[first H1: "SHORT-DESC"]
      */
-    readonly cardDescription: IEverMarketplaceMarkdown;
-    /**
-     * ITEM_TYPE
-     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_TYPE"]
-     */
+    readonly description: IEverMarketplaceMarkdown;
+    readonly itemVersion: IEverMarketplaceVersion;
     readonly type: IEverMarketplaceItemType;
-    /**
-     * ITEM_CATEGORY (enum subject)
-     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_SUB_CATEGORY"]
-     */
-    readonly categoryName: IEverMarketplaceCategoryName;
-
-    /**
-     * ITEM_SUB_CATEGORY (enum subject)
-     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_SUB_CATEGORY"]
-     */
-    readonly subCategoryName: IEverMarketplaceSubCategoryName;
-
-    /**
-     * ITEM_INCENTIVES
-     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_INCENTIVES"]
-     */
-    readonly incentives: string;
-
-    /**
-     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_PRIMARY_APPS"]
-     */
-    readonly primaryApps: readonly IEverMarketplaceAppDefinition[];
-    /**
-     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_APPS"]
-     */
-    readonly apps: readonly IEverMarketplaceAppDefinition[];
-
-    /**
-     * Install efforts
-     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_INSTALL_EFFORTS"]
-     */
-    readonly installEfforts: string;
-
-    /**
-     * Hero banner image or video at the top of the detail view.
-     * Source the ClickUp custom fields
-     * - ITEM_HERO_MEDIA_URL
-     * - ITEM_HERO_MEDIA_FILE
-     * Or local file called ./hero-media.???
-     */
-    readonly heroMedia: IEverMarketplaceMedia;
-
-    /**
-     * - Custom field: ITEM_BUNDLE_JSON
-     * - local bundle.json file
-     */
-    readonly bundle: IEverMarketplaceRef;
-
-    /**
-     * Full description to show on item page.
-     * - ClickUp Path: MW-{XXXX}-summary.json/markdown_description[first H1: "ULL-DESC"]
-     */
-    readonly fullDescription: IEverMarketplaceMarkdown;
-
-    /**
-     * V2
-     */
+    readonly categories: readonly IEverMarketplaceCategoryName[];
     readonly tags: readonly IEverMarketplaceTag[];
-
+    readonly iconUrl: IEverMarketplaceUrl;
+    readonly author: IEverMarketplaceAuthor;
+    readonly keyBenefit?: string;
+    readonly integrations: readonly IEverMarketplaceIntegration[];
+    readonly heroMedia: IEverMarketplaceMedia;
     /**
-     * ClickUp custom field ITEM_TECH_SPECS_FILE
-     * Local file tech-specs.*
-     *
-     * Markdown is converted to PDF during build time
+     * Full description shown on the item detail page.
      */
+    readonly overview: IEverMarketplaceMarkdown;
+    readonly howItWorks: IEverMarketplaceRef;
+    readonly setupOverview: IEverMarketplaceSetupOverview;
+    readonly supportUrl: IEverMarketplaceUrl;
     readonly techSpecsUrl?: IEverMarketplaceUrl;
-
-    readonly dependencies: readonly IEverMarketplaceItemDependency[];
-
-    /**
-     * Combined text of all text fields to make search simple in mongo
-     */
-    readonly textIndex: string;
+    readonly keyResults?: readonly IEverMarketplaceKeyResult[];
+    readonly outputs?: readonly string[];
+    readonly triggers?: readonly string[];
+    readonly knowledgeSources?: readonly string[];
+    readonly agentOrchestration?: readonly string[];
 }
 
 export interface IEverMarketplaceCatalog {

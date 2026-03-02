@@ -197,3 +197,23 @@ MONGO_INITDB_MARKETPLACE_COLLECTION: marketplace_v1
 //===================================================
 Small demo improvements.
 - Highlight founded text by some small animation (like fade in/out pulse with 30% brightness or opacity variation every 2 seconds)
+
+//===================================================
+Extract all parsing and building catalog item logic from src/cli/generate-catalog.ts into src/lib/catalog.ts
+
+Verify if src/lib/catalog.ts can use types from src/model/catalog.ts and use them where applicable
+
+Compare IEverMarketplaceCatalogItem in src/model/catalog.ts with:
+- example in catalog/MW-1001/index.json
+- code that produced the example in src/lib/catalog.ts
+And update the model to match that output
+Keep IEverMarketplaceMarkdown and places where it's already used
+
+Generate unit tests for src/lib/catalog.ts in src/lib/catalog.unit.test.ts
+
+We now need to make sure `IEverMarketplaceMarkdown` fields are properly extracted to separate files with refs when their length reaches an extraction cutoff value:
+- in src/lib/catalog.ts, define an extraction cutoff constant with the value of 200
+- buildCatalogItem should return, instead of IEverMarketplaceCatalogItem, a value of the new type for a building catalog item result, which should have fields `item: IEverMarketplaceCatalogItem` and `attachments: Record<string, string>` where the key is file name within the output directory and value is file content
+  - this should incorporate `buildHowItWorksMD` as well
+- all the fields that were extracted should be replaced with a ref (similar to how `howItWorks` is defined right now)
+- src/cli/generate-catalog.ts should account for that and create all the attachment files; it shouldn't call `buildHowItWorksMD` explicitly anymore since `buildCatalogItem` should now take care of that
