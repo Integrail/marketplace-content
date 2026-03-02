@@ -197,3 +197,35 @@ MONGO_INITDB_MARKETPLACE_COLLECTION: marketplace_v1
 //===================================================
 Small demo improvements.
 - Highlight founded text by some small animation (like fade in/out pulse with 30% brightness or opacity variation every 2 seconds)
+
+//===================================================
+In src/lib/catalog-build.ts, implement a function `convertClickUpTaskToCatalogItem` (along with `ClickUpTaskSummary` type) that converts a ClickUp task into a catalog item.
+- For a reference example of a ClickUp task, see click-up/tasks/MW-1101/MW-1101-summary.json.
+- Catalog item types are described in src/model/catalog.ts.
+- Specify a markdown extraction cutoff constant and set to 200. Everywhere where `IEverMarketplaceMarkdown` is used in the catalog item type, the logic is the following: if the content length is <= extraction cutoff, then copy string inline; otherwise, add a ``{ href: `ew-marketplace://${id}/${filename}.md` }`` and add to the attachments a pair ``[`ew-marketplace://${id}/${filename}.md`]: /* content */``.
+
+Make it so that resolveMarkdown function is pure, i.e. doesn't modify attachments but just returns values that are then used on call site
+
+Extract APP_REGISTRY to JSON files src/apps/${name}.json
+we don't want to list every single json file in the imports
+
+Let's
+1. extract reading app registry to a separate function
+2. rename APP_REGISTRY to defaultAppRegistry
+3. allow to pass app registry that we're using as an optional parameter to `convertClickUpTaskToCatalogItem` for testing
+
+Now:
+1. extract everything concerning reading app registry from src/lib/catalog-build.ts to src/lib/app-registry.ts
+2. write unit tests in src/lib/app-registry.unit.test.ts (at least verifying that we're reading default app registry successfully)
+
+From src/lib/catalog-build.ts, extract all functions that are strictly related to parsing ClickUp (and not tied to catalog item types or something else other than ClickUp task structure) to src/lib/clickup-utils.ts; also add src/lib/clickup-utils.unit.test.ts with tests for those functions. In catalog-build.ts, make it a named import (`import * as clickUpUtils from ...`).
+
+In src/lib/catalog-validate.ts, implement the function `assertCatalogItem` that validates that the input is a valid catalog item. For all fields that require somewhat complicated checks, extract them to other `assert*` helpers.
+
+Now, implement `assertCatalogItemResult` in src/lib/catalog-validate.ts, that checks that href's are pointing to existing attachments.
+
+Make sure validation in src/lib/catalog-validate.ts checks for markdown extraction cutoff. Also, write src/lib/catalog-validate.unit.test.ts, where this should be reflected. For now, we're only asserting that inline fields are not exceeding extraction cutoff; NOT that fields that are extracted necessarily DO exceed.
+
+Implement a script src/cli/build-catalog.ts that generally behaves like src/cli/generate-catalog.ts, but uses the new conversion logic (src/lib/catalog-build.ts) and respects the up to date catalog model (src/model/catalog.ts).
+
+In src/lib/catalog-validate.unit.test.ts, add a test that reads the current catalog and validates all items in it.
