@@ -242,3 +242,8 @@ In src/lib/catalog-build.ts, change `buildCatalogItem` so that:
 do all the md->pdf in a separate file, let's call it src/lib/markdown-to-pdf.ts
 
 Right now attachment keys returned from `buildCatalogItem` in src/lib/catalog-build.ts (and used in src/cli/build-catalog.ts) are of this format: `ew-marketplace://MW-1101/full-description.md`. I want you to change that to `full-description.md` instead - just the file name.
+
+//===================================================
+I now want src/cli/build-catalog.ts to produce an HTML report at ./reports/catalog-build-report-{DATE}.html. What I want the report to contain:
+- successfully built catalog items
+- failed to build items and why

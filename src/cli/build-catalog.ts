@@ -20,21 +20,26 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
 const TASKS_DIR = path.join(ROOT, "click-up/tasks");
 const CATALOG_DIR = path.join(ROOT, "catalog");
+const REPORTS_DIR = path.join(ROOT, "reports");
 
 const DRY_RUN = process.argv.includes("--dry-run");
 const IDS_ARG = process.argv.find(a => a.startsWith("--ids="));
 const FILTER_IDS = IDS_ARG ? IDS_ARG.replace("--ids=", "").split(",") : null;
 
-// ── helpers ───────────────────────────────────────────────────────────────────
+// ── types ─────────────────────────────────────────────────────────────────────
 
-// ── main ──────────────────────────────────────────────────────────────────────
+type TaskSuccess = { status: "success"; id: string; name: string };
+type TaskFailure = { status: "failure"; id: string; reason: string };
+type TaskResult = TaskSuccess | TaskFailure;
 
-function processTask(taskId: string): boolean {
+// ── task processing ───────────────────────────────────────────────────────────
+
+function processTask(taskId: string): TaskResult {
     const summaryPath = path.join(TASKS_DIR, taskId, `${taskId}-summary.json`);
 
     if (!fs.existsSync(summaryPath)) {
         console.warn(`  [skip] No summary JSON for ${taskId}`);
-        return false;
+        return { status: "failure", id: taskId, reason: "No summary JSON found" };
     }
 
     let summary: ClickUpTaskSummary;
@@ -42,7 +47,7 @@ function processTask(taskId: string): boolean {
         summary = JSON.parse(fs.readFileSync(summaryPath, "utf-8")) as ClickUpTaskSummary;
     } catch (err) {
         console.error(`  [error] Failed to parse ${summaryPath}: ${err}`);
-        return false;
+        return { status: "failure", id: taskId, reason: `Failed to parse summary JSON: ${err}` };
     }
 
     let result: CatalogItemResult;
@@ -50,7 +55,7 @@ function processTask(taskId: string): boolean {
         result = buildCatalogItem(summary);
     } catch (err) {
         console.error(`  [error] buildCatalogItem failed for ${taskId}: ${err}`);
-        return false;
+        return { status: "failure", id: taskId, reason: `Build failed: ${err}` };
     }
 
     const outDir = path.join(CATALOG_DIR, taskId);
@@ -71,8 +76,78 @@ function processTask(taskId: string): boolean {
         console.log(`  ✓ ${taskId}: ${summary.name}`);
     }
 
-    return true;
+    return { status: "success", id: taskId, name: summary.name };
 }
+
+// ── report generation ─────────────────────────────────────────────────────────
+
+function escapeHtml(s: string): string {
+    return s
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+}
+
+function generateHtml(results: TaskResult[], date: string): string {
+    const successes = results.filter((r): r is TaskSuccess => r.status === "success");
+    const failures  = results.filter((r): r is TaskFailure => r.status === "failure");
+
+    const successRows = successes.map(r =>
+        `<tr><td>${escapeHtml(r.id)}</td><td>${escapeHtml(r.name)}</td></tr>`,
+    ).join("\n");
+
+    const failureRows = failures.map(r =>
+        `<tr><td>${escapeHtml(r.id)}</td><td>${escapeHtml(r.reason)}</td></tr>`,
+    ).join("\n");
+
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Catalog Build Report – ${escapeHtml(date)}</title>
+  <style>
+    body { font-family: sans-serif; max-width: 900px; margin: 2rem auto; color: #222; }
+    h1 { font-size: 1.4rem; }
+    h2 { font-size: 1.1rem; margin-top: 2rem; }
+    .summary { display: flex; gap: 2rem; margin: 1rem 0; }
+    .stat { padding: 0.5rem 1rem; border-radius: 4px; font-weight: bold; }
+    .stat-total   { background: #e8e8e8; }
+    .stat-success { background: #d4edda; color: #155724; }
+    .stat-failure { background: #f8d7da; color: #721c24; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th { text-align: left; padding: 0.4rem 0.6rem; background: #f0f0f0; border-bottom: 2px solid #ccc; }
+    td { padding: 0.4rem 0.6rem; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+    td:first-child { white-space: nowrap; font-family: monospace; }
+    tr:hover td { background: #fafafa; }
+  </style>
+</head>
+<body>
+  <h1>Catalog Build Report${DRY_RUN ? " (dry-run)" : ""}</h1>
+  <p>Generated: ${escapeHtml(date)}</p>
+  <div class="summary">
+    <span class="stat stat-total">Total: ${results.length}</span>
+    <span class="stat stat-success">Success: ${successes.length}</span>
+    <span class="stat stat-failure">Failed: ${failures.length}</span>
+  </div>
+
+  <h2>Successfully Built (${successes.length})</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Name</th></tr></thead>
+    <tbody>${successRows || "<tr><td colspan=\"2\">None</td></tr>"}</tbody>
+  </table>
+
+  <h2>Failed (${failures.length})</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Reason</th></tr></thead>
+    <tbody>${failureRows || "<tr><td colspan=\"2\">None</td></tr>"}</tbody>
+  </table>
+</body>
+</html>
+`;
+}
+
+// ── main ──────────────────────────────────────────────────────────────────────
 
 function main(): void {
     const taskDirs = fs.readdirSync(TASKS_DIR)
@@ -85,13 +160,17 @@ function main(): void {
 
     console.log(`Processing ${targets.length} tasks${DRY_RUN ? " (dry-run)" : ""}...\n`);
 
-    let success = 0;
-    let skipped = 0;
-    for (const taskId of targets) {
-        if (processTask(taskId)) success++; else skipped++;
-    }
+    const results: TaskResult[] = targets.map(taskId => processTask(taskId));
 
-    console.log(`\nDone: ${success} generated, ${skipped} skipped.`);
+    const successes = results.filter(r => r.status === "success").length;
+    const failures  = results.filter(r => r.status === "failure").length;
+    console.log(`\nDone: ${successes} generated, ${failures} failed.`);
+
+    const date = new Date().toISOString().slice(0, 10);
+    const reportPath = path.join(REPORTS_DIR, `catalog-build-report-${date}.html`);
+    fs.mkdirSync(REPORTS_DIR, { recursive: true });
+    fs.writeFileSync(reportPath, generateHtml(results, date), "utf-8");
+    console.log(`Report: ${reportPath}`);
 }
 
 main();
