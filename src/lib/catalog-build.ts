@@ -191,7 +191,7 @@ export function buildCatalogItem(
         subCategoryName,
         ...apps.map(a => a.name),
         ...dependencies.map(d => `${d.name} ${d.description}`),
-    ].filter(Boolean).join(" ");
+    ].filter(Boolean).join(" ").toLowerCase();
 
     const item: IEverMarketplaceCatalogItem = {
         id,
