@@ -53,6 +53,7 @@
     "href": "ew-marketplace://MW-1101/full-description.md"
   },
   "tags": [],
+  "techSpecsUrl": "ew-marketplace://MW-1101/tech-specs.pdf",
   "dependencies": [
     {
       "type": "connector",

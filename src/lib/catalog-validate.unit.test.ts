@@ -242,7 +242,7 @@ describe("assertCatalogItemResult (cutoff)", () => {
     it("accepts a ref cardDescription whose attachment length exceeds the cutoff", () => {
         assertCatalogItemResult({
             item: makeItem({ cardDescription: { href: HREF } }),
-            attachments: { [HREF]: Buffer.from(LONG, "utf-8") },
+            attachments: { "card-description.md": Buffer.from(LONG, "utf-8") },
         });
     });
 
@@ -267,7 +267,7 @@ describe("assertCatalogItemResult (cutoff)", () => {
         // ref with long attachment → accept
         assertCatalogItemResult({
             item: makeItem({ fullDescription: { href: fullHref } }),
-            attachments: { [fullHref]: Buffer.from(LONG, "utf-8") },
+            attachments: { "full-description.md": Buffer.from(LONG, "utf-8") },
         });
     });
 });
@@ -287,8 +287,8 @@ describe("catalog items on disk", () => {
         for (const value of [item.cardDescription, item.fullDescription]) {
             if (typeof value === "object" && value !== null && "href" in value) {
                 const href = (value as { href: string }).href;
-                const filePath = path.join(CATALOG_DIR, href.replace(/^ew-marketplace:\/\//, ""));
-                attachments[href] = fs.readFileSync(filePath);
+                const filename = href.split("/").at(-1)!;
+                attachments[filename] = fs.readFileSync(path.join(CATALOG_DIR, id, filename));
             }
         }
 

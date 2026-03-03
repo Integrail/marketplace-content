@@ -14,6 +14,7 @@ import { AppRegistry, defaultAppRegistry } from "./app-registry";
 import { assertCatalogItemResult } from "./catalog-validate";
 import * as clickup from "./clickup-utils";
 import type { ClickUpTaskSummary } from "./clickup-utils";
+import { markdownToPdf } from "./markdown-to-pdf";
 
 export const MARKDOWN_EXTRACTION_CUTOFF = 200;
 
@@ -62,7 +63,7 @@ function resolveMarkdown(content: string, id: string, filename: string): Resolve
         return { markdown: content, attachments: {} };
     }
     const href = `ew-marketplace://${id}/${filename}.md` as IEverMarketplaceUrl;
-    return { markdown: { href }, attachments: { [href]: Buffer.from(content, "utf-8") } };
+    return { markdown: { href }, attachments: { [`${filename}.md`]: Buffer.from(content, "utf-8") } };
 }
 
 function parseDependencyLines(
@@ -153,7 +154,17 @@ export function buildCatalogItem(
 
     // ── Tech specs ───────────────────────────────────────────────────────────
     const techSpecsFileUrl = ((clickup.getField(summary, "ITEM_TECH_SPECS_FILE")?.value) as { url?: string } | undefined)?.url;
-    const techSpecsUrl = techSpecsFileUrl as IEverMarketplaceUrl | undefined;
+    let techSpecsUrl: IEverMarketplaceUrl | undefined;
+    if (techSpecsFileUrl) {
+        techSpecsUrl = techSpecsFileUrl as IEverMarketplaceUrl;
+    } else {
+        const techSpecsContent = extractMarkdownSection(summary.markdown_description, "TECH-SPECS");
+        if (techSpecsContent) {
+            const href = `ew-marketplace://${id}/tech-specs.pdf` as IEverMarketplaceUrl;
+            attachments["tech-specs.pdf"] = markdownToPdf(techSpecsContent);
+            techSpecsUrl = href;
+        }
+    }
 
     // ── Tags ─────────────────────────────────────────────────────────────────
     const tags = summary.tags.map(t => t.name);

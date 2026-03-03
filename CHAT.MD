@@ -234,3 +234,11 @@ Make sure validation in src/lib/catalog-validate.ts checks for markdown extracti
 Implement a script src/cli/build-catalog.ts that generally behaves like src/cli/generate-catalog.ts, but uses the new conversion logic (src/lib/catalog-build.ts) and respects the up to date catalog model (src/model/catalog.ts).
 
 In src/lib/catalog-validate.unit.test.ts, add a test that reads the current catalog and validates all items in it.
+
+//===================================================
+In src/lib/catalog-build.ts, change `buildCatalogItem` so that:
+- if `ITEM_TECH_SPECS_FILE` is defined, it's used as `techSpecsUrl` (as it is right now)
+- otherwise, extract TECH-SPECS markdown section, convert it to pdf, add as an attachment, and set `techSpecsUrl` to a ew marketplace reference to that attachment
+do all the md->pdf in a separate file, let's call it src/lib/markdown-to-pdf.ts
+
+Right now attachment keys returned from `buildCatalogItem` in src/lib/catalog-build.ts (and used in src/cli/build-catalog.ts) are of this format: `ew-marketplace://MW-1101/full-description.md`. I want you to change that to `full-description.md` instead - just the file name.

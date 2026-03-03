@@ -27,15 +27,6 @@ const FILTER_IDS = IDS_ARG ? IDS_ARG.replace("--ids=", "").split(",") : null;
 
 // ── helpers ───────────────────────────────────────────────────────────────────
 
-/**
- * Converts an ew-marketplace:// attachment href to an output file path.
- * e.g. "ew-marketplace://MW-1001/card-description.md" → "<CATALOG_DIR>/MW-1001/card-description.md"
- */
-function hrefToFilePath(href: string): string {
-    const withoutScheme = href.replace(/^ew-marketplace:\/\//, "");
-    return path.join(CATALOG_DIR, withoutScheme);
-}
-
 // ── main ──────────────────────────────────────────────────────────────────────
 
 function processTask(taskId: string): boolean {
@@ -67,17 +58,15 @@ function processTask(taskId: string): boolean {
 
     if (DRY_RUN) {
         console.log(`  [dry-run] Would write: ${indexPath}`);
-        for (const href of Object.keys(result.attachments)) {
-            console.log(`  [dry-run] Would write: ${hrefToFilePath(href)}`);
+        for (const filename of Object.keys(result.attachments)) {
+            console.log(`  [dry-run] Would write: ${path.join(outDir, filename)}`);
         }
         console.log(JSON.stringify(result.item, null, 2).slice(0, 500) + "...");
     } else {
         fs.mkdirSync(outDir, { recursive: true });
         fs.writeFileSync(indexPath, JSON.stringify(result.item, null, 2) + "\n");
-        for (const [href, content] of Object.entries(result.attachments)) {
-            const filePath = hrefToFilePath(href);
-            fs.mkdirSync(path.dirname(filePath), { recursive: true });
-            fs.writeFileSync(filePath, content);
+        for (const [filename, content] of Object.entries(result.attachments)) {
+            fs.writeFileSync(path.join(outDir, filename), content);
         }
         console.log(`  ✓ ${taskId}: ${summary.name}`);
     }

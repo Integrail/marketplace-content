@@ -168,9 +168,10 @@ function assertMarkdownHref(
         );
         return;
     }
+    const filename = value.href.split("/").at(-1)!;
     assert(
-        Object.prototype.hasOwnProperty.call(attachments, value.href),
-        `${field}: href "${value.href}" is not present in attachments`,
+        Object.prototype.hasOwnProperty.call(attachments, filename),
+        `${field}: attachment "${filename}" (from href "${value.href}") is not present in attachments`,
     );
 }
 
