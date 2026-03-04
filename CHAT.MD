@@ -268,3 +268,26 @@ Now I want warnings to be added to the report in src/cli/build-catalog.ts.
 
 //===================================================
 Make it so that src/cli/build-catalog.ts also produces catalog/catalog.json file which corresponds to the type `IEverMarketplaceCatalog` (so contains all catalog items and version). For now, use timestamp as the version.
+
+//===================================================
+Create a new CLI script in src/cli/publish-catalog.ts.
+Parameters:
+- branch (default: `main`)
+- environment (required)
+- push (default: true)
+What it should do:
+- If there is a folder `media-store`, *and* it is a Git repo, *and* it's origin is https://github.com/Integrail/marketplace-media-store, cd into the folder and switch to the specified branch; otherwise, clone https://github.com/Integrail/marketplace-media-store into `media-store` and switch to the specified branch
+- Into `media-store/cdn/{environment}` put:
+  - `catalog.json` from `catalog/catalog.json`
+  - `catalog.zip` - zipped `catalog.json`
+  - `media/{item}` - for each item in `catalog`, e.g. for `MW-1101/` it will be `media/MW-1101/` with all the contents from `catalog/MW-1101/` within it
+- Add and commit new files
+- Unless push is false, push into the specified branch
+
+I want you to use commander for CLI parsing in src/cli/build-catalog.ts and src/cli/publish-catalog.ts
+
+In src/cli/build-catalog.ts and src/cli/publish-catalog.ts, make sure CLI arguments/options are parsed within `main` and passed as parameters, and are named in `camelCase` rather than `UPPER_SNAKE_CASE` since they are not constants.
+
+Ok now we need to resolve references in `catalog.json` when publishing.
+- go over all `IEverMarketplaceCatalogItem` fields that either contain URL's (e.g. `techSpecsUrl`) or `IEverMarketplaceMarkdown` (so possibly `{ href: ... }`, e.g. `fullDescription`)
+- replace `ew-marketplace://{path}` with `{media-store-url}/{path}`, where `media-store-path` is a parameter in src/cli/publish-catalog.ts (default: https://marketplace-media.everworker.ai)

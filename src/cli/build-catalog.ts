@@ -6,12 +6,13 @@
  * Usage:
  *   npx tsx src/cli/build-catalog.ts
  *   npx tsx src/cli/build-catalog.ts --dry-run
- *   npx tsx src/cli/build-catalog.ts --ids=MW-1001,MW-1005
+ *   npx tsx src/cli/build-catalog.ts --ids MW-1001,MW-1005
  */
 
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { program } from "commander";
 import { buildCatalogItem } from "../lib/catalog-build.js";
 import type { CatalogItemResult } from "../lib/catalog-build.js";
 import type { ClickUpTaskSummary } from "../lib/clickup-utils.js";
@@ -24,10 +25,6 @@ const TASKS_DIR = path.join(ROOT, "click-up/tasks");
 const CATALOG_DIR = path.join(ROOT, "catalog");
 const REPORTS_DIR = path.join(ROOT, "reports");
 
-const DRY_RUN = process.argv.includes("--dry-run");
-const IDS_ARG = process.argv.find(a => a.startsWith("--ids="));
-const FILTER_IDS = IDS_ARG ? IDS_ARG.replace("--ids=", "").split(",") : null;
-
 // ── types ─────────────────────────────────────────────────────────────────────
 
 type TaskSuccess = { status: "success"; id: string; name: string; warnings: ValidationWarning[]; item: IEverMarketplaceCatalogItem };
@@ -36,7 +33,7 @@ type TaskResult = TaskSuccess | TaskFailure;
 
 // ── task processing ───────────────────────────────────────────────────────────
 
-function processTask(taskId: string): TaskResult {
+function processTask(taskId: string, dryRun: boolean): TaskResult {
     const summaryPath = path.join(TASKS_DIR, taskId, `${taskId}-summary.json`);
 
     if (!fs.existsSync(summaryPath)) {
@@ -66,7 +63,7 @@ function processTask(taskId: string): TaskResult {
     const outDir = path.join(CATALOG_DIR, taskId);
     const indexPath = path.join(outDir, "index.json");
 
-    if (DRY_RUN) {
+    if (dryRun) {
         console.log(`  [dry-run] Would write: ${indexPath}`);
         for (const filename of Object.keys(result.attachments)) {
             console.log(`  [dry-run] Would write: ${path.join(outDir, filename)}`);
@@ -94,7 +91,7 @@ function escapeHtml(s: string): string {
         .replace(/"/g, "&quot;");
 }
 
-function generateHtml(results: TaskResult[], date: string): string {
+function generateHtml(results: TaskResult[], date: string, dryRun: boolean): string {
     const successes = results.filter((r): r is TaskSuccess => r.status === "success");
     const failures  = results.filter((r): r is TaskFailure => r.status === "failure");
     const withWarnings = successes.filter(r => r.warnings.length > 0);
@@ -142,7 +139,7 @@ function generateHtml(results: TaskResult[], date: string): string {
   </style>
 </head>
 <body>
-  <h1>Catalog Build Report${DRY_RUN ? " (dry-run)" : ""}</h1>
+  <h1>Catalog Build Report${dryRun ? " (dry-run)" : ""}</h1>
   <p>Generated: ${escapeHtml(date)}</p>
   <div class="summary">
     <span class="stat stat-total">Total: ${results.length}</span>
@@ -176,24 +173,33 @@ function generateHtml(results: TaskResult[], date: string): string {
 // ── main ──────────────────────────────────────────────────────────────────────
 
 function main(): void {
+    program
+        .option("--dry-run", "preview changes without writing files")
+        .option("--ids <ids>", "comma-separated list of task IDs to process")
+        .parse();
+
+    const opts = program.opts<{ dryRun: boolean; ids?: string }>();
+    const dryRun = opts.dryRun;
+    const filterIds = opts.ids ? opts.ids.split(",") : null;
+
     const taskDirs = fs.readdirSync(TASKS_DIR)
         .filter(d => /^MW-\d+$/.test(d))
         .sort();
 
-    const targets = FILTER_IDS
-        ? taskDirs.filter(d => FILTER_IDS.includes(d))
+    const targets = filterIds
+        ? taskDirs.filter(d => filterIds.includes(d))
         : taskDirs;
 
-    console.log(`Processing ${targets.length} tasks${DRY_RUN ? " (dry-run)" : ""}...\n`);
+    console.log(`Processing ${targets.length} tasks${dryRun ? " (dry-run)" : ""}...\n`);
 
-    const results: TaskResult[] = targets.map(taskId => processTask(taskId));
+    const results: TaskResult[] = targets.map(taskId => processTask(taskId, dryRun));
 
     const successResults = results.filter((r): r is TaskSuccess => r.status === "success");
     const successes = successResults.length;
     const failures  = results.filter(r => r.status === "failure").length;
     console.log(`\nDone: ${successes} generated, ${failures} failed.`);
 
-    if (!DRY_RUN) {
+    if (!dryRun) {
         const now = new Date();
         const catalogVersion = `${now.getUTCFullYear()}.${now.getUTCMonth() + 1}.${now.getUTCDate()}-${Math.floor(Date.now() / 1000)}` as IEverMarketplaceVersion;
         const catalog: IEverMarketplaceCatalog = { catalogVersion, items: successResults.map(r => r.item) };
@@ -204,7 +210,7 @@ function main(): void {
     const date = new Date().toISOString().slice(0, 10);
     const reportPath = path.join(REPORTS_DIR, `catalog-build-report-${date}.html`);
     fs.mkdirSync(REPORTS_DIR, { recursive: true });
-    fs.writeFileSync(reportPath, generateHtml(results, date), "utf-8");
+    fs.writeFileSync(reportPath, generateHtml(results, date, dryRun), "utf-8");
     console.log(`Report: ${reportPath}`);
 }
 
