@@ -141,7 +141,7 @@ export function assertCatalogItem(item: IEverMarketplaceCatalogItem): Validation
         `subCategoryName: expected a non-empty string`,
     );
 
-    assert(typeof item.incentives === "string", `incentives: expected a string`);
+    assert(typeof item.benefits === "string", `incentives: expected a string`);
 
     assert(Array.isArray(item.primaryApps), `primaryApps: expected an array`);
     item.primaryApps.forEach((app, i) => assertAppDefinition(app, `primaryApps[${i}]`));
@@ -175,7 +175,7 @@ export function assertCatalogItem(item: IEverMarketplaceCatalogItem): Validation
         ...spellCheckText(item.name, "name"),
         ...(typeof item.cardDescription === "string" ? spellCheckText(item.cardDescription, "cardDescription") : []),
         ...(typeof item.fullDescription === "string" ? spellCheckText(item.fullDescription, "fullDescription") : []),
-        ...spellCheckText(item.incentives, "incentives"),
+        ...spellCheckText(item.benefits, "incentives"),
         ...spellCheckText(item.installEfforts, "installEfforts"),
     ];
     return { warnings };

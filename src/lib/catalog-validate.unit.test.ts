@@ -33,7 +33,7 @@ function makeItem(overrides: Partial<IEverMarketplaceCatalogItem> = {}): IEverMa
         type: "Worker",
         categoryName: "Finance",
         subCategoryName: "Accounting & Reporting",
-        incentives: "Saves time",
+        benefits: "Saves time",
         primaryApps: [],
         apps: [],
         installEfforts: "30 mins",

@@ -128,7 +128,9 @@ export function buildCatalogItem(
     const subCategoryName = (subCategoryField ? clickup.getDropDownValue(subCategoryField) : undefined) ?? "";
 
     // ── Short-text fields ────────────────────────────────────────────────────
-    const incentives = ((clickup.getField(summary, "ITEM_INCENTIVES")?.value) as string | undefined) ?? "";
+    const benefits = ((clickup.getField(summary, "ITEM_BENEFITS")?.value) as string | undefined) ??
+        ((clickup.getField(summary, "ITEM_INCENTIVES")?.value) as string | undefined) ??
+        "";
     const installEfforts = ((clickup.getField(summary, "ITEM_INSTALL_EFFORTS")?.value) as string | undefined) ?? "";
 
     // ── App labels ───────────────────────────────────────────────────────────
@@ -185,7 +187,7 @@ export function buildCatalogItem(
         summary.name,
         shortDescContent,
         fullDescContent,
-        incentives,
+        benefits,
         installEfforts,
         categoryName,
         subCategoryName,
@@ -201,7 +203,7 @@ export function buildCatalogItem(
         type,
         categoryName,
         subCategoryName,
-        incentives,
+        benefits,
         primaryApps,
         apps,
         installEfforts,

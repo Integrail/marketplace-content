@@ -16,6 +16,7 @@ import { buildCatalogItem } from "../lib/catalog-build.js";
 import type { CatalogItemResult } from "../lib/catalog-build.js";
 import type { ClickUpTaskSummary } from "../lib/clickup-utils.js";
 import { assertCatalogItemResult, ValidationWarning } from "../lib/catalog-validate.js";
+import type { IEverMarketplaceCatalog, IEverMarketplaceCatalogItem, IEverMarketplaceVersion } from "../model/catalog.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
@@ -29,7 +30,7 @@ const FILTER_IDS = IDS_ARG ? IDS_ARG.replace("--ids=", "").split(",") : null;
 
 // ── types ─────────────────────────────────────────────────────────────────────
 
-type TaskSuccess = { status: "success"; id: string; name: string; warnings: ValidationWarning[] };
+type TaskSuccess = { status: "success"; id: string; name: string; warnings: ValidationWarning[]; item: IEverMarketplaceCatalogItem };
 type TaskFailure = { status: "failure"; id: string; reason: string };
 type TaskResult = TaskSuccess | TaskFailure;
 
@@ -80,7 +81,7 @@ function processTask(taskId: string): TaskResult {
         console.log(`  ✓ ${taskId}: ${summary.name}`);
     }
 
-    return { status: "success", id: taskId, name: summary.name, warnings };
+    return { status: "success", id: taskId, name: summary.name, warnings, item: result.item };
 }
 
 // ── report generation ─────────────────────────────────────────────────────────
@@ -187,9 +188,18 @@ function main(): void {
 
     const results: TaskResult[] = targets.map(taskId => processTask(taskId));
 
-    const successes = results.filter(r => r.status === "success").length;
+    const successResults = results.filter((r): r is TaskSuccess => r.status === "success");
+    const successes = successResults.length;
     const failures  = results.filter(r => r.status === "failure").length;
     console.log(`\nDone: ${successes} generated, ${failures} failed.`);
+
+    if (!DRY_RUN) {
+        const now = new Date();
+        const catalogVersion = `${now.getUTCFullYear()}.${now.getUTCMonth() + 1}.${now.getUTCDate()}-${Math.floor(Date.now() / 1000)}` as IEverMarketplaceVersion;
+        const catalog: IEverMarketplaceCatalog = { catalogVersion, items: successResults.map(r => r.item) };
+        fs.writeFileSync(path.join(CATALOG_DIR, "catalog.json"), JSON.stringify(catalog, null, 2) + "\n");
+        console.log(`Catalog: ${path.join(CATALOG_DIR, "catalog.json")} (${successes} items, version ${catalogVersion})`);
+    }
 
     const date = new Date().toISOString().slice(0, 10);
     const reportPath = path.join(REPORTS_DIR, `catalog-build-report-${date}.html`);

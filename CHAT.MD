@@ -265,3 +265,6 @@ Yes let's go with the shape you proposed. For now, don't add any actual warnings
 Ok now I want you to use https://github.com/jfmdev/simple-spellchecker to spell-check text fields in `assertCatalogItem` and add spell check errors as warnings. Here's the doc: https://raw.githubusercontent.com/jfmdev/simple-spellchecker/refs/heads/master/readme.md.
 
 Now I want warnings to be added to the report in src/cli/build-catalog.ts.
+
+//===================================================
+Make it so that src/cli/build-catalog.ts also produces catalog/catalog.json file which corresponds to the type `IEverMarketplaceCatalog` (so contains all catalog items and version). For now, use timestamp as the version.

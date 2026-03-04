@@ -6,7 +6,7 @@
   "type": "Worker",
   "categoryName": "Marketing",
   "subCategoryName": "Accounting & Reporting",
-  "incentives": "Saves ~15 hrs/week per accountant",
+  "benefits": "Saves ~15 hrs/week per accountant",
   "primaryApps": [
     {
       "appId": "GMail",
