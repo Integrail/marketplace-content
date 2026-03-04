@@ -92,7 +92,7 @@ const EW_MARKETPLACE_SCHEME = "ew-marketplace://";
 
 function resolveUrl(url: IEverMarketplaceUrl, mediaStoreUrl: string): IEverMarketplaceUrl {
     if (url.startsWith(EW_MARKETPLACE_SCHEME)) {
-        return `${mediaStoreUrl}/${url.slice(EW_MARKETPLACE_SCHEME.length)}` as IEverMarketplaceUrl;
+        return `${mediaStoreUrl.replace(/\/+$/, "")}/${url.slice(EW_MARKETPLACE_SCHEME.length)}` as IEverMarketplaceUrl;
     }
     return url;
 }
@@ -133,12 +133,12 @@ async function main(): Promise<void> {
     program
         .requiredOption("--environment <name>", "target environment (e.g. prod, qa, dev-{ever-number})")
         .option("--branch <branch>", "branch to publish to", "main")
-        .option("--no-push", "skip git push after committing")
+        .option("--no-commit", "skip git commit after changes")
         .option("--media-store-url <url>", "base URL for resolving ew-marketplace:// references", "https://marketplace-media.everworker.ai")
         .parse();
 
-    const opts = program.opts<{ environment: string; branch: string; push: boolean; mediaStoreUrl: string }>();
-    const { environment, branch, push, mediaStoreUrl } = opts;
+    const opts = program.opts<{ environment: string; branch: string; commit: boolean; mediaStoreUrl: string }>();
+    const { environment, branch, commit, mediaStoreUrl } = opts;
 
     // Load catalog
     const catalogJsonPath = path.join(CATALOG_DIR, "catalog.json");
@@ -210,14 +210,13 @@ async function main(): Promise<void> {
     } else {
         const date = new Date().toISOString();
         const message = `chore: publish catalog ${catalog.catalogVersion} to ${environment} (${date})`;
-        git(MEDIA_STORE_DIR, "commit", "-m", message);
-        console.log(`\nCommitted: ${message}`);
-
-        if (push) {
+        if (commit) {
+            git(MEDIA_STORE_DIR, "commit", "-m", message);
+            console.log(`\nCommitted: ${message}`);
             git(MEDIA_STORE_DIR, "push", "origin", branch);
             console.log(`Pushed to origin/${branch}`);
         } else {
-            console.log(`Skipping push (--no-push).`);
+            console.log(`Skipping commit and push (--no-commit).`);
         }
     }
 }
