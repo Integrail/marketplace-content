@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import SpellChecker from "simple-spellchecker";
 import {
     IEverMarketplaceAppDefinition,
     IEverMarketplaceCatalogItem,
@@ -7,6 +8,21 @@ import {
     IEverMarketplaceRef,
 } from "../model/catalog";
 import { CatalogItemResult, MARKDOWN_EXTRACTION_CUTOFF } from "./catalog-build";
+
+// ── Result types ──────────────────────────────────────────────────────────────
+
+export type ValidationWarning = { field: string; message: string };
+export type ValidationResult  = { warnings: ValidationWarning[] };
+
+// ── Spell-check ───────────────────────────────────────────────────────────────
+
+function spellCheckText(text: string, field: string): ValidationWarning[] {
+    const dict = SpellChecker.getDictionarySync("en-US");
+    const uniqueWords = [...new Set(text.match(/[a-zA-Z]{2,}/g) ?? [])];
+    return uniqueWords
+        .filter(word => dict.isMisspelled(word))
+        .map(word => ({ field, message: `"${word}" may be misspelled` }));
+}
 
 // ── Patterns & constant sets ──────────────────────────────────────────────────
 
@@ -95,7 +111,7 @@ export function assertDependency(value: unknown, field: string): void {
 
 // ── Main validator ────────────────────────────────────────────────────────────
 
-export function assertCatalogItem(item: IEverMarketplaceCatalogItem): void {
+export function assertCatalogItem(item: IEverMarketplaceCatalogItem): ValidationResult {
     assert(
         typeof item.id === "string" && item.id.length > 0,
         `id: expected a non-empty string`,
@@ -154,6 +170,15 @@ export function assertCatalogItem(item: IEverMarketplaceCatalogItem): void {
     item.dependencies.forEach((dep, i) => assertDependency(dep, `dependencies[${i}]`));
 
     assert(typeof item.textIndex === "string", `textIndex: expected a string`);
+
+    const warnings: ValidationWarning[] = [
+        ...spellCheckText(item.name, "name"),
+        ...(typeof item.cardDescription === "string" ? spellCheckText(item.cardDescription, "cardDescription") : []),
+        ...(typeof item.fullDescription === "string" ? spellCheckText(item.fullDescription, "fullDescription") : []),
+        ...spellCheckText(item.incentives, "incentives"),
+        ...spellCheckText(item.installEfforts, "installEfforts"),
+    ];
+    return { warnings };
 }
 
 function assertMarkdownHref(
@@ -175,8 +200,9 @@ function assertMarkdownHref(
     );
 }
 
-export function assertCatalogItemResult(result: CatalogItemResult): void {
-    assertCatalogItem(result.item);
+export function assertCatalogItemResult(result: Omit<CatalogItemResult, "warnings">): ValidationResult {
+    const { warnings } = assertCatalogItem(result.item);
     assertMarkdownHref(result.item.cardDescription, "cardDescription", result.attachments);
     assertMarkdownHref(result.item.fullDescription, "fullDescription", result.attachments);
+    return { warnings };
 }

@@ -247,3 +247,21 @@ Right now attachment keys returned from `buildCatalogItem` in src/lib/catalog-bu
 I now want src/cli/build-catalog.ts to produce an HTML report at ./reports/catalog-build-report-{DATE}.html. What I want the report to contain:
 - successfully built catalog items
 - failed to build items and why
+
+//===================================================
+Let's rework src/lib/catalog-validate.ts. I want the validation to be able to return a successful result with warnings. I think something like `assertCatalogItem(...): ValidationResult` where `type ValidationResult = { warnings: ...[] }`, and in case of errors an exception is still thrown, is ok. Do you have other suggestions?
+
+> What I'd suggest keeping void: The primitive helpers (assertUrl, assertVersion, assertMarkdown, assertRef, assertMedia, assertAppDefinition, assertDependency) are pure error-checkers with no semantic context to generate warnings. Making them return ValidationResult would just add noise. Only assertCatalogItem and assertCatalogItemResult have enough context to produce meaningful warnings.
+> 
+> Warning shape: I'd make the warning type explicit rather than just a string, so callers can filter/group by field:
+> 
+> ```ts
+> type ValidationWarning = { field: string; message: string };
+> type ValidationResult  = { warnings: ValidationWarning[] };
+> ```
+
+Yes let's go with the shape you proposed. For now, don't add any actual warnings, just make sure the types allow to return them and they are propagated between `assertCatalogItem` and `assertCatalogItemResult`.
+
+Ok now I want you to use https://github.com/jfmdev/simple-spellchecker to spell-check text fields in `assertCatalogItem` and add spell check errors as warnings. Here's the doc: https://raw.githubusercontent.com/jfmdev/simple-spellchecker/refs/heads/master/readme.md.
+
+Now I want warnings to be added to the report in src/cli/build-catalog.ts.

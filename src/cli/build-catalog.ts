@@ -15,6 +15,7 @@ import { fileURLToPath } from "node:url";
 import { buildCatalogItem } from "../lib/catalog-build.js";
 import type { CatalogItemResult } from "../lib/catalog-build.js";
 import type { ClickUpTaskSummary } from "../lib/clickup-utils.js";
+import { assertCatalogItemResult, ValidationWarning } from "../lib/catalog-validate.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
@@ -28,7 +29,7 @@ const FILTER_IDS = IDS_ARG ? IDS_ARG.replace("--ids=", "").split(",") : null;
 
 // ── types ─────────────────────────────────────────────────────────────────────
 
-type TaskSuccess = { status: "success"; id: string; name: string };
+type TaskSuccess = { status: "success"; id: string; name: string; warnings: ValidationWarning[] };
 type TaskFailure = { status: "failure"; id: string; reason: string };
 type TaskResult = TaskSuccess | TaskFailure;
 
@@ -51,8 +52,11 @@ function processTask(taskId: string): TaskResult {
     }
 
     let result: CatalogItemResult;
+    let warnings: ValidationWarning[] = [];
     try {
         result = buildCatalogItem(summary);
+        const validationResult = assertCatalogItemResult(result);
+        warnings = validationResult.warnings;
     } catch (err) {
         console.error(`  [error] buildCatalogItem failed for ${taskId}: ${err}`);
         return { status: "failure", id: taskId, reason: `Build failed: ${err}` };
@@ -76,7 +80,7 @@ function processTask(taskId: string): TaskResult {
         console.log(`  ✓ ${taskId}: ${summary.name}`);
     }
 
-    return { status: "success", id: taskId, name: summary.name };
+    return { status: "success", id: taskId, name: summary.name, warnings };
 }
 
 // ── report generation ─────────────────────────────────────────────────────────
@@ -92,13 +96,24 @@ function escapeHtml(s: string): string {
 function generateHtml(results: TaskResult[], date: string): string {
     const successes = results.filter((r): r is TaskSuccess => r.status === "success");
     const failures  = results.filter((r): r is TaskFailure => r.status === "failure");
+    const withWarnings = successes.filter(r => r.warnings.length > 0);
+    const totalWarnings = successes.reduce((n, r) => n + r.warnings.length, 0);
 
-    const successRows = successes.map(r =>
-        `<tr><td>${escapeHtml(r.id)}</td><td>${escapeHtml(r.name)}</td></tr>`,
-    ).join("\n");
+    const successRows = successes.map(r => {
+        const badge = r.warnings.length > 0
+            ? ` <span class="warn-badge">${r.warnings.length}</span>`
+            : "";
+        return `<tr><td>${escapeHtml(r.id)}</td><td>${escapeHtml(r.name)}${badge}</td></tr>`;
+    }).join("\n");
 
     const failureRows = failures.map(r =>
         `<tr><td>${escapeHtml(r.id)}</td><td>${escapeHtml(r.reason)}</td></tr>`,
+    ).join("\n");
+
+    const warningRows = withWarnings.flatMap(r =>
+        r.warnings.map(w =>
+            `<tr><td>${escapeHtml(r.id)}</td><td>${escapeHtml(w.field)}</td><td>${escapeHtml(w.message)}</td></tr>`,
+        ),
     ).join("\n");
 
     return `<!DOCTYPE html>
@@ -114,12 +129,15 @@ function generateHtml(results: TaskResult[], date: string): string {
     .stat { padding: 0.5rem 1rem; border-radius: 4px; font-weight: bold; }
     .stat-total   { background: #e8e8e8; }
     .stat-success { background: #d4edda; color: #155724; }
+    .stat-warning { background: #fff3cd; color: #856404; }
     .stat-failure { background: #f8d7da; color: #721c24; }
     table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
     th { text-align: left; padding: 0.4rem 0.6rem; background: #f0f0f0; border-bottom: 2px solid #ccc; }
     td { padding: 0.4rem 0.6rem; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
     td:first-child { white-space: nowrap; font-family: monospace; }
     tr:hover td { background: #fafafa; }
+    .warn-badge { display: inline-block; background: #ffc107; color: #000; border-radius: 10px;
+                  font-size: 0.75rem; font-weight: bold; padding: 0 0.4rem; margin-left: 0.4rem; }
   </style>
 </head>
 <body>
@@ -128,6 +146,7 @@ function generateHtml(results: TaskResult[], date: string): string {
   <div class="summary">
     <span class="stat stat-total">Total: ${results.length}</span>
     <span class="stat stat-success">Success: ${successes.length}</span>
+    <span class="stat stat-warning">Warnings: ${totalWarnings}</span>
     <span class="stat stat-failure">Failed: ${failures.length}</span>
   </div>
 
@@ -135,6 +154,12 @@ function generateHtml(results: TaskResult[], date: string): string {
   <table>
     <thead><tr><th>ID</th><th>Name</th></tr></thead>
     <tbody>${successRows || "<tr><td colspan=\"2\">None</td></tr>"}</tbody>
+  </table>
+
+  <h2>Warnings (${totalWarnings})</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Field</th><th>Message</th></tr></thead>
+    <tbody>${warningRows || "<tr><td colspan=\"3\">None</td></tr>"}</tbody>
   </table>
 
   <h2>Failed (${failures.length})</h2>

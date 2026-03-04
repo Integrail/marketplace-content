@@ -216,8 +216,5 @@ export function buildCatalogItem(
 
     const result: CatalogItemResult = { item, attachments };
 
-    // Make sure our validation is in sync with the actual output
-    assertCatalogItemResult(result);
-
     return result;
 }
