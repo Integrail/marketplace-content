@@ -34,5 +34,9 @@ Thumbs.db
 *.ntvs*
 *.njsproj
 *.sln
-click-up/
+
+# Misc
+/click-up/
 /marketplace-dist/
+/media-store/
+/reports/
