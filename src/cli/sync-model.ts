@@ -18,7 +18,7 @@ const ROOT = path.resolve(__dirname, '../..');
 const everworkerArg = process.argv[2];
 const EVERWORKER_ROOT = path.resolve(ROOT, everworkerArg ?? '../everworker');
 const SRC_DIR = path.join(ROOT, 'src/model');
-const DEST_DIR = path.join(EVERWORKER_ROOT, 'imports/core/integrations/marketplace');
+const DEST_DIR = path.join(EVERWORKER_ROOT, 'imports/core/integrations/marketplace/model');
 
 if (!fs.existsSync(EVERWORKER_ROOT)) {
     console.error(`Everworker repository not found: ${EVERWORKER_ROOT}`);
