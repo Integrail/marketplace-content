@@ -299,3 +299,14 @@ Update src/lib/catalog-validate.ts to check visibility field; also update src/li
 
 //===================================================
 Update src/cli/publish-catalog.ts to filter only those items which visibility field matches the environment name (case-insensitive) prefix. I.e. `dev` visibility should match `dev`, `dev-0`, `dev-xx` etc environments.
+
+//===================================================
+Create a src/cli/local-deploy.ts script that:
+- Reads env (respecting `.env`) for a mongo connection string (`MONGO_URL`)
+- Accepts params:
+  - `media-store-url` (default: http://marketplace-media.everworker.ai.s3-website.eu-central-1.amazonaws.com/)
+  - `mongo-connection-string` (overrides `MONGO_URL` from env)
+  - `environment`
+- Downloads `{media-store-url}/{environment}/catalog.zip`, extracts `catalog.json from it
+- Uploads each catalog item as a document in `marketplace_v1_tmp`
+- Deletes `marketplace_v1_backup` if exists, renames `marketplace_v1` into `marketplace_v1_backup` and then renames `marketplace_v1_tmp` into `marketplace_v1`

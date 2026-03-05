@@ -20,6 +20,7 @@ import type {
     IEverMarketplaceMarkdown,
     IEverMarketplaceUrl,
 } from "../model/catalog.js";
+import { MEDIA_STORE_URL } from "../lib/media-store.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
@@ -134,7 +135,7 @@ async function main(): Promise<void> {
         .requiredOption("--environment <name>", "target environment (e.g. prod, qa, dev-{ever-number})")
         .option("--branch <branch>", "branch to publish to", "main")
         .option("--no-commit", "skip git commit after changes")
-        .option("--media-store-url <url>", "base URL for resolving ew-marketplace:// references", "https://marketplace-media.everworker.ai")
+        .option("--media-store-url <url>", "base URL for resolving ew-marketplace:// references", MEDIA_STORE_URL)
         .parse();
 
     const opts = program.opts<{ environment: string; branch: string; commit: boolean; mediaStoreUrl: string }>();
