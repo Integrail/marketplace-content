@@ -91,39 +91,39 @@ function ensureMediaStore(branch: string): void {
 
 const EW_MARKETPLACE_SCHEME = "ew-marketplace://";
 
-function resolveUrl(url: IEverMarketplaceUrl, mediaStoreUrl: string): IEverMarketplaceUrl {
+function resolveUrl(url: IEverMarketplaceUrl, mediaStoreUrl: string, environment: string): IEverMarketplaceUrl {
     if (url.startsWith(EW_MARKETPLACE_SCHEME)) {
-        return `${mediaStoreUrl.replace(/\/+$/, "")}/${url.slice(EW_MARKETPLACE_SCHEME.length)}` as IEverMarketplaceUrl;
+        return `${mediaStoreUrl.replace(/\/+$/, "")}/${environment}/media/${url.slice(EW_MARKETPLACE_SCHEME.length)}` as IEverMarketplaceUrl;
     }
     return url;
 }
 
-function resolveMarkdown(md: IEverMarketplaceMarkdown, mediaStoreUrl: string): IEverMarketplaceMarkdown {
+function resolveMarkdown(md: IEverMarketplaceMarkdown, mediaStoreUrl: string, environment: string): IEverMarketplaceMarkdown {
     if (typeof md === "string") return md;
-    return { href: resolveUrl(md.href, mediaStoreUrl) };
+    return { href: resolveUrl(md.href, mediaStoreUrl, environment) };
 }
 
-function resolveItem(item: IEverMarketplaceCatalogItem, mediaStoreUrl: string): IEverMarketplaceCatalogItem {
+function resolveItem(item: IEverMarketplaceCatalogItem, mediaStoreUrl: string, environment: string): IEverMarketplaceCatalogItem {
     return {
         ...item,
-        cardDescription: resolveMarkdown(item.cardDescription, mediaStoreUrl),
-        fullDescription: resolveMarkdown(item.fullDescription, mediaStoreUrl),
+        cardDescription: resolveMarkdown(item.cardDescription, mediaStoreUrl, environment),
+        fullDescription: resolveMarkdown(item.fullDescription, mediaStoreUrl, environment),
         heroMedia: {
             ...item.heroMedia,
-            url: resolveUrl(item.heroMedia.url, mediaStoreUrl),
-            ...(item.heroMedia.thumbnailUrl && { thumbnailUrl: resolveUrl(item.heroMedia.thumbnailUrl, mediaStoreUrl) }),
+            url: resolveUrl(item.heroMedia.url, mediaStoreUrl, environment),
+            ...(item.heroMedia.thumbnailUrl && { thumbnailUrl: resolveUrl(item.heroMedia.thumbnailUrl, mediaStoreUrl, environment) }),
         },
-        bundle: { href: resolveUrl(item.bundle.href, mediaStoreUrl) },
-        ...(item.techSpecsUrl && { techSpecsUrl: resolveUrl(item.techSpecsUrl, mediaStoreUrl) }),
+        bundle: { href: resolveUrl(item.bundle.href, mediaStoreUrl, environment) },
+        ...(item.techSpecsUrl && { techSpecsUrl: resolveUrl(item.techSpecsUrl, mediaStoreUrl, environment) }),
         primaryApps: item.primaryApps.map(app => ({
             ...app,
-            logoUrl: resolveUrl(app.logoUrl, mediaStoreUrl),
-            description: resolveUrl(app.description, mediaStoreUrl),
+            logoUrl: resolveUrl(app.logoUrl, mediaStoreUrl, environment),
+            description: resolveUrl(app.description, mediaStoreUrl, environment),
         })),
         apps: item.apps.map(app => ({
             ...app,
-            logoUrl: resolveUrl(app.logoUrl, mediaStoreUrl),
-            description: resolveUrl(app.description, mediaStoreUrl),
+            logoUrl: resolveUrl(app.logoUrl, mediaStoreUrl, environment),
+            description: resolveUrl(app.description, mediaStoreUrl, environment),
         })),
     };
 }
@@ -162,7 +162,7 @@ async function main(): Promise<void> {
     // Resolve ew-marketplace:// references
     const resolvedCatalog: IEverMarketplaceCatalog = {
         ...catalog,
-        items: filteredItems.map(item => resolveItem(item, mediaStoreUrl)),
+        items: filteredItems.map(item => resolveItem(item, mediaStoreUrl, environment)),
     };
     const resolvedCatalogJson = JSON.stringify(resolvedCatalog, null, 2) + "\n";
 
@@ -202,6 +202,19 @@ async function main(): Promise<void> {
             fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file));
         }
         console.log(`  Copied media/${itemId}/`);
+    }
+
+    // apps/
+    const appsDir = path.join(cdnDir, "media", "apps");
+    const appsSrcDir = path.join(ROOT, "src", "apps");
+    if (fs.existsSync(appsSrcDir)) {
+        fs.mkdirSync(appsDir, { recursive: true });
+        for (const file of fs.readdirSync(appsSrcDir)) {
+            fs.copyFileSync(path.join(appsSrcDir, file), path.join(appsDir, file));
+        }
+        console.log(`Copied apps/ (${fs.readdirSync(appsSrcDir).length} files)`);
+    } else {
+        console.warn(`[warn] ${appsSrcDir} not found, skipping apps.`);
     }
 
     // Git commit

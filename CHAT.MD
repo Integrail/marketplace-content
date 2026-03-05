@@ -310,3 +310,8 @@ Create a src/cli/local-deploy.ts script that:
 - Downloads `{media-store-url}/{environment}/catalog.zip`, extracts `catalog.json from it
 - Uploads each catalog item as a document in `marketplace_v1_tmp`
 - Deletes `marketplace_v1_backup` if exists, renames `marketplace_v1` into `marketplace_v1_backup` and then renames `marketplace_v1_tmp` into `marketplace_v1`
+
+//===================================================
+In src/cli/publish.ts, copy files from src/apps to media-store/cdn/{environment}/apps
+
+In src/cli/publish.ts, now internal links like `ew-marketplace://MW-1101/tech-specs.md` are converted to `{media-store-url}/MW-1101/tech-specs.md`. Make it `{media-store-url}/media/MW-1101/tech-specs.md` instead.
