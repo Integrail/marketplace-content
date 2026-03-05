@@ -296,3 +296,6 @@ Ok now we need to resolve references in `catalog.json` when publishing.
 Change catalog item model (and `buildCatalogItem` function) to include an optional field `visibility` with the type string. It corresponds to ITEM_PUBLISHING_VISIBILITY ClickUp field.
 
 Update src/lib/catalog-validate.ts to check visibility field; also update src/lib/catalog-validate.unit.test.ts. Don't assume a specific set of values, just check that it is a string or undefined.
+
+//===================================================
+Update src/cli/publish-catalog.ts to filter only those items which visibility field matches the environment name (case-insensitive) prefix. I.e. `dev` visibility should match `dev`, `dev-0`, `dev-xx` etc environments.
