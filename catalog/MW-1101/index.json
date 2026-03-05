@@ -1,7 +1,7 @@
 {
   "id": "MW-1101",
-  "itemVersion": "2026.2.27-0",
-  "name": "TEMPLATE",
+  "itemVersion": "2026.3.5-0",
+  "name": "MARKETPLACE-TEMPLATE",
   "cardDescription": "Orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods.",
   "type": "Worker",
   "categoryName": "Marketing",
@@ -71,5 +71,6 @@
       "description": "AP inbox monitoring for incoming invoices"
     }
   ],
-  "textIndex": "template orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods. orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods.orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods.orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods. saves ~15 hrs/week per accountant 30 mins setup time marketing accounting & reporting quickbooks gmail netsuite quickbooks accounting system access for po and invoice data netsuite erp access for purchase order matching gmail ap inbox monitoring for incoming invoices"
+  "visibility": "TEMPLATE",
+  "textIndex": "marketplace-template orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods. orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods.orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods.orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods. saves ~15 hrs/week per accountant 30 mins setup time marketing accounting & reporting quickbooks gmail netsuite quickbooks accounting system access for po and invoice data netsuite erp access for purchase order matching gmail ap inbox monitoring for incoming invoices"
 }

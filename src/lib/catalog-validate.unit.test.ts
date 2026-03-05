@@ -223,6 +223,18 @@ describe("assertCatalogItem", () => {
         assertCatalogItem(makeItem({ techSpecsUrl: "ew-marketplace://id/tech.pdf" }));
         assert.throws(() => assertCatalogItem(makeItem({ techSpecsUrl: "bad" as never })));
     });
+
+    it("accepts a string visibility", () => {
+        assertCatalogItem(makeItem({ visibility: "TEMPLATE" }));
+    });
+
+    it("accepts undefined visibility", () => {
+        assertCatalogItem(makeItem({ visibility: undefined }));
+    });
+
+    it("rejects a non-string visibility", () => {
+        assert.throws(() => assertCatalogItem(makeItem({ visibility: 42 as never })));
+    });
 });
 
 // ── assertCatalogItemResult — cutoff checks ───────────────────────────────────

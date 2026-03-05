@@ -187,6 +187,11 @@ export interface IEverMarketplaceCatalogItem {
     readonly dependencies: readonly IEverMarketplaceItemDependency[];
 
     /**
+     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_PUBLISHING_VISIBILITY"]
+     */
+    readonly visibility?: string;
+
+    /**
      * Combined text of all text fields to make search simple in mongo
      */
     readonly textIndex: string;

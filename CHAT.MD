@@ -291,3 +291,8 @@ In src/cli/build-catalog.ts and src/cli/publish-catalog.ts, make sure CLI argume
 Ok now we need to resolve references in `catalog.json` when publishing.
 - go over all `IEverMarketplaceCatalogItem` fields that either contain URL's (e.g. `techSpecsUrl`) or `IEverMarketplaceMarkdown` (so possibly `{ href: ... }`, e.g. `fullDescription`)
 - replace `ew-marketplace://{path}` with `{media-store-url}/{path}`, where `media-store-path` is a parameter in src/cli/publish-catalog.ts (default: https://marketplace-media.everworker.ai)
+
+//===================================================
+Change catalog item model (and `buildCatalogItem` function) to include an optional field `visibility` with the type string. It corresponds to ITEM_PUBLISHING_VISIBILITY ClickUp field.
+
+Update src/lib/catalog-validate.ts to check visibility field; also update src/lib/catalog-validate.unit.test.ts. Don't assume a specific set of values, just check that it is a string or undefined.

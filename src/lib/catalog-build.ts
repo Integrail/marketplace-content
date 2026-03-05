@@ -168,6 +168,10 @@ export function buildCatalogItem(
         }
     }
 
+    // ── Visibility ───────────────────────────────────────────────────────────
+    const visibilityField = clickup.getField(summary, "ITEM_PUBLISHING_VISIBILITY");
+    const visibility = visibilityField ? clickup.getDropDownValue(visibilityField) : undefined;
+
     // ── Tags ─────────────────────────────────────────────────────────────────
     const tags = summary.tags.map(t => t.name);
 
@@ -213,6 +217,7 @@ export function buildCatalogItem(
         tags,
         techSpecsUrl,
         dependencies,
+        visibility,
         textIndex,
     };
 
