@@ -149,10 +149,19 @@ async function main(): Promise<void> {
     const catalogJson = fs.readFileSync(catalogJsonPath, "utf-8");
     const catalog = JSON.parse(catalogJson) as IEverMarketplaceCatalog;
 
+    // Filter by visibility: include items with no visibility, or whose visibility
+    // is a case-insensitive prefix of the environment name.
+    const envLower = environment.toLowerCase();
+    const filteredItems = catalog.items.filter(item =>
+        item.visibility === undefined ||
+        envLower.startsWith(item.visibility.toLowerCase()),
+    );
+    console.log(`Filtered to ${filteredItems.length} of ${catalog.items.length} items for environment "${environment}"`);
+
     // Resolve ew-marketplace:// references
     const resolvedCatalog: IEverMarketplaceCatalog = {
         ...catalog,
-        items: catalog.items.map(item => resolveItem(item, mediaStoreUrl)),
+        items: filteredItems.map(item => resolveItem(item, mediaStoreUrl)),
     };
     const resolvedCatalogJson = JSON.stringify(resolvedCatalog, null, 2) + "\n";
 
