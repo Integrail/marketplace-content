@@ -1,5 +1,5 @@
 {
-  "catalogVersion": "2026.3.5-1772735863",
+  "catalogVersion": "2026.3.9-1773060767",
   "items": [
     {
       "id": "MW-1101",
@@ -14,34 +14,34 @@
         {
           "appId": "GMail",
           "name": "GMail",
-          "logoUrl": "ew-marketplace://apps/gmail/logo",
-          "description": "ew-marketplace://apps/gmail/description"
+          "logoUrl": "ew-marketplace://apps/GMail.png",
+          "description": "ew-marketplace://apps/GMail.txt"
         },
         {
           "appId": "NetSuite",
           "name": "NetSuite",
-          "logoUrl": "ew-marketplace://apps/netsuite/logo",
-          "description": "ew-marketplace://apps/netsuite/description"
+          "logoUrl": "ew-marketplace://apps/NetSuite.png",
+          "description": "ew-marketplace://apps/NetSuite.txt"
         }
       ],
       "apps": [
         {
           "appId": "QuickBooks",
           "name": "QuickBooks",
-          "logoUrl": "ew-marketplace://apps/quickbooks/logo",
-          "description": "ew-marketplace://apps/quickbooks/description"
+          "logoUrl": "ew-marketplace://apps/QuickBooks.png",
+          "description": "ew-marketplace://apps/QuickBooks.txt"
         },
         {
           "appId": "GMail",
           "name": "GMail",
-          "logoUrl": "ew-marketplace://apps/gmail/logo",
-          "description": "ew-marketplace://apps/gmail/description"
+          "logoUrl": "ew-marketplace://apps/GMail.png",
+          "description": "ew-marketplace://apps/GMail.txt"
         },
         {
           "appId": "NetSuite",
           "name": "NetSuite",
-          "logoUrl": "ew-marketplace://apps/netsuite/logo",
-          "description": "ew-marketplace://apps/netsuite/description"
+          "logoUrl": "ew-marketplace://apps/NetSuite.png",
+          "description": "ew-marketplace://apps/NetSuite.txt"
         }
       ],
       "installEfforts": "30 mins setup time",
