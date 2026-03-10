@@ -1,9 +1,9 @@
 {
-  "catalogVersion": "2026.3.9-1773060767",
+  "catalogVersion": "2026.3.10-1773134438",
   "items": [
     {
       "id": "MW-1101",
-      "itemVersion": "2026.3.5-0",
+      "itemVersion": "2026.3.6-0",
       "name": "MARKETPLACE-TEMPLATE",
       "cardDescription": "Orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods.",
       "type": "Worker",
@@ -20,7 +20,7 @@
         {
           "appId": "NetSuite",
           "name": "NetSuite",
-          "logoUrl": "ew-marketplace://apps/NetSuite.png",
+          "logoUrl": "ew-marketplace://apps/NetSuite.svg",
           "description": "ew-marketplace://apps/NetSuite.txt"
         }
       ],
@@ -40,7 +40,7 @@
         {
           "appId": "NetSuite",
           "name": "NetSuite",
-          "logoUrl": "ew-marketplace://apps/NetSuite.png",
+          "logoUrl": "ew-marketplace://apps/NetSuite.svg",
           "description": "ew-marketplace://apps/NetSuite.txt"
         }
       ],
