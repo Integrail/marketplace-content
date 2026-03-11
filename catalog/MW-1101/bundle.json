@@ -1,0 +1,1571 @@
+{
+  "formatVersion": "1.1",
+  "version": "1.0.0",
+  "exportedAt": "2026-03-06T13:01:50.047Z",
+  "exportedBy": "Mgiik9XMknsmJ9TDi",
+  "mainWorker": {
+    "_id": "2Zqr959iiTzr3vsRP",
+    "name": "MW-1081 - Upload Candidates",
+    "description": "This is a new workflow being built - make a good description for it to be used later!",
+    "version": 16,
+    "tags": [],
+    "userImg": "",
+    "nodes": [
+      {
+        "nodeId": 1,
+        "name": "Save to Collection",
+        "description": "Save to Collection node",
+        "operationReference": {
+          "methodId": "save_to_collection"
+        },
+        "parameters": [
+          {
+            "name": "collectionId",
+            "value": null,
+            "fieldType": "select",
+            "dataSource": {
+              "type": "meteor_collection",
+              "collection": "Collections"
+            },
+            "placeholder": "Select a collection to save data...",
+            "validation": {
+              "required": true
+            }
+          },
+          {
+            "name": "inputData",
+            "value": "{{2.result}}",
+            "fieldType": "textarea",
+            "minRows": 3,
+            "placeholder": "Data to save (object or array of objects)",
+            "validation": {
+              "required": true
+            }
+          }
+        ],
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "status": {
+              "type": "number"
+            },
+            "result": {
+              "type": "object",
+              "properties": {
+                "documentIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "inserted": {
+                  "type": "number"
+                },
+                "updated": {
+                  "type": "number"
+                },
+                "total": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "documentIds",
+                "inserted",
+                "updated",
+                "total"
+              ],
+              "additionalProperties": false
+            },
+            "nodeId": {
+              "type": "number"
+            },
+            "executionStarted": {
+              "type": "string",
+              "description": "date-time"
+            },
+            "executionFinished": {
+              "type": "string",
+              "description": "date-time"
+            }
+          },
+          "required": [
+            "ok",
+            "status",
+            "result",
+            "nodeId",
+            "executionStarted",
+            "executionFinished"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "nodeId": 2,
+        "name": "CSV to JSON",
+        "description": "CSV to JSON node",
+        "operationReference": {
+          "methodId": "csv_to_json"
+        },
+        "parameters": [
+          {
+            "name": "csvData",
+            "value": "{{5.result.text}}",
+            "fieldType": "textarea",
+            "placeholder": "CSV data or reference to uploaded CSV file",
+            "validation": {
+              "required": true
+            }
+          },
+          {
+            "name": "delimiter",
+            "value": ","
+          }
+        ],
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "status": {
+              "type": "number"
+            },
+            "statusText": {
+              "type": "string"
+            },
+            "result": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "First_Name": {
+                    "type": "string"
+                  },
+                  "Last_Name": {
+                    "type": "string"
+                  },
+                  "Current_Company": {
+                    "type": "string"
+                  },
+                  "Current_Title": {
+                    "type": "string"
+                  },
+                  "Timezone": {
+                    "type": "string"
+                  },
+                  "Candidate_Tags": {
+                    "type": "string"
+                  },
+                  "Phone_Number": {
+                    "type": "string"
+                  },
+                  "Email_Address": {
+                    "type": "string"
+                  },
+                  "Social_Media_Links": {
+                    "type": "string"
+                  },
+                  "Websites": {
+                    "type": "string"
+                  },
+                  "Address": {
+                    "type": "string"
+                  },
+                  "Education": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "First_Name",
+                  "Last_Name",
+                  "Current_Company",
+                  "Current_Title",
+                  "Timezone",
+                  "Candidate_Tags",
+                  "Phone_Number",
+                  "Email_Address",
+                  "Social_Media_Links",
+                  "Websites",
+                  "Address",
+                  "Education"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "nodeId": {
+              "type": "number"
+            },
+            "executionStarted": {
+              "type": "string",
+              "description": "date-time"
+            },
+            "executionFinished": {
+              "type": "string",
+              "description": "date-time"
+            }
+          },
+          "required": [
+            "ok",
+            "status",
+            "statusText",
+            "result",
+            "nodeId",
+            "executionStarted",
+            "executionFinished"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "nodeId": 3,
+        "name": "Storage Upload",
+        "description": "Storage Upload node",
+        "operationReference": {
+          "methodId": "storage_upload"
+        },
+        "parameters": [
+          {
+            "name": "file",
+            "value": "{{4.uploadedFile}}",
+            "fieldType": "file",
+            "placeholder": "File buffer",
+            "validation": {
+              "required": false
+            }
+          },
+          {
+            "name": "fileData",
+            "value": null,
+            "fieldType": "textarea",
+            "placeholder": "Base64 file data",
+            "validation": {
+              "required": false
+            }
+          },
+          {
+            "name": "fileUrl",
+            "value": "",
+            "fieldType": "text",
+            "placeholder": "File URL",
+            "validation": {
+              "required": false
+            }
+          },
+          {
+            "name": "fileName",
+            "value": "",
+            "fieldType": "text",
+            "placeholder": "Name for the uploaded file",
+            "validation": {
+              "required": true
+            }
+          },
+          {
+            "name": "contentType",
+            "value": "application/octet-stream",
+            "fieldType": "text",
+            "placeholder": "MIME type (e.g., image/png, application/pdf)"
+          },
+          {
+            "name": "ttlMinutes",
+            "value": 100000000,
+            "fieldType": "number",
+            "placeholder": "Time to live in minutes (default: eternal)",
+            "validation": {
+              "min": 1
+            }
+          },
+          {
+            "name": "directory",
+            "value": "",
+            "fieldType": "text",
+            "placeholder": "Optional directory path for organization"
+          }
+        ],
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "status": {
+              "type": "number"
+            },
+            "statusText": {
+              "type": "string"
+            },
+            "result": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "fileName": {
+                  "type": "string"
+                },
+                "secret": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "contentType": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "url",
+                "fileName",
+                "secret",
+                "size",
+                "contentType"
+              ],
+              "additionalProperties": false
+            },
+            "nodeId": {
+              "type": "number"
+            },
+            "executionStarted": {
+              "type": "string",
+              "description": "date-time"
+            },
+            "executionFinished": {
+              "type": "string",
+              "description": "date-time"
+            }
+          },
+          "required": [
+            "ok",
+            "status",
+            "statusText",
+            "result",
+            "nodeId",
+            "executionStarted",
+            "executionFinished"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "nodeId": 4,
+        "name": "Input Node",
+        "description": "Input Node node",
+        "operationReference": {
+          "methodId": "input_node"
+        },
+        "parameters": [
+          {
+            "name": "uploadedFile",
+            "fieldType": "file",
+            "placeholder": "Upload a document for processing (optional)",
+            "validation": {
+              "required": false
+            }
+          }
+        ]
+      },
+      {
+        "nodeId": 5,
+        "name": "Fetch from URL",
+        "description": "Fetch from URL node",
+        "operationReference": {
+          "methodId": "code_node",
+          "codeNodeId": "a424ac773821d1d5f876d88b"
+        },
+        "parameters": [
+          {
+            "name": "url",
+            "value": "{{3.result.url}}",
+            "fieldType": "text",
+            "placeholder": "The HTTP(s) URL to fetch",
+            "validation": {
+              "required": true
+            }
+          }
+        ],
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "status": {
+              "type": "number"
+            },
+            "statusText": {
+              "type": "string"
+            },
+            "result": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "number"
+                },
+                "headers": {
+                  "type": "object",
+                  "properties": {
+                    "accept-ranges": {
+                      "type": "string"
+                    },
+                    "access-control-allow-headers": {
+                      "type": "string"
+                    },
+                    "access-control-allow-methods": {
+                      "type": "string"
+                    },
+                    "access-control-allow-origin": {
+                      "type": "string"
+                    },
+                    "access-control-expose-headers": {
+                      "type": "string"
+                    },
+                    "cache-control": {
+                      "type": "string"
+                    },
+                    "cf-cache-status": {
+                      "type": "string"
+                    },
+                    "cf-ray": {
+                      "type": "string"
+                    },
+                    "connection": {
+                      "type": "string"
+                    },
+                    "content-length": {
+                      "type": "string"
+                    },
+                    "content-type": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string"
+                    },
+                    "etag": {
+                      "type": "string"
+                    },
+                    "last-modified": {
+                      "type": "string"
+                    },
+                    "nel": {
+                      "type": "string"
+                    },
+                    "report-to": {
+                      "type": "string"
+                    },
+                    "server": {
+                      "type": "string"
+                    },
+                    "strict-transport-security": {
+                      "type": "string"
+                    },
+                    "vary": {
+                      "type": "string"
+                    },
+                    "www-authenticate": {
+                      "type": "string"
+                    },
+                    "x-amz-id-2": {
+                      "type": "string"
+                    },
+                    "x-amz-request-id": {
+                      "type": "string"
+                    },
+                    "x-amz-server-side-encryption": {
+                      "type": "string"
+                    },
+                    "x-content-type-options": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "accept-ranges",
+                    "access-control-allow-headers",
+                    "access-control-allow-methods",
+                    "access-control-allow-origin",
+                    "access-control-expose-headers",
+                    "cache-control",
+                    "cf-cache-status",
+                    "cf-ray",
+                    "connection",
+                    "content-length",
+                    "content-type",
+                    "date",
+                    "etag",
+                    "last-modified",
+                    "nel",
+                    "report-to",
+                    "server",
+                    "strict-transport-security",
+                    "vary",
+                    "www-authenticate",
+                    "x-amz-id-2",
+                    "x-amz-request-id",
+                    "x-amz-server-side-encryption",
+                    "x-content-type-options"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text",
+                "status",
+                "headers"
+              ],
+              "additionalProperties": false
+            },
+            "nodeId": {
+              "type": "number"
+            },
+            "executionStarted": {
+              "type": "string",
+              "description": "date-time"
+            },
+            "executionFinished": {
+              "type": "string",
+              "description": "date-time"
+            }
+          },
+          "required": [
+            "ok",
+            "status",
+            "statusText",
+            "result",
+            "nodeId",
+            "executionStarted",
+            "executionFinished"
+          ],
+          "additionalProperties": false
+        }
+      }
+    ],
+    "studioData": {
+      "nodes": [
+        {
+          "position": {
+            "x": 864,
+            "y": 656
+          },
+          "id": "1",
+          "type": "mainNodeType",
+          "data": {
+            "workerNode": {
+              "nodeId": 1,
+              "name": "Save to Collection",
+              "description": "Save to Collection node",
+              "operationReference": {
+                "methodId": "save_to_collection"
+              },
+              "parameters": [
+                {
+                  "name": "collectionId",
+                  "value": null,
+                  "fieldType": "select",
+                  "dataSource": {
+                    "type": "meteor_collection",
+                    "collection": "Collections"
+                  },
+                  "placeholder": "Select a collection to save data...",
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "name": "inputData",
+                  "value": "{{2.result}}",
+                  "fieldType": "textarea",
+                  "minRows": 3,
+                  "placeholder": "Data to save (object or array of objects)",
+                  "validation": {
+                    "required": true
+                  }
+                }
+              ],
+              "outputSchema": {
+                "type": "object",
+                "properties": {
+                  "ok": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "number"
+                  },
+                  "result": {
+                    "type": "object",
+                    "properties": {
+                      "documentIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "inserted": {
+                        "type": "number"
+                      },
+                      "updated": {
+                        "type": "number"
+                      },
+                      "total": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "documentIds",
+                      "inserted",
+                      "updated",
+                      "total"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "nodeId": {
+                    "type": "number"
+                  },
+                  "executionStarted": {
+                    "type": "string",
+                    "description": "date-time"
+                  },
+                  "executionFinished": {
+                    "type": "string",
+                    "description": "date-time"
+                  }
+                },
+                "required": [
+                  "ok",
+                  "status",
+                  "result",
+                  "nodeId",
+                  "executionStarted",
+                  "executionFinished"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "runtimeNode": {
+              "name": "Save to Collection",
+              "description": "Save to Collection node",
+              "nodeId": 1,
+              "parameters": [
+                {
+                  "name": "collectionId",
+                  "value": null,
+                  "fieldType": "select",
+                  "dataSource": {
+                    "type": "meteor_collection",
+                    "collection": "Collections"
+                  },
+                  "placeholder": "Select a collection to save data...",
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "name": "inputData",
+                  "value": "{{2.result}}",
+                  "fieldType": "textarea",
+                  "minRows": 3,
+                  "placeholder": "Data to save (object or array of objects)",
+                  "validation": {
+                    "required": true
+                  }
+                }
+              ],
+              "dependingOn": {},
+              "dependingOnMe": {},
+              "currentTemplatedParameters": [
+                {
+                  "accessor": [
+                    "inputData"
+                  ],
+                  "param": {
+                    "originalString": "{{2.result}}",
+                    "mustBeString": false,
+                    "currentValue": "{{2.result}}",
+                    "variables": {},
+                    "setVars": {},
+                    "hasTemplateVariables": false,
+                    "dependsOn": {},
+                    "optionalVars": {},
+                    "defaultValues": {}
+                  }
+                }
+              ],
+              "originalTemplatedParameters": [
+                {
+                  "accessor": [
+                    "inputData"
+                  ],
+                  "param": {
+                    "originalString": "{{2.result}}",
+                    "mustBeString": false,
+                    "currentValue": "{{2.result}}",
+                    "variables": {},
+                    "setVars": {},
+                    "hasTemplateVariables": false,
+                    "dependsOn": {},
+                    "optionalVars": {},
+                    "defaultValues": {}
+                  }
+                }
+              ]
+            },
+            "globalStatus": 2,
+            "executionStatus": 0
+          },
+          "measured": {
+            "width": 320,
+            "height": 123
+          },
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "position": {
+            "x": 864,
+            "y": 448
+          },
+          "id": "2",
+          "type": "mainNodeType",
+          "data": {
+            "workerNode": {
+              "nodeId": 2,
+              "name": "CSV to JSON",
+              "description": "CSV to JSON node",
+              "operationReference": {
+                "methodId": "csv_to_json"
+              },
+              "parameters": [
+                {
+                  "name": "csvData",
+                  "value": "{{5.result.text}}",
+                  "fieldType": "textarea",
+                  "placeholder": "CSV data or reference to uploaded CSV file",
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "name": "delimiter",
+                  "value": ","
+                }
+              ],
+              "outputSchema": {
+                "type": "object",
+                "properties": {
+                  "ok": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "number"
+                  },
+                  "statusText": {
+                    "type": "string"
+                  },
+                  "result": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "First_Name": {
+                          "type": "string"
+                        },
+                        "Last_Name": {
+                          "type": "string"
+                        },
+                        "Current_Company": {
+                          "type": "string"
+                        },
+                        "Current_Title": {
+                          "type": "string"
+                        },
+                        "Timezone": {
+                          "type": "string"
+                        },
+                        "Candidate_Tags": {
+                          "type": "string"
+                        },
+                        "Phone_Number": {
+                          "type": "string"
+                        },
+                        "Email_Address": {
+                          "type": "string"
+                        },
+                        "Social_Media_Links": {
+                          "type": "string"
+                        },
+                        "Websites": {
+                          "type": "string"
+                        },
+                        "Address": {
+                          "type": "string"
+                        },
+                        "Education": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "First_Name",
+                        "Last_Name",
+                        "Current_Company",
+                        "Current_Title",
+                        "Timezone",
+                        "Candidate_Tags",
+                        "Phone_Number",
+                        "Email_Address",
+                        "Social_Media_Links",
+                        "Websites",
+                        "Address",
+                        "Education"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "nodeId": {
+                    "type": "number"
+                  },
+                  "executionStarted": {
+                    "type": "string",
+                    "description": "date-time"
+                  },
+                  "executionFinished": {
+                    "type": "string",
+                    "description": "date-time"
+                  }
+                },
+                "required": [
+                  "ok",
+                  "status",
+                  "statusText",
+                  "result",
+                  "nodeId",
+                  "executionStarted",
+                  "executionFinished"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "runtimeNode": {
+              "name": "CSV to JSON",
+              "description": "CSV to JSON node",
+              "nodeId": 2,
+              "parameters": [
+                {
+                  "name": "csvData",
+                  "value": "{{5.result.text}}",
+                  "fieldType": "textarea",
+                  "placeholder": "CSV data or reference to uploaded CSV file",
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "name": "delimiter",
+                  "value": ","
+                }
+              ],
+              "dependingOn": {},
+              "dependingOnMe": {},
+              "currentTemplatedParameters": [
+                {
+                  "accessor": [
+                    "csvData"
+                  ],
+                  "param": {
+                    "originalString": "{{5.result.text}}",
+                    "mustBeString": false,
+                    "currentValue": "{{5.result.text}}",
+                    "variables": {},
+                    "setVars": {},
+                    "hasTemplateVariables": false,
+                    "dependsOn": {},
+                    "optionalVars": {},
+                    "defaultValues": {}
+                  }
+                }
+              ],
+              "originalTemplatedParameters": [
+                {
+                  "accessor": [
+                    "csvData"
+                  ],
+                  "param": {
+                    "originalString": "{{5.result.text}}",
+                    "mustBeString": false,
+                    "currentValue": "{{5.result.text}}",
+                    "variables": {},
+                    "setVars": {},
+                    "hasTemplateVariables": false,
+                    "dependsOn": {},
+                    "optionalVars": {},
+                    "defaultValues": {}
+                  }
+                }
+              ]
+            },
+            "globalStatus": 2,
+            "executionStatus": 0
+          },
+          "measured": {
+            "width": 320,
+            "height": 123
+          },
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "position": {
+            "x": 864,
+            "y": 16
+          },
+          "id": "3",
+          "type": "mainNodeType",
+          "data": {
+            "workerNode": {
+              "nodeId": 3,
+              "name": "Storage Upload",
+              "description": "Storage Upload node",
+              "operationReference": {
+                "methodId": "storage_upload"
+              },
+              "parameters": [
+                {
+                  "name": "file",
+                  "value": "{{4.uploadedFile}}",
+                  "fieldType": "file",
+                  "placeholder": "File buffer",
+                  "validation": {
+                    "required": false
+                  }
+                },
+                {
+                  "name": "fileData",
+                  "value": null,
+                  "fieldType": "textarea",
+                  "placeholder": "Base64 file data",
+                  "validation": {
+                    "required": false
+                  }
+                },
+                {
+                  "name": "fileUrl",
+                  "value": "",
+                  "fieldType": "text",
+                  "placeholder": "File URL",
+                  "validation": {
+                    "required": false
+                  }
+                },
+                {
+                  "name": "fileName",
+                  "value": "",
+                  "fieldType": "text",
+                  "placeholder": "Name for the uploaded file",
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "name": "contentType",
+                  "value": "application/octet-stream",
+                  "fieldType": "text",
+                  "placeholder": "MIME type (e.g., image/png, application/pdf)"
+                },
+                {
+                  "name": "ttlMinutes",
+                  "value": 100000000,
+                  "fieldType": "number",
+                  "placeholder": "Time to live in minutes (default: eternal)",
+                  "validation": {
+                    "min": 1
+                  }
+                },
+                {
+                  "name": "directory",
+                  "value": "",
+                  "fieldType": "text",
+                  "placeholder": "Optional directory path for organization"
+                }
+              ],
+              "outputSchema": {
+                "type": "object",
+                "properties": {
+                  "ok": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "number"
+                  },
+                  "statusText": {
+                    "type": "string"
+                  },
+                  "result": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string"
+                      },
+                      "fileName": {
+                        "type": "string"
+                      },
+                      "secret": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "number"
+                      },
+                      "contentType": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "url",
+                      "fileName",
+                      "secret",
+                      "size",
+                      "contentType"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "nodeId": {
+                    "type": "number"
+                  },
+                  "executionStarted": {
+                    "type": "string",
+                    "description": "date-time"
+                  },
+                  "executionFinished": {
+                    "type": "string",
+                    "description": "date-time"
+                  }
+                },
+                "required": [
+                  "ok",
+                  "status",
+                  "statusText",
+                  "result",
+                  "nodeId",
+                  "executionStarted",
+                  "executionFinished"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "runtimeNode": {
+              "name": "Storage Upload",
+              "description": "Storage Upload node",
+              "nodeId": 3,
+              "parameters": [
+                {
+                  "name": "file",
+                  "value": "{{4.uploadedFile}}",
+                  "fieldType": "file",
+                  "placeholder": "File buffer",
+                  "validation": {
+                    "required": false
+                  }
+                },
+                {
+                  "name": "fileData",
+                  "value": null,
+                  "fieldType": "textarea",
+                  "placeholder": "Base64 file data",
+                  "validation": {
+                    "required": false
+                  }
+                },
+                {
+                  "name": "fileUrl",
+                  "value": "",
+                  "fieldType": "text",
+                  "placeholder": "File URL",
+                  "validation": {
+                    "required": false
+                  }
+                },
+                {
+                  "name": "fileName",
+                  "value": "",
+                  "fieldType": "text",
+                  "placeholder": "Name for the uploaded file",
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "name": "contentType",
+                  "value": "application/octet-stream",
+                  "fieldType": "text",
+                  "placeholder": "MIME type (e.g., image/png, application/pdf)"
+                },
+                {
+                  "name": "ttlMinutes",
+                  "value": 100000000,
+                  "fieldType": "number",
+                  "placeholder": "Time to live in minutes (default: eternal)",
+                  "validation": {
+                    "min": 1
+                  }
+                },
+                {
+                  "name": "directory",
+                  "value": "",
+                  "fieldType": "text",
+                  "placeholder": "Optional directory path for organization"
+                }
+              ],
+              "dependingOn": {},
+              "dependingOnMe": {},
+              "currentTemplatedParameters": [
+                {
+                  "accessor": [
+                    "file"
+                  ],
+                  "param": {
+                    "originalString": "{{4.uploadedFile}}",
+                    "mustBeString": false,
+                    "currentValue": "{{4.uploadedFile}}",
+                    "variables": {},
+                    "setVars": {},
+                    "hasTemplateVariables": false,
+                    "dependsOn": {},
+                    "optionalVars": {},
+                    "defaultValues": {}
+                  }
+                }
+              ],
+              "originalTemplatedParameters": [
+                {
+                  "accessor": [
+                    "file"
+                  ],
+                  "param": {
+                    "originalString": "{{4.uploadedFile}}",
+                    "mustBeString": false,
+                    "currentValue": "{{4.uploadedFile}}",
+                    "variables": {},
+                    "setVars": {},
+                    "hasTemplateVariables": false,
+                    "dependsOn": {},
+                    "optionalVars": {},
+                    "defaultValues": {}
+                  }
+                }
+              ]
+            },
+            "globalStatus": 2,
+            "executionStatus": 0
+          },
+          "measured": {
+            "width": 320,
+            "height": 123
+          },
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "position": {
+            "x": 864,
+            "y": -176
+          },
+          "id": "4",
+          "type": "mainNodeType",
+          "data": {
+            "workerNode": {
+              "nodeId": 4,
+              "name": "Input Node",
+              "description": "Input Node node",
+              "operationReference": {
+                "methodId": "input_node"
+              },
+              "parameters": [
+                {
+                  "name": "uploadedFile",
+                  "fieldType": "file",
+                  "placeholder": "Upload a document for processing (optional)",
+                  "validation": {
+                    "required": false
+                  }
+                }
+              ]
+            },
+            "runtimeNode": {
+              "name": "Input Node",
+              "description": "Input Node node",
+              "nodeId": 4,
+              "parameters": [
+                {
+                  "name": "uploadedFile",
+                  "fieldType": "file",
+                  "placeholder": "Upload a document for processing (optional)",
+                  "validation": {
+                    "required": false
+                  }
+                }
+              ],
+              "dependingOn": {},
+              "dependingOnMe": {},
+              "currentTemplatedParameters": [],
+              "originalTemplatedParameters": []
+            },
+            "globalStatus": 1,
+            "executionStatus": 0
+          },
+          "measured": {
+            "width": 320,
+            "height": 123
+          },
+          "selected": false,
+          "dragging": false
+        },
+        {
+          "position": {
+            "x": 864,
+            "y": 240
+          },
+          "id": "5",
+          "type": "mainNodeType",
+          "data": {
+            "workerNode": {
+              "nodeId": 5,
+              "name": "Fetch from URL",
+              "description": "Fetch from URL node",
+              "operationReference": {
+                "methodId": "code_node",
+                "codeNodeId": "a424ac773821d1d5f876d88b"
+              },
+              "parameters": [
+                {
+                  "name": "url",
+                  "value": "{{3.result.url}}",
+                  "fieldType": "text",
+                  "placeholder": "The HTTP(s) URL to fetch",
+                  "validation": {
+                    "required": true
+                  }
+                }
+              ],
+              "outputSchema": {
+                "type": "object",
+                "properties": {
+                  "ok": {
+                    "type": "boolean"
+                  },
+                  "status": {
+                    "type": "number"
+                  },
+                  "statusText": {
+                    "type": "string"
+                  },
+                  "result": {
+                    "type": "object",
+                    "properties": {
+                      "text": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "number"
+                      },
+                      "headers": {
+                        "type": "object",
+                        "properties": {
+                          "accept-ranges": {
+                            "type": "string"
+                          },
+                          "access-control-allow-headers": {
+                            "type": "string"
+                          },
+                          "access-control-allow-methods": {
+                            "type": "string"
+                          },
+                          "access-control-allow-origin": {
+                            "type": "string"
+                          },
+                          "access-control-expose-headers": {
+                            "type": "string"
+                          },
+                          "cache-control": {
+                            "type": "string"
+                          },
+                          "cf-cache-status": {
+                            "type": "string"
+                          },
+                          "cf-ray": {
+                            "type": "string"
+                          },
+                          "connection": {
+                            "type": "string"
+                          },
+                          "content-length": {
+                            "type": "string"
+                          },
+                          "content-type": {
+                            "type": "string"
+                          },
+                          "date": {
+                            "type": "string"
+                          },
+                          "etag": {
+                            "type": "string"
+                          },
+                          "last-modified": {
+                            "type": "string"
+                          },
+                          "nel": {
+                            "type": "string"
+                          },
+                          "report-to": {
+                            "type": "string"
+                          },
+                          "server": {
+                            "type": "string"
+                          },
+                          "strict-transport-security": {
+                            "type": "string"
+                          },
+                          "vary": {
+                            "type": "string"
+                          },
+                          "www-authenticate": {
+                            "type": "string"
+                          },
+                          "x-amz-id-2": {
+                            "type": "string"
+                          },
+                          "x-amz-request-id": {
+                            "type": "string"
+                          },
+                          "x-amz-server-side-encryption": {
+                            "type": "string"
+                          },
+                          "x-content-type-options": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "accept-ranges",
+                          "access-control-allow-headers",
+                          "access-control-allow-methods",
+                          "access-control-allow-origin",
+                          "access-control-expose-headers",
+                          "cache-control",
+                          "cf-cache-status",
+                          "cf-ray",
+                          "connection",
+                          "content-length",
+                          "content-type",
+                          "date",
+                          "etag",
+                          "last-modified",
+                          "nel",
+                          "report-to",
+                          "server",
+                          "strict-transport-security",
+                          "vary",
+                          "www-authenticate",
+                          "x-amz-id-2",
+                          "x-amz-request-id",
+                          "x-amz-server-side-encryption",
+                          "x-content-type-options"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "text",
+                      "status",
+                      "headers"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "nodeId": {
+                    "type": "number"
+                  },
+                  "executionStarted": {
+                    "type": "string",
+                    "description": "date-time"
+                  },
+                  "executionFinished": {
+                    "type": "string",
+                    "description": "date-time"
+                  }
+                },
+                "required": [
+                  "ok",
+                  "status",
+                  "statusText",
+                  "result",
+                  "nodeId",
+                  "executionStarted",
+                  "executionFinished"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "runtimeNode": {
+              "name": "Fetch from URL",
+              "description": "Fetch from URL node",
+              "nodeId": 5,
+              "parameters": [
+                {
+                  "name": "url",
+                  "value": "{{3.result.url}}",
+                  "fieldType": "text",
+                  "placeholder": "The HTTP(s) URL to fetch",
+                  "validation": {
+                    "required": true
+                  }
+                }
+              ],
+              "dependingOn": {},
+              "dependingOnMe": {},
+              "currentTemplatedParameters": [
+                {
+                  "accessor": [
+                    "url"
+                  ],
+                  "param": {
+                    "originalString": "{{3.result.url}}",
+                    "mustBeString": false,
+                    "currentValue": "{{3.result.url}}",
+                    "variables": {},
+                    "setVars": {},
+                    "hasTemplateVariables": false,
+                    "dependsOn": {},
+                    "optionalVars": {},
+                    "defaultValues": {}
+                  }
+                }
+              ],
+              "originalTemplatedParameters": [
+                {
+                  "accessor": [
+                    "url"
+                  ],
+                  "param": {
+                    "originalString": "{{3.result.url}}",
+                    "mustBeString": false,
+                    "currentValue": "{{3.result.url}}",
+                    "variables": {},
+                    "setVars": {},
+                    "hasTemplateVariables": false,
+                    "dependsOn": {},
+                    "optionalVars": {},
+                    "defaultValues": {}
+                  }
+                }
+              ]
+            },
+            "globalStatus": 2,
+            "executionStatus": 0
+          },
+          "measured": {
+            "width": 320,
+            "height": 123
+          },
+          "selected": false,
+          "dragging": false
+        }
+      ],
+      "edges": [
+        {
+          "id": "edge-2-1",
+          "source": "2",
+          "target": "1",
+          "type": "edgeA",
+          "label": "inputData: 2.result"
+        },
+        {
+          "id": "edge-3-5",
+          "source": "3",
+          "target": "5",
+          "type": "edgeA",
+          "label": "url: 3.result.url"
+        },
+        {
+          "id": "edge-4-3",
+          "source": "4",
+          "target": "3",
+          "type": "edgeA",
+          "label": "file: 4.uploadedFile"
+        },
+        {
+          "id": "edge-5-2",
+          "source": "5",
+          "target": "2",
+          "type": "edgeA",
+          "label": "csvData: 5.result.text"
+        }
+      ]
+    },
+    "isUniversal": false
+  },
+  "dependencies": {
+    "workers": [],
+    "customNodes": [
+      {
+        "_id": "a424ac773821d1d5f876d88b",
+        "code": "(async () => {\n    try {\n        const url = userInput.url;\n        if (!url || typeof url !== 'string') {\n            throw new Error('Missing or invalid url parameter');\n        }\n        console.log('Fetching URL:', url);\n\n        const response = await fetch(url, { method: 'GET' });\n        const text = await response.text();\n        const headersObj = {};\n        response.headers.forEach((value, key) => {\n            headersObj[key] = value;\n        });\n        output = {\n            text,\n            status: response.status,\n            headers: headersObj\n        };\n    } catch (err) {\n        console.error('Error:', err);\n        output = { error: err.toString() };\n    }\n})();",
+        "compiles": true,
+        "nodeId": 0,
+        "operationReference": {
+          "methodId": "code_node",
+          "codeNodeId": "a424ac773821d1d5f876d88b"
+        },
+        "isCanvasReady": true,
+        "name": "Fetch from URL",
+        "description": "Fetches the content of a given URL and returns the HTTP response as text, status, and headers.",
+        "tags": [],
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "The HTTP(s) URL to fetch"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "Body of response as text"
+            },
+            "status": {
+              "type": "number",
+              "description": "HTTP status code"
+            },
+            "headers": {
+              "type": "object",
+              "description": "Response headers as object"
+            }
+          },
+          "required": [
+            "text",
+            "status",
+            "headers"
+          ]
+        },
+        "parameters": [
+          {
+            "name": "url",
+            "value": "",
+            "fieldType": "text",
+            "placeholder": "The HTTP(s) URL to fetch",
+            "validation": {
+              "required": true
+            }
+          }
+        ],
+        "runs": true
+      }
+    ]
+  }
+}

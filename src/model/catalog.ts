@@ -129,10 +129,11 @@ export interface IEverMarketplaceCatalogItem {
     readonly subCategoryName: IEverMarketplaceSubCategoryName;
 
     /**
-     * ITEM_INCENTIVES
-     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_INCENTIVES"]
+     * ITEM_BENEFITS
+     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_BENEFITS"]
+     * - Legacy ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_INCENTIVES"]
      */
-    readonly incentives: string;
+    readonly benefits: string;
 
     /**
      * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_PRIMARY_APPS"]
@@ -184,6 +185,11 @@ export interface IEverMarketplaceCatalogItem {
     readonly techSpecsUrl?: IEverMarketplaceUrl;
 
     readonly dependencies: readonly IEverMarketplaceItemDependency[];
+
+    /**
+     * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_PUBLISHING_VISIBILITY"]
+     */
+    readonly visibility?: string;
 
     /**
      * Combined text of all text fields to make search simple in mongo
