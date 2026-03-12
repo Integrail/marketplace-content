@@ -11,7 +11,7 @@ import "dotenv/config";
 import { Option, program } from "commander";
 import JSZip from "jszip";
 import { MongoClient } from "mongodb";
-import type { IEverMarketplaceCatalog } from "../model/catalog.js";
+import type { IEverMarketplaceCatalog, IEverMarketplaceCatalogItem } from "../model/catalog.js";
 import { parseNonEmptyString } from "../lib/cli.js";
 import { MEDIA_STORE_URL } from "../lib/media-store.js";
 
@@ -94,7 +94,10 @@ async function main(): Promise<void> {
         }
         await db.createCollection(TMP);
         if (catalog.items.length > 0) {
-            await db.collection(TMP).insertMany(catalog.items.map(item => ({ ...item })));
+            await db.collection<IEverMarketplaceCatalogItem & { _id: string }>(TMP).insertMany(catalog.items.map(item => ({
+                _id: crypto.randomUUID(),
+                ...item
+            })));
         }
         console.log(`Inserted ${catalog.items.length} items into ${TMP}`);
 
