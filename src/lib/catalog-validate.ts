@@ -98,13 +98,21 @@ export function assertAppDefinition(value: IEverMarketplaceAppDefinition, field:
     assertUrl(value.description, `${field}.description`);
 }
 
+export function assertDependencyGroup(value: unknown, field: string): void {
+    assert(typeof value === "object" && value !== null, `${field}: expected an object`);
+    const g = value as Record<string, unknown>;
+    assert(
+        DEPENDENCY_TYPES.has(g.type as string),
+        `${field}.type: expected one of ${[...DEPENDENCY_TYPES].join(", ")}, got ${JSON.stringify(g.type)}`,
+    );
+    assert(typeof g.summary === "string", `${field}.summary: expected a string`);
+    assert(Array.isArray(g.items), `${field}.items: expected an array`);
+    g.items.forEach((item, i) => assertDependency(item, `${field}.items[${i}]`));
+}
+
 export function assertDependency(value: unknown, field: string): void {
     assert(typeof value === "object" && value !== null, `${field}: expected an object`);
     const d = value as Record<string, unknown>;
-    assert(
-        DEPENDENCY_TYPES.has(d.type as string),
-        `${field}.type: expected one of ${[...DEPENDENCY_TYPES].join(", ")}, got ${JSON.stringify(d.type)}`,
-    );
     assert(typeof d.name === "string", `${field}.name: expected a string`);
     assert(typeof d.description === "string", `${field}.description: expected a string`);
 }
@@ -167,7 +175,7 @@ export function assertCatalogItem(item: IEverMarketplaceCatalogItem): Validation
     }
 
     assert(Array.isArray(item.dependencies), `dependencies: expected an array`);
-    item.dependencies.forEach((dep, i) => assertDependency(dep, `dependencies[${i}]`));
+    item.dependencies.forEach((dep, i) => assertDependencyGroup(dep, `dependencies[${i}]`));
 
     assert(typeof item.textIndex === "string", `textIndex: expected a string`);
 
