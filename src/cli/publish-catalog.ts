@@ -171,19 +171,32 @@ async function main(): Promise<void> {
 
     // Target directory
     const cdnDir = path.join(MEDIA_STORE_DIR, "cdn", environment);
-    fs.rmSync(cdnDir, { recursive: true, force: true });
+    // fs.rmSync(cdnDir, { recursive: true, force: true });
     fs.mkdirSync(cdnDir, { recursive: true });
 
-    // catalog.json
-    fs.writeFileSync(path.join(cdnDir, "catalog.json"), resolvedCatalogJson);
-    console.log(`Wrote catalog.json (${resolvedCatalog.items.length} items)`);
+    // Read version from catalog
+    const version = catalog.catalogVersion;
 
-    // catalog.zip
+    // catalog.json + catalog-{version}.json
+    fs.writeFileSync(path.join(cdnDir, "catalog.json"), resolvedCatalogJson);
+    fs.writeFileSync(path.join(cdnDir, `catalog-${version}.json`), resolvedCatalogJson);
+    console.log(`Wrote catalog.json and catalog-${version}.json (${resolvedCatalog.items.length} items)`);
+
+    // catalog.zip + catalog-{version}.zip
     const zip = new JSZip();
     zip.file("catalog.json", resolvedCatalogJson);
     const zipBuffer = await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" });
     fs.writeFileSync(path.join(cdnDir, "catalog.zip"), zipBuffer);
-    console.log(`Wrote catalog.zip`);
+    fs.writeFileSync(path.join(cdnDir, `catalog-${version}.zip`), zipBuffer);
+    console.log(`Wrote catalog.zip and catalog-${version}.zip`);
+
+    // versions.json — list of versions based on existing catalog-{version}.zip files
+    const allVersions = fs.readdirSync(cdnDir)
+        .map(f => f.match(/^catalog-(.+)\.zip$/)?.[1])
+        .filter((v): v is string => v !== undefined)
+        .sort();
+    fs.writeFileSync(path.join(cdnDir, "versions.json"), JSON.stringify(allVersions, null, 2) + "\n");
+    console.log(`Wrote versions.json (${allVersions.length} versions)`);
 
     // media/{item}/
     const mediaDir = path.join(cdnDir, "media");

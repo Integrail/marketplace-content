@@ -81,8 +81,13 @@ export interface IEverMarketplaceAppDefinition {
 
 export type EverMarketplaceItemDependencyType = "connector" | "memory" | "collection" | "workflow";
 
-interface IEverMarketplaceItemDependency {
+export interface IEverMarketplaceItemDependencyGroup {
     readonly type: EverMarketplaceItemDependencyType;
+    readonly items: readonly IEverMarketplaceItemDependency[];
+    readonly summary?: string;
+}
+
+export interface IEverMarketplaceItemDependency {
     readonly name: string;
     readonly description: string;
 }
@@ -185,7 +190,7 @@ export interface IEverMarketplaceCatalogItem {
      */
     readonly techSpecsUrl?: IEverMarketplaceUrl;
 
-    readonly dependencies: readonly IEverMarketplaceItemDependency[];
+    readonly dependencies: readonly IEverMarketplaceItemDependencyGroup[];
 
     /**
      * - ClickUp Path: MW-{XXXX}-summary.json/custom_fields[name="ITEM_PUBLISHING_VISIBILITY"]

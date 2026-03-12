@@ -3,6 +3,8 @@ import {
     IEverMarketplaceAppDefinition,
     IEverMarketplaceAppId,
     IEverMarketplaceCatalogItem,
+    IEverMarketplaceItemDependency,
+    IEverMarketplaceItemDependencyGroup,
     IEverMarketplaceItemType,
     IEverMarketplaceMarkdown,
     IEverMarketplaceMedia,
@@ -66,10 +68,26 @@ function resolveMarkdown(content: string, id: string, filename: string): Resolve
     return { markdown: { href }, attachments: { [`${filename}.md`]: Buffer.from(content, "utf-8") } };
 }
 
-function parseDependencyLines(
-    text: string,
+function parseDependencyGroup(
     type: EverMarketplaceItemDependencyType,
-): Array<{ type: EverMarketplaceItemDependencyType; name: string; description: string }> {
+    summaryText: string | undefined,
+    itemsText: string,
+): IEverMarketplaceItemDependencyGroup {
+    const items = parseDependencyItems(itemsText);
+    if (summaryText == null || summaryText.trim() === "") {
+        const count = itemsText.split("\n").filter(line => line.trim() !== "").length;
+        summaryText = String(count);
+    }
+    return {
+        type,
+        summary: summaryText,
+        items,
+    };
+}
+
+function parseDependencyItems(
+    text: string,
+): IEverMarketplaceItemDependency[] {
     // Strip zero-width and formatting Unicode characters that ClickUp inserts
     return text
         .split("\n")
@@ -77,9 +95,8 @@ function parseDependencyLines(
         .filter(line => line.length > 0)
         .map(line => {
             const sep = line.indexOf(" - ");
-            if (sep === -1) return { type, name: line, description: "" };
+            if (sep === -1) return { name: line, description: "" };
             return {
-                type,
                 name: line.slice(0, sep).trim(),
                 description: line.slice(sep + 3).trim(),
             };
@@ -180,10 +197,10 @@ export function buildCatalogItem(
         ((clickup.getField(summary, fieldName)?.value) as string | undefined) ?? "";
 
     const dependencies = [
-        ...parseDependencyLines(dep("ITEM_DEP_CONNECTORS"), "connector"),
-        ...parseDependencyLines(dep("ITEM_DEP_MEMORIES"), "memory"),
-        ...parseDependencyLines(dep("ITEM_DEP_COLLECTIONS"), "collection"),
-        ...parseDependencyLines(dep("ITEM_DEP_WORKFLOWS"), "workflow"),
+        parseDependencyGroup("connector", dep("ITEM_DEP_CONNECTORS_SUMMARY"), dep("ITEM_DEP_CONNECTORS")),
+        parseDependencyGroup("memory", dep("ITEM_DEP_MEMORIES_SUMMARY"), dep("ITEM_DEP_MEMORIES")),
+        parseDependencyGroup("collection", dep("ITEM_DEP_COLLECTIONS_SUMMARY"), dep("ITEM_DEP_COLLECTIONS")),
+        parseDependencyGroup("workflow", dep("ITEM_DEP_WORKFLOWS_SUMMARY"), dep("ITEM_DEP_WORKFLOWS")),
     ];
 
     // ── Text index ───────────────────────────────────────────────────────────
@@ -196,7 +213,7 @@ export function buildCatalogItem(
         categoryName,
         subCategoryName,
         ...apps.map(a => a.name),
-        ...dependencies.map(d => `${d.name} ${d.description}`),
+        ...dependencies.flatMap(g => g.items.map(d => `${d.name} ${d.description}`)),
     ].filter(Boolean).join(" ").toLowerCase();
 
     const item: IEverMarketplaceCatalogItem = {

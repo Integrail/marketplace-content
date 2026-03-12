@@ -337,3 +337,9 @@ Ok I want you to add to README2.md:
 - ew-marketplace:// explanation (but the one in README.md is outdated so read build-catalog and publish-catalog sources to provide a relevant explanation)
 - Git LFS
 - full repo directory structure
+
+//===================================================
+Modify `src/cli/publish-catalog.ts` so that
+- Catalog version is read from catalog.json (e.g. `2026.3.12-1773323902`)
+- Along with `catalog.json` and `catalog.zip`, put `catalog-${version}.json` and `catalog-${version}.zip`.
+- Put `versions.json` which should just be a JSON array with a list of versions based on existing `catalog-${version}.zip` files.

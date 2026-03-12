@@ -1,9 +1,9 @@
 {
-  "catalogVersion": "2026.3.12-1773318163",
+  "catalogVersion": "2026.3.12-1773324713",
   "items": [
     {
       "id": "MW-1101",
-      "itemVersion": "2026.3.6-0",
+      "itemVersion": "2026.3.12-0",
       "name": "MARKETPLACE-TEMPLATE",
       "cardDescription": "Orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods.",
       "type": "Worker",
@@ -65,22 +65,67 @@
       "dependencies": [
         {
           "type": "connector",
-          "name": "QuickBooks",
-          "description": "Accounting system access for PO and invoice data"
+          "summary": "2+",
+          "items": [
+            {
+              "name": "QuickBooks",
+              "description": "Accounting system access for PO and invoice data"
+            },
+            {
+              "name": "NetSuite",
+              "description": "ERP access for purchase order matching"
+            },
+            {
+              "name": "Gmail",
+              "description": "AP inbox monitoring for incoming invoices"
+            }
+          ]
         },
         {
-          "type": "connector",
-          "name": "NetSuite",
-          "description": "ERP access for purchase order matching"
+          "type": "memory",
+          "summary": "3",
+          "items": [
+            {
+              "name": "AP Policies",
+              "description": "Approval thresholds, tolerance levels, escalation"
+            },
+            {
+              "name": "Vendor Master List",
+              "description": "Approved vendors, payment terms, contact info"
+            }
+          ]
         },
         {
-          "type": "connector",
-          "name": "Gmail",
-          "description": "AP inbox monitoring for incoming invoices"
+          "type": "collection",
+          "summary": "3",
+          "items": [
+            {
+              "name": "Invoice Templates",
+              "description": "Standard invoice formats for parsing"
+            }
+          ]
+        },
+        {
+          "type": "workflow",
+          "summary": "3",
+          "items": [
+            {
+              "name": "AP Policies",
+              "description": "Matches invoice line items against purchase orders"
+            },
+            {
+              "name": "Discrepancy Detection",
+              "description": "Identifies and categorizes mismatches"
+            },
+            {
+              "name": "Exception Routing",
+              "description": "Routes exceptions to correct approver based on rules"
+            }
+          ]
         }
       ],
       "visibility": "TEMPLATE",
-      "textIndex": "marketplace-template orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods. orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods.orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods.orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods. saves ~15 hrs/week per accountant 30 mins setup time marketing accounting & reporting quickbooks gmail netsuite quickbooks accounting system access for po and invoice data netsuite erp access for purchase order matching gmail ap inbox monitoring for incoming invoices"
+      "textIndex": "marketplace-template orchestrates the entire close process, tracking tasks, managing dependencies, and accelerating time-to-close across all periods. ## **overview**\nmatches invoices against pos, flag discrepancies, and route exceptions to be sent to your email inbox as a complex report with a good format.\n## **how it works**\n**what happens after you set up this workflow:**\n1. monitors your ap inbox for incoming invoices\n2. extracts key data (vendor, amount, po number, line items)\n3. matches each invoice against open purchase orders in your system\n4. ﻿﻿﻿for matches within your tolerance threshold, flags them as ready for approval\n5. ﻿﻿﻿for discrepancies, creates an exception report with details and route it to the right approver based on your rules\n\n**what you’ll get:**\n*   ﻿﻿daily summary of processed invoices in slack or email\n*   ﻿﻿exception reports with clear explanations of discrepancies\n*   ﻿﻿reduced backlog and faster payment cycles\n\n**what it requires from you:**\n*   ﻿﻿daily summary of processed invoices in slack or email\n*   ﻿﻿exception reports with clear explanations of discrepancies\n*   ﻿﻿reduced backlog and faster payment cycles saves ~15 hrs/week per accountant 30 mins setup time marketing accounting & reporting quickbooks gmail netsuite quickbooks accounting system access for po and invoice data netsuite erp access for purchase order matching gmail ap inbox monitoring for incoming invoices ap policies approval thresholds, tolerance levels, escalation vendor master list approved vendors, payment terms, contact info invoice templates standard invoice formats for parsing ap policies matches invoice line items against purchase orders discrepancy detection identifies and categorizes mismatches exception routing routes exceptions to correct approver based on rules"
     }
   ]
 }
