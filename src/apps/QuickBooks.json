@@ -1,6 +1,7 @@
 {
-    "appId": "QuickBooks",
-    "name": "QuickBooks",
-    "logoUrl": "ew-marketplace://apps/QuickBooks.png",
-    "description": "ew-marketplace://apps/QuickBooks.txt"
+  "appId": "QuickBooks",
+  "name": "QuickBooks",
+  "logoUrl": "ew-marketplace://apps/QuickBooks.png",
+  "description": "ew-marketplace://apps/QuickBooks.txt",
+  "appUrl": "https://www.quickbooks.intuit.com"
 }

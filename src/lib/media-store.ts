@@ -1,1 +1,1 @@
-export const MEDIA_STORE_URL = "http://marketplace-media.everworker.ai.s3-website.eu-central-1.amazonaws.com";
+export const MEDIA_STORE_URL = "https://marketplace-media.everworker.ai";

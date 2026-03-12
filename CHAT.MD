@@ -315,3 +315,25 @@ Create a src/cli/local-deploy.ts script that:
 In src/cli/publish.ts, copy files from src/apps to media-store/cdn/{environment}/apps
 
 In src/cli/publish.ts, now internal links like `ew-marketplace://MW-1101/tech-specs.md` are converted to `{media-store-url}/MW-1101/tech-specs.md`. Make it `{media-store-url}/media/MW-1101/tech-specs.md` instead.
+
+//===================================================
+Create a new readme in README2.md.
+
+Flow:
+- Tasks are downloaded from ClickUp via `click-up:sync` npm command, and put into `click-up` directory (git-ignored).
+- ClickUp tasks are converted to catalog items via `build-catalog` npm command. Use `src/model/catalog.ts` and `src/lib/catalog-build.ts` to document the mapping.
+- `bundle.json` and media assets are added manually to catalog item folders.
+- Catalog is published to a media store via `publish-catalog` npm command. Read `src/cli/publish-catalog.ts` for more details.
+- Catalog is downloaded from media store and installed into a local Mongo database via `local-deploy` npm command. Read `src/cli/local-deploy.ts` for more details.
+  - Alternatively, catalog can be installed from Everworker UI, either by selecting a local zip file, or by selecting an environment and automatically downloading the published catalog for that environment from CDN.
+
+Here's the template of a ClickUp task for a catalog item: https://app.clickup.com/t/9015421689/MW-1101.
+
+Without changing any files, give me a summary of what is in README.md that seems to be still relevant but is missing in README2.md
+
+Ok I want you to add to README2.md:
+
+- everhow CLI prerequisite
+- ew-marketplace:// explanation (but the one in README.md is outdated so read build-catalog and publish-catalog sources to provide a relevant explanation)
+- Git LFS
+- full repo directory structure
