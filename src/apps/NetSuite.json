@@ -1,6 +1,7 @@
 {
-    "appId": "NetSuite",
-    "name": "NetSuite",
-    "logoUrl": "ew-marketplace://apps/NetSuite.svg",
-    "description": "ew-marketplace://apps/NetSuite.txt"
+  "appId": "NetSuite",
+  "name": "NetSuite",
+  "logoUrl": "ew-marketplace://apps/NetSuite.svg",
+  "description": "ew-marketplace://apps/NetSuite.txt",
+  "appUrl": "https://www.netsuite.com"
 }
