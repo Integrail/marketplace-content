@@ -1,1 +1,1 @@
-this is description for Stripe
+Stripe

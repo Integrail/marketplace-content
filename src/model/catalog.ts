@@ -74,6 +74,7 @@ export type IEverMarketplaceAppId  = "GMail" | "NetSuite" | "QuickBooks";
 export interface IEverMarketplaceAppDefinition {
     readonly appId: IEverMarketplaceAppId;
     readonly name: IEverMarketplacePlainText;
+    readonly appUrl: IEverMarketplaceUrl;
     readonly logoUrl: IEverMarketplaceUrl;
     readonly description: IEverMarketplaceUrl;
 }
