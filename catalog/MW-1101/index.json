@@ -49,7 +49,7 @@
   "installEfforts": "30 mins setup time",
   "heroMedia": {
     "kind": "image",
-    "url": "ew-marketplace://MW-1101/hero-media"
+    "url": "ew-marketplace://MW-1101/hero-media.png"
   },
   "bundle": {
     "href": "ew-marketplace://MW-1101/bundle.json"

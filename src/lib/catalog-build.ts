@@ -145,7 +145,7 @@ export function buildCatalogItem(
     const heroFileRaw = ((clickup.getField(summary, "ITEM_HERO_MEDIA_FILE")?.value) as { url?: string } | undefined)?.url;
     const heroMedia: IEverMarketplaceMedia = {
         kind: "image",
-        url: ((heroUrlRaw ?? heroFileRaw) ?? `ew-marketplace://${id}/hero-media`) as IEverMarketplaceUrl,
+        url: ((heroUrlRaw ?? heroFileRaw) ?? `ew-marketplace://${id}/hero-media.png`) as IEverMarketplaceUrl,
     };
 
     // ── Bundle ref ───────────────────────────────────────────────────────────
