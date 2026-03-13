@@ -17,7 +17,7 @@ import { buildCatalogItem } from "../lib/catalog-build.js";
 import type { CatalogItemResult } from "../lib/catalog-build.js";
 import type { ClickUpTaskSummary } from "../lib/clickup-utils.js";
 import { assertCatalogItemResult, ValidationWarning } from "../lib/catalog-validate.js";
-import type { IEverMarketplaceCatalog, IEverMarketplaceCatalogItem, IEverMarketplaceVersion } from "../model/catalog.js";
+import { EVER_MARKETPLACE_CATEGORY_NAMES, type IEverMarketplaceCatalog, type IEverMarketplaceCatalogItem, type IEverMarketplaceVersion } from "../model/catalog.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
@@ -202,7 +202,11 @@ function main(): void {
     if (!dryRun) {
         const now = new Date();
         const catalogVersion = `${now.getUTCFullYear()}.${now.getUTCMonth() + 1}.${now.getUTCDate()}-${Math.floor(Date.now() / 1000)}` as IEverMarketplaceVersion;
-        const catalog: IEverMarketplaceCatalog = { catalogVersion, items: successResults.map(r => r.item) };
+        const catalog: IEverMarketplaceCatalog = {
+            catalogVersion,
+            items: successResults.map(r => r.item),
+            categories: EVER_MARKETPLACE_CATEGORY_NAMES,
+        };
         fs.writeFileSync(path.join(CATALOG_DIR, "catalog.json"), JSON.stringify(catalog, null, 2) + "\n");
         console.log(`Catalog: ${path.join(CATALOG_DIR, "catalog.json")} (${successes} items, version ${catalogVersion})`);
     }

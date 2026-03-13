@@ -28,11 +28,13 @@ export type IEverMarketplaceItemType =
     | 'Workflow'
     | 'Worker';
 
-export type IEverMarketplaceCategoryName =
-    | 'Marketing'
-    | 'Finance'
-    | 'Sales'
-    | (string & {});
+export const EVER_MARKETPLACE_CATEGORY_NAMES = [
+    'Marketing',
+    'Finance',
+    'Sales',
+] as const;
+
+export type IEverMarketplaceCategoryName = (typeof EVER_MARKETPLACE_CATEGORY_NAMES)[number] | (string & {});
 
 export type IEverMarketplaceSubCategoryName =
     | 'todo1'
@@ -206,4 +208,5 @@ export interface IEverMarketplaceCatalogItem {
 export interface IEverMarketplaceCatalog {
     readonly catalogVersion: IEverMarketplaceVersion;
     readonly items: readonly IEverMarketplaceCatalogItem[];
+    readonly categories: readonly IEverMarketplaceCategoryName[];
 }
