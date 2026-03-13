@@ -348,3 +348,6 @@ Modify `src/cli/publish-catalog.ts` so that
 Modify `src/cli/local-deploy.ts` so that it writes catalog config to a collection `marketplace_v1_config` with a single document with `_id: "config"` and following fields:
 - version
 - categories
+
+//===================================================
+To `src/cli/local-deploy.ts` add an optional parameter `--version`. If it's set, download `catalog-${version}.zip` instead of `catalog.zip`.

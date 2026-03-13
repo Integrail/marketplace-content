@@ -47,24 +47,33 @@ async function main(): Promise<void> {
             .env("MONGO_URL")
             .argParser(parseNonEmptyString),
         )
+        .addOption(
+            new Option(
+                "--version <version>",
+                "catalog version to deploy (e.g. 2026.3.13-1773393018); defaults to the latest (catalog.zip)",
+            )
+            .argParser(parseNonEmptyString),
+        )
         .parse();
 
     const opts = program.opts<{
         environment: string;
         mediaStoreUrl: string;
         mongoConnectionString: string;
+        version?: string;
     }>();
 
-    const { environment, mediaStoreUrl, mongoConnectionString } = opts;
+    const { environment, mediaStoreUrl, mongoConnectionString, version } = opts;
 
     // ── Download catalog.zip ─────────────────────────────────────────────────
 
     const base = mediaStoreUrl.replace(/\/+$/, "");
-    const zipUrl = `${base}/${environment}/catalog.zip`;
+    const zipName = version ? `catalog-${version}.zip` : "catalog.zip";
+    const zipUrl = `${base}/${environment}/${zipName}`;
     console.log(`Downloading ${zipUrl} ...`);
     const response = await fetch(zipUrl);
     if (!response.ok) {
-        console.error(`Error: Failed to download catalog.zip — HTTP ${response.status} ${response.statusText}`);
+        console.error(`Error: Failed to download ${zipName} — HTTP ${response.status} ${response.statusText}`);
         process.exit(1);
     }
     const zipBuffer = Buffer.from(await response.arrayBuffer());
