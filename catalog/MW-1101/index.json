@@ -54,9 +54,7 @@
   "bundle": {
     "href": "ew-marketplace://MW-1101/bundle.json"
   },
-  "fullDescription": {
-    "href": "ew-marketplace://MW-1101/full-description.md"
-  },
+  "fullDescription": "## **Overview**\nMatches invoices against POs, flag discrepancies, and route exceptions to be sent to your email inbox as a complex report with a good format.\n## **How it works**\n**What happens after you set up this workflow:**\n1. Monitors your AP inbox for incoming invoices\n2. Extracts key data (vendor, amount, PO number, line items)\n3. Matches each invoice against open purchase orders in your system\n4. ﻿﻿﻿For matches within your tolerance threshold, flags them as ready for approval\n5. ﻿﻿﻿For discrepancies, creates an exception report with details and route it to the right approver based on your rules\n\n**What you’ll get:**\n*   ﻿﻿Daily summary of processed invoices in Slack or email\n*   ﻿﻿Exception reports with clear explanations of discrepancies\n*   ﻿﻿Reduced backlog and faster payment cycles\n\n**What it requires from you:**\n*   ﻿﻿Daily summary of processed invoices in Slack or email\n*   ﻿﻿Exception reports with clear explanations of discrepancies\n*   ﻿﻿Reduced backlog and faster payment cycles",
   "tags": [],
   "techSpecsUrl": "ew-marketplace://MW-1101/tech-specs.pdf",
   "dependencies": [
