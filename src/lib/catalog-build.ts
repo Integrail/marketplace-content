@@ -110,11 +110,13 @@ function labelsToApps(labelNames: string[], registry: AppRegistry): IEverMarketp
 
 type BuildCatalogItemOptions = {
     appRegistry?: AppRegistry;
+    /** Local attachment files keyed by filename, loaded from the task's attachments/ directory. */
+    localAttachments?: Record<string, Buffer>;
 };
 
 export function buildCatalogItem(
     summary: ClickUpTaskSummary,
-    { appRegistry = defaultAppRegistry }: BuildCatalogItemOptions = {},
+    { appRegistry = defaultAppRegistry, localAttachments }: BuildCatalogItemOptions = {},
 ): CatalogItemResult {
     const id = summary.custom_id;
     const attachments: Record<AttachmentFilePath, AttachmentFileContent> = {};
@@ -165,10 +167,19 @@ export function buildCatalogItem(
     };
 
     // ── Bundle ref ───────────────────────────────────────────────────────────
-    const bundleFileUrl = ((clickup.getField(summary, "ITEM_BUNDLE_JSON")?.value) as { url?: string } | undefined)?.url;
-    const bundle: IEverMarketplaceRef = {
-        href: (bundleFileUrl ?? `ew-marketplace://${id}/bundle.json`) as IEverMarketplaceUrl,
-    };
+    const bundleFieldValue = clickup.getField(summary, "ITEM_BUNDLE_JSON")?.value;
+    const bundleAttachmentList = Array.isArray(bundleFieldValue)
+        ? bundleFieldValue as Array<{ title?: string; url?: string }>
+        : [];
+    const bundleAttachment = bundleAttachmentList[0];
+    const localBundleContent = bundleAttachment?.title ? localAttachments?.[bundleAttachment.title] : undefined;
+    let bundle: IEverMarketplaceRef;
+    if (localBundleContent) {
+        attachments["bundle.json"] = localBundleContent;
+        bundle = { href: `ew-marketplace://${id}/bundle.json` as IEverMarketplaceUrl };
+    } else {
+        bundle = { href: (bundleAttachment?.url ?? `ew-marketplace://${id}/bundle.json`) as IEverMarketplaceUrl };
+    }
 
     // ── Tech specs ───────────────────────────────────────────────────────────
     const techSpecsFileUrl = ((clickup.getField(summary, "ITEM_TECH_SPECS_FILE")?.value) as { url?: string } | undefined)?.url;

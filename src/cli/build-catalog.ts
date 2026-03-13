@@ -49,10 +49,18 @@ function processTask(taskId: string, dryRun: boolean): TaskResult {
         return { status: "failure", id: taskId, reason: `Failed to parse summary JSON: ${err}` };
     }
 
+    const attachmentsDir = path.join(TASKS_DIR, taskId, "attachments");
+    const localAttachments: Record<string, Buffer> = {};
+    if (fs.existsSync(attachmentsDir)) {
+        for (const filename of fs.readdirSync(attachmentsDir)) {
+            localAttachments[filename] = fs.readFileSync(path.join(attachmentsDir, filename));
+        }
+    }
+
     let result: CatalogItemResult;
     let warnings: ValidationWarning[] = [];
     try {
-        result = buildCatalogItem(summary);
+        result = buildCatalogItem(summary, { localAttachments });
         const validationResult = assertCatalogItemResult(result);
         warnings = validationResult.warnings;
     } catch (err) {

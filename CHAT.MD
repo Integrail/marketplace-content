@@ -351,3 +351,6 @@ Modify `src/cli/local-deploy.ts` so that it writes catalog config to a collectio
 
 //===================================================
 To `src/cli/local-deploy.ts` add an optional parameter `--version`. If it's set, download `catalog-${version}.zip` instead of `catalog.zip`.
+
+//===================================================
+Modify `src/lib/catalog-build.ts` so that if a ClickUp attachment is present in `ITEM_BUNDLE_JSON`, the attachment is copied to `bundle.json` file in the catalog folder. Look at `click-up/tasks/MW-1101/MW-1101-summary.json` and `click-up/tasks/MW-1101/attachments/` for an example.
