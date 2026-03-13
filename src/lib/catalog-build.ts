@@ -13,12 +13,11 @@ import {
     IEverMarketplaceVersion,
 } from "../model/catalog";
 import { AppRegistry, defaultAppRegistry } from "./app-registry";
-import { assertCatalogItemResult } from "./catalog-validate";
 import * as clickup from "./clickup-utils";
 import type { ClickUpTaskSummary } from "./clickup-utils";
 import { markdownToPdf } from "./markdown-to-pdf";
 
-export const MARKDOWN_EXTRACTION_CUTOFF = 200;
+export const MARKDOWN_EXTRACTION_CUTOFF = 5000;
 
 type AttachmentFilePath = string;
 type AttachmentFileContent = Buffer;
