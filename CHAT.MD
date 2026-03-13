@@ -343,3 +343,8 @@ Modify `src/cli/publish-catalog.ts` so that
 - Catalog version is read from catalog.json (e.g. `2026.3.12-1773323902`)
 - Along with `catalog.json` and `catalog.zip`, put `catalog-${version}.json` and `catalog-${version}.zip`.
 - Put `versions.json` which should just be a JSON array with a list of versions based on existing `catalog-${version}.zip` files.
+
+//===================================================
+Modify `src/cli/local-deploy.ts` so that it writes catalog config to a collection `marketplace_v1_config` with a single document with `_id: "config"` and following fields:
+- version
+- categories

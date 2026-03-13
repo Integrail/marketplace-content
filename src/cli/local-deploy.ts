@@ -15,6 +15,13 @@ import type { IEverMarketplaceCatalog, IEverMarketplaceCatalogItem } from "../mo
 import { parseNonEmptyString } from "../lib/cli.js";
 import { MEDIA_STORE_URL } from "../lib/media-store.js";
 
+type CatalogConfig = {
+    _id: string;
+    version: string;
+    categories: readonly string[];
+    environment: string;
+};
+
 async function main(): Promise<void> {
     program
         .requiredOption(
@@ -84,6 +91,7 @@ async function main(): Promise<void> {
         const TMP    = "marketplace_v1_tmp";
         const LIVE   = "marketplace_v1";
         const BACKUP = "marketplace_v1_backup";
+        const CONFIG = "marketplace_v1_config";
 
         const collectionNames = (await db.listCollections().toArray()).map(c => c.name);
         const exists = (name: string) => collectionNames.includes(name);
@@ -112,6 +120,18 @@ async function main(): Promise<void> {
         }
         await db.collection(TMP).rename(LIVE);
         console.log(`Renamed ${TMP} → ${LIVE}`);
+
+        // Write config document
+        await db.collection<CatalogConfig>(CONFIG).replaceOne(
+            { _id: "config" },
+            {
+                version: catalog.catalogVersion,
+                categories: catalog.categories,
+                environment,
+            },
+            { upsert: true },
+        );
+        console.log(`Updated config in ${CONFIG}`);
 
         console.log("\nDeploy complete.");
     } finally {
