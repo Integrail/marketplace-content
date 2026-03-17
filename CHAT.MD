@@ -459,5 +459,7 @@ After that:
 - Manually remove old files
 - Test it locally and in the PR preview environment
 
-
+//===================================================
+The second run of "release:fetch" is painfully slow. 
+- Store timestamps of last sync (for list, task and attachments) in the 
 
