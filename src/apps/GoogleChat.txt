@@ -1,1 +1,1 @@
-Google Chat
+Team messaging and collaboration tool integrated with Google Workspace.

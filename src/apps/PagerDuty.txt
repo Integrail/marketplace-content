@@ -1,1 +1,1 @@
-PagerDuty
+Incident management and on-call scheduling platform for operations teams.

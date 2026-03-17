@@ -1,1 +1,1 @@
-Oracle ERP
+Enterprise ERP platform for finance, HR, supply chain, and operations.

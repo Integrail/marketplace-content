@@ -1,1 +1,1 @@
-Tipalti
+Accounts payable automation and global supplier payment platform.

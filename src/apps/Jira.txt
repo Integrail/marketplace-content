@@ -1,1 +1,1 @@
-Jira
+Project and issue tracking tool for agile software development teams.

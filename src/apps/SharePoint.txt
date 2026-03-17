@@ -1,1 +1,1 @@
-Microsoft SharePoint
+Microsoft's collaboration platform for document management and team intranets.

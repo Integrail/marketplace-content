@@ -1,1 +1,1 @@
-Chorus by ZoomInfo
+Conversation intelligence platform for recording and analyzing sales calls.

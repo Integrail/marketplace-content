@@ -1,1 +1,1 @@
-Oracle Hyperion
+Enterprise performance management suite for budgeting, planning, and consolidation.

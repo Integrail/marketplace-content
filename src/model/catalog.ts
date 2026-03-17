@@ -104,7 +104,7 @@ export interface IEverMarketplaceAppDefinition {
     readonly name: IEverMarketplacePlainText;
     readonly appUrl: IEverMarketplaceUrl;
     readonly logoUrl: IEverMarketplaceUrl;
-    readonly description: IEverMarketplaceUrl;
+    readonly description: IEverMarketplacePlainText;
 }
 
 export type EverMarketplaceItemDependencyType = "connector" | "memory" | "collection" | "workflow";

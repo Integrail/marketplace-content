@@ -1,1 +1,1 @@
-Gong
+Revenue intelligence platform that analyzes customer conversations to improve sales.

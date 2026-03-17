@@ -1,1 +1,1 @@
-HubSpot CMS
+Content management system built on the HubSpot platform for marketers.

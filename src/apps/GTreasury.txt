@@ -1,1 +1,1 @@
-GTreasury
+Treasury management system for cash, risk, and liquidity management.

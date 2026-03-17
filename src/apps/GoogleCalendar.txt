@@ -1,1 +1,1 @@
-Google Calendar
+Online calendar for scheduling, event management, and team coordination.

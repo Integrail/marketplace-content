@@ -1,1 +1,1 @@
-Zoom
+Video conferencing and online meeting platform for remote teams.

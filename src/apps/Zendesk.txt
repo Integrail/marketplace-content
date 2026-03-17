@@ -1,1 +1,1 @@
-Zendesk
+Customer service and support platform with ticketing, chat, and self-service.

@@ -1,1 +1,1 @@
-Sage
+Cloud accounting and business management software for SMBs.

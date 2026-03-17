@@ -1,1 +1,1 @@
-Freshdesk
+Cloud-based customer support and helpdesk software.

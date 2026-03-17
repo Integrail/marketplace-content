@@ -1,1 +1,1 @@
-Loopio
+RFP and proposal response management platform for sales and procurement teams.

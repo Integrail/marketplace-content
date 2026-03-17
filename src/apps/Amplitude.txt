@@ -1,1 +1,1 @@
-Amplitude
+Product analytics platform for tracking user behavior and measuring growth.

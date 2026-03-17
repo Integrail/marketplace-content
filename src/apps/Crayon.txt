@@ -1,1 +1,1 @@
-Crayon
+Competitive intelligence platform for tracking market and competitor changes.

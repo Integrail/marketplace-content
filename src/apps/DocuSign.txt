@@ -1,1 +1,1 @@
-DocuSign
+Electronic signature and agreement management platform.

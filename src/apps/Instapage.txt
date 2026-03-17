@@ -1,1 +1,1 @@
-Instapage
+Landing page builder and post-click optimization platform.

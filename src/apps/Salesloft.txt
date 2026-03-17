@@ -1,1 +1,1 @@
-Salesloft
+Sales engagement platform for pipeline generation and deal execution.

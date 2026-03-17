@@ -1,1 +1,1 @@
-Google Drive
+Cloud storage and file sharing platform from Google.

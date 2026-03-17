@@ -1,1 +1,1 @@
-Responsive
+Strategic response management platform for RFPs, RFIs, and security questionnaires.

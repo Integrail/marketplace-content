@@ -1,1 +1,1 @@
-Slack
+Team messaging platform with channels, integrations, and workflow automation.

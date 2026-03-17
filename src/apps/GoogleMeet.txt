@@ -1,1 +1,1 @@
-Google Meet
+Video conferencing and online meeting tool from Google.

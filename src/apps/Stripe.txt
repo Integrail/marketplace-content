@@ -1,1 +1,1 @@
-Stripe
+Payment processing platform for online and in-person transactions.

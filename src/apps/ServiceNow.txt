@@ -1,1 +1,1 @@
-ServiceNow
+Cloud platform for IT service management, workflows, and enterprise automation.

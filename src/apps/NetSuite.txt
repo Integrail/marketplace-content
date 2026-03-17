@@ -1,1 +1,1 @@
-NetSuite
+Cloud ERP platform covering financials, CRM, inventory, and e-commerce.

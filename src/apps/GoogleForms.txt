@@ -1,1 +1,1 @@
-Google Forms
+Online form and survey builder integrated with Google Workspace.

@@ -1,1 +1,1 @@
-Dun & Bradstreet
+Business data and analytics platform for credit, risk, and sales intelligence.

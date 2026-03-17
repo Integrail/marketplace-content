@@ -1,1 +1,1 @@
-Google Docs
+Cloud-based word processing and document collaboration tool.

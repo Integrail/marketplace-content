@@ -1,1 +1,1 @@
-Coupa
+Business spend management platform covering procurement, invoicing, and expenses.

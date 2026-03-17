@@ -1,1 +1,1 @@
-WordPress
+Open-source CMS powering websites, blogs, and e-commerce stores.

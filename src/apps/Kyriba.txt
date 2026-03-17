@@ -1,1 +1,1 @@
-Kyriba
+Cloud treasury and finance management platform for liquidity and risk.

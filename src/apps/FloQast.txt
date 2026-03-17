@@ -1,1 +1,1 @@
-FloQast
+Close management software that automates and streamlines accounting workflows.

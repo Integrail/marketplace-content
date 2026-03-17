@@ -1,1 +1,1 @@
-Google Sheets
+Cloud-based spreadsheet application for data analysis and collaboration.

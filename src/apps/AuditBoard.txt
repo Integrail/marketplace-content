@@ -1,1 +1,1 @@
-AuditBoard
+Risk, audit, and compliance management platform for enterprises.

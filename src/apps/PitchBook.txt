@@ -1,1 +1,1 @@
-PitchBook
+Financial data platform for private market intelligence and deal research.

@@ -10,7 +10,14 @@ export function loadAppRegistry(dir: string): AppRegistry {
         readdirSync(dir)
             .filter(f => f.endsWith(".json"))
             .map(f => {
-                const app = JSON.parse(readFileSync(join(dir, f), "utf-8")) as IEverMarketplaceAppDefinition;
+                const raw = JSON.parse(readFileSync(join(dir, f), "utf-8")) as IEverMarketplaceAppDefinition & { description: string };
+                const descUrl = raw.description;
+                let description: string = descUrl;
+                if (descUrl.startsWith("ew-marketplace://apps/") && descUrl.endsWith(".txt")) {
+                    const txtFile = join(dir, descUrl.replace("ew-marketplace://apps/", ""));
+                    try { description = readFileSync(txtFile, "utf-8").trim(); } catch { /* keep url */ }
+                }
+                const app: IEverMarketplaceAppDefinition = { ...raw, description };
                 return [app.appId, app];
             }),
     );

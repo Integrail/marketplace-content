@@ -1,1 +1,1 @@
-Google Slides
+Cloud-based presentation tool for creating and sharing slide decks.

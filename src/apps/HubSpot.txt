@@ -1,1 +1,1 @@
-HubSpot
+CRM platform for marketing, sales, and customer service automation.
