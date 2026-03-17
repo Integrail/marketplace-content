@@ -273,6 +273,17 @@ async function main(): Promise<void> {
     }
     console.log(`Copied media for ${resolvedCatalog.items.length} items`);
 
+    // media/defaults/ — copy default assets
+    const defaultsSrcDir = path.join(ROOT, "defaults");
+    if (fs.existsSync(defaultsSrcDir)) {
+        const defaultsDestDir = path.join(mediaDir, "defaults");
+        fs.mkdirSync(defaultsDestDir, { recursive: true });
+        for (const file of fs.readdirSync(defaultsSrcDir)) {
+            fs.copyFileSync(path.join(defaultsSrcDir, file), path.join(defaultsDestDir, file));
+        }
+        console.log(`Copied defaults/ (${fs.readdirSync(defaultsDestDir).length} files)`);
+    }
+
     // media/apps/ — copy all app assets
     const appsSrcDir = path.join(ROOT, "src", "apps");
     const appsDestDir = path.join(mediaDir, "apps");
