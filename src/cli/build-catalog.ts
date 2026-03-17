@@ -15,6 +15,7 @@ import { fileURLToPath } from "node:url";
 import { program } from "commander";
 import { buildCatalogItem } from "../lib/catalog-build.js";
 import type { CatalogItemResult } from "../lib/catalog-build.js";
+import * as clickup from "../lib/clickup-utils.js";
 import type { ClickUpTaskSummary } from "../lib/clickup-utils.js";
 import { assertCatalogItemResult, ValidationWarning } from "../lib/catalog-validate.js";
 import { EVER_MARKETPLACE_CATEGORY_NAMES, type IEverMarketplaceCatalog, type IEverMarketplaceCatalogItem, type IEverMarketplaceVersion } from "../model/catalog.js";
@@ -47,6 +48,13 @@ function processTask(taskId: string, dryRun: boolean): TaskResult {
     } catch (err) {
         console.error(`  [error] Failed to parse ${summaryPath}: ${err}`);
         return { status: "failure", id: taskId, reason: `Failed to parse summary JSON: ${err}` };
+    }
+
+    const visibilityField = clickup.getField(summary, "ITEM_PUBLISHING_VISIBILITY");
+    const visibility = visibilityField ? clickup.getDropDownValue(visibilityField) : undefined;
+    if (!visibility) {
+        console.warn(`  [skip] ITEM_PUBLISHING_VISIBILITY not set for ${taskId}`);
+        return { status: "failure", id: taskId, reason: "ITEM_PUBLISHING_VISIBILITY not set" };
     }
 
     const attachmentsDir = path.join(TASKS_DIR, taskId, "attachments");

@@ -354,3 +354,11 @@ To `src/cli/local-deploy.ts` add an optional parameter `--version`. If it's set,
 
 //===================================================
 Modify `src/lib/catalog-build.ts` so that if a ClickUp attachment is present in `ITEM_BUNDLE_JSON`, the attachment is copied to `bundle.json` file in the catalog folder. Look at `click-up/tasks/MW-1101/MW-1101-summary.json` and `click-up/tasks/MW-1101/attachments/` for an example.
+
+//===================================================
+I got this error
+"[error] buildCatalogItem failed for MW-1001: AssertionError [ERR_ASSERTION]: cardDescription: inline markdown must be a non-empty string"
+
+Only ClickUp items with non empty custom field ITEM_PUBLISHING_VISIBILITY must be taken into account.
+
+
