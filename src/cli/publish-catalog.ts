@@ -26,7 +26,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
 const CATALOG_DIR = path.join(ROOT, "catalog");
 const MEDIA_STORE_DIR = path.join(ROOT, "media-store");
-const MEDIA_STORE_ORIGIN = "https://github.com/Integrail/marketplace-media-store";
+const MEDIA_STORE_ORIGIN = "git@github.com:Integrail/marketplace-media-store.git";
 
 // ── git helpers ───────────────────────────────────────────────────────────────
 
