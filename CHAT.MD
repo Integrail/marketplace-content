@@ -379,3 +379,85 @@ It is all well known applications.
 2. Resulting catalog must contains the text form app description file: (not the file url)
 
 //===================================================
+npm run publish-catalog must.
+1. Make sure that Clones/updates the [marketplace-media-store](https://github.com/Integrail/marketplace-media-store) repo into `../marketplace-media-store/` (sibling directory with marketplace-content).
+2. Accept (case insensitive) publishing scope as parameter: prod, qa, dev
+3. Ask for option using commander lib if not specified
+
+//===================================================
+//===================================================
+//===================================================
+//===================================================
+Here is major update to the everworker marketplace builder tool.
+
+You will need to update README.MD after that to fit this changes logic.
+
+The marketplace building flow:
+- Rename npm task "click-up:sync" into the "release:fetch"
+  - Fetch Click-Up tasks as now. result is the local copy of ClickUp state in the ./marketplace-build/click-up directory (git ignored)
+- Rename the npm task "build-catalog" into the "release:build"
+  - Build the catalog inside of ./marketplace-build/catalog folder inside repo (git ignored).
+  - Halt on critical errors (unknown app, empty critical custom fields). PDF instructions are non critical for now. 
+  - Clean up "./marketplace-build/catalog" before build. Every run is fresh.
+- Rename the npm task "publish-catalog" into the "release:publish".
+  - Accept the scope parameter or ask using commander (prod, qa, dev)
+  - Assign version automatically in form {YYYY-MM-DD-BUILD}. BUILD is incremental (use build.number inside of repo root file). 
+  - Automatically do the commits and push. Treat it like auto save to the CDN.
+
+Publish must take prebuild from "./marketplace-build/catalog" and do the following:
+
+- If target dir inside of `../marketplace-media-store/cdn` exists - remove it.
+
+Target directory structure:
+
+Root version folder is `marketplace-media-store/cdn/${SCOPE}/${VERSION}`
+Publishing URL is `https://marketplace-media.everworker.ai/${SCOPE}/${VERSION}`
+
+Version folder structure:
+- catalog.json - compiled marketplace catalog with all URLS absolute.
+- catalog.zip - zipped catalog.json
+- media - all media files (app icons, hero images, pdf, etc) are places here and related to this version only. 
+- Each scoped version will have own media files (to avoid conflicts). Including the app icons (they can be changes in each version). Total version isolation. catalog.json and all other files contains the only absolute URLs to CDN.
+
+Scope rules (see the ITEM_PUBLISHING_VISIBILITY in Click-Up tasks):
+- prod scope includes: prod
+- qa scope includes: prod, qa
+- dev scope includes: prod, qa, dev, templates
+
+Application by itself allows to load new marketplace in two ways (internally the same) (in both cases, marketplace catalog must be published to use CDN resources)
+
+- Upload zip file (used by on-prem customers for security reasons)
+- Specify scope (prod, qa, dev) and version to upload zip file from CND.
+
+Everworker admin panel use prebuild index.json files from prod, qa, dev folders in cdn.
+- https://marketplace-media.everworker.ai/prod/index.json'
+- https://marketplace-media.everworker.ai/qa/index.json'
+- https://marketplace-media.everworker.ai/dev/index.json'
+
+These files must be made as final stage of "release:publish" command. Always rebuild all 3.
+
+JSON structure:
+
+```JSON
+{
+  "scope": "prod",
+  "lastModified": "timestamp",
+  "versions": [
+    "latest first"
+  ]
+}
+```
+
+Plan for you:
+- update source code
+- update readme
+- test logical issues, ask questions if make sense
+- give me a final solution
+
+After that:
+- I will build new catalog structure
+- Manually remove old files
+- Test it locally and in the PR preview environment
+
+
+

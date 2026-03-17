@@ -31,7 +31,8 @@ const VERSION_RE = /^\d+\.\d+\.\d+-\d+$/;
 const URL_RE = /^(ew-marketplace|https?):\/\/[^\s/]+\/\S*/;
 const ITEM_TYPES = new Set(["Worker", "Workflow"]);
 const DEPENDENCY_TYPES = new Set(["connector", "memory", "collection", "workflow"]);
-const APP_IDS = new Set(["GMail", "NetSuite", "QuickBooks"]);
+import { defaultAppRegistry } from "./app-registry.js";
+const APP_IDS = new Set(Object.keys(defaultAppRegistry));
 
 // ── Primitive helpers ─────────────────────────────────────────────────────────
 
@@ -95,7 +96,10 @@ export function assertAppDefinition(value: IEverMarketplaceAppDefinition, field:
         `${field}.name: expected a non-empty string`,
     );
     assertUrl(value.logoUrl, `${field}.logoUrl`);
-    assertUrl(value.description, `${field}.description`);
+    assert(
+        typeof value.description === "string" && value.description.length > 0,
+        `${field}.description: expected a non-empty string`,
+    );
 }
 
 export function assertDependencyGroup(value: unknown, field: string): void {

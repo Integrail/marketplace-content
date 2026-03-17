@@ -1,15 +1,19 @@
 #!/usr/bin/env node
 /**
- * Publishes the built catalog to the marketplace-media-store repository.
+ * release:publish — Publishes the built catalog to the marketplace-media-store repository.
+ *
+ * Reads from:   marketplace-build/catalog/
+ * Publishes to: ../marketplace-media-store/cdn/{scope}/{version}/
+ * CDN base URL: https://marketplace-media.everworker.ai/{scope}/{version}
  *
  * Usage:
- *   npx tsx src/cli/publish-catalog.ts --environment qa
- *   npx tsx src/cli/publish-catalog.ts --environment prod --branch release --no-push
- *   npx tsx src/cli/publish-catalog.ts --environment dev-0 --media-store-url https://my-cdn.example.com
+ *   npx tsx src/cli/publish-catalog.ts --scope prod
+ *   npx tsx src/cli/publish-catalog.ts            # prompts for scope
  */
 
 import fs from "node:fs";
 import path from "node:path";
+import readline from "node:readline";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { program } from "commander";
@@ -20,13 +24,58 @@ import type {
     IEverMarketplaceMarkdown,
     IEverMarketplaceUrl,
 } from "../model/catalog.js";
-import { MEDIA_STORE_URL } from "../lib/media-store.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
-const CATALOG_DIR = path.join(ROOT, "catalog");
-const MEDIA_STORE_DIR = path.join(ROOT, "media-store");
+const CATALOG_DIR  = path.join(ROOT, "marketplace-build/catalog");
+const MEDIA_STORE_DIR = path.resolve(ROOT, "../marketplace-media-store");
 const MEDIA_STORE_ORIGIN = "git@github.com:Integrail/marketplace-media-store.git";
+const CDN_BASE_URL = "https://marketplace-media.everworker.ai";
+const BUILD_NUMBER_FILE = path.join(ROOT, "build.number");
+
+// ── scope ─────────────────────────────────────────────────────────────────────
+
+const VALID_SCOPES = ["prod", "qa", "dev"] as const;
+type PublishScope = typeof VALID_SCOPES[number];
+
+/** Visibility values included per scope (lower scopes are subsets of broader ones). */
+const SCOPE_VISIBILITIES: Record<PublishScope, string[]> = {
+    prod: ["prod"],
+    qa:   ["prod", "qa"],
+    dev:  ["prod", "qa", "dev", "templates"],
+};
+
+function askScope(): Promise<PublishScope> {
+    return new Promise(resolve => {
+        const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+        const ask = () => {
+            rl.question(`Publishing scope [${VALID_SCOPES.join(" / ")}]: `, answer => {
+                const normalized = answer.trim().toLowerCase() as PublishScope;
+                if ((VALID_SCOPES as readonly string[]).includes(normalized)) {
+                    rl.close();
+                    resolve(normalized);
+                } else {
+                    console.error(`  Invalid scope "${answer}". Must be one of: ${VALID_SCOPES.join(", ")}`);
+                    ask();
+                }
+            });
+        };
+        ask();
+    });
+}
+
+// ── versioning ────────────────────────────────────────────────────────────────
+
+function nextVersion(): string {
+    const n = fs.existsSync(BUILD_NUMBER_FILE)
+        ? parseInt(fs.readFileSync(BUILD_NUMBER_FILE, "utf-8").trim(), 10) || 0
+        : 0;
+    const next = n + 1;
+    fs.writeFileSync(BUILD_NUMBER_FILE, String(next), "utf-8");
+    const now = new Date();
+    const date = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, "0")}-${String(now.getUTCDate()).padStart(2, "0")}`;
+    return `${date}-${next}`;
+}
 
 // ── git helpers ───────────────────────────────────────────────────────────────
 
@@ -35,33 +84,16 @@ function git(cwd: string, ...args: string[]): string {
 }
 
 function isGitRepo(dir: string): boolean {
-    try {
-        git(dir, "rev-parse", "--is-inside-work-tree");
-        return true;
-    } catch {
-        return false;
-    }
+    try { git(dir, "rev-parse", "--is-inside-work-tree"); return true; } catch { return false; }
 }
 
-function getOrigin(dir: string): string {
-    try {
-        return git(dir, "remote", "get-url", "origin");
-    } catch {
-        return "";
-    }
-}
-
-/** Strips protocol, auth, and .git suffix so URLs can be compared repo-to-repo. */
 function normalizeGitUrl(url: string): string {
-    return url
-        .trim()
+    return url.trim()
         .replace(/\.git$/, "")
-        .replace(/^ssh:\/\/[^@]+@/, "")     // ssh://git@github.com/… → github.com/…
-        .replace(/^[^@]+@([^:]+):/, "$1/")  // git@github.com:… → github.com/…
-        .replace(/^https?:\/\//, "");       // https://github.com/… → github.com/…
+        .replace(/^ssh:\/\/[^@]+@/, "")
+        .replace(/^[^@]+@([^:]+):/, "$1/")
+        .replace(/^https?:\/\//, "");
 }
-
-// ── media-store setup ─────────────────────────────────────────────────────────
 
 function ensureMediaStore(branch: string): void {
     if (fs.existsSync(MEDIA_STORE_DIR)) {
@@ -69,17 +101,17 @@ function ensureMediaStore(branch: string): void {
             console.error(`Error: ${MEDIA_STORE_DIR} exists but is not a git repository. Remove it and retry.`);
             process.exit(1);
         }
-        const origin = normalizeGitUrl(getOrigin(MEDIA_STORE_DIR));
+        const origin = normalizeGitUrl(git(MEDIA_STORE_DIR, "remote", "get-url", "origin"));
         if (origin !== normalizeGitUrl(MEDIA_STORE_ORIGIN)) {
             console.error(`Error: ${MEDIA_STORE_DIR} points to a different origin (${origin}). Remove it and retry.`);
             process.exit(1);
         }
-        console.log(`Using existing media-store at ${MEDIA_STORE_DIR}`);
+        console.log(`Updating media-store at ${MEDIA_STORE_DIR}...`);
         git(MEDIA_STORE_DIR, "fetch", "origin");
         git(MEDIA_STORE_DIR, "checkout", branch);
         git(MEDIA_STORE_DIR, "reset", "--hard", `origin/${branch}`);
     } else {
-        console.log(`Cloning ${MEDIA_STORE_ORIGIN} into ${MEDIA_STORE_DIR}`);
+        console.log(`Cloning ${MEDIA_STORE_ORIGIN} into ${MEDIA_STORE_DIR}...`);
         execFileSync("git", ["clone", "--branch", branch, MEDIA_STORE_ORIGIN, MEDIA_STORE_DIR], {
             encoding: "utf-8",
             stdio: "inherit",
@@ -89,175 +121,190 @@ function ensureMediaStore(branch: string): void {
 
 // ── ref resolution ────────────────────────────────────────────────────────────
 
-const EW_MARKETPLACE_SCHEME = "ew-marketplace://";
+const EW_SCHEME = "ew-marketplace://";
 
-function resolveUrl(url: IEverMarketplaceUrl, mediaStoreUrl: string, environment: string): IEverMarketplaceUrl {
-    if (url.startsWith(EW_MARKETPLACE_SCHEME)) {
-        return `${mediaStoreUrl.replace(/\/+$/, "")}/${environment}/media/${url.slice(EW_MARKETPLACE_SCHEME.length)}` as IEverMarketplaceUrl;
+function resolveUrl(url: IEverMarketplaceUrl, cdnVersionUrl: string): IEverMarketplaceUrl {
+    if (url.startsWith(EW_SCHEME)) {
+        return `${cdnVersionUrl}/media/${url.slice(EW_SCHEME.length)}` as IEverMarketplaceUrl;
     }
     return url;
 }
 
-function resolveMarkdown(md: IEverMarketplaceMarkdown, mediaStoreUrl: string, environment: string): IEverMarketplaceMarkdown {
+function resolveMarkdown(md: IEverMarketplaceMarkdown, cdnVersionUrl: string): IEverMarketplaceMarkdown {
     if (typeof md === "string") return md;
-    return { href: resolveUrl(md.href, mediaStoreUrl, environment) };
+    return { href: resolveUrl(md.href, cdnVersionUrl) };
 }
 
-function resolveItem(item: IEverMarketplaceCatalogItem, mediaStoreUrl: string, environment: string): IEverMarketplaceCatalogItem {
+function resolveItem(item: IEverMarketplaceCatalogItem, cdnVersionUrl: string): IEverMarketplaceCatalogItem {
     return {
         ...item,
-        cardDescription: resolveMarkdown(item.cardDescription, mediaStoreUrl, environment),
-        fullDescription: resolveMarkdown(item.fullDescription, mediaStoreUrl, environment),
+        cardDescription: resolveMarkdown(item.cardDescription, cdnVersionUrl),
+        fullDescription:  resolveMarkdown(item.fullDescription, cdnVersionUrl),
         heroMedia: {
             ...item.heroMedia,
-            url: resolveUrl(item.heroMedia.url, mediaStoreUrl, environment),
-            ...(item.heroMedia.thumbnailUrl && { thumbnailUrl: resolveUrl(item.heroMedia.thumbnailUrl, mediaStoreUrl, environment) }),
+            url: resolveUrl(item.heroMedia.url, cdnVersionUrl),
+            ...(item.heroMedia.thumbnailUrl && { thumbnailUrl: resolveUrl(item.heroMedia.thumbnailUrl, cdnVersionUrl) }),
         },
-        bundle: { href: resolveUrl(item.bundle.href, mediaStoreUrl, environment) },
-        ...(item.techSpecsUrl && { techSpecsUrl: resolveUrl(item.techSpecsUrl, mediaStoreUrl, environment) }),
-        primaryApps: item.primaryApps.map(app => ({
-            ...app,
-            logoUrl: resolveUrl(app.logoUrl, mediaStoreUrl, environment),
-            description: resolveUrl(app.description, mediaStoreUrl, environment),
-        })),
-        apps: item.apps.map(app => ({
-            ...app,
-            logoUrl: resolveUrl(app.logoUrl, mediaStoreUrl, environment),
-            description: resolveUrl(app.description, mediaStoreUrl, environment),
-        })),
+        bundle: { href: resolveUrl(item.bundle.href, cdnVersionUrl) },
+        ...(item.techSpecsUrl && { techSpecsUrl: resolveUrl(item.techSpecsUrl, cdnVersionUrl) }),
+        primaryApps: item.primaryApps.map(app => ({ ...app, logoUrl: resolveUrl(app.logoUrl, cdnVersionUrl) })),
+        apps:        item.apps.map(app => ({ ...app, logoUrl: resolveUrl(app.logoUrl, cdnVersionUrl) })),
     };
 }
 
-// ── publish ───────────────────────────────────────────────────────────────────
+// ── scope index.json ──────────────────────────────────────────────────────────
+
+function rebuildScopeIndexes(): void {
+    const cdnDir = path.join(MEDIA_STORE_DIR, "cdn");
+    for (const scope of VALID_SCOPES) {
+        const scopeDir = path.join(cdnDir, scope);
+        fs.mkdirSync(scopeDir, { recursive: true });
+
+        // Collect all version directories (YYYY-MM-DD-N format)
+        const versions = fs.existsSync(scopeDir)
+            ? fs.readdirSync(scopeDir)
+                .filter(d => /^\d{4}-\d{2}-\d{2}-\d+$/.test(d) && fs.statSync(path.join(scopeDir, d)).isDirectory())
+                .sort()
+                .reverse()  // latest first
+            : [];
+
+        const index = {
+            scope,
+            lastModified: new Date().toISOString(),
+            versions,
+        };
+        fs.writeFileSync(path.join(scopeDir, "index.json"), JSON.stringify(index, null, 2) + "\n");
+        console.log(`  Rebuilt ${scope}/index.json (${versions.length} versions)`);
+    }
+}
+
+// ── main ──────────────────────────────────────────────────────────────────────
 
 async function main(): Promise<void> {
     program
-        .requiredOption("--environment <name>", "target environment (e.g. prod, qa, dev-{ever-number})")
-        .option("--branch <branch>", "branch to publish to", "main")
-        .option("--no-commit", "skip git commit after changes")
-        .option("--media-store-url <url>", "base URL for resolving ew-marketplace:// references", MEDIA_STORE_URL)
+        .option("--scope <scope>", `publishing scope: ${VALID_SCOPES.join(", ")} (case-insensitive)`)
+        .option("--branch <branch>", "branch in marketplace-media-store to publish to", "main")
         .parse();
 
-    const opts = program.opts<{ environment: string; branch: string; commit: boolean; mediaStoreUrl: string }>();
-    const { environment, branch, commit, mediaStoreUrl } = opts;
+    const opts = program.opts<{ scope?: string; branch: string }>();
+    const { branch } = opts;
+
+    let scope: PublishScope;
+    if (opts.scope) {
+        const normalized = opts.scope.trim().toLowerCase();
+        if (!(VALID_SCOPES as readonly string[]).includes(normalized)) {
+            console.error(`Error: invalid scope "${opts.scope}". Must be one of: ${VALID_SCOPES.join(", ")}`);
+            process.exit(1);
+        }
+        scope = normalized as PublishScope;
+    } else {
+        scope = await askScope();
+    }
 
     // Load catalog
     const catalogJsonPath = path.join(CATALOG_DIR, "catalog.json");
     if (!fs.existsSync(catalogJsonPath)) {
-        console.error(`Error: ${catalogJsonPath} not found. Run build-catalog first.`);
+        console.error(`Error: ${catalogJsonPath} not found. Run "npm run release:build" first.`);
         process.exit(1);
     }
-    const catalogJson = fs.readFileSync(catalogJsonPath, "utf-8");
-    const catalog = JSON.parse(catalogJson) as IEverMarketplaceCatalog;
+    const catalog = JSON.parse(fs.readFileSync(catalogJsonPath, "utf-8")) as IEverMarketplaceCatalog;
 
-    // Filter by visibility: include items with no visibility, or whose visibility
-    // is a case-insensitive prefix of the environment name.
-    const envLower = environment.toLowerCase();
+    // Filter items by scope visibility rules
+    const allowed = new Set(SCOPE_VISIBILITIES[scope]);
     const filteredItems = catalog.items.filter(item =>
-        item.visibility === undefined ||
-        envLower.startsWith(item.visibility.toLowerCase()),
+        item.visibility !== undefined && allowed.has(item.visibility.toLowerCase()),
     );
-    console.log(`Filtered to ${filteredItems.length} of ${catalog.items.length} items for environment "${environment}"`);
+    console.log(`Scope "${scope}": ${filteredItems.length} of ${catalog.items.length} items match (visibilities: ${[...allowed].join(", ")})`);
 
-    // Resolve ew-marketplace:// references
+    // Determine version
+    const version = nextVersion();
+    console.log(`Version: ${version}`);
+
+    // CDN URL for this version
+    const cdnVersionUrl = `${CDN_BASE_URL}/${scope}/${version}`;
+
+    // Resolve all ew-marketplace:// URLs to CDN
     const resolvedCatalog: IEverMarketplaceCatalog = {
         ...catalog,
-        items: filteredItems.map(item => resolveItem(item, mediaStoreUrl, environment)),
+        items: filteredItems.map(item => resolveItem(item, cdnVersionUrl)),
     };
     const resolvedCatalogJson = JSON.stringify(resolvedCatalog, null, 2) + "\n";
 
     // Ensure media-store is ready
     ensureMediaStore(branch);
 
-    // Target directory
-    const cdnDir = path.join(MEDIA_STORE_DIR, "cdn", environment);
-    // fs.rmSync(cdnDir, { recursive: true, force: true });
-    fs.mkdirSync(cdnDir, { recursive: true });
+    // Target: cdn/{scope}/{version}/
+    const versionDir = path.join(MEDIA_STORE_DIR, "cdn", scope, version);
 
-    // Read version from catalog
-    const version = catalog.catalogVersion;
+    // Remove existing version dir if present (fresh publish)
+    if (fs.existsSync(versionDir)) {
+        fs.rmSync(versionDir, { recursive: true, force: true });
+        console.log(`Removed existing ${versionDir}`);
+    }
+    fs.mkdirSync(versionDir, { recursive: true });
 
-    // catalog.json + catalog-{version}.json
-    fs.writeFileSync(path.join(cdnDir, "catalog.json"), resolvedCatalogJson);
-    fs.writeFileSync(path.join(cdnDir, `catalog-${version}.json`), resolvedCatalogJson);
-    console.log(`Wrote catalog.json and catalog-${version}.json (${resolvedCatalog.items.length} items)`);
+    // catalog.json
+    fs.writeFileSync(path.join(versionDir, "catalog.json"), resolvedCatalogJson);
 
-    // catalog.zip + catalog-{version}.zip
+    // catalog.zip
     const zip = new JSZip();
     zip.file("catalog.json", resolvedCatalogJson);
     const zipBuffer = await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" });
-    fs.writeFileSync(path.join(cdnDir, "catalog.zip"), zipBuffer);
-    fs.writeFileSync(path.join(cdnDir, `catalog-${version}.zip`), zipBuffer);
-    console.log(`Wrote catalog.zip and catalog-${version}.zip`);
+    fs.writeFileSync(path.join(versionDir, "catalog.zip"), zipBuffer);
 
-    // versions.json — list of versions based on existing catalog-{version}.zip files
-    const allVersions = fs.readdirSync(cdnDir)
-        .map(f => f.match(/^catalog-(.+)\.zip$/)?.[1])
-        .filter((v): v is string => v !== undefined)
-        .sort();
-    fs.writeFileSync(path.join(cdnDir, "versions.json"), JSON.stringify(allVersions, null, 2) + "\n");
-    console.log(`Wrote versions.json (${allVersions.length} versions)`);
+    console.log(`Wrote catalog.json + catalog.zip (${resolvedCatalog.items.length} items)`);
 
-    // media/{item}/
-    const mediaDir = path.join(cdnDir, "media");
+    // media/{item}/ — copy all files from marketplace-build/catalog/{id}/
+    const mediaDir = path.join(versionDir, "media");
     fs.mkdirSync(mediaDir, { recursive: true });
 
     for (const item of resolvedCatalog.items) {
-        const itemId = item.id;
-        const srcDir = path.join(CATALOG_DIR, itemId);
+        const srcDir = path.join(CATALOG_DIR, item.id);
         if (!fs.existsSync(srcDir)) {
-            console.warn(`  [warn] No catalog directory for ${itemId}, skipping media.`);
+            console.warn(`  [warn] No catalog directory for ${item.id}, skipping media.`);
             continue;
         }
-        const destDir = path.join(mediaDir, itemId);
+        const destDir = path.join(mediaDir, item.id);
         fs.mkdirSync(destDir, { recursive: true });
         for (const file of fs.readdirSync(srcDir)) {
+            if (file === "index.json") continue;  // catalog.json is the source of truth
             fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file));
         }
-        console.log(`  Copied media/${itemId}/`);
     }
+    console.log(`Copied media for ${resolvedCatalog.items.length} items`);
 
-    // apps/
-    const appsDir = path.join(cdnDir, "media", "apps");
+    // media/apps/ — copy all app assets
     const appsSrcDir = path.join(ROOT, "src", "apps");
-    if (fs.existsSync(appsSrcDir)) {
-        fs.mkdirSync(appsDir, { recursive: true });
-        for (const file of fs.readdirSync(appsSrcDir)) {
-            fs.copyFileSync(path.join(appsSrcDir, file), path.join(appsDir, file));
-        }
-        console.log(`Copied apps/ (${fs.readdirSync(appsSrcDir).length} files)`);
-    } else {
-        console.warn(`[warn] ${appsSrcDir} not found, skipping apps.`);
+    const appsDestDir = path.join(mediaDir, "apps");
+    fs.mkdirSync(appsDestDir, { recursive: true });
+    for (const file of fs.readdirSync(appsSrcDir)) {
+        fs.copyFileSync(path.join(appsSrcDir, file), path.join(appsDestDir, file));
     }
+    console.log(`Copied ${fs.readdirSync(appsDestDir).length} app assets`);
 
-    // Git commit
+    // Rebuild all scope index.json files
+    rebuildScopeIndexes();
+
+    // Commit and push
     git(MEDIA_STORE_DIR, "add", "-A");
 
     let hasChanges = true;
     try {
         git(MEDIA_STORE_DIR, "diff", "--cached", "--quiet");
         hasChanges = false;
-    } catch {
-        // non-zero exit means there are staged changes
-    }
+    } catch { /* non-zero = staged changes exist */ }
 
     if (!hasChanges) {
-        console.log("\nNothing to commit — catalog is already up to date.");
+        console.log("\nNothing to commit — already up to date.");
     } else {
-        const date = new Date().toISOString();
-        const message = `chore: publish catalog ${catalog.catalogVersion} to ${environment} (${date})`;
-        if (commit) {
-            git(MEDIA_STORE_DIR, "commit", "-m", message);
-            console.log(`\nCommitted: ${message}`);
-            git(MEDIA_STORE_DIR, "push", "origin", branch);
-            console.log(`Pushed to origin/${branch}`);
-        } else {
-            console.log(`Skipping commit and push (--no-commit).`);
-        }
+        const message = `chore: publish catalog ${version} to ${scope} (${catalog.catalogVersion})`;
+        git(MEDIA_STORE_DIR, "commit", "-m", message);
+        console.log(`\nCommitted: ${message}`);
+        git(MEDIA_STORE_DIR, "push", "origin", branch);
+        console.log(`Pushed to origin/${branch}`);
     }
+
+    console.log(`\nPublished: ${cdnVersionUrl}/catalog.json`);
 }
 
-main().catch(err => {
-    console.error(err);
-    process.exit(1);
-});
+main().catch(err => { console.error(err); process.exit(1); });

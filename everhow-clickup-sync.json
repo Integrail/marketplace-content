@@ -4,7 +4,7 @@
   "listsToSync": [
     {
       "source": "https://app.clickup.com/9015421689/v/l/6-901520155848-1",
-      "target": "click-up"
+      "target": "marketplace-build/click-up"
     }
   ]
 }

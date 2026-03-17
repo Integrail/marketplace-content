@@ -6,16 +6,17 @@
     "marketplace": "./src/cli.ts"
   },
   "scripts": {
+    "release:fetch": "everhow click-up:content-sync",
+    "release:build": "tsx src/cli/build-catalog.ts",
+    "release:publish": "tsx src/cli/publish-catalog.ts",
+
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "marketplace-preview": "vite --open",
     "marketplace-package": "tsx src/cli/package-marketplace.ts",
     "marketplace-install-locally": "tsx src/cli/install-locally.ts",
-    "build-catalog": "tsx src/cli/build-catalog.ts",
-    "publish-catalog": "tsx src/cli/publish-catalog.ts",
     "local-deploy": "tsx src/cli/local-deploy.ts",
     "sync-model": "tsx src/cli/sync-model.ts",
-    "click-up:sync": "everhow click-up:content-sync",
     "unit-tests": "mocha 'src/**/*.unit.test.ts'",
     "unit-tests:coverage": "c8 --reporter=text --reporter=lcov --reporter=html --reports-dir=.coverage --all --src=src mocha 'src/**/*.unit.test.ts'",
     "sandbox-tests": "mocha 'src/**/*.sandbox.test.ts'",

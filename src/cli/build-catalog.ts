@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 /**
- * Builds catalog/MW-XXXX/index.json (and any markdown attachments) for every
- * ClickUp task summary found under click-up/tasks/MW-XXXX/.
+ * release:build — Builds the marketplace catalog from synced ClickUp tasks.
+ *
+ * Reads from:  marketplace-build/click-up/tasks/
+ * Writes to:   marketplace-build/catalog/   (cleaned before each run)
  *
  * Usage:
  *   npx tsx src/cli/build-catalog.ts
  *   npx tsx src/cli/build-catalog.ts --dry-run
- *   npx tsx src/cli/build-catalog.ts --ids MW-1001,MW-1005
+ *   npx tsx src/cli/build-catalog.ts --ids MW-1007,MW-1101
  */
 
 import fs from "node:fs";
@@ -22,15 +24,16 @@ import { EVER_MARKETPLACE_CATEGORY_NAMES, type IEverMarketplaceCatalog, type IEv
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
-const TASKS_DIR = path.join(ROOT, "click-up/tasks");
-const CATALOG_DIR = path.join(ROOT, "catalog");
+const TASKS_DIR = path.join(ROOT, "marketplace-build/click-up/tasks");
+const CATALOG_DIR = path.join(ROOT, "marketplace-build/catalog");
 const REPORTS_DIR = path.join(ROOT, "reports");
 
 // ── types ─────────────────────────────────────────────────────────────────────
 
 type TaskSuccess = { status: "success"; id: string; name: string; warnings: ValidationWarning[]; item: IEverMarketplaceCatalogItem };
-type TaskFailure = { status: "failure"; id: string; reason: string };
-type TaskResult = TaskSuccess | TaskFailure;
+type TaskSkip    = { status: "skip";    id: string; reason: string };
+type TaskFailure = { status: "failure"; id: string; reason: string; critical: boolean };
+type TaskResult  = TaskSuccess | TaskSkip | TaskFailure;
 
 // ── task processing ───────────────────────────────────────────────────────────
 
@@ -38,23 +41,21 @@ async function processTask(taskId: string, dryRun: boolean): Promise<TaskResult>
     const summaryPath = path.join(TASKS_DIR, taskId, `${taskId}-summary.json`);
 
     if (!fs.existsSync(summaryPath)) {
-        console.warn(`  [skip] No summary JSON for ${taskId}`);
-        return { status: "failure", id: taskId, reason: "No summary JSON found" };
+        return { status: "skip", id: taskId, reason: "No summary JSON found" };
     }
 
     let summary: ClickUpTaskSummary;
     try {
         summary = JSON.parse(fs.readFileSync(summaryPath, "utf-8")) as ClickUpTaskSummary;
     } catch (err) {
-        console.error(`  [error] Failed to parse ${summaryPath}: ${err}`);
-        return { status: "failure", id: taskId, reason: `Failed to parse summary JSON: ${err}` };
+        return { status: "failure", id: taskId, reason: `Failed to parse summary JSON: ${err}`, critical: true };
     }
 
+    // Skip items with no ITEM_PUBLISHING_VISIBILITY
     const visibilityField = clickup.getField(summary, "ITEM_PUBLISHING_VISIBILITY");
     const visibility = visibilityField ? clickup.getDropDownValue(visibilityField) : undefined;
     if (!visibility) {
-        console.warn(`  [skip] ITEM_PUBLISHING_VISIBILITY not set for ${taskId}`);
-        return { status: "failure", id: taskId, reason: "ITEM_PUBLISHING_VISIBILITY not set" };
+        return { status: "skip", id: taskId, reason: "ITEM_PUBLISHING_VISIBILITY not set" };
     }
 
     const attachmentsDir = path.join(TASKS_DIR, taskId, "attachments");
@@ -73,7 +74,7 @@ async function processTask(taskId: string, dryRun: boolean): Promise<TaskResult>
         warnings = validationResult.warnings;
     } catch (err) {
         console.error(`  [error] buildCatalogItem failed for ${taskId}: ${err}`);
-        return { status: "failure", id: taskId, reason: `Build failed: ${err}` };
+        return { status: "failure", id: taskId, reason: `Build failed: ${err}`, critical: true };
     }
 
     const outDir = path.join(CATALOG_DIR, taskId);
@@ -84,7 +85,6 @@ async function processTask(taskId: string, dryRun: boolean): Promise<TaskResult>
         for (const filename of Object.keys(result.attachments)) {
             console.log(`  [dry-run] Would write: ${path.join(outDir, filename)}`);
         }
-        console.log(JSON.stringify(result.item, null, 2).slice(0, 500) + "...");
     } else {
         fs.mkdirSync(outDir, { recursive: true });
         fs.writeFileSync(indexPath, JSON.stringify(result.item, null, 2) + "\n");
@@ -108,8 +108,9 @@ function escapeHtml(s: string): string {
 }
 
 function generateHtml(results: TaskResult[], date: string, dryRun: boolean): string {
-    const successes = results.filter((r): r is TaskSuccess => r.status === "success");
-    const failures  = results.filter((r): r is TaskFailure => r.status === "failure");
+    const successes   = results.filter((r): r is TaskSuccess => r.status === "success");
+    const skips       = results.filter((r): r is TaskSkip    => r.status === "skip");
+    const failures    = results.filter((r): r is TaskFailure => r.status === "failure");
     const withWarnings = successes.filter(r => r.warnings.length > 0);
     const totalWarnings = successes.reduce((n, r) => n + r.warnings.length, 0);
 
@@ -119,6 +120,10 @@ function generateHtml(results: TaskResult[], date: string, dryRun: boolean): str
             : "";
         return `<tr><td>${escapeHtml(r.id)}</td><td>${escapeHtml(r.name)}${badge}</td></tr>`;
     }).join("\n");
+
+    const skipRows = skips.map(r =>
+        `<tr><td>${escapeHtml(r.id)}</td><td>${escapeHtml(r.reason)}</td></tr>`,
+    ).join("\n");
 
     const failureRows = failures.map(r =>
         `<tr><td>${escapeHtml(r.id)}</td><td>${escapeHtml(r.reason)}</td></tr>`,
@@ -145,6 +150,7 @@ function generateHtml(results: TaskResult[], date: string, dryRun: boolean): str
     .stat-success { background: #d4edda; color: #155724; }
     .stat-warning { background: #fff3cd; color: #856404; }
     .stat-failure { background: #f8d7da; color: #721c24; }
+    .stat-skip    { background: #e2e3e5; color: #383d41; }
     table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
     th { text-align: left; padding: 0.4rem 0.6rem; background: #f0f0f0; border-bottom: 2px solid #ccc; }
     td { padding: 0.4rem 0.6rem; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
@@ -159,7 +165,8 @@ function generateHtml(results: TaskResult[], date: string, dryRun: boolean): str
   <p>Generated: ${escapeHtml(date)}</p>
   <div class="summary">
     <span class="stat stat-total">Total: ${results.length}</span>
-    <span class="stat stat-success">Success: ${successes.length}</span>
+    <span class="stat stat-success">Built: ${successes.length}</span>
+    <span class="stat stat-skip">Skipped: ${skips.length}</span>
     <span class="stat stat-warning">Warnings: ${totalWarnings}</span>
     <span class="stat stat-failure">Failed: ${failures.length}</span>
   </div>
@@ -174,6 +181,12 @@ function generateHtml(results: TaskResult[], date: string, dryRun: boolean): str
   <table>
     <thead><tr><th>ID</th><th>Field</th><th>Message</th></tr></thead>
     <tbody>${warningRows || "<tr><td colspan=\"3\">None</td></tr>"}</tbody>
+  </table>
+
+  <h2>Skipped (${skips.length})</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Reason</th></tr></thead>
+    <tbody>${skipRows || "<tr><td colspan=\"2\">None</td></tr>"}</tbody>
   </table>
 
   <h2>Failed (${failures.length})</h2>
@@ -198,6 +211,11 @@ async function main(): Promise<void> {
     const dryRun = opts.dryRun;
     const filterIds = opts.ids ? opts.ids.split(",") : null;
 
+    if (!fs.existsSync(TASKS_DIR)) {
+        console.error(`Error: ${TASKS_DIR} not found. Run "npm run release:fetch" first.`);
+        process.exit(1);
+    }
+
     const taskDirs = fs.readdirSync(TASKS_DIR)
         .filter(d => /^MW-\d+$/.test(d))
         .sort();
@@ -206,14 +224,21 @@ async function main(): Promise<void> {
         ? taskDirs.filter(d => filterIds.includes(d))
         : taskDirs;
 
+    // Clean output directory before each full build (not when filtering by IDs)
+    if (!dryRun && !filterIds) {
+        fs.rmSync(CATALOG_DIR, { recursive: true, force: true });
+        console.log(`Cleaned ${CATALOG_DIR}`);
+    }
+
     console.log(`Processing ${targets.length} tasks${dryRun ? " (dry-run)" : ""}...\n`);
 
     const results: TaskResult[] = await Promise.all(targets.map(taskId => processTask(taskId, dryRun)));
 
     const successResults = results.filter((r): r is TaskSuccess => r.status === "success");
-    const successes = successResults.length;
-    const failures  = results.filter(r => r.status === "failure").length;
-    console.log(`\nDone: ${successes} generated, ${failures} failed.`);
+    const failures       = results.filter((r): r is TaskFailure => r.status === "failure");
+    const skips          = results.filter((r): r is TaskSkip    => r.status === "skip");
+
+    console.log(`\nDone: ${successResults.length} built, ${skips.length} skipped, ${failures.length} failed.`);
 
     if (!dryRun) {
         const now = new Date();
@@ -223,15 +248,23 @@ async function main(): Promise<void> {
             items: successResults.map(r => r.item),
             categories: EVER_MARKETPLACE_CATEGORY_NAMES,
         };
+        fs.mkdirSync(CATALOG_DIR, { recursive: true });
         fs.writeFileSync(path.join(CATALOG_DIR, "catalog.json"), JSON.stringify(catalog, null, 2) + "\n");
-        console.log(`Catalog: ${path.join(CATALOG_DIR, "catalog.json")} (${successes} items, version ${catalogVersion})`);
+        console.log(`Catalog: ${path.join(CATALOG_DIR, "catalog.json")} (${successResults.length} items, version ${catalogVersion})`);
     }
 
+    // Write HTML report
     const date = new Date().toISOString().slice(0, 10);
     const reportPath = path.join(REPORTS_DIR, `catalog-build-report-${date}.html`);
     fs.mkdirSync(REPORTS_DIR, { recursive: true });
     fs.writeFileSync(reportPath, generateHtml(results, date, dryRun), "utf-8");
     console.log(`Report: ${reportPath}`);
+
+    // Halt on critical errors
+    if (failures.length > 0) {
+        console.error(`\n[CRITICAL] ${failures.length} item(s) failed to build. Fix the errors above and re-run.`);
+        process.exit(1);
+    }
 }
 
 main().catch(err => { console.error(err); process.exit(1); });

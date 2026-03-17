@@ -1,12 +1,12 @@
 # marketplace-content
 
-This repository manages the Everworker Marketplace catalog — from ClickUp task authoring through publishing to CDN and deployment into MongoDB.
+This repository manages the Everworker Marketplace catalog — from ClickUp task authoring through publishing to CDN.
 
 ## Prerequisites
 
 - **Node.js v22+**
 - **Git LFS** — `git lfs install` (for binary assets)
-- **`everhow` CLI** — required only for `click-up:sync` (ask the team for install method)
+- **`everhow` CLI** — required only for `release:fetch` (ask the team for install method)
 
 All other dependencies (including PDF generation) are installed via:
 
@@ -19,37 +19,48 @@ npm install
 ## Overview
 
 ```
-ClickUp tasks  →  click-up/      →  catalog/       →  media-store (CDN)  →  MongoDB
-   (authored)     (synced)          (built)            (published)            (deployed)
+ClickUp tasks  →  marketplace-build/click-up/  →  marketplace-build/catalog/  →  marketplace-media-store (CDN)
+   (authored)       (release:fetch)                  (release:build)                (release:publish)
 ```
 
-## Workflow
+The `marketplace-build/` directory is git-ignored. Every run of `release:build` starts clean.
 
-### 1. Sync tasks from ClickUp
+## Release workflow
+
+### 1. Fetch tasks from ClickUp
 
 ```sh
-npm run click-up:sync
+npm run release:fetch
 ```
 
-Downloads ClickUp tasks from the MW list and writes them as JSON files into the `click-up/` directory (git-ignored). Each task produces a `MW-XXXX-summary.json` file.
+Downloads ClickUp tasks from the MW list and writes them as JSON files into `marketplace-build/click-up/` (git-ignored). Each task produces a `MW-XXXX-summary.json` file.
 
-**Prerequisite:** The `everhow` CLI must be installed (ask the team for the install method). Sync is configured by `everhow-clickup-sync.json` at the repo root, which points to the MW ClickUp list.
+**Prerequisite:** The `everhow` CLI must be installed. Sync is configured by `everhow-clickup-sync.json` at the repo root, which points to the MW ClickUp list.
 
 ClickUp task template: [MW-1101](https://app.clickup.com/t/9015421689/MW-1101)
 
-### 2. Build the marketplace catalog
+### 2. Build the catalog
 
 ```sh
-npm run build-catalog
+npm run release:build
 ```
 
-Reads every `click-up/MW-XXXX-summary.json` and converts it to a catalog item under `catalog/MW-XXXX/`. Produces:
+Cleans `marketplace-build/catalog/`, then reads every task under `marketplace-build/click-up/tasks/` and converts it to a catalog item.
 
-- `catalog/MW-XXXX/index.json` — the catalog item metadata
-- `catalog/MW-XXXX/full-description.md` — long-form description (when it exceeds 200 chars)
-- `catalog/MW-XXXX/card-description.md` — short description (when it exceeds 200 chars)
-- `catalog/MW-XXXX/tech-specs.pdf` — generated from the `# TECH-SPECS` markdown section
-- `catalog/catalog.json` — the full catalog index
+**Filtering:** Only tasks with a non-empty `ITEM_PUBLISHING_VISIBILITY` custom field are included.
+
+**Error handling:**
+- Critical errors (unknown app, empty required fields) halt the build with exit code 1.
+- Non-critical errors (PDF generation) are logged and skipped.
+
+Produces:
+
+- `marketplace-build/catalog/MW-XXXX/index.json` — catalog item metadata
+- `marketplace-build/catalog/MW-XXXX/full-description.md` — long description (when > 5000 chars)
+- `marketplace-build/catalog/MW-XXXX/card-description.md` — short description (when > 5000 chars)
+- `marketplace-build/catalog/MW-XXXX/tech-specs.pdf` — generated from `# TECH-SPECS` section
+- `marketplace-build/catalog/catalog.json` — full catalog index
+- `reports/catalog-build-report-{date}.html` — HTML build report
 
 #### ClickUp → catalog field mapping
 
@@ -74,108 +85,93 @@ Reads every `click-up/MW-XXXX-summary.json` and converts it to a catalog item un
 | `tags` | task tags |
 | `dependencies` | custom fields `ITEM_DEP_CONNECTORS`, `ITEM_DEP_MEMORIES`, `ITEM_DEP_COLLECTIONS`, `ITEM_DEP_WORKFLOWS` (one `Name - Description` entry per line) |
 
-Long markdown fields (`cardDescription`, `fullDescription`) are stored inline when ≤ 200 characters, or as separate `.md` files referenced via `ew-marketplace://` URLs otherwise.
-
-### 3. Add manual assets
-
-For each catalog item, add the following files directly into `catalog/MW-XXXX/` by hand:
-
-- `bundle.json` — the Everworker bundle definition
-- `hero-media` (image or video) — shown at the top of the item detail page
-- Any other media referenced by the item
-
-These files are committed to the repository.
-
-### 4. Publish the catalog
+### 3. Publish
 
 ```sh
-npm run publish-catalog -- --environment <env>
+npm run release:publish                   # prompts for scope
+npm run release:publish -- --scope prod   # non-interactive
 ```
 
-Options:
+Publishes the built catalog to the `marketplace-media-store` sibling repository.
 
-| Flag | Default | Description |
-|---|---|---|
-| `--environment` | *(required)* | Target environment: `prod`, `qa`, `dev-{number}` |
-| `--branch` | `main` | Branch in `marketplace-media-store` to publish to |
-| `--no-commit` | — | Write files without committing or pushing |
-| `--media-store-url` | from `MEDIA_STORE_URL` | Base CDN URL for resolving `ew-marketplace://` refs |
+**Versioning:** Each publish auto-increments `build.number` (committed to this repo) and creates a version in the format `YYYY-MM-DD-{N}`.
 
-The command:
+#### Scope rules
 
-1. Clones/updates the [marketplace-media-store](https://github.com/Integrail/marketplace-media-store) repo into `media-store/` (sibling directory).
-2. Filters catalog items by `visibility`: an item is included when its `visibility` value is a case-insensitive prefix of the environment name (e.g. `visibility: "prod"` is included in `prod` but not `qa`). Items with no visibility are always included.
-3. Resolves all `ew-marketplace://` URLs to full CDN URLs under `{mediaStoreUrl}/{environment}/media/`.
-4. Writes `cdn/{environment}/catalog.json`, `cdn/{environment}/catalog.zip`, and `cdn/{environment}/media/{id}/` for every item.
-5. Commits and pushes to `marketplace-media-store`.
+| Scope | Items included (by `visibility`) |
+|---|---|
+| `prod` | `prod` |
+| `qa` | `prod`, `qa` |
+| `dev` | `prod`, `qa`, `dev`, `templates` |
 
-### 5. Deploy locally
-
-```sh
-npm run local-deploy -- --environment <env>
-```
-
-Options:
-
-| Flag | Env var | Description |
-|---|---|---|
-| `--environment` | — | Source environment to download from CDN |
-| `--media-store-url` | `MEDIA_STORE_URL` | Base URL of the media store |
-| `--mongo-connection-string` | `MONGO_URL` | MongoDB connection string |
-
-The command downloads `catalog.zip` from the CDN, extracts `catalog.json`, and performs a zero-downtime rotation into MongoDB:
+#### Target directory structure
 
 ```
-marketplace_v1_tmp  →  marketplace_v1  (live)
-marketplace_v1      →  marketplace_v1_backup
+marketplace-media-store/
+  cdn/
+    {scope}/
+      index.json                ← scope version index (rebuilt after every publish)
+      {YYYY-MM-DD-N}/           ← version folder
+        catalog.json            ← resolved catalog (all URLs absolute)
+        catalog.zip             ← zipped catalog.json
+        media/
+          {item-id}/            ← all item media files
+          apps/                 ← app icons and assets
 ```
 
-**Alternative:** From the Everworker UI you can install a catalog by:
-- Uploading a local `catalog.zip` file directly, or
-- Selecting an environment to fetch the published catalog from CDN.
-
-## Catalog item folder structure
+#### CDN URLs
 
 ```
-catalog/
-  catalog.json              ← full catalog index (auto-generated)
-  MW-XXXX/
-    index.json              ← item metadata (auto-generated)
-    bundle.json             ← Everworker bundle (added manually)
-    hero-media              ← hero image or video (added manually)
-    full-description.md     ← long description (auto-generated when > 200 chars)
-    card-description.md     ← short description (auto-generated when > 200 chars)
-    tech-specs.pdf          ← tech specs (auto-generated from TECH-SPECS section)
+https://marketplace-media.everworker.ai/{scope}/{version}/catalog.json
+https://marketplace-media.everworker.ai/{scope}/{version}/media/{item-id}/{file}
+https://marketplace-media.everworker.ai/{scope}/index.json
 ```
+
+#### Scope index format
+
+`cdn/{scope}/index.json` is rebuilt after every publish to any scope:
+
+```json
+{
+  "scope": "prod",
+  "lastModified": "2026-03-18T12:00:00.000Z",
+  "versions": ["2026-03-18-5", "2026-03-17-4"]
+}
+```
+
+The Everworker admin panel reads these index files to list available versions:
+- `https://marketplace-media.everworker.ai/prod/index.json`
+- `https://marketplace-media.everworker.ai/qa/index.json`
+- `https://marketplace-media.everworker.ai/dev/index.json`
+
+## App registry
+
+All supported integrations are defined in `src/apps/`. Each app has:
+- `{Name}.json` — app metadata (`appId`, `name`, `logoUrl`, `description`, `appUrl`)
+- `{Name}.txt` — short description text (inlined into the catalog at build time)
+- `{Name}.png` / `{Name}.svg` — app logo
+
+The `IEverMarketplaceAppId` type in `src/model/catalog.ts` lists all registered app IDs.
 
 ## Repository structure
 
 ```
 marketplace-content/
-├── catalog/                        # Built catalog (committed)
-│   ├── catalog.json                # Full catalog index (auto-generated by build-catalog)
-│   └── MW-XXXX/                    # One folder per catalog item
-│       ├── index.json              # Item metadata (auto-generated)
-│       ├── bundle.json             # Everworker bundle (added manually)
-│       ├── hero-media              # Hero image or video (added manually)
-│       ├── full-description.md     # Long description (auto-generated when > 200 chars)
-│       ├── card-description.md     # Short description (auto-generated when > 200 chars)
-│       └── tech-specs.pdf          # Tech specs (auto-generated from TECH-SPECS section)
-├── click-up/                       # ClickUp sync output (git-ignored)
-│   └── tasks/
-│       └── MW-XXXX/
-│           ├── MW-XXXX-summary.json
-│           └── attachments/
-├── media-store/                    # Local clone of marketplace-media-store (git-ignored)
-├── reports/                        # Build reports (HTML, git-ignored)
-├── src/
-│   ├── apps/                       # App logo and description assets
-│   ├── cli/                        # CLI scripts (build-catalog, publish-catalog, etc.)
-│   ├── lib/                        # Shared library code
-│   ├── model/catalog.ts            # TypeScript interfaces for catalog items
-│   └── preview/                    # React developer preview app (npm run marketplace-preview)
+├── build.number                    # Auto-incremented build counter (committed)
+├── catalog/                        # Legacy — replaced by marketplace-build/catalog/
 ├── everhow-clickup-sync.json       # ClickUp sync configuration
-├── git-lfs.json                    # File extensions tracked by Git LFS
+├── marketplace-build/              # Git-ignored build workspace
+│   ├── click-up/tasks/MW-XXXX/     # Synced ClickUp tasks (release:fetch output)
+│   └── catalog/                    # Built catalog items (release:build output)
+├── reports/                        # HTML build reports (git-ignored)
+├── src/
+│   ├── apps/                       # App definitions and logos
+│   ├── cli/                        # CLI scripts
+│   │   ├── build-catalog.ts        # release:build
+│   │   └── publish-catalog.ts      # release:publish
+│   ├── lib/                        # Shared library code
+│   ├── model/catalog.ts            # TypeScript interfaces
+│   └── preview/                    # React developer preview app
 └── vite.config.ts                  # Vite config for the preview app
 ```
 
@@ -185,35 +181,26 @@ Files inside catalog item folders are referenced using the `ew-marketplace://` s
 
 ```
 ew-marketplace://{item-id}/{filename}
+ew-marketplace://apps/{filename}
 ```
 
-Examples:
-- `ew-marketplace://MW-1101/bundle.json` → `catalog/MW-1101/bundle.json`
-- `ew-marketplace://MW-1101/hero-media` → `catalog/MW-1101/hero-media`
-- `ew-marketplace://MW-1101/full-description.md` → `catalog/MW-1101/full-description.md`
-- `ew-marketplace://apps/GMail.png` → `src/apps/GMail.png`
-
-These URLs are used throughout `catalog/*/index.json`. They are internal references that only make sense within this repo. During `publish-catalog`, every `ew-marketplace://` URL is rewritten to a full CDN URL:
+These are internal references only. During `release:publish`, every `ew-marketplace://` URL is rewritten to a full CDN URL:
 
 ```
 ew-marketplace://{item-id}/{file}
-  →  {mediaStoreUrl}/{environment}/media/{item-id}/{file}
+  →  https://marketplace-media.everworker.ai/{scope}/{version}/media/{item-id}/{file}
 ```
-
-So consumers (the Everworker app, `local-deploy`) always see plain `https://` URLs and never the internal scheme.
 
 ## Git LFS
 
-Large binary files are stored in [Git LFS](https://git-lfs.github.com/) to keep the repository lightweight. The tracked extensions are defined in `git-lfs.json` and configured in `.gitattributes`:
+Large binary files are stored in [Git LFS](https://git-lfs.github.com/). Make sure Git LFS is installed (`git lfs install`) before cloning or adding media assets.
 
-`*.mp4`, `*.mov`, `*.avi`, `*.webm`, `*.png`, `*.jpg`, `*.jpeg`, `*.gif`, `*.pdf`, `*.zip`
-
-Make sure Git LFS is installed (`git lfs install`) before cloning or adding media assets.
+Tracked extensions: `*.mp4`, `*.mov`, `*.avi`, `*.webm`, `*.png`, `*.jpg`, `*.jpeg`, `*.gif`, `*.pdf`, `*.zip`
 
 ## Git-ignored directories
 
-| Directory | Purpose |
+| Path | Purpose |
 |---|---|
-| `click-up/` | Raw ClickUp task JSON files downloaded by `click-up:sync` |
-| `media-store/` | Local clone of `marketplace-media-store`, used during publish |
-| `reports/` | HTML build reports generated by `build-catalog` |
+| `marketplace-build/` | Build workspace (ClickUp tasks + built catalog) |
+| `reports/` | HTML build reports |
+| `marketplace-dist/` | Legacy package output |

@@ -36,7 +36,6 @@ Thumbs.db
 *.sln
 
 # Misc
-/click-up/
+/marketplace-build/
 /marketplace-dist/
-/media-store/
 /reports/
