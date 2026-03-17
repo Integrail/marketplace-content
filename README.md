@@ -23,7 +23,7 @@ Downloads ClickUp tasks from the MW list and writes them as JSON files into the 
 
 ClickUp task template: [MW-1101](https://app.clickup.com/t/9015421689/MW-1101)
 
-### 2. Build the catalog
+### 2. Build the marketplace catalog
 
 ```sh
 npm run build-catalog
