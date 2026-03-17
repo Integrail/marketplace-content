@@ -102,7 +102,7 @@ Publishes the built catalog to the `marketplace-media-store` sibling repository.
 |---|---|
 | `prod` | `prod` |
 | `qa` | `prod`, `qa` |
-| `dev` | `prod`, `qa`, `dev`, `templates` |
+| `dev` | `prod`, `qa`, `dev`, `template` |
 
 #### Target directory structure
 

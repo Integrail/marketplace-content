@@ -463,3 +463,17 @@ After that:
 The second run of "release:fetch" is painfully slow. 
 - Store timestamps of last sync (for list, task and attachments) in the 
 
+//===================================================
+This build do not have 2 catalog items discovered during build.
+/Users/ify/workspace/marketplace-media-store/cdn/dev/2026-03-17-1/catalog.json
+
+{
+"catalogVersion": "2026.3.17-1773775621",
+"items": [],
+"categories": [
+"Marketing",
+"Finance",
+"Sales"
+]
+}
+

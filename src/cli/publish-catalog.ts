@@ -42,7 +42,7 @@ type PublishScope = typeof VALID_SCOPES[number];
 const SCOPE_VISIBILITIES: Record<PublishScope, string[]> = {
     prod: ["prod"],
     qa:   ["prod", "qa"],
-    dev:  ["prod", "qa", "dev", "templates"],
+    dev:  ["prod", "qa", "dev", "template"],
 };
 
 function askScope(): Promise<PublishScope> {
