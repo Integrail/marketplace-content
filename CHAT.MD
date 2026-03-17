@@ -361,4 +361,19 @@ I got this error
 
 Only ClickUp items with non empty custom field ITEM_PUBLISHING_VISIBILITY must be taken into account.
 
+//===================================================
+Tool must handle all apps defined in this dir: src/apps
+[error] buildCatalogItem failed for MW-1007: AssertionError [ERR_ASSERTION]: apps[0].appId: expected one of GMail, NetSuite, QuickBooks, got "OneDrive"
 
+//===================================================
+It is all well known applications.
+
+1. Change all apps/{name}.txt with short app description. 
+{
+"appId": "ADP",
+"name": "ADP",
+"logoUrl": "ew-marketplace://apps/ADP.png",
+"description": "ew-marketplace://apps/ADP.txt",
+"appUrl": "https://www.adp.com"
+}
+2. Resulting catalog must contains the text form app description file: (not the file url)

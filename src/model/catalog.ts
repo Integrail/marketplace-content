@@ -67,7 +67,33 @@ export interface IEverMarketplaceSetupComponent {
     readonly description: IEverMarketplacePlainText;
 }
 
-export type IEverMarketplaceAppId  = "GMail" | "NetSuite" | "QuickBooks";
+export type IEverMarketplaceAppId =
+    | "ADP" | "Ahrefs" | "Amplitude" | "Anaplan" | "Apollo" | "AuditBoard"
+    | "BambooHR" | "BillCom" | "BlackLine" | "Bloomberg"
+    | "Canva" | "CapitalIQ" | "Chorus" | "Coupa" | "Crayon" | "Crunchbase"
+    | "DocuSign" | "DunBradstreet"
+    | "FloQast" | "Freshdesk"
+    | "GMail" | "GTreasury" | "Gong"
+    | "GoogleAnalytics" | "GoogleCalendar" | "GoogleChat" | "GoogleDocs"
+    | "GoogleDrive" | "GoogleForms" | "GoogleMeet" | "GoogleSearchConsole"
+    | "GoogleSheets" | "GoogleSlides"
+    | "HubSpot" | "HubSpotCMS"
+    | "Indeed" | "Instapage" | "Iterable"
+    | "Jira"
+    | "Klaviyo" | "Klue" | "Kyriba"
+    | "LinkedIn" | "LinkedInSalesNavigator" | "Loopio"
+    | "Mailchimp" | "Marketo" | "MicrosoftOffice" | "MicrosoftTeams" | "Mixpanel" | "Moz"
+    | "NetSuite"
+    | "OneDrive" | "OneStream" | "Oracle" | "OracleHyperion" | "Outlook" | "Outreach"
+    | "PagerDuty" | "PitchBook" | "PowerBI"
+    | "QuickBooks"
+    | "Responsive"
+    | "SAP" | "SAPAriba" | "SEMrush" | "Sage" | "Salesforce" | "SalesforceMarketingCloud"
+    | "Salesloft" | "ServiceNow" | "SharePoint" | "Slack" | "Stripe"
+    | "Tableau" | "Tipalti" | "Trintech"
+    | "Unbounce"
+    | "Webflow" | "WordPress" | "Workday" | "Workiva"
+    | "Zendesk" | "Zoom" | "ZoomInfo";
 
 
 /**
