@@ -2,6 +2,20 @@
 
 This repository manages the Everworker Marketplace catalog — from ClickUp task authoring through publishing to CDN and deployment into MongoDB.
 
+## Prerequisites
+
+- **Node.js v22+**
+- **Git LFS** — `git lfs install` (for binary assets)
+- **`everhow` CLI** — required only for `click-up:sync` (ask the team for install method)
+
+All other dependencies (including PDF generation) are installed via:
+
+```sh
+npm install
+```
+
+> PDF generation uses [`md-to-pdf`](https://www.npmjs.com/package/md-to-pdf) — no system-level tools (e.g. pandoc) required.
+
 ## Overview
 
 ```

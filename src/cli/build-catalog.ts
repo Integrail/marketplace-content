@@ -34,7 +34,7 @@ type TaskResult = TaskSuccess | TaskFailure;
 
 // ── task processing ───────────────────────────────────────────────────────────
 
-function processTask(taskId: string, dryRun: boolean): TaskResult {
+async function processTask(taskId: string, dryRun: boolean): Promise<TaskResult> {
     const summaryPath = path.join(TASKS_DIR, taskId, `${taskId}-summary.json`);
 
     if (!fs.existsSync(summaryPath)) {
@@ -68,7 +68,7 @@ function processTask(taskId: string, dryRun: boolean): TaskResult {
     let result: CatalogItemResult;
     let warnings: ValidationWarning[] = [];
     try {
-        result = buildCatalogItem(summary, { localAttachments });
+        result = await buildCatalogItem(summary, { localAttachments });
         const validationResult = assertCatalogItemResult(result);
         warnings = validationResult.warnings;
     } catch (err) {
@@ -188,7 +188,7 @@ function generateHtml(results: TaskResult[], date: string, dryRun: boolean): str
 
 // ── main ──────────────────────────────────────────────────────────────────────
 
-function main(): void {
+async function main(): Promise<void> {
     program
         .option("--dry-run", "preview changes without writing files")
         .option("--ids <ids>", "comma-separated list of task IDs to process")
@@ -208,7 +208,7 @@ function main(): void {
 
     console.log(`Processing ${targets.length} tasks${dryRun ? " (dry-run)" : ""}...\n`);
 
-    const results: TaskResult[] = targets.map(taskId => processTask(taskId, dryRun));
+    const results: TaskResult[] = await Promise.all(targets.map(taskId => processTask(taskId, dryRun)));
 
     const successResults = results.filter((r): r is TaskSuccess => r.status === "success");
     const successes = successResults.length;
@@ -234,4 +234,4 @@ function main(): void {
     console.log(`Report: ${reportPath}`);
 }
 
-main();
+main().catch(err => { console.error(err); process.exit(1); });

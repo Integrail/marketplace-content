@@ -114,10 +114,10 @@ type BuildCatalogItemOptions = {
     localAttachments?: Record<string, Buffer>;
 };
 
-export function buildCatalogItem(
+export async function buildCatalogItem(
     summary: ClickUpTaskSummary,
     { appRegistry = defaultAppRegistry, localAttachments }: BuildCatalogItemOptions = {},
-): CatalogItemResult {
+): Promise<CatalogItemResult> {
     const id = summary.custom_id;
     const attachments: Record<AttachmentFilePath, AttachmentFileContent> = {};
 
@@ -189,9 +189,13 @@ export function buildCatalogItem(
     } else {
         const techSpecsContent = extractMarkdownSection(summary.markdown_description, "TECH-SPECS");
         if (techSpecsContent) {
-            const href = `ew-marketplace://${id}/tech-specs.pdf` as IEverMarketplaceUrl;
-            attachments["tech-specs.pdf"] = markdownToPdf(techSpecsContent);
-            techSpecsUrl = href;
+            try {
+                const href = `ew-marketplace://${id}/tech-specs.pdf` as IEverMarketplaceUrl;
+                attachments["tech-specs.pdf"] = await markdownToPdf(techSpecsContent);
+                techSpecsUrl = href;
+            } catch {
+                // pandoc not available — skip tech specs PDF
+            }
         }
     }
 
