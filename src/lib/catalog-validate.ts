@@ -109,6 +109,7 @@ export function assertDependencyGroup(value: unknown, field: string): void {
         DEPENDENCY_TYPES.has(g.type as string),
         `${field}.type: expected one of ${[...DEPENDENCY_TYPES].join(", ")}, got ${JSON.stringify(g.type)}`,
     );
+    assert(typeof g.title === "string" && (g.title as string).length > 0, `${field}.title: expected a non-empty string`);
     assert(typeof g.summary === "string", `${field}.summary: expected a string`);
     assert(Array.isArray(g.items), `${field}.items: expected an array`);
     g.items.forEach((item, i) => assertDependency(item, `${field}.items[${i}]`));

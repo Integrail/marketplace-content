@@ -67,6 +67,13 @@ function resolveMarkdown(content: string, id: string, filename: string): Resolve
     return { markdown: { href }, attachments: { [`${filename}.md`]: Buffer.from(content, "utf-8") } };
 }
 
+const DEPENDENCY_TITLES: Record<EverMarketplaceItemDependencyType, string> = {
+    connector:  "Connectors",
+    memory:     "Memories",
+    collection: "Collections",
+    workflow:   "Workflows",
+};
+
 function parseDependencyGroup(
     type: EverMarketplaceItemDependencyType,
     summaryText: string | undefined,
@@ -79,6 +86,7 @@ function parseDependencyGroup(
     }
     return {
         type,
+        title: DEPENDENCY_TITLES[type],
         summary: summaryText,
         items,
     };

@@ -117,6 +117,7 @@ function ensureMediaStore(branch: string): void {
             stdio: "inherit",
         });
     }
+    execFileSync("git", ["lfs", "install"], { cwd: MEDIA_STORE_DIR, encoding: "utf-8" });
 }
 
 // ── ref resolution ────────────────────────────────────────────────────────────
@@ -311,6 +312,7 @@ async function main(): Promise<void> {
         const message = `chore: publish catalog ${version} to ${scope} (${catalog.catalogVersion})`;
         git(MEDIA_STORE_DIR, "commit", "-m", message);
         console.log(`\nCommitted: ${message}`);
+        execFileSync("git", ["lfs", "push", "--all", "origin"], { cwd: MEDIA_STORE_DIR, encoding: "utf-8", stdio: "inherit" });
         git(MEDIA_STORE_DIR, "push", "origin", branch);
         console.log(`Pushed to origin/${branch}`);
     }

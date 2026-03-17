@@ -485,3 +485,5 @@ Plan:
 - Place it in paths like this cdn/dev/2026-03-17-2/media/defaults/default-item-hero.png
 - If hero image is specified - use item specific image and corresponded URL
 
+It is not copied into
+cdn/dev/2026-03-17-2/media/defaults (dir is empty)

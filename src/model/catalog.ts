@@ -111,6 +111,7 @@ export type EverMarketplaceItemDependencyType = "connector" | "memory" | "collec
 
 export interface IEverMarketplaceItemDependencyGroup {
     readonly type: EverMarketplaceItemDependencyType;
+    readonly title: string;
     readonly items: readonly IEverMarketplaceItemDependency[];
     readonly summary?: string;
 }
