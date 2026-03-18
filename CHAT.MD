@@ -507,3 +507,5 @@ Optimize ClickUp sync.
 1. Publish defaults/default-app-icon.png
 2. Use this icon URL if app do not have icon
 
+//===================================================
+At the end of release:publish, call the git-push.sh in the ../marketplace-media-store repo to properly push LFS links.
