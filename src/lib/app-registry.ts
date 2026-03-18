@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { join } from "node:path";
 import { IEverMarketplaceAppDefinition, IEverMarketplaceAppId } from "../model/catalog";
@@ -17,7 +17,16 @@ export function loadAppRegistry(dir: string): AppRegistry {
                     const txtFile = join(dir, descUrl.replace("ew-marketplace://apps/", ""));
                     try { description = readFileSync(txtFile, "utf-8").trim(); } catch { /* keep url */ }
                 }
-                const app: IEverMarketplaceAppDefinition = { ...raw, description };
+                // Fall back to default icon if the app's PNG doesn't exist on disk
+                let logoUrl = raw.logoUrl;
+                if (logoUrl.startsWith("ew-marketplace://apps/")) {
+                    const logoFile = join(dir, logoUrl.replace("ew-marketplace://apps/", ""));
+                    if (!existsSync(logoFile)) {
+                        logoUrl = "ew-marketplace://defaults/default-app-icon.png";
+                    }
+                }
+
+                const app: IEverMarketplaceAppDefinition = { ...raw, description, logoUrl };
                 return [app.appId, app];
             }),
     );
