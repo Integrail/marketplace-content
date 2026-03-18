@@ -101,12 +101,23 @@ function parseDependencyItems(
         .map(line => line.replace(/[\u200B-\u200D\uFEFF]/g, "").trim())
         .filter(line => line.length > 0)
         .map(line => {
-            const sep = line.indexOf(" - ");
-            if (sep === -1) return { name: line, description: "" };
-            return {
-                name: line.slice(0, sep).trim(),
-                description: line.slice(sep + 3).trim(),
-            };
+            // Prefer " - " separator (e.g. "QuickBooks - Accounting access")
+            const dashSep = line.indexOf(" - ");
+            if (dashSep !== -1) {
+                return {
+                    name: line.slice(0, dashSep).trim(),
+                    description: line.slice(dashSep + 3).trim(),
+                };
+            }
+            // Fall back to ": " separator (e.g. "OneDrive: The finalized checklist...")
+            const colonSep = line.indexOf(": ");
+            if (colonSep !== -1) {
+                return {
+                    name: line.slice(0, colonSep).trim(),
+                    description: line.slice(colonSep + 2).trim(),
+                };
+            }
+            return { name: line, description: "" };
         });
 }
 

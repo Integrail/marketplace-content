@@ -520,4 +520,9 @@ Lastest
 [Versions in reverse list, newest on top]
 /Users/ify/workspace/everworker-main/imports/core/integrations/marketplace/MarketplaceSettings.tsx
 
+There are a few versions on CND for DEV. Drop down still empty.
+https://marketplace-media.everworker.ai/dev/index.json
+Code is here: /Users/ify/workspace/everworker-main/imports/core/integrations/marketplace/MarketplaceSettings.tsx
+
+This part converted into markdown incorrectly. Similar thing in MW-1101 processed properly.
 
