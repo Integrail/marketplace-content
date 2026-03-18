@@ -1,0 +1,1 @@
+Team collaboration platform with chat, video conferencing, and file sharing.

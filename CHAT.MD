@@ -487,3 +487,23 @@ Plan:
 
 It is not copied into
 cdn/dev/2026-03-17-2/media/defaults (dir is empty)
+
+//===================================================
+Add the following apps from microsoft family (Keep MicrosoftOffice)
+- MsOutlook
+- MsCalendar
+- MsWord
+- MsPowerPoint
+- MsExcel
+- MsTeams
+
+//===================================================
+Optimize ClickUp sync.
+- Store timestamps in everhow-clickup-sync.json
+- Optimize ClickUp sync logic in the /Users/ify/workspace/everhow
+
+//===================================================
+
+1. Publish defaults/default-app-icon.png
+2. Use this icon URL if app do not have icon
+

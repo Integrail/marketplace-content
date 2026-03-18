@@ -83,6 +83,7 @@ export type IEverMarketplaceAppId =
     | "Klaviyo" | "Klue" | "Kyriba"
     | "LinkedIn" | "LinkedInSalesNavigator" | "Loopio"
     | "Mailchimp" | "Marketo" | "MicrosoftOffice" | "MicrosoftTeams" | "Mixpanel" | "Moz"
+    | "MsCalendar" | "MsExcel" | "MsOutlook" | "MsPowerPoint" | "MsTeams" | "MsWord"
     | "NetSuite"
     | "OneDrive" | "OneStream" | "Oracle" | "OracleHyperion" | "Outlook" | "Outreach"
     | "PagerDuty" | "PitchBook" | "PowerBI"

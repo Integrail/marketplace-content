@@ -1,0 +1,7 @@
+{
+  "appId": "MsOutlook",
+  "name": "Microsoft Outlook",
+  "logoUrl": "ew-marketplace://apps/MsOutlook.png",
+  "description": "ew-marketplace://apps/MsOutlook.txt",
+  "appUrl": "https://outlook.microsoft.com"
+}
