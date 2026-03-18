@@ -237,4 +237,5 @@ export interface IEverMarketplaceCatalog {
     readonly catalogVersion: IEverMarketplaceVersion;
     readonly items: readonly IEverMarketplaceCatalogItem[];
     readonly categories: readonly IEverMarketplaceCategoryName[];
+    readonly apps: readonly string[];
 }
