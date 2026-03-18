@@ -69,7 +69,7 @@ async function processTask(taskId: string, dryRun: boolean): Promise<TaskResult>
     let result: CatalogItemResult;
     let warnings: ValidationWarning[] = [];
     try {
-        result = await buildCatalogItem(summary, { localAttachments });
+        result = await buildCatalogItem(summary, { localAttachments, attachmentsDir });
         const validationResult = assertCatalogItemResult(result);
         warnings = validationResult.warnings;
     } catch (err) {

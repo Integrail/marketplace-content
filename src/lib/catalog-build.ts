@@ -120,11 +120,13 @@ type BuildCatalogItemOptions = {
     appRegistry?: AppRegistry;
     /** Local attachment files keyed by filename, loaded from the task's attachments/ directory. */
     localAttachments?: Record<string, Buffer>;
+    /** Absolute path to the attachments directory (used as basedir for image resolution in PDF). */
+    attachmentsDir?: string;
 };
 
 export async function buildCatalogItem(
     summary: ClickUpTaskSummary,
-    { appRegistry = defaultAppRegistry, localAttachments }: BuildCatalogItemOptions = {},
+    { appRegistry = defaultAppRegistry, localAttachments, attachmentsDir }: BuildCatalogItemOptions = {},
 ): Promise<CatalogItemResult> {
     const id = summary.custom_id;
     const attachments: Record<AttachmentFilePath, AttachmentFileContent> = {};
@@ -199,7 +201,7 @@ export async function buildCatalogItem(
         if (techSpecsContent) {
             try {
                 const href = `ew-marketplace://${id}/tech-specs.pdf` as IEverMarketplaceUrl;
-                attachments["tech-specs.pdf"] = await markdownToPdf(techSpecsContent);
+                attachments["tech-specs.pdf"] = await markdownToPdf(techSpecsContent, attachmentsDir);
                 techSpecsUrl = href;
             } catch {
                 // pandoc not available — skip tech specs PDF

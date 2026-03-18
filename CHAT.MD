@@ -509,3 +509,15 @@ Optimize ClickUp sync.
 
 //===================================================
 At the end of release:publish, call the git-push.sh in the ../marketplace-media-store repo to properly push LFS links.
+
+Markdown to pdf (for tech details) must respect Markdown formatting.
+
+![img.png](img.png)
+
+In everworker settings the next structure of version indexes must be respected.
+UI Must propose
+Lastest
+[Versions in reverse list, newest on top]
+/Users/ify/workspace/everworker-main/imports/core/integrations/marketplace/MarketplaceSettings.tsx
+
+
