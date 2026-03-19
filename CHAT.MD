@@ -526,3 +526,9 @@ Code is here: /Users/ify/workspace/everworker-main/imports/core/integrations/mar
 
 This part converted into markdown incorrectly. Similar thing in MW-1101 processed properly.
 
+//===================================================
+Create list with unique App names and added to catalog.json in field 'apps'
+- Extracts app names from both primaryApps and apps arrays across all catalog items
+- Uses flatMap for concise array processing
+- Returns sorted array of unique app names
+- Updated IEverMarketplaceCatalog interface to include readonly apps: string[]
