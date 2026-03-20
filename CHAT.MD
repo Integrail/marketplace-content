@@ -536,3 +536,11 @@ Create list with unique App names and added to catalog.json in field 'apps'
 Add missing app logos from here
 https://www.logo.dev/search
 of using google search like "Google gemini official logo icon"
+
+//===================================================
+My CDN and Chrome act wierd
+On first load no image and this error in console
+GET https://marketplace-media.everworker.ai/dev/2026-03-20-12/media/defaults/default-item-hero.png net::ERR_HTTP_RESPONSE_CODE_FAILURE 404 (Not Found)
+After refresh, image loaded correctly.
+
+What is wrong?

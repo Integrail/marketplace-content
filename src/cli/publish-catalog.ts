@@ -314,6 +314,20 @@ async function main(): Promise<void> {
         console.log(`\nCommitted: ${message}`);
         execFileSync("bash", ["git-push.sh"], { cwd: MEDIA_STORE_DIR, encoding: "utf-8", stdio: "inherit" });
         console.log(`Pushed to origin/${branch}`);
+
+        // Wait for CDN to propagate the new files before reporting success.
+        // GitHub Pages and git-backed CDNs typically take 5–30s after a push.
+        const catalogUrl = `${cdnVersionUrl}/catalog.json`;
+        process.stdout.write(`\nWaiting for CDN to propagate ${catalogUrl} ...`);
+        for (let attempt = 0; attempt < 60; attempt++) {
+            await new Promise(r => setTimeout(r, 2000));
+            try {
+                const res = await fetch(catalogUrl, { method: "HEAD" });
+                if (res.ok) { process.stdout.write(" ready.\n"); break; }
+            } catch { /* network error, keep waiting */ }
+            process.stdout.write(".");
+            if (attempt === 59) { process.stdout.write(" timed out (CDN may still be propagating).\n"); }
+        }
     }
 
     console.log(`\nPublished: ${cdnVersionUrl}/catalog.json`);
