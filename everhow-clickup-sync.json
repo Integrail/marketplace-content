@@ -1,11 +1,11 @@
 {
   "command": "click-up-list-sync",
-  "lastSync": "2026-03-18T13:54:04.161Z",
+  "lastSync": "2026-03-20T07:27:12.507Z",
   "listsToSync": [
     {
       "source": "https://app.clickup.com/9015421689/v/l/6-901520155848-1",
       "target": "marketplace-build/click-up",
-      "lastSync": "2026-03-18T13:54:04.161Z"
+      "lastSync": "2026-03-20T07:27:12.507Z"
     }
   ]
 }
