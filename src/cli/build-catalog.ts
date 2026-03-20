@@ -238,15 +238,24 @@ async function main(): Promise<void> {
     const failures       = results.filter((r): r is TaskFailure => r.status === "failure");
     const skips          = results.filter((r): r is TaskSkip    => r.status === "skip");
 
+    // Extract unique app names from all items for an app filter
+    const appOptionsList = Array.from(new Set(
+        successResults.flatMap(r =>
+            [...r.item.primaryApps, ...r.item.apps].map(app => app.name)
+        )
+    )).sort()
+
     console.log(`\nDone: ${successResults.length} built, ${skips.length} skipped, ${failures.length} failed.`);
 
     if (!dryRun) {
         const now = new Date();
         const catalogVersion = `${now.getUTCFullYear()}.${now.getUTCMonth() + 1}.${now.getUTCDate()}-${Math.floor(Date.now() / 1000)}` as IEverMarketplaceVersion;
+    
         const catalog: IEverMarketplaceCatalog = {
             catalogVersion,
             items: successResults.map(r => r.item),
             categories: EVER_MARKETPLACE_CATEGORY_NAMES,
+            apps: appOptionsList,
         };
         fs.mkdirSync(CATALOG_DIR, { recursive: true });
         fs.writeFileSync(path.join(CATALOG_DIR, "catalog.json"), JSON.stringify(catalog, null, 2) + "\n");
