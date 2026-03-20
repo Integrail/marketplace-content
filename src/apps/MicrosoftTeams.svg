@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="16" fill="#4B53BC"/>
+  <!-- Person head -->
+  <circle cx="50" cy="32" r="14" fill="white"/>
+  <!-- T bar -->
+  <rect x="20" y="53" width="60" height="11" rx="5.5" fill="white"/>
+  <!-- T stem -->
+  <rect x="44.5" y="53" width="11" height="30" rx="5.5" fill="white"/>
+</svg>

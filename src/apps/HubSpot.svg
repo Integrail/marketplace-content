@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="16" fill="#FF7A59"/>
+  <!-- Sprocket: 4 arms + center ring -->
+  <!-- Top arm -->
+  <rect x="43" y="10" width="14" height="30" rx="7" fill="white"/>
+  <!-- Bottom arm -->
+  <rect x="43" y="60" width="14" height="30" rx="7" fill="white"/>
+  <!-- Left arm -->
+  <rect x="10" y="43" width="30" height="14" rx="7" fill="white"/>
+  <!-- Right arm -->
+  <rect x="60" y="43" width="30" height="14" rx="7" fill="white"/>
+  <!-- Outer ring -->
+  <circle cx="50" cy="50" r="22" fill="white"/>
+  <!-- Inner cutout (orange) -->
+  <circle cx="50" cy="50" r="12" fill="#FF7A59"/>
+  <!-- Person dot above top -->
+  <circle cx="50" cy="6" r="5" fill="white"/>
+</svg>

@@ -1,0 +1,1 @@
+Google's multimodal AI assistant for text, image, and code generation tasks.

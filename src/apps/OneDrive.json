@@ -1,7 +1,7 @@
 {
   "appId": "OneDrive",
   "name": "OneDrive",
-  "logoUrl": "ew-marketplace://apps/OneDrive.png",
+  "logoUrl": "ew-marketplace://apps/OneDrive.svg",
   "description": "ew-marketplace://apps/OneDrive.txt",
   "appUrl": "https://www.microsoft.com/onedrive"
 }

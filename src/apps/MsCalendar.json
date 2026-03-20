@@ -1,7 +1,7 @@
 {
   "appId": "MsCalendar",
   "name": "Microsoft Calendar",
-  "logoUrl": "ew-marketplace://apps/MsCalendar.png",
+  "logoUrl": "ew-marketplace://apps/MsCalendar.svg",
   "description": "ew-marketplace://apps/MsCalendar.txt",
   "appUrl": "https://outlook.live.com/calendar"
 }

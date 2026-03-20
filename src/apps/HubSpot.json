@@ -1,7 +1,7 @@
 {
   "appId": "HubSpot",
   "name": "HubSpot",
-  "logoUrl": "ew-marketplace://apps/HubSpot.png",
+  "logoUrl": "ew-marketplace://apps/HubSpot.svg",
   "description": "ew-marketplace://apps/HubSpot.txt",
   "appUrl": "https://www.hubspot.com"
 }

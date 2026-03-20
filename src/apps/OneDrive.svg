@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="16" fill="#0078D4"/>
+  <!-- Cloud shape using overlapping circles and rect -->
+  <circle cx="36" cy="58" r="18" fill="white"/>
+  <circle cx="55" cy="50" r="22" fill="white"/>
+  <circle cx="72" cy="58" r="16" fill="white"/>
+  <rect x="18" y="58" width="70" height="18" fill="white"/>
+</svg>

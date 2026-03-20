@@ -1,7 +1,7 @@
 {
   "appId": "MsWord",
   "name": "Microsoft Word",
-  "logoUrl": "ew-marketplace://apps/MsWord.png",
+  "logoUrl": "ew-marketplace://apps/MsWord.svg",
   "description": "ew-marketplace://apps/MsWord.txt",
   "appUrl": "https://www.microsoft.com/microsoft-365/word"
 }

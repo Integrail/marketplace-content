@@ -1,7 +1,7 @@
 {
   "appId": "MsTeams",
   "name": "Microsoft Teams",
-  "logoUrl": "ew-marketplace://apps/MsTeams.png",
+  "logoUrl": "ew-marketplace://apps/MsTeams.svg",
   "description": "ew-marketplace://apps/MsTeams.txt",
   "appUrl": "https://www.microsoft.com/microsoft-365/microsoft-teams"
 }
