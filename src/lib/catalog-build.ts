@@ -148,12 +148,16 @@ export async function buildCatalogItem(
     // ── Markdown sections ────────────────────────────────────────────────────
     const shortDescContent = extractMarkdownSection(summary.markdown_description, "SHORT-DESC");
     const fullDescContent = extractMarkdownSection(summary.markdown_description, "FULL-DESC");
+    const setupStartHow = extractMarkdownSection(summary.markdown_description, "SETUP-START-HOWITWORKS");
 
     const { markdown: cardDescription, attachments: cardDescAttachments } = resolveMarkdown(shortDescContent, id, "card-description");
     Object.assign(attachments, cardDescAttachments);
 
     const { markdown: fullDescription, attachments: fullDescAttachments } = resolveMarkdown(fullDescContent, id, "full-description");
     Object.assign(attachments, fullDescAttachments);
+
+    const { markdown: setupStartHowDescription, attachments: setupStartHowAttachments } = resolveMarkdown(setupStartHow, id, "setup-start-howitworks");
+    Object.assign(attachments, setupStartHowAttachments); // TODO is it need ?
 
     // ── Dropdown fields ──────────────────────────────────────────────────────
     const rawType = clickup.getDropDownValue(clickup.getField(summary, "ITEM_TYPE") ?? { id: "", name: "ITEM_TYPE", type: "drop_down", type_config: {}, required: null });
@@ -271,6 +275,7 @@ export async function buildCatalogItem(
         dependencies,
         visibility,
         textIndex,
+        setupStartHowDescription
     };
 
     const result: CatalogItemResult = { item, attachments };

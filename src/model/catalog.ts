@@ -203,9 +203,15 @@ export interface IEverMarketplaceCatalogItem {
 
     /**
      * Full description to show on item page.
-     * - ClickUp Path: MW-{XXXX}-summary.json/markdown_description[first H1: "ULL-DESC"]
+     * - ClickUp Path: MW-{XXXX}-summary.json/markdown_description[first H1: "FULL-DESC"]
      */
     readonly fullDescription: IEverMarketplaceMarkdown;
+
+    /**
+     * How it works section to show on setup item page.
+     * - ClickUp Path: MW-{XXXX}-summary.json/markdown_description[first H1: "SETUP-START-HOWITWORKS"]
+     */
+    readonly setupStartHowDescription: IEverMarketplaceMarkdown;
 
     /**
      * V2
