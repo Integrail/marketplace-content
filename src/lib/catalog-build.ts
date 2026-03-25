@@ -72,6 +72,8 @@ const DEPENDENCY_TITLES: Record<EverMarketplaceItemDependencyType, string> = {
     memory:     "Memories",
     collection: "Collections",
     workflow:   "Workflows",
+    mcp:   "MCP Servers",
+    code_node:   "Custom Nodes",
 };
 
 function parseDependencyGroup(
@@ -240,6 +242,8 @@ export async function buildCatalogItem(
         parseDependencyGroup("memory", dep("ITEM_DEP_MEMORIES_SUMMARY"), dep("ITEM_DEP_MEMORIES")),
         parseDependencyGroup("collection", dep("ITEM_DEP_COLLECTIONS_SUMMARY"), dep("ITEM_DEP_COLLECTIONS")),
         parseDependencyGroup("workflow", dep("ITEM_DEP_WORKFLOWS_SUMMARY"), dep("ITEM_DEP_WORKFLOWS")),
+        parseDependencyGroup("mcp", dep("ITEM_DEP_MCP_SUMMARY"), dep("ITEM_DEP_MCP")),
+        parseDependencyGroup("code_node", dep("ITEM_DEP_CUSTOMNODE_SUMMARY"), dep("ITEM_DEP_CUSTOMNODE")),
     ];
 
     // ── Text index ───────────────────────────────────────────────────────────

@@ -108,7 +108,7 @@ export interface IEverMarketplaceAppDefinition {
     readonly description: IEverMarketplacePlainText;
 }
 
-export type EverMarketplaceItemDependencyType = "connector" | "memory" | "collection" | "workflow";
+export type EverMarketplaceItemDependencyType = "connector" | "memory" | "collection" | "workflow" | "mcp" | "code_node";
 
 export interface IEverMarketplaceItemDependencyGroup {
     readonly type: EverMarketplaceItemDependencyType;
