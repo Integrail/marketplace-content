@@ -72,6 +72,8 @@ const DEPENDENCY_TITLES: Record<EverMarketplaceItemDependencyType, string> = {
     memory:     "Memories",
     collection: "Collections",
     workflow:   "Workflows",
+    mcp:   "MCP Servers",
+    code_node:   "Custom Nodes",
 };
 
 function parseDependencyGroup(
@@ -148,12 +150,16 @@ export async function buildCatalogItem(
     // ── Markdown sections ────────────────────────────────────────────────────
     const shortDescContent = extractMarkdownSection(summary.markdown_description, "SHORT-DESC");
     const fullDescContent = extractMarkdownSection(summary.markdown_description, "FULL-DESC");
+    const setupStartHow = extractMarkdownSection(summary.markdown_description, "SETUP-START-HOWITWORKS");
 
     const { markdown: cardDescription, attachments: cardDescAttachments } = resolveMarkdown(shortDescContent, id, "card-description");
     Object.assign(attachments, cardDescAttachments);
 
     const { markdown: fullDescription, attachments: fullDescAttachments } = resolveMarkdown(fullDescContent, id, "full-description");
     Object.assign(attachments, fullDescAttachments);
+
+    const { markdown: setupStartHowDescription, attachments: setupStartHowAttachments } = resolveMarkdown(setupStartHow, id, "setup-start-howitworks");
+    Object.assign(attachments, setupStartHowAttachments); // TODO is it need ?
 
     // ── Dropdown fields ──────────────────────────────────────────────────────
     const rawType = clickup.getDropDownValue(clickup.getField(summary, "ITEM_TYPE") ?? { id: "", name: "ITEM_TYPE", type: "drop_down", type_config: {}, required: null });
@@ -236,6 +242,8 @@ export async function buildCatalogItem(
         parseDependencyGroup("memory", dep("ITEM_DEP_MEMORIES_SUMMARY"), dep("ITEM_DEP_MEMORIES")),
         parseDependencyGroup("collection", dep("ITEM_DEP_COLLECTIONS_SUMMARY"), dep("ITEM_DEP_COLLECTIONS")),
         parseDependencyGroup("workflow", dep("ITEM_DEP_WORKFLOWS_SUMMARY"), dep("ITEM_DEP_WORKFLOWS")),
+        parseDependencyGroup("mcp", dep("ITEM_DEP_MCP_SUMMARY"), dep("ITEM_DEP_MCP")),
+        parseDependencyGroup("code_node", dep("ITEM_DEP_CUSTOMNODE_SUMMARY"), dep("ITEM_DEP_CUSTOMNODE")),
     ];
 
     // ── Text index ───────────────────────────────────────────────────────────
@@ -271,6 +279,7 @@ export async function buildCatalogItem(
         dependencies,
         visibility,
         textIndex,
+        setupStartHowDescription
     };
 
     const result: CatalogItemResult = { item, attachments };

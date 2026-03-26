@@ -544,3 +544,7 @@ GET https://marketplace-media.everworker.ai/dev/2026-03-20-12/media/defaults/def
 After refresh, image loaded correctly.
 
 What is wrong?
+
+//===================================================
+Add How it works description for a Start Setup Page
+Extend dependencies types with 'mcp' and 'code_node'
