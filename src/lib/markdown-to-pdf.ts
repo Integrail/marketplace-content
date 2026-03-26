@@ -1,4 +1,5 @@
-import { mdToPdf } from "md-to-pdf";
+import { marked } from "marked";
+import puppeteer from "puppeteer";
 
 const MARKDOWN_CSS = `
 body {
@@ -61,25 +62,37 @@ a { color: #0366d6; text-decoration: none; }
 `;
 
 /**
- * Converts a markdown string to a PDF buffer using md-to-pdf.
- * No external tools required — installed via npm.
+ * Converts a markdown string to a PDF buffer using puppeteer.
  *
  * @param markdown  Markdown content to convert
  * @param basedir   Directory used to resolve relative image paths (e.g. task attachments dir)
  */
 export async function markdownToPdf(markdown: string, basedir?: string): Promise<Buffer> {
-    const pdf = await mdToPdf(
-        { content: markdown },
-        {
-            basedir,
-            css: MARKDOWN_CSS,
-            pdf_options: {
-                format: "A4",
-                margin: { top: "20mm", right: "20mm", bottom: "20mm", left: "20mm" },
-                printBackground: true,
-            },
-            launch_options: { args: ["--no-sandbox"] },
-        },
-    );
-    return pdf.content;
+    marked.use({
+        breaks: true,
+    });
+    const body = await marked(markdown);
+    const html = `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+${basedir ? `<base href="file://${basedir}/">` : ""}
+<style>${MARKDOWN_CSS}</style>
+</head>
+<body>${body}</body>
+</html>`;
+
+    const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
+    try {
+        const page = await browser.newPage();
+        await page.setContent(html, { waitUntil: "networkidle0" });
+        const pdf = await page.pdf({
+            format: "A4",
+            margin: { top: "20mm", right: "20mm", bottom: "20mm", left: "20mm" },
+            printBackground: true,
+        });
+        return Buffer.from(pdf);
+    } finally {
+        await browser.close();
+    }
 }

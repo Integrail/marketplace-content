@@ -9,7 +9,6 @@
     "release:fetch": "everhow click-up:content-sync",
     "release:build": "tsx src/cli/build-catalog.ts",
     "release:publish": "tsx src/cli/publish-catalog.ts",
-
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "marketplace-preview": "vite --open",
@@ -25,6 +24,8 @@
     "integration-tests:coverage": "c8 --reporter=text --reporter=lcov --reporter=html --reports-dir=.coverage --all --src=src mocha 'src/**/*.integration.test.ts'"
   },
   "dependencies": {
+    "marked": "^17.0.5",
+    "puppeteer": "^24.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "simple-spellchecker": "^1.0.2"
