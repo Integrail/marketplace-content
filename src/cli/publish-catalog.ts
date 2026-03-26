@@ -161,11 +161,28 @@ function rebuildScopeIndexes(): void {
         const scopeDir = path.join(cdnDir, scope);
         fs.mkdirSync(scopeDir, { recursive: true });
 
+        const compareNumericStrings = (s1, s2) => {
+            const x1 = Number.parseInt(s1);
+            const x2 = Number.parseInt(s2);
+            if (x1 < x2) return -1;
+            if (x1 > x2) return 1;
+            return 0;
+        };
+        const compareVersions = (v1, v2) => {
+            const parts1 = v1.split("-");
+            const parts2 = v2.split("-");
+            for (let i = 0; i < parts1.length; i++) {
+                const result = compareNumericStrings(parts1[i], parts2[i]);
+                if (result != 0) return result;
+            }
+            return 0;
+        };
+
         // Collect all version directories (YYYY-MM-DD-N format)
         const versions = fs.existsSync(scopeDir)
             ? fs.readdirSync(scopeDir)
                 .filter(d => /^\d{4}-\d{2}-\d{2}-\d+$/.test(d) && fs.statSync(path.join(scopeDir, d)).isDirectory())
-                .sort()
+                .sort(compareVersions)
                 .reverse()  // latest first
             : [];
 
