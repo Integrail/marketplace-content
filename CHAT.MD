@@ -547,4 +547,4 @@ What is wrong?
 
 //===================================================
 Add How it works description for a Start Setup Page
-
+Extend dependencies types with 'mcp' and 'code_node'
