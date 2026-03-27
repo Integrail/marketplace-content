@@ -118,6 +118,7 @@ function ensureMediaStore(branch: string): void {
         });
     }
     execFileSync("git", ["lfs", "install"], { cwd: MEDIA_STORE_DIR, encoding: "utf-8" });
+    git(MEDIA_STORE_DIR, "lfs", "pull");
 }
 
 // ── ref resolution ────────────────────────────────────────────────────────────
