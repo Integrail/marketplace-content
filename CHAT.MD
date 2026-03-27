@@ -548,3 +548,6 @@ What is wrong?
 //===================================================
 Add How it works description for a Start Setup Page
 Extend dependencies types with 'mcp' and 'code_node'
+
+//===================================================
+Extend dependencies types with 'worker' like  'mcp' and 'code_node'

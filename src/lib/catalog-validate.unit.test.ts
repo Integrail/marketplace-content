@@ -182,7 +182,7 @@ describe("assertAppDefinition", () => {
 
 describe("assertDependency", () => {
     it("accepts all valid dependency types", () => {
-        for (const type of ["connector", "memory", "collection", "workflow"]) {
+        for (const type of ["connector", "memory", "collection", "workflow", "mcp", "code_node", "worker"]) {
             assertDependency({ type, name: "Foo", description: "Bar" }, "f");
         }
     });
