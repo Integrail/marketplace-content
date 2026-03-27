@@ -30,7 +30,7 @@ const VERSION_RE = /^\d+\.\d+\.\d+-\d+$/;
 /** Matches ew-marketplace://, http://, or https:// followed by a host and a slash. */
 const URL_RE = /^(ew-marketplace|https?):\/\/[^\s/]+\/\S*/;
 const ITEM_TYPES = new Set(["Worker", "Workflow"]);
-const DEPENDENCY_TYPES = new Set(["connector", "memory", "collection", "workflow", "mcp", "code_node"]);
+const DEPENDENCY_TYPES = new Set(["connector", "memory", "collection", "workflow", "mcp", "code_node", "worker"]);
 import { defaultAppRegistry } from "./app-registry.js";
 const APP_IDS = new Set(Object.keys(defaultAppRegistry));
 
