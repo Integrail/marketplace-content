@@ -187,11 +187,26 @@ export async function buildCatalogItem(
 
     // ── Hero media ───────────────────────────────────────────────────────────
     const heroUrlRaw = (clickup.getField(summary, "ITEM_HERO_MEDIA_URL")?.value) as string | undefined;
-    const heroFileRaw = ((clickup.getField(summary, "ITEM_HERO_MEDIA_FILE")?.value) as { url?: string } | undefined)?.url;
-    const heroMedia: IEverMarketplaceMedia = {
-        kind: "image",
-        url: ((heroUrlRaw ?? heroFileRaw) ?? "ew-marketplace://defaults/default-item-hero.png") as IEverMarketplaceUrl,
-    };
+    const heroFileFieldValue = clickup.getField(summary, "ITEM_HERO_MEDIA_FILE")?.value;
+    const heroFileAttachment = Array.isArray(heroFileFieldValue)
+        ? (heroFileFieldValue as Array<{ url?: string; title?: string; extension?: string }>)[0]
+        : undefined;
+    let heroMedia: IEverMarketplaceMedia;
+    if (heroFileAttachment) {
+        const ext = heroFileAttachment.extension ?? "png";
+        const heroFilename = `hero-media.${ext}`;
+        const localHeroContent = heroFileAttachment.title ? localAttachments?.[heroFileAttachment.title] : undefined;
+        if (localHeroContent) {
+            attachments[heroFilename] = localHeroContent;
+            heroMedia = { kind: "image", url: `ew-marketplace://${id}/${heroFilename}` as IEverMarketplaceUrl };
+        } else {
+            heroMedia = { kind: "image", url: (heroFileAttachment.url ?? "ew-marketplace://defaults/default-item-hero.png") as IEverMarketplaceUrl };
+        }
+    } else if (heroUrlRaw) {
+        heroMedia = { kind: "image", url: heroUrlRaw as IEverMarketplaceUrl };
+    } else {
+        heroMedia = { kind: "image", url: "ew-marketplace://defaults/default-item-hero.png" as IEverMarketplaceUrl };
+    }
 
     // ── Bundle ref ───────────────────────────────────────────────────────────
     const bundleFieldValue = clickup.getField(summary, "ITEM_BUNDLE_JSON")?.value;

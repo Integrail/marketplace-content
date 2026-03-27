@@ -161,14 +161,14 @@ function rebuildScopeIndexes(): void {
         const scopeDir = path.join(cdnDir, scope);
         fs.mkdirSync(scopeDir, { recursive: true });
 
-        const compareNumericStrings = (s1, s2) => {
+        const compareNumericStrings = (s1: string, s2: string) => {
             const x1 = Number.parseInt(s1);
             const x2 = Number.parseInt(s2);
             if (x1 < x2) return -1;
             if (x1 > x2) return 1;
             return 0;
         };
-        const compareVersions = (v1, v2) => {
+        const compareVersions = (v1: string, v2: string) => {
             const parts1 = v1.split("-");
             const parts2 = v2.split("-");
             for (let i = 0; i < parts1.length; i++) {
