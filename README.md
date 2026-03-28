@@ -26,7 +26,7 @@ Your ClickUp token is stored in `.click-up/settings.json` (git-ignored).
 
 ```
 ClickUp tasks  →  marketplace-build/click-up/  →  marketplace-build/catalog/  →  marketplace-media-store (CDN)
-   (authored)       (release:fetch)                  (release:build)                (release:publish)
+ (authored)           (release:fetch)                 (release:build)                 (release:publish)
 ```
 
 The `marketplace-build/` directory is git-ignored. Every run of `release:build` starts clean.

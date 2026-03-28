@@ -586,3 +586,8 @@ Update README
 - Update Prerequisites (remove everhow dependency)
 - Add Install section
   - Provide copy and paste command to install like git clone .. && cd marketplace-content && ./install.sh
+
+Correct this section in README
+
+ClickUp tasks  →  marketplace-build/click-up/  →  marketplace-build/catalog/  →  marketplace-media-store (CDN)
+(authored)       (release:fetch)                  (release:build)                (release:publish)
