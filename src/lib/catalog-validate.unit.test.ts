@@ -11,6 +11,7 @@ import {
     assertMedia,
     assertAppDefinition,
     assertDependency,
+    assertDependencyGroup,
     assertCatalogItem,
     assertCatalogItemResult,
 } from "./catalog-validate.js";
@@ -170,7 +171,7 @@ describe("assertAppDefinition", () => {
     });
 
     it("rejects an unknown appId", () => {
-        assert.throws(() => assertAppDefinition({ ...valid, appId: "Slack" as never }, "f"));
+        assert.throws(() => assertAppDefinition({ ...valid, appId: "NonExistentApp12345" as never }, "f"));
     });
 
     it("rejects an empty name", () => {
@@ -181,106 +182,149 @@ describe("assertAppDefinition", () => {
 // ── assertDependency ──────────────────────────────────────────────────────────
 
 describe("assertDependency", () => {
+    it("accepts a valid dependency item", () => {
+        assertDependency({ name: "Foo", description: "Bar" }, "f");
+    });
+
+    it("rejects a non-string name", () => {
+        assert.throws(() => assertDependency({ name: 42, description: "y" }, "f"));
+    });
+
+    it("rejects a non-string description", () => {
+        assert.throws(() => assertDependency({ name: "x", description: 99 }, "f"));
+    });
+});
+
+describe("assertDependencyGroup", () => {
     it("accepts all valid dependency types", () => {
         for (const type of ["connector", "memory", "collection", "workflow", "mcp", "code_node", "worker"]) {
-            assertDependency({ type, name: "Foo", description: "Bar" }, "f");
+            assertDependencyGroup({ type, title: "T", summary: "S", items: [] }, "f");
         }
     });
 
     it("rejects an unknown type", () => {
-        assert.throws(() => assertDependency({ type: "plugin", name: "x", description: "y" }, "f"));
-    });
-
-    it("rejects a non-string name", () => {
-        assert.throws(() => assertDependency({ type: "connector", name: 42, description: "y" }, "f"));
+        assert.throws(() => assertDependencyGroup({ type: "plugin", title: "T", summary: "S", items: [] }, "f"));
     });
 });
 
-// ── assertCatalogItem ─────────────────────────────────────────────────────────
+// ── assertCatalogItem — collects errors, does not throw ───────────────────────
 
 describe("assertCatalogItem", () => {
-    it("accepts a fully valid item", () => {
-        assertCatalogItem(makeItem());
+    it("accepts a fully valid item (no errors)", () => {
+        const { errors } = assertCatalogItem(makeItem());
+        assert.equal(errors.length, 0);
     });
 
-    it("rejects an empty id", () => {
-        assert.throws(() => assertCatalogItem(makeItem({ id: "" })));
+    it("reports an error for empty id", () => {
+        const { errors } = assertCatalogItem(makeItem({ id: "" }));
+        assert.ok(errors.some(e => e.field === "id"), `expected error for 'id', got: ${JSON.stringify(errors)}`);
     });
 
-    it("rejects an invalid itemVersion", () => {
-        assert.throws(() => assertCatalogItem(makeItem({ itemVersion: "1.0" as never })));
+    it("reports an error for invalid itemVersion", () => {
+        const { errors } = assertCatalogItem(makeItem({ itemVersion: "1.0" as never }));
+        assert.ok(errors.some(e => e.field === "itemVersion"), `expected error for 'itemVersion', got: ${JSON.stringify(errors)}`);
     });
 
-    it("rejects an unknown type", () => {
-        assert.throws(() => assertCatalogItem(makeItem({ type: "Skill" as never })));
+    it("reports an error for unknown type", () => {
+        const { errors } = assertCatalogItem(makeItem({ type: "Skill" as never }));
+        assert.ok(errors.some(e => e.field === "type"), `expected error for 'type', got: ${JSON.stringify(errors)}`);
     });
 
-    it("rejects an empty categoryName", () => {
-        assert.throws(() => assertCatalogItem(makeItem({ categoryName: "" })));
+    it("reports an error for empty categoryName", () => {
+        const { errors } = assertCatalogItem(makeItem({ categoryName: "" }));
+        assert.ok(errors.some(e => e.field === "categoryName"), `expected error for 'categoryName', got: ${JSON.stringify(errors)}`);
     });
 
-    it("validates techSpecsUrl when present", () => {
-        assertCatalogItem(makeItem({ techSpecsUrl: "ew-marketplace://id/tech.pdf" }));
-        assert.throws(() => assertCatalogItem(makeItem({ techSpecsUrl: "bad" as never })));
+    it("reports an error for empty subCategoryName", () => {
+        const { errors } = assertCatalogItem(makeItem({ subCategoryName: "" }));
+        assert.ok(errors.some(e => e.field === "subCategoryName"), `expected error for 'subCategoryName', got: ${JSON.stringify(errors)}`);
+    });
+
+    it("reports an error for empty cardDescription", () => {
+        const { errors } = assertCatalogItem(makeItem({ cardDescription: "" }));
+        assert.ok(errors.some(e => e.field === "cardDescription"), `expected error for 'cardDescription', got: ${JSON.stringify(errors)}`);
+    });
+
+    it("collects multiple errors in one pass", () => {
+        const { errors } = assertCatalogItem(makeItem({ id: "", categoryName: "", subCategoryName: "" }));
+        assert.ok(errors.length >= 3, `expected at least 3 errors, got ${errors.length}: ${JSON.stringify(errors)}`);
+    });
+
+    it("validates techSpecsUrl when present (valid)", () => {
+        const { errors } = assertCatalogItem(makeItem({ techSpecsUrl: "ew-marketplace://id/tech.pdf" }));
+        assert.equal(errors.length, 0);
+    });
+
+    it("reports an error for invalid techSpecsUrl", () => {
+        const { errors } = assertCatalogItem(makeItem({ techSpecsUrl: "bad" as never }));
+        assert.ok(errors.some(e => e.field === "techSpecsUrl"), `expected error for 'techSpecsUrl', got: ${JSON.stringify(errors)}`);
     });
 
     it("accepts a string visibility", () => {
-        assertCatalogItem(makeItem({ visibility: "TEMPLATE" }));
+        const { errors } = assertCatalogItem(makeItem({ visibility: "TEMPLATE" }));
+        assert.equal(errors.length, 0);
     });
 
     it("accepts undefined visibility", () => {
-        assertCatalogItem(makeItem({ visibility: undefined }));
+        const { errors } = assertCatalogItem(makeItem({ visibility: undefined }));
+        assert.equal(errors.length, 0);
     });
 
-    it("rejects a non-string visibility", () => {
-        assert.throws(() => assertCatalogItem(makeItem({ visibility: 42 as never })));
+    it("reports an error for non-string visibility", () => {
+        const { errors } = assertCatalogItem(makeItem({ visibility: 42 as never }));
+        assert.ok(errors.some(e => e.field === "visibility"), `expected error for 'visibility', got: ${JSON.stringify(errors)}`);
     });
 });
 
 // ── assertCatalogItemResult — cutoff checks ───────────────────────────────────
 
 describe("assertCatalogItemResult (cutoff)", () => {
-    it("accepts an inline cardDescription at exactly the cutoff", () => {
-        assertCatalogItemResult(makeResult({ item: makeItem({ cardDescription: AT_CUTOFF }) }));
+    it("accepts an inline cardDescription at exactly the cutoff (no errors)", () => {
+        const { errors } = assertCatalogItemResult(makeResult({ item: makeItem({ cardDescription: AT_CUTOFF }) }));
+        assert.equal(errors.length, 0);
     });
 
-    it("rejects an inline cardDescription that exceeds the cutoff", () => {
-        assert.throws(
-            () => assertCatalogItemResult(makeResult({ item: makeItem({ cardDescription: LONG }) })),
-            /cardDescription.*exceeds cutoff/,
+    it("reports an error for inline cardDescription exceeding the cutoff", () => {
+        const { errors } = assertCatalogItemResult(makeResult({ item: makeItem({ cardDescription: LONG }) }));
+        assert.ok(
+            errors.some(e => /cardDescription/.test(e.field) && /exceeds cutoff/.test(e.message)),
+            `expected cutoff error for cardDescription, got: ${JSON.stringify(errors)}`,
         );
     });
 
-    it("accepts a ref cardDescription whose attachment length exceeds the cutoff", () => {
-        assertCatalogItemResult({
+    it("accepts a ref cardDescription whose attachment length exceeds the cutoff (no errors)", () => {
+        const { errors } = assertCatalogItemResult({
             item: makeItem({ cardDescription: { href: HREF } }),
             attachments: { "card-description.md": Buffer.from(LONG, "utf-8") },
         });
+        assert.equal(errors.length, 0);
     });
 
-    it("rejects a ref cardDescription with no matching attachment", () => {
-        assert.throws(
-            () => assertCatalogItemResult({
-                item: makeItem({ cardDescription: { href: HREF } }),
-                attachments: {},
-            }),
-            /cardDescription.*not present in attachments/,
+    it("reports an error for a ref cardDescription with no matching attachment", () => {
+        const { errors } = assertCatalogItemResult({
+            item: makeItem({ cardDescription: { href: HREF } }),
+            attachments: {},
+        });
+        assert.ok(
+            errors.some(e => /cardDescription/.test(e.field) && /not present in attachments/.test(e.message)),
+            `expected attachment error, got: ${JSON.stringify(errors)}`,
         );
     });
 
     it("applies the same cutoff rules to fullDescription", () => {
         const fullHref = "ew-marketplace://MW-0001/full-description.md" as const;
 
-        // inline too long → reject
-        assert.throws(() => assertCatalogItemResult(makeResult({
-            item: makeItem({ fullDescription: LONG }),
-        })));
+        // inline too long → error
+        const { errors: e1 } = assertCatalogItemResult(makeResult({ item: makeItem({ fullDescription: LONG }) }));
+        assert.ok(errors => true, 'type check'); // TypeScript happy
+        assert.ok(e1.some(e => /fullDescription/.test(e.field)));
 
-        // ref with long attachment → accept
-        assertCatalogItemResult({
+        // ref with long attachment → no error
+        const { errors: e2 } = assertCatalogItemResult({
             item: makeItem({ fullDescription: { href: fullHref } }),
             attachments: { "full-description.md": Buffer.from(LONG, "utf-8") },
         });
+        assert.equal(e2.length, 0);
     });
 });
 

@@ -37,7 +37,8 @@ describe("loadAppRegistry", () => {
 
     it("loads app definitions keyed by appId", () => {
         const dir = mkdtempSync(join(tmpdir(), "app-registry-test-"));
-        const app = { appId: "GMail", name: "GMail", logoUrl: "ew-marketplace://apps/gmail/logo", description: "ew-marketplace://apps/gmail/description" };
+        // Use https:// logoUrl to avoid the ew-marketplace:// fallback logic (which requires the PNG on disk)
+        const app = { appId: "GMail", name: "GMail", logoUrl: "https://example.com/gmail-logo.png", description: "ew-marketplace://apps/gmail/description" };
         writeFileSync(join(dir, "GMail.json"), JSON.stringify(app), "utf-8");
 
         const registry = loadAppRegistry(dir);
@@ -60,8 +61,8 @@ describe("loadAppRegistry", () => {
     it("loads multiple apps, each keyed by its own appId", () => {
         const dir = mkdtempSync(join(tmpdir(), "app-registry-test-"));
         const apps = [
-            { appId: "GMail", name: "GMail", logoUrl: "ew-marketplace://apps/gmail/logo", description: "ew-marketplace://apps/gmail/description" },
-            { appId: "QuickBooks", name: "QuickBooks", logoUrl: "ew-marketplace://apps/quickbooks/logo", description: "ew-marketplace://apps/quickbooks/description" },
+            { appId: "GMail", name: "GMail", logoUrl: "https://example.com/gmail-logo.png", description: "ew-marketplace://apps/gmail/description" },
+            { appId: "QuickBooks", name: "QuickBooks", logoUrl: "https://example.com/quickbooks-logo.png", description: "ew-marketplace://apps/quickbooks/description" },
         ];
         for (const app of apps) {
             writeFileSync(join(dir, `${app.appId}.json`), JSON.stringify(app), "utf-8");

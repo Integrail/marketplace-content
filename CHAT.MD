@@ -551,3 +551,26 @@ Extend dependencies types with 'mcp' and 'code_node'
 
 //===================================================
 Extend dependencies types with 'worker' like  'mcp' and 'code_node'
+
+//===================================================
+I need a few things.
+1. Remove dependency on installed everhow.
+- Check everhow sources (../everhow)
+- Extract ClickUp list sync logic into this repo src/click-up
+- Use ClickUp access key from ./.click-up/settings.json (format similar or identical to the everhow)
+- gitignore the .click-up dir
+2. Add setup npm script
+- Ensure ./.click-up/settings.json
+- Validate existing click-up key
+- Ask for new one if absent
+3. Change validation system to report issues like this.
+```
+Issues in marketplace definition in Click-Up
+MW-1058
+- subCategoryName: expected a non-empty string
+- cardDescription: inline markdown must be a non-empty string
+...
+
+```
+
+Make changes and run the tests.

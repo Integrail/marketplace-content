@@ -39,3 +39,6 @@ Thumbs.db
 /marketplace-build/
 /marketplace-dist/
 /reports/
+
+# ClickUp local settings (contains API token)
+.click-up/

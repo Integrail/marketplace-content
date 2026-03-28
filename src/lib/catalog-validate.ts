@@ -11,8 +11,25 @@ import { CatalogItemResult, MARKDOWN_EXTRACTION_CUTOFF } from "./catalog-build";
 
 // ── Result types ──────────────────────────────────────────────────────────────
 
+export type ValidationError   = { field: string; message: string };
 export type ValidationWarning = { field: string; message: string };
-export type ValidationResult  = { warnings: ValidationWarning[] };
+export type ValidationResult  = { errors: ValidationError[]; warnings: ValidationWarning[] };
+
+// ── Internal helper: collect errors from throwing assertions ──────────────────
+
+function tryCollect(errors: ValidationError[], fn: () => void): void {
+    try {
+        fn();
+    } catch (err: unknown) {
+        const msg = (err instanceof Error ? err.message : String(err)) ?? '';
+        const idx = msg.indexOf(': ');
+        if (idx !== -1) {
+            errors.push({ field: msg.slice(0, idx), message: msg.slice(idx + 2) });
+        } else {
+            errors.push({ field: '?', message: msg });
+        }
+    }
+}
 
 // ── Spell-check ───────────────────────────────────────────────────────────────
 
@@ -34,7 +51,7 @@ const DEPENDENCY_TYPES = new Set(["connector", "memory", "collection", "workflow
 import { defaultAppRegistry } from "./app-registry.js";
 const APP_IDS = new Set(Object.keys(defaultAppRegistry));
 
-// ── Primitive helpers ─────────────────────────────────────────────────────────
+// ── Primitive helpers (still throw — used standalone in tests) ────────────────
 
 export function assertUrl(value: unknown, field: string): void {
     assert(
@@ -50,7 +67,7 @@ export function assertVersion(value: unknown, field: string): void {
     );
 }
 
-// ── Structural helpers ────────────────────────────────────────────────────────
+// ── Structural helpers (still throw) ─────────────────────────────────────────
 
 /** IEverMarketplaceMarkdown = string | { href: IEverMarketplaceUrl } */
 export function assertMarkdown(value: unknown, field: string): void {
@@ -122,82 +139,101 @@ export function assertDependency(value: unknown, field: string): void {
     assert(typeof d.description === "string", `${field}.description: expected a string`);
 }
 
-// ── Main validator ────────────────────────────────────────────────────────────
+// ── Main validator — collects all errors rather than throwing on first ─────────
 
 export function assertCatalogItem(item: IEverMarketplaceCatalogItem): ValidationResult {
-    assert(
+    const errors: ValidationError[] = [];
+
+    tryCollect(errors, () => assert(
         typeof item.id === "string" && item.id.length > 0,
         `id: expected a non-empty string`,
-    );
+    ));
 
-    assertVersion(item.itemVersion, "itemVersion");
+    tryCollect(errors, () => assertVersion(item.itemVersion, "itemVersion"));
 
-    assert(
+    tryCollect(errors, () => assert(
         typeof item.name === "string" && item.name.length > 0,
         `name: expected a non-empty string`,
-    );
+    ));
 
-    assertMarkdown(item.cardDescription, "cardDescription");
+    tryCollect(errors, () => assertMarkdown(item.cardDescription, "cardDescription"));
 
-    assert(
+    tryCollect(errors, () => assert(
         ITEM_TYPES.has(item.type),
         `type: expected one of ${[...ITEM_TYPES].join(", ")}, got ${JSON.stringify(item.type)}`,
-    );
+    ));
 
-    assert(
+    tryCollect(errors, () => assert(
         typeof item.categoryName === "string" && item.categoryName.length > 0,
         `categoryName: expected a non-empty string`,
-    );
+    ));
 
-    assert(
+    tryCollect(errors, () => assert(
         typeof item.subCategoryName === "string" && item.subCategoryName.length > 0,
         `subCategoryName: expected a non-empty string`,
-    );
+    ));
 
-    assert(typeof item.benefits === "string", `benefits: expected a string`);
+    tryCollect(errors, () => assert(typeof item.benefits === "string", `benefits: expected a string`));
 
-    assert(Array.isArray(item.primaryApps), `primaryApps: expected an array`);
-    item.primaryApps.forEach((app, i) => assertAppDefinition(app, `primaryApps[${i}]`));
-
-    assert(Array.isArray(item.apps), `apps: expected an array`);
-    item.apps.forEach((app, i) => assertAppDefinition(app, `apps[${i}]`));
-
-    assert(typeof item.installEfforts === "string", `installEfforts: expected a string`);
-
-    assertMedia(item.heroMedia, "heroMedia");
-
-    assertRef(item.bundle, "bundle");
-
-    assertMarkdown(item.fullDescription, "fullDescription");
-
-    assert(Array.isArray(item.tags), `tags: expected an array`);
-    item.tags.forEach((tag, i) => {
-        assert(typeof tag === "string", `tags[${i}]: expected a string`);
-    });
-
-    if (item.techSpecsUrl !== undefined) {
-        assertUrl(item.techSpecsUrl, "techSpecsUrl");
+    if (Array.isArray(item.primaryApps)) {
+        item.primaryApps.forEach((app, i) =>
+            tryCollect(errors, () => assertAppDefinition(app, `primaryApps[${i}]`)));
+    } else {
+        errors.push({ field: 'primaryApps', message: 'expected an array' });
     }
 
-    assert(Array.isArray(item.dependencies), `dependencies: expected an array`);
-    item.dependencies.forEach((dep, i) => assertDependencyGroup(dep, `dependencies[${i}]`));
+    if (Array.isArray(item.apps)) {
+        item.apps.forEach((app, i) =>
+            tryCollect(errors, () => assertAppDefinition(app, `apps[${i}]`)));
+    } else {
+        errors.push({ field: 'apps', message: 'expected an array' });
+    }
 
-    assert(typeof item.textIndex === "string", `textIndex: expected a string`);
+    tryCollect(errors, () => assert(typeof item.installEfforts === "string", `installEfforts: expected a string`));
 
-    assert(
+    tryCollect(errors, () => assertMedia(item.heroMedia, "heroMedia"));
+
+    tryCollect(errors, () => assertRef(item.bundle, "bundle"));
+
+    tryCollect(errors, () => assertMarkdown(item.fullDescription, "fullDescription"));
+
+    if (Array.isArray(item.tags)) {
+        item.tags.forEach((tag, i) =>
+            tryCollect(errors, () => assert(typeof tag === "string", `tags[${i}]: expected a string`)));
+    } else {
+        errors.push({ field: 'tags', message: 'expected an array' });
+    }
+
+    if (item.techSpecsUrl !== undefined) {
+        tryCollect(errors, () => assertUrl(item.techSpecsUrl, "techSpecsUrl"));
+    }
+
+    if (Array.isArray(item.dependencies)) {
+        item.dependencies.forEach((dep, i) =>
+            tryCollect(errors, () => assertDependencyGroup(dep, `dependencies[${i}]`)));
+    } else {
+        errors.push({ field: 'dependencies', message: 'expected an array' });
+    }
+
+    tryCollect(errors, () => assert(typeof item.textIndex === "string", `textIndex: expected a string`));
+
+    tryCollect(errors, () => assert(
         item.visibility === undefined || typeof item.visibility === "string",
         `visibility: expected a string or undefined, got ${JSON.stringify(item.visibility)}`,
-    );
+    ));
 
     const warnings: ValidationWarning[] = [
         ...spellCheckText(item.name, "name"),
         ...(typeof item.cardDescription === "string" ? spellCheckText(item.cardDescription, "cardDescription") : []),
         ...(typeof item.fullDescription === "string" ? spellCheckText(item.fullDescription, "fullDescription") : []),
-        ...spellCheckText(item.benefits, "benefits"),
-        ...spellCheckText(item.installEfforts, "installEfforts"),
+        ...(typeof item.benefits === "string" ? spellCheckText(item.benefits, "benefits") : []),
+        ...(typeof item.installEfforts === "string" ? spellCheckText(item.installEfforts, "installEfforts") : []),
     ];
-    return { warnings };
+
+    return { errors, warnings };
 }
+
+// ── Attachment href validator ─────────────────────────────────────────────────
 
 function assertMarkdownHref(
     value: IEverMarketplaceMarkdown,
@@ -219,8 +255,11 @@ function assertMarkdownHref(
 }
 
 export function assertCatalogItemResult(result: Omit<CatalogItemResult, "warnings">): ValidationResult {
-    const { warnings } = assertCatalogItem(result.item);
-    assertMarkdownHref(result.item.cardDescription, "cardDescription", result.attachments);
-    assertMarkdownHref(result.item.fullDescription, "fullDescription", result.attachments);
-    return { warnings };
+    const { errors: itemErrors, warnings } = assertCatalogItem(result.item);
+    const hrefErrors: ValidationError[] = [];
+
+    tryCollect(hrefErrors, () => assertMarkdownHref(result.item.cardDescription, "cardDescription", result.attachments));
+    tryCollect(hrefErrors, () => assertMarkdownHref(result.item.fullDescription, "fullDescription", result.attachments));
+
+    return { errors: [...itemErrors, ...hrefErrors], warnings };
 }

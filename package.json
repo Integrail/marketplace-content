@@ -6,7 +6,8 @@
     "marketplace": "./src/cli.ts"
   },
   "scripts": {
-    "release:fetch": "everhow click-up:content-sync",
+    "setup": "tsx src/click-up/setup.ts",
+    "release:fetch": "tsx src/click-up/content-sync.ts",
     "release:build": "tsx src/cli/build-catalog.ts",
     "release:publish": "tsx src/cli/publish-catalog.ts",
     "build": "tsc",

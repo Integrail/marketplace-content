@@ -19,7 +19,7 @@ import { buildCatalogItem } from "../lib/catalog-build.js";
 import type { CatalogItemResult } from "../lib/catalog-build.js";
 import * as clickup from "../lib/clickup-utils.js";
 import type { ClickUpTaskSummary } from "../lib/clickup-utils.js";
-import { assertCatalogItemResult, ValidationWarning } from "../lib/catalog-validate.js";
+import { assertCatalogItemResult, ValidationError, ValidationWarning } from "../lib/catalog-validate.js";
 import { EVER_MARKETPLACE_CATEGORY_NAMES, type IEverMarketplaceCatalog, type IEverMarketplaceCatalogItem, type IEverMarketplaceVersion } from "../model/catalog.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -32,7 +32,7 @@ const REPORTS_DIR = path.join(ROOT, "reports");
 
 type TaskSuccess = { status: "success"; id: string; name: string; warnings: ValidationWarning[]; item: IEverMarketplaceCatalogItem };
 type TaskSkip    = { status: "skip";    id: string; reason: string };
-type TaskFailure = { status: "failure"; id: string; reason: string; critical: boolean };
+type TaskFailure = { status: "failure"; id: string; reason: string; critical: boolean; issues?: ValidationError[] };
 type TaskResult  = TaskSuccess | TaskSkip | TaskFailure;
 
 // ── task processing ───────────────────────────────────────────────────────────
@@ -70,11 +70,15 @@ async function processTask(taskId: string, dryRun: boolean): Promise<TaskResult>
     let warnings: ValidationWarning[] = [];
     try {
         result = await buildCatalogItem(summary, { localAttachments, attachmentsDir });
-        const validationResult = assertCatalogItemResult(result);
-        warnings = validationResult.warnings;
     } catch (err) {
         console.error(`  [error] buildCatalogItem failed for ${taskId}: ${err}`);
         return { status: "failure", id: taskId, reason: `Build failed: ${err}`, critical: true };
+    }
+
+    const validationResult = assertCatalogItemResult(result);
+    warnings = validationResult.warnings;
+    if (validationResult.errors.length > 0) {
+        return { status: "failure", id: taskId, reason: "Validation errors", critical: false, issues: validationResult.errors };
     }
 
     const outDir = path.join(CATALOG_DIR, taskId);
@@ -244,6 +248,18 @@ async function main(): Promise<void> {
             [...r.item.primaryApps, ...r.item.apps].map(app => app.name)
         )
     )).sort()
+
+    // Print validation issues in the requested format
+    const withIssues = failures.filter((f): f is TaskFailure & { issues: ValidationError[] } => !!f.issues?.length);
+    if (withIssues.length > 0) {
+        console.log('\nIssues in marketplace definition in Click-Up');
+        for (const f of withIssues) {
+            console.log(`\n${f.id}`);
+            for (const issue of f.issues) {
+                console.log(`- ${issue.field}: ${issue.message}`);
+            }
+        }
+    }
 
     console.log(`\nDone: ${successResults.length} built, ${skips.length} skipped, ${failures.length} failed.`);
 
