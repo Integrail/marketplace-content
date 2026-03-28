@@ -574,3 +574,15 @@ MW-1058
 ```
 
 Make changes and run the tests.
+
+//===================================================
+Few more tasks
+1. Add the install.sh (must properly detect runing directory)
+- remove node_modules
+- npm install
+- npm run setup
+
+Update README
+- Update Prerequisites (remove everhow dependency)
+- Add Install section
+  - Provide copy and paste command to install like git clone .. && cd marketplace-content && ./install.sh

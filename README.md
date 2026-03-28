@@ -6,15 +6,21 @@ This repository manages the Everworker Marketplace catalog — from ClickUp task
 
 - **Node.js v22+**
 - **Git LFS** — `git lfs install` (for binary assets)
-- **`everhow` CLI** — required only for `release:fetch` (ask the team for install method)
-
-All other dependencies (including PDF generation) are installed via:
-
-```sh
-npm install
-```
+- **ClickUp API token** — obtained from ClickUp → Settings → Apps → API Token
 
 > PDF generation uses [`md-to-pdf`](https://www.npmjs.com/package/md-to-pdf) — no system-level tools (e.g. pandoc) required.
+
+## Install
+
+```sh
+git clone git@github.com:Integrail/marketplace-content.git && cd marketplace-content && ./install.sh
+```
+
+`install.sh` will:
+1. Remove `node_modules` and run a clean `npm install`
+2. Run `npm run setup` — validates your ClickUp token (or prompts for one if absent)
+
+Your ClickUp token is stored in `.click-up/settings.json` (git-ignored).
 
 ## Overview
 
@@ -35,7 +41,7 @@ npm run release:fetch
 
 Downloads ClickUp tasks from the MW list and writes them as JSON files into `marketplace-build/click-up/` (git-ignored). Each task produces a `MW-XXXX-summary.json` file.
 
-**Prerequisite:** The `everhow` CLI must be installed. Sync is configured by `everhow-clickup-sync.json` at the repo root, which points to the MW ClickUp list.
+Sync is configured by `everhow-clickup-sync.json` at the repo root. Your ClickUp token must be set up via `npm run setup` (or `./install.sh`).
 
 ClickUp task template: [MW-1101](https://app.clickup.com/t/9015421689/MW-1101)
 
@@ -166,6 +172,11 @@ marketplace-content/
 ├── reports/                        # HTML build reports (git-ignored)
 ├── src/
 │   ├── apps/                       # App definitions and logos
+│   ├── click-up/                   # ClickUp sync (release:fetch)
+│   │   ├── clickup-api.ts          # ClickUp API client (native fetch)
+│   │   ├── content-sync.ts         # Sync command entry point
+│   │   ├── settings.ts             # .click-up/settings.json helpers
+│   │   └── setup.ts                # npm run setup entry point
 │   ├── cli/                        # CLI scripts
 │   │   ├── build-catalog.ts        # release:build
 │   │   └── publish-catalog.ts      # release:publish
@@ -201,6 +212,7 @@ Tracked extensions: `*.mp4`, `*.mov`, `*.avi`, `*.webm`, `*.png`, `*.jpg`, `*.jp
 
 | Path | Purpose |
 |---|---|
+| `.click-up/` | ClickUp API token (local settings) |
 | `marketplace-build/` | Build workspace (ClickUp tasks + built catalog) |
 | `reports/` | HTML build reports |
 | `marketplace-dist/` | Legacy package output |
