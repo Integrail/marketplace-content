@@ -41,7 +41,7 @@ function parseVersion(dateUpdated: string): IEverMarketplaceVersion {
  * Returns an empty string if the heading is not found.
  */
 function extractMarkdownSection(markdown: string, heading: string): string {
-    const headingPattern = new RegExp(`^# ${heading}$`, "m");
+    const headingPattern = new RegExp(`^#\\s+\\**\\s*${heading}\\s*\\**\\s*$`, "m");
     const startMatch = headingPattern.exec(markdown);
     if (!startMatch) return "";
     const remaining = markdown.slice(startMatch.index + startMatch[0].length);
