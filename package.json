@@ -8,6 +8,7 @@
   "scripts": {
     "setup": "tsx src/click-up/setup.ts",
     "release:fetch": "tsx src/click-up/content-sync.ts",
+    "release:fetch-force": "tsx src/click-up/fetch-force.ts && npm run release:fetch",
     "release:build": "tsx src/cli/build-catalog.ts",
     "release:publish": "tsx src/cli/publish-catalog.ts",
     "build": "tsc",

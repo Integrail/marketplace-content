@@ -591,3 +591,9 @@ Correct this section in README
 
 ClickUp tasks  →  marketplace-build/click-up/  →  marketplace-build/catalog/  →  marketplace-media-store (CDN)
 (authored)       (release:fetch)                  (release:build)                (release:publish)
+
+//===================================================
+Add the "release:fetch-force". It must
+- cleanup all caches
+- cleanup last sync in everhow-clickup-sync.json
+- fetch all tasks again
