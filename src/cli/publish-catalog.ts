@@ -205,8 +205,8 @@ async function main(): Promise<void> {
         .option("--branch <branch>", "branch in marketplace-media-store to publish to", "main")
         .parse();
 
-    const opts = program.opts<{ scope?: string; branch: string }>();
-    const { branch } = opts;
+    const opts = program.opts<{ scope?: string; branch: string; force: boolean }>();
+    const { branch, force } = opts;
 
     let scope: PublishScope;
     if (opts.scope) {
@@ -219,6 +219,10 @@ async function main(): Promise<void> {
     } else {
         scope = await askScope();
     }
+
+    // Pull latest marketplace-content
+    const marketplaceContentBranch = git(ROOT, "rev-parse", "--abbrev-ref", "HEAD");
+    git(ROOT, "pull", "origin", marketplaceContentBranch);
 
     // Load catalog
     const catalogJsonPath = path.join(CATALOG_DIR, "catalog.json");
@@ -238,6 +242,13 @@ async function main(): Promise<void> {
     // Determine version
     const version = nextVersion();
     console.log(`Version: ${version}`);
+
+    // Commit build.number and push to marketplace-content
+    git(ROOT, "reset", "HEAD"); // unstage any existing changes to avoid accidental commits of unrelated changes
+    git(ROOT, "add", "build.number");
+    git(ROOT, "commit", "-m", `chore: bump build number to ${version}`);
+    git(ROOT, "push", "origin", marketplaceContentBranch);
+    console.log(`Pushed build number update to origin/${marketplaceContentBranch}`);
 
     // CDN URL for this version
     const cdnVersionUrl = `${CDN_BASE_URL}/${scope}/${version}`;
