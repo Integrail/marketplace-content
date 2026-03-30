@@ -597,3 +597,7 @@ Add the "release:fetch-force". It must
 - cleanup all caches
 - cleanup last sync in everhow-clickup-sync.json
 - fetch all tasks again
+
+//===================================================
+buildCatalogItem - add an assertion if no bundle found - dont build item
+
