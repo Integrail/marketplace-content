@@ -28,7 +28,8 @@ interface ClickUpSyncConfig {
 
 async function main(): Promise<void> {
     const workDir = process.cwd();
-    const configPath = path.join(workDir, SYNC_CONFIG_FILE);
+    const buildDir = path.join(workDir, "marketplace-build");
+    const configPath = path.join(buildDir, SYNC_CONFIG_FILE);
 
     const raw = await fs.readFile(configPath, 'utf-8');
     const config = JSON.parse(raw) as ClickUpSyncConfig;

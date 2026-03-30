@@ -41,7 +41,7 @@ npm run release:fetch
 
 Downloads ClickUp tasks from the MW list and writes them as JSON files into `marketplace-build/click-up/` (git-ignored). Each task produces a `MW-XXXX-summary.json` file.
 
-Sync is configured by `everhow-clickup-sync.json` at the repo root. Your ClickUp token must be set up via `npm run setup` (or `./install.sh`).
+Sync is configured by `marketplace-build/everhow-clickup-sync.json`. Your ClickUp token must be set up via `npm run setup` (or `./install.sh`).
 
 ClickUp task template: [MW-1101](https://app.clickup.com/t/9015421689/MW-1101)
 
@@ -165,8 +165,8 @@ The `IEverMarketplaceAppId` type in `src/model/catalog.ts` lists all registered 
 marketplace-content/
 ├── build.number                    # Auto-incremented build counter (committed)
 ├── catalog/                        # Legacy — replaced by marketplace-build/catalog/
-├── everhow-clickup-sync.json       # ClickUp sync configuration
 ├── marketplace-build/              # Git-ignored build workspace
+|   ├── everhow-clickup-sync.json   # ClickUp sync configuration
 │   ├── click-up/tasks/MW-XXXX/     # Synced ClickUp tasks (release:fetch output)
 │   └── catalog/                    # Built catalog items (release:build output)
 ├── reports/                        # HTML build reports (git-ignored)

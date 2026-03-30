@@ -80,7 +80,8 @@ async function ensureDir(dirPath: string): Promise<void> {
 
 async function main(): Promise<void> {
     const workDir = process.cwd();
-    const configPath = path.join(workDir, SYNC_CONFIG_FILE);
+    const buildDir = path.join(workDir, "marketplace-build");
+    const configPath = path.join(buildDir, SYNC_CONFIG_FILE);
 
     console.log('ClickUp Content Sync');
     console.log('');
@@ -89,7 +90,7 @@ async function main(): Promise<void> {
     let config = await readJsonFile<ClickUpSyncConfig>(configPath);
 
     if (!config) {
-        console.log(`No ${SYNC_CONFIG_FILE} found in ${workDir}`);
+        console.log(`No ${SYNC_CONFIG_FILE} found in ${buildDir}`);
         const create = await prompt('Create a new sync configuration? (yes/no): ');
         if (create.toLowerCase() !== 'yes' && create.toLowerCase() !== 'y') {
             console.log('Sync cancelled.');
