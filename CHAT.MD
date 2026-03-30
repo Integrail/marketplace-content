@@ -577,7 +577,7 @@ Make changes and run the tests.
 
 //===================================================
 Few more tasks
-1. Add the install.sh (must properly detect runing directory)
+1. Add the install.sh (must properly detect running directory)
 - remove node_modules
 - npm install
 - npm run setup
