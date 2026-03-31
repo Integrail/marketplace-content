@@ -13,16 +13,15 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 
 const SYNC_CONFIG_FILE = 'everhow-clickup-sync.json';
+const STATE_FILE = '.everhow-clickup-sync-state.json';
 
 interface ListSyncEntry {
     source: string;
     target: string;
-    lastSync?: string;
 }
 
 interface ClickUpSyncConfig {
     command: string;
-    lastSync: string;
     listsToSync: ListSyncEntry[];
 }
 
@@ -30,6 +29,7 @@ async function main(): Promise<void> {
     const workDir = process.cwd();
     const buildDir = path.join(workDir, "marketplace-build");
     const configPath = path.join(buildDir, SYNC_CONFIG_FILE);
+    const statePath = path.join(buildDir, STATE_FILE);
 
     const raw = await fs.readFile(configPath, 'utf-8');
     const config = JSON.parse(raw) as ClickUpSyncConfig;
@@ -41,15 +41,11 @@ async function main(): Promise<void> {
             await fs.rm(tasksDir, { recursive: true, force: true });
             console.log(`✓ Cleared cache: ${tasksDir}`);
         }
-
-        delete entry.lastSync;
     }
 
-    // 2. Reset top-level lastSync
-    config.lastSync = '';
-
-    await fs.writeFile(configPath, JSON.stringify(config, null, 2) + '\n', 'utf-8');
-    console.log(`✓ Reset lastSync in ${SYNC_CONFIG_FILE}`);
+    // 2. Reset sync state
+    await fs.writeFile(statePath, JSON.stringify({ lastSync: '', listLastSync: {} }, null, 2) + '\n', 'utf-8');
+    console.log(`✓ Reset lastSync in ${STATE_FILE}`);
     console.log('');
     console.log('Ready for full re-fetch. Run: npm run release:fetch');
 }
