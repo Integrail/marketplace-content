@@ -223,6 +223,7 @@ async function main(): Promise<void> {
     // Pull latest marketplace-content
     const marketplaceContentBranch = git(ROOT, "rev-parse", "--abbrev-ref", "HEAD");
     git(ROOT, "pull", "origin", marketplaceContentBranch);
+    git(ROOT, "lfs", "pull", "origin", marketplaceContentBranch);
 
     // Load catalog
     const catalogJsonPath = path.join(CATALOG_DIR, "catalog.json");
