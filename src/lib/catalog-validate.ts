@@ -261,5 +261,13 @@ export function assertCatalogItemResult(result: Omit<CatalogItemResult, "warning
     tryCollect(hrefErrors, () => assertMarkdownHref(result.item.cardDescription, "cardDescription", result.attachments));
     tryCollect(hrefErrors, () => assertMarkdownHref(result.item.fullDescription, "fullDescription", result.attachments));
 
+    tryCollect(hrefErrors, () => {
+        const bundleFilename = result.item.bundle.href.split("/").at(-1)!;
+        assert(
+            Object.prototype.hasOwnProperty.call(result.attachments, bundleFilename),
+            `bundle: attachment "${bundleFilename}" (from href "${result.item.bundle.href}") is not present in attachments`,
+        );
+    });
+
     return { errors: [...itemErrors, ...hrefErrors], warnings };
 }
