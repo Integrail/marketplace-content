@@ -216,6 +216,12 @@ export async function buildCatalogItem(
         : [];
     const bundleAttachment = bundleAttachmentList[0];
     const localBundleContent = bundleAttachment?.title ? localAttachments?.[bundleAttachment.title] : undefined;
+
+    // Assert that a bundle exists
+    if (!localBundleContent && !bundleAttachment) {
+        throw new Error(`Cannot build item ${id}: No bundle file found. ITEM_BUNDLE_JSON field is missing or empty.`);
+    }
+
     let bundle: IEverMarketplaceRef;
     if (localBundleContent) {
         attachments["bundle.json"] = localBundleContent;

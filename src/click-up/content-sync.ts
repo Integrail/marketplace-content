@@ -208,6 +208,8 @@ async function main(): Promise<void> {
                     }
                 }
 
+                console.log(`  ℹ ${taskKey} processed`);
+
                 processed++;
                 if (processed % 10 === 0 || processed === tasks.length) {
                     console.log(`  ℹ ${processed}/${tasks.length} tasks processed...`);
