@@ -92,12 +92,6 @@ export function assertMedia(value: IEverMarketplaceMedia, field: string): void {
         `${field}.kind: expected "image" or "video", got ${JSON.stringify(value.kind)}`,
     );
     assertUrl(value.url, `${field}.url`);
-    if (value.kind === "video") {
-        assert(
-            value.thumbnailUrl !== undefined,
-            `${field}.thumbnailUrl: required when kind is "video"`,
-        );
-    }
     if (value.thumbnailUrl !== undefined) {
         assertUrl(value.thumbnailUrl, `${field}.thumbnailUrl`);
     }
