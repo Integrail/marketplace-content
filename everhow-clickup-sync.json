@@ -1,9 +1,0 @@
-{
-  "command": "click-up-list-sync",
-  "listsToSync": [
-    {
-      "source": "https://app.clickup.com/9015421689/v/li/901520155848",
-      "target": "marketplace-build/click-up"
-    }
-  ]
-}

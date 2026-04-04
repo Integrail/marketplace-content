@@ -43,5 +43,4 @@ Thumbs.db
 # ClickUp local settings (contains API token)
 .click-up/
 
-# ClickUp sync state (local per-user, not shared)
-.everhow-clickup-sync-state.json
+# ClickUp sync state — covered by /marketplace-build/ above

@@ -2,14 +2,14 @@
 /**
  * release:fetch — Syncs ClickUp list tasks to the local marketplace-build directory.
  *
- * Reads sync configuration from everhow-clickup-sync.json in the working directory.
+ * Uses hardcoded configuration from src/config.ts.
  * Reads the ClickUp access token from .click-up/settings.json (git-ignored).
+ * Stores sync state in marketplace-build/click-up-sync.json.
  *
  * Usage:
  *   npx tsx src/click-up/content-sync.ts
  */
 
-import * as readline from 'node:readline';
 import fs from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
@@ -21,21 +21,14 @@ import {
     type ClickUpTask,
 } from './clickup-api.js';
 import { readSettings, getSettingsPath } from './settings.js';
+import {
+    CLICKUP_LIST_ID,
+    CLICKUP_LIST_URL,
+    CLICKUP_SYNC_TARGET,
+    CLICKUP_SYNC_STATE_PATH,
+} from '../config.js';
 
-// ── Config ────────────────────────────────────────────────────────────────────
-
-const SYNC_CONFIG_FILE = 'everhow-clickup-sync.json';
-const STATE_FILE = '.everhow-clickup-sync-state.json';
-
-interface ListSyncEntry {
-    source: string;
-    target: string;
-}
-
-interface ClickUpSyncConfig {
-    command: string;
-    listsToSync: ListSyncEntry[];
-}
+// ── Types ─────────────────────────────────────────────────────────────────────
 
 interface SyncState {
     lastSync: string;
@@ -43,21 +36,6 @@ interface SyncState {
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-
-function prompt(question: string): Promise<string> {
-    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-    return new Promise((resolve) => {
-        rl.question(question, (answer) => { rl.close(); resolve(answer.trim()); });
-    });
-}
-
-function extractListId(url: string): string {
-    const match = url.match(/\/v\/li\/\d+-(\d+)/);
-    if (match) return match[1];
-    const direct = url.match(/\/v\/li\/(\d+)/);
-    if (direct) return direct[1];
-    throw new Error(`Cannot extract list ID from ClickUp URL: ${url}`);
-}
 
 function sleep(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -84,37 +62,12 @@ async function ensureDir(dirPath: string): Promise<void> {
 
 async function main(): Promise<void> {
     const workDir = process.cwd();
-    const configPath = path.join(workDir, SYNC_CONFIG_FILE);
-    const statePath = path.join(workDir, STATE_FILE);
+    const statePath = path.join(workDir, CLICKUP_SYNC_STATE_PATH);
 
     console.log('ClickUp Content Sync');
     console.log('');
 
-    // ── Load or create config ─────────────────────────────────────────────────
-    let config = await readJsonFile<ClickUpSyncConfig>(configPath);
-
-    if (!config) {
-        console.log(`No ${SYNC_CONFIG_FILE} found in ${workDir}`);
-        const create = await prompt('Create a new sync configuration? (yes/no): ');
-        if (create.toLowerCase() !== 'yes' && create.toLowerCase() !== 'y') {
-            console.log('Sync cancelled.');
-            return;
-        }
-
-        console.log('');
-        const sourceUrl = await prompt('Enter ClickUp list URL (e.g. https://app.clickup.com/.../v/li/...): ');
-        if (!sourceUrl) { console.error('Source URL is required'); process.exit(1); }
-
-        const targetDir = await prompt('Enter local target directory (relative to working dir): ');
-        if (!targetDir) { console.error('Target directory is required'); process.exit(1); }
-
-        config = { command: 'click-up-list-sync', listsToSync: [{ source: sourceUrl, target: targetDir }] };
-        await writeJsonFile(configPath, config);
-        console.log(`✓ Created ${SYNC_CONFIG_FILE}`);
-        console.log('');
-    }
-
-    // ── Load sync state ───────────────────────────────────────────────────────
+    // ── Load sync state (broken/missing → full fetch) ─────────────────────────
     const state: SyncState = (await readJsonFile<SyncState>(statePath)) ?? { lastSync: '', listLastSync: {} };
 
     // ── Check token ───────────────────────────────────────────────────────────
@@ -126,122 +79,114 @@ async function main(): Promise<void> {
     }
     const token = settings.clickUp.token;
 
-    // ── Sync each list ────────────────────────────────────────────────────────
-    for (const entry of config.listsToSync) {
-        console.log(`→ Syncing: ${entry.source}`);
-        console.log(`  Target: ${entry.target}`);
+    // ── Sync list ─────────────────────────────────────────────────────────────
+    const listId = CLICKUP_LIST_ID;
+    const sourceUrl = CLICKUP_LIST_URL;
+    const targetPath = path.resolve(workDir, CLICKUP_SYNC_TARGET);
+    const tasksPath = path.join(targetPath, 'tasks');
 
-        let listId: string;
-        try {
-            listId = extractListId(entry.source);
-        } catch (err: unknown) {
-            console.error(`  ✗ ${(err as Error).message}`);
-            continue;
-        }
+    console.log(`→ Syncing: ${sourceUrl}`);
+    console.log(`  Target: ${targetPath}`);
+    console.log(`  List ID: ${listId}`);
 
-        console.log(`  List ID: ${listId}`);
+    await ensureDir(tasksPath);
 
-        const targetPath = path.resolve(workDir, entry.target);
-        const tasksPath = path.join(targetPath, 'tasks');
-        await ensureDir(tasksPath);
+    const listLastSync = state.listLastSync[sourceUrl];
+    const isIncremental = !!listLastSync;
+    console.log(isIncremental
+        ? `→ Fetching tasks updated since ${listLastSync}...`
+        : '→ Fetching all tasks from ClickUp...');
 
-        const listLastSync = state.listLastSync[entry.source];
-        const isIncremental = !!listLastSync;
-        console.log(isIncremental
-            ? `→ Fetching tasks updated since ${listLastSync}...`
-            : '→ Fetching all tasks from ClickUp...');
-
-        let tasks: ClickUpTask[];
-        try {
-            tasks = await getTasksInList(listId, token, listLastSync);
-        } catch (err: unknown) {
-            console.error(`  ✗ Failed to fetch tasks: ${(err as Error).message}`);
-            continue;
-        }
-
-        console.log(`✓ Found ${tasks.length} task(s) to process`);
-        console.log('');
-
-        let processed = 0;
-        let skipped = 0;
-        let errors = 0;
-
-        for (const task of tasks) {
-            const taskKey = task.custom_id || task.id;
-            const taskDir = path.join(tasksPath, taskKey);
-            const attachmentsDir = path.join(taskDir, 'attachments');
-
-            try {
-                await ensureDir(taskDir);
-
-                // Skip if already up to date
-                const summaryPath = path.join(taskDir, `${taskKey}-summary.json`);
-                if (task.date_updated) {
-                    const existing = await readJsonFile<ClickUpTask>(summaryPath);
-                    if (existing?.date_updated === task.date_updated) {
-                        skipped++;
-                        continue;
-                    }
-                }
-
-                // Full task detail
-                const detail = await getTaskDetail(task.id, token);
-                await writeJsonFile(summaryPath, detail);
-
-                // Activity (comments)
-                const activity = await getTaskActivity(task.id, token);
-                await writeJsonFile(path.join(taskDir, `${taskKey}-activity.json`), activity);
-
-                // Attachments — skip files that already exist locally
-                const attachments = detail.attachments ?? [];
-                if (attachments.length > 0) {
-                    await ensureDir(attachmentsDir);
-                    for (const att of attachments) {
-                        const attPath = path.join(attachmentsDir, att.title);
-                        if (existsSync(attPath)) continue;
-                        try {
-                            const data = await downloadAttachment(att.url, token);
-                            await fs.writeFile(attPath, data);
-                        } catch (attErr: unknown) {
-                            console.warn(`    ⚠ Attachment "${att.title}" skipped: ${(attErr as Error).message}`);
-                        }
-                    }
-                }
-
-                processed++;
-                if (processed % 10 === 0 || processed === tasks.length) {
-                    console.log(`  ℹ ${processed}/${tasks.length} tasks processed...`);
-                }
-
-                await sleep(80);
-
-            } catch (err: unknown) {
-                console.warn(`  ⚠ Error on task ${taskKey}: ${(err as Error).message}`);
-                errors++;
-            }
-        }
-
-        // Write index.json
-        await writeJsonFile(path.join(targetPath, 'index.json'), {
-            syncedAt: new Date().toISOString(),
-            listId,
-            sourceUrl: entry.source,
-            totalTasks: tasks.length,
-            processed,
-            skipped,
-            errors,
-        });
-
-        state.listLastSync[entry.source] = new Date().toISOString();
-
-        console.log('');
-        console.log(`✓ List sync done — ${processed} updated, ${skipped} unchanged, ${errors} error(s)`);
-        console.log(`  Output: ${targetPath}`);
+    let tasks: ClickUpTask[];
+    try {
+        tasks = await getTasksInList(listId, token, listLastSync);
+    } catch (err: unknown) {
+        console.error(`  ✗ Failed to fetch tasks: ${(err as Error).message}`);
+        process.exit(1);
     }
 
+    console.log(`✓ Found ${tasks.length} task(s) to process`);
+    console.log('');
+
+    let processed = 0;
+    let skipped = 0;
+    let errors = 0;
+
+    for (const task of tasks) {
+        const taskKey = task.custom_id || task.id;
+        const taskDir = path.join(tasksPath, taskKey);
+        const attachmentsDir = path.join(taskDir, 'attachments');
+
+        try {
+            await ensureDir(taskDir);
+
+            // Skip if already up to date
+            const summaryPath = path.join(taskDir, `${taskKey}-summary.json`);
+            if (task.date_updated) {
+                const existing = await readJsonFile<ClickUpTask>(summaryPath);
+                if (existing?.date_updated === task.date_updated) {
+                    skipped++;
+                    continue;
+                }
+            }
+
+            // Full task detail
+            const detail = await getTaskDetail(task.id, token);
+            await writeJsonFile(summaryPath, detail);
+
+            // Activity (comments)
+            const activity = await getTaskActivity(task.id, token);
+            await writeJsonFile(path.join(taskDir, `${taskKey}-activity.json`), activity);
+
+            // Attachments — skip files that already exist locally
+            const attachments = detail.attachments ?? [];
+            if (attachments.length > 0) {
+                await ensureDir(attachmentsDir);
+                for (const att of attachments) {
+                    const attPath = path.join(attachmentsDir, att.title);
+                    if (existsSync(attPath)) continue;
+                    try {
+                        const data = await downloadAttachment(att.url, token);
+                        await fs.writeFile(attPath, data);
+                    } catch (attErr: unknown) {
+                        console.warn(`    ⚠ Attachment "${att.title}" skipped: ${(attErr as Error).message}`);
+                    }
+                }
+            }
+
+            processed++;
+            if (processed % 10 === 0 || processed === tasks.length) {
+                console.log(`  ℹ ${processed}/${tasks.length} tasks processed...`);
+            }
+
+            await sleep(80);
+
+        } catch (err: unknown) {
+            console.warn(`  ⚠ Error on task ${taskKey}: ${(err as Error).message}`);
+            errors++;
+        }
+    }
+
+    // Write index.json
+    await writeJsonFile(path.join(targetPath, 'index.json'), {
+        syncedAt: new Date().toISOString(),
+        listId,
+        sourceUrl,
+        totalTasks: tasks.length,
+        processed,
+        skipped,
+        errors,
+    });
+
+    state.listLastSync[sourceUrl] = new Date().toISOString();
     state.lastSync = new Date().toISOString();
+
+    await ensureDir(path.dirname(statePath));
     await writeJsonFile(statePath, state);
 
+    console.log('');
+    console.log(`✓ List sync done — ${processed} updated, ${skipped} unchanged, ${errors} error(s)`);
+    console.log(`  Output: ${targetPath}`);
     console.log('');
     console.log('Done.');
 }

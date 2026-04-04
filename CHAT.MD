@@ -597,3 +597,12 @@ Add the "release:fetch-force". It must
 - cleanup all caches
 - cleanup last sync in everhow-clickup-sync.json
 - fetch all tasks again
+
+//===================================================
+A few changes.
+- Hardcore the account and list of of source tasks in src/config.ts (https://app.clickup.com/9015421689/v/l/6-901520155848-1)
+- release:fetch-force must sync ALL tasks in the Click-UP list and store last sync in the marketplace-build/click-up-sync.json
+- release:fetch must sync only changes since timestamp stored in marketplace-build/click-up-sync.json
+- if marketplace-build/click-up-sync.json is broken - use release:fetch-force logic
+- remove .everhow-clickup-sync-state.json and everhow-clickup-sync.json rudiments
+
