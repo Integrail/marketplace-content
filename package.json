@@ -17,6 +17,8 @@
     "marketplace-package": "tsx src/cli/package-marketplace.ts",
     "marketplace-install-locally": "tsx src/cli/install-locally.ts",
     "local-deploy": "tsx src/cli/local-deploy.ts",
+    "publish-local": "tsx src/cli/publish-local.ts",
+    "publish-local:serve": "npx serve marketplace-build/publish-local -p 3131 --no-clipboard --config \"$(pwd)/serve-local.json\"",
     "sync-model": "tsx src/cli/sync-model.ts",
     "unit-tests": "mocha 'src/**/*.unit.test.ts'",
     "unit-tests:coverage": "c8 --reporter=text --reporter=lcov --reporter=html --reports-dir=.coverage --all --src=src mocha 'src/**/*.unit.test.ts'",
